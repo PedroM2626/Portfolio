@@ -506,9 +506,18 @@ const ProjectsSection = () => {
                 <p className="text-muted-foreground">{selectedProject.description}</p>
                 
                 <div className="flex flex-wrap gap-2">
-                  {selectedProject.tech.map((tech: string) => (
-                    <Badge key={tech} variant="secondary">{tech}</Badge>
-                  ))}
+                  {selectedProject.tech.map((tech: string) => {
+                    const techInfo = getTechInfo(tech);
+                    return (
+                      <div
+                        key={tech}
+                        className={`${techInfo.color} text-white px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2`}
+                      >
+                        <span>{techInfo.icon}</span>
+                        <span>{tech}</span>
+                      </div>
+                    );
+                  })}
                 </div>
                 
                 <div className="flex space-x-4">
