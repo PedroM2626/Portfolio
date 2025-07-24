@@ -190,14 +190,14 @@ const BackToTop = () => {
 
 const HomeSection = () => {
   const { displayedText: nameText, isComplete: nameComplete } = useTypingEffect("Pedro Morato", 120);
-  const { displayedText: jobText, isComplete: jobComplete } = useTypingEffect("Full Stack Developer", 150);
+  const { displayedText: jobText, isComplete: jobComplete } = useTypingEffect("Desenvolvedor Independente", 150);
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-20" data-reveal>
       <div className="container mx-auto px-4 text-center">
         <div className="mb-8">
           <img
-            src="/placeholder.svg"
+            src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
             alt="Profile"
             className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-primary"
           />
@@ -218,7 +218,7 @@ const HomeSection = () => {
         </div>
 
         <div className="text-xl md:text-2xl font-medium text-foreground mb-8 flex items-center justify-center gap-3">
-          <span>Bem-vindo ao meu portfólio!</span>
+          <span>Seja bem-vindo ao meu portfólio!</span>
           {jobComplete && <span className="animate-wave inline-block">👋</span>}
         </div>
 
@@ -248,7 +248,7 @@ const HomeSection = () => {
         <Button className="mb-12" asChild>
           <a href="/resume.pdf" download>
             <Download className="h-4 w-4 mr-2" />
-            Download Resume
+            Baixar Currículo
           </a>
         </Button>
         
