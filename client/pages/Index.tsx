@@ -278,7 +278,7 @@ const getTechInfo = (name: string) => {
     "HTML5": { color: "bg-orange-500", icon: "🔶" },
     "CSS3": { color: "bg-blue-500", icon: "🎨" },
     "React": { color: "bg-cyan-500", icon: "⚛️" },
-    "Flask": { color: "bg-gray-700", icon: "🌶���" },
+    "Flask": { color: "bg-gray-700", icon: "🌶️" },
     "SQLite": { color: "bg-blue-400", icon: "💾" },
     "Unity": { color: "bg-gray-800", icon: "🎮" },
     "Unreal Engine": { color: "bg-gray-900", icon: "🎯" },
@@ -681,82 +681,122 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-muted/30" data-reveal>
+    <section id="contact" className="py-20 bg-background" data-reveal>
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Entre em Contato</h2>
+        <div className="text-center mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold">Entre em Contato</h2>
+          <div className="w-16 h-1 bg-primary mx-auto mt-2"></div>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto mt-16">
+          {/* Left Column - Social Links */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">Vamos Conversar</h3>
-            <p className="text-muted-foreground mb-8">
-              Estou sempre aberto para discutir novas oportunidades, projetos interessantes
-              ou apenas bater um papo sobre tecnologia. Sinta-se à vontade para entrar em contato!
+            <h3 className="text-xl font-semibold mb-6 text-foreground">Vamos Conversar!</h3>
+            <p className="text-muted-foreground mb-8 leading-relaxed">
+              Estou sempre interessado em novas oportunidades e projetos
+              desafiadores. Entre em contato comigo!
             </p>
 
             <div className="space-y-4">
-              <div className="flex items-center space-x-4">
-                <Github className="h-6 w-6" />
+              {/* GitHub Card */}
+              <div className="group">
                 <a href="https://github.com/PedroM2626" target="_blank" rel="noopener noreferrer"
-                   className="text-muted-foreground hover:text-foreground transition-colors">
-                  github.com/PedroM2626
+                   className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <Github className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-foreground">GitHub</div>
+                    <div className="text-sm text-muted-foreground">@PedroM2626</div>
+                  </div>
+                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
               </div>
-              <div className="flex items-center space-x-4">
-                <Linkedin className="h-6 w-6" />
+
+              {/* LinkedIn Card */}
+              <div className="group">
                 <a href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/" target="_blank" rel="noopener noreferrer"
-                   className="text-muted-foreground hover:text-foreground transition-colors">
-                  linkedin.com/in/pedro-morato-lahoz-7996b1314/
+                   className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <Linkedin className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-foreground">LinkedIn</div>
+                    <div className="text-sm text-muted-foreground">pedro-morato-lahoz-7996b1314</div>
+                  </div>
+                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
               </div>
-              <div className="flex items-center space-x-4">
-                <Mail className="h-6 w-6" />
+
+              {/* Email Card */}
+              <div className="group">
                 <a href="mailto:pedromoratolahoz@gmail.com"
-                   className="text-muted-foreground hover:text-foreground transition-colors">
-                  pedromoratolahoz@gmail.com
+                   className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-pink-100 dark:bg-pink-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <Mail className="h-5 w-5 text-pink-600 dark:text-pink-400" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-foreground">Email</div>
+                    <div className="text-sm text-muted-foreground">pedromoratolahoz@gmail.com</div>
+                  </div>
+                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
               </div>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <Input
-                placeholder="Seu Nome"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                required
-              />
-            </div>
-            <div>
-              <Input
-                type="email"
-                placeholder="Seu Email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                required
-              />
-            </div>
-            <div>
-              <Input
-                placeholder="Assunto"
-                value={formData.subject}
-                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                required
-              />
-            </div>
-            <div>
-              <Textarea
-                placeholder="Sua Mensagem"
-                rows={5}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                required
-              />
-            </div>
-            <Button type="submit" disabled={isSubmitting} className="w-full">
-              {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
-            </Button>
-          </form>
+          {/* Right Column - Contact Form */}
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-foreground">Envie uma Mensagem</h3>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <Input
+                  placeholder="Nome *"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  className="bg-muted/50 border-muted focus:border-primary"
+                />
+              </div>
+              <div>
+                <Input
+                  type="email"
+                  placeholder="Email *"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  className="bg-muted/50 border-muted focus:border-primary"
+                />
+              </div>
+              <div>
+                <Input
+                  placeholder="Assunto *"
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  required
+                  className="bg-muted/50 border-muted focus:border-primary"
+                />
+              </div>
+              <div>
+                <Textarea
+                  placeholder="Mensagem *"
+                  rows={6}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  required
+                  className="bg-muted/50 border-muted focus:border-primary resize-none"
+                />
+              </div>
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full h-12 text-base font-medium bg-primary hover:bg-primary/90 text-primary-foreground"
+              >
+                {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
+              </Button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
