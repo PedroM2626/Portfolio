@@ -592,45 +592,45 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-20 bg-muted/30" data-reveal>
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Contact Me</h2>
-        
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Entre em Contato</h2>
+
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           <div>
-            <h3 className="text-xl font-semibold mb-6">Get In Touch</h3>
+            <h3 className="text-xl font-semibold mb-6">Vamos Conversar</h3>
             <p className="text-muted-foreground mb-8">
-              I'm always open to discussing new opportunities, interesting projects, 
-              or just having a chat about technology. Feel free to reach out!
+              Estou sempre aberto para discutir novas oportunidades, projetos interessantes
+              ou apenas bater um papo sobre tecnologia. Sinta-se à vontade para entrar em contato!
             </p>
-            
+
             <div className="space-y-4">
               <div className="flex items-center space-x-4">
                 <Github className="h-6 w-6" />
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" 
+                <a href="https://github.com/PedroM2626" target="_blank" rel="noopener noreferrer"
                    className="text-muted-foreground hover:text-foreground transition-colors">
-                  github.com/johndoe
+                  github.com/PedroM2626
                 </a>
               </div>
               <div className="flex items-center space-x-4">
                 <Linkedin className="h-6 w-6" />
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                <a href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/" target="_blank" rel="noopener noreferrer"
                    className="text-muted-foreground hover:text-foreground transition-colors">
-                  linkedin.com/in/johndoe
+                  linkedin.com/in/pedro-morato-lahoz-7996b1314/
                 </a>
               </div>
               <div className="flex items-center space-x-4">
                 <Mail className="h-6 w-6" />
-                <a href="mailto:john@example.com"
+                <a href="mailto:pedromoratolahoz@gmail.com"
                    className="text-muted-foreground hover:text-foreground transition-colors">
-                  john@example.com
+                  pedromoratolahoz@gmail.com
                 </a>
               </div>
             </div>
           </div>
-          
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <Input
-                placeholder="Your Name"
+                placeholder="Seu Nome"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
@@ -639,15 +639,23 @@ const ContactSection = () => {
             <div>
               <Input
                 type="email"
-                placeholder="Your Email"
+                placeholder="Seu Email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
               />
             </div>
             <div>
+              <Input
+                placeholder="Assunto"
+                value={formData.subject}
+                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                required
+              />
+            </div>
+            <div>
               <Textarea
-                placeholder="Your Message"
+                placeholder="Sua Mensagem"
                 rows={5}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -655,7 +663,7 @@ const ContactSection = () => {
               />
             </div>
             <Button type="submit" disabled={isSubmitting} className="w-full">
-              {isSubmitting ? "Sending..." : "Send Message"}
+              {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
             </Button>
           </form>
         </div>
