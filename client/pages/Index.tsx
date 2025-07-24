@@ -362,7 +362,7 @@ const ProjectsSection = () => {
       image: "/placeholder.svg",
       date: "2024",
       tech: ["React", "Node.js", "PostgreSQL", "TypeScript"],
-      description: "Um sistema completo para gerenciamento escolar com autenticaç��o de usuários, cadastro de alunos, notas, frequência e dashboard administrativo. Desenvolvido com tecnologias modernas para performance otimizada.",
+      description: "Um sistema completo para gerenciamento escolar com autenticação de usuários, cadastro de alunos, notas, frequência e dashboard administrativo. Desenvolvido com tecnologias modernas para performance otimizada.",
       demoVideo: "https://example.com/demo1.mp4",
       github: "https://github.com/PedroM2626/school-management",
       live: "https://school-management-demo.com"
@@ -407,7 +407,7 @@ const ProjectsSection = () => {
 
   // Filter projects based on selected technology and search term
   const filteredProjects = projects.filter(project => {
-    const matchesFilter = !filterTech || project.tech.includes(filterTech);
+    const matchesFilter = !filterTech || filterTech === "all" || project.tech.includes(filterTech);
     const matchesSearch = !searchTerm ||
       project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       project.tech.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
