@@ -187,7 +187,8 @@ const BackToTop = () => {
 };
 
 const HomeSection = () => {
-  const { displayedText, isComplete } = useTypingEffect("Full Stack Developer", 150);
+  const { displayedText: nameText, isComplete: nameComplete } = useTypingEffect("Pedro Morato", 120);
+  const { displayedText: jobText, isComplete: jobComplete } = useTypingEffect("Full Stack Developer", 150);
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-20" data-reveal>
@@ -199,19 +200,24 @@ const HomeSection = () => {
             className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-primary"
           />
         </div>
-        
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">
-          Pedro Morato
-          <span className="ml-4 animate-wave inline-block">👋</span>
+
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 h-20 md:h-24">
+          {nameText}
+          {!nameComplete && <span className="animate-pulse">|</span>}
         </h1>
 
         <div className="text-xl md:text-2xl text-muted-foreground mb-6 h-8">
-          {displayedText}
-          {!isComplete && <span className="animate-pulse">|</span>}
+          {nameComplete && (
+            <>
+              {jobText}
+              {!jobComplete && <span className="animate-pulse">|</span>}
+            </>
+          )}
         </div>
 
-        <div className="text-xl md:text-2xl font-medium text-foreground mb-8">
-          Bem-vindo ao meu portfólio!
+        <div className="text-xl md:text-2xl font-medium text-foreground mb-8 flex items-center justify-center gap-3">
+          <span>Bem-vindo ao meu portfólio!</span>
+          {jobComplete && <span className="animate-wave inline-block">👋</span>}
         </div>
 
         <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
