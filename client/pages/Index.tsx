@@ -90,7 +90,7 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="text-xl font-bold">Portfolio</div>
+        <div className="text-xl font-bold">Pedro Morato</div>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
@@ -199,7 +199,7 @@ const HomeSection = () => {
         </div>
         
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
-          John Doe
+          Pedro Morato
           <span className="ml-4 animate-wave inline-block">👋</span>
         </h1>
         
@@ -209,23 +209,23 @@ const HomeSection = () => {
         </div>
         
         <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Welcome to my portfolio! I'm passionate about creating beautiful, functional applications 
-          that make a difference. Let's build something amazing together.
+          Bem-vindo ao meu portfólio! Sou apaixonado por criar aplicações bonitas e funcionais
+          que fazem a diferença. Vamos construir algo incrível juntos! 🇧🇷 Brasília, Brasil
         </p>
         
         <div className="flex items-center justify-center space-x-6 mb-8">
           <Button variant="ghost" size="icon" asChild>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/PedroM2626" target="_blank" rel="noopener noreferrer">
               <Github className="h-6 w-6" />
             </a>
           </Button>
           <Button variant="ghost" size="icon" asChild>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/" target="_blank" rel="noopener noreferrer">
               <Linkedin className="h-6 w-6" />
             </a>
           </Button>
           <Button variant="ghost" size="icon" asChild>
-            <a href="mailto:john@example.com">
+            <a href="mailto:pedromoratolahoz@gmail.com">
               <Mail className="h-6 w-6" />
             </a>
           </Button>
