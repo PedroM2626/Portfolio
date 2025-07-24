@@ -278,7 +278,7 @@ const getTechInfo = (name: string) => {
     "HTML5": { color: "bg-orange-500", icon: "🔶" },
     "CSS3": { color: "bg-blue-500", icon: "🎨" },
     "React": { color: "bg-cyan-500", icon: "⚛️" },
-    "Flask": { color: "bg-gray-700", icon: "🌶️" },
+    "Flask": { color: "bg-gray-700", icon: "🌶���" },
     "SQLite": { color: "bg-blue-400", icon: "💾" },
     "Unity": { color: "bg-gray-800", icon: "🎮" },
     "Unreal Engine": { color: "bg-gray-900", icon: "🎯" },
@@ -574,12 +574,26 @@ const ProjectsSection = () => {
             
             {selectedProject && (
               <div className="space-y-6">
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.name}
-                  className="w-full h-64 object-cover rounded-lg"
-                />
-                
+                <div className="space-y-4">
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.name}
+                    className="w-full h-64 object-cover rounded-lg"
+                  />
+
+                  {/* Video Player */}
+                  <div className="relative">
+                    <video
+                      controls
+                      className="w-full rounded-lg bg-muted"
+                      poster={selectedProject.image}
+                    >
+                      <source src={selectedProject.demoVideo} type="video/mp4" />
+                      Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                  </div>
+                </div>
+
                 <p className="text-muted-foreground">{selectedProject.description}</p>
                 
                 <div className="flex flex-wrap gap-2">
