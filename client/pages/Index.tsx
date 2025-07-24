@@ -190,73 +190,92 @@ const BackToTop = () => {
 
 const HomeSection = () => {
   const { displayedText: nameText, isComplete: nameComplete } = useTypingEffect("Pedro Morato", 120);
-  const { displayedText: jobText, isComplete: jobComplete } = useTypingEffect("Desenvolvedor Independente", 150);
+  const { displayedText: jobText, isComplete: jobComplete } = useTypingEffect("Desenvolvedor Full-Stack", 150);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20" data-reveal>
-      <div className="container mx-auto px-4 text-center">
-        <div className="mb-8">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
-            alt="Profile"
-            className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-primary"
-          />
+    <section id="home" className="min-h-screen flex items-center justify-center pt-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" data-reveal>
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-160px)]">
+          {/* Left Column - Content */}
+          <div className="space-y-8 text-left">
+            {/* Welcome Message */}
+            <div className="flex items-center gap-3 text-xl md:text-2xl font-medium text-white">
+              <span>Seja bem-vindo ao meu portfólio!</span>
+              {jobComplete && <span className="animate-wave inline-block">👋</span>}
+            </div>
+
+            {/* Name */}
+            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+              {nameText}
+              {!nameComplete && <span className="animate-pulse">|</span>}
+            </h1>
+
+            {/* Job Title */}
+            <div className="text-xl md:text-2xl text-slate-300">
+              {nameComplete && (
+                <>
+                  {jobText}
+                  {!jobComplete && <span className="animate-pulse">|</span>}
+                </>
+              )}
+            </div>
+
+            {/* Social Buttons */}
+            <div className="flex items-center gap-4">
+              <Button variant="outline" size="sm" className="bg-slate-800 border-slate-600 text-white hover:bg-slate-700" asChild>
+                <a href="https://github.com/PedroM2626" target="_blank" rel="noopener noreferrer">
+                  <Github className="h-4 w-4 mr-2" />
+                  GitHub
+                </a>
+              </Button>
+              <Button variant="outline" size="sm" className="bg-slate-800 border-slate-600 text-white hover:bg-slate-700" asChild>
+                <a href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="h-4 w-4 mr-2" />
+                  LinkedIn
+                </a>
+              </Button>
+              <Button variant="outline" size="sm" className="bg-slate-800 border-slate-600 text-white hover:bg-slate-700" asChild>
+                <a href="mailto:pedromoratolahoz@gmail.com">
+                  <Mail className="h-4 w-4 mr-2" />
+                  Email
+                </a>
+              </Button>
+            </div>
+
+            {/* Download Resume Button */}
+            <div>
+              <Button className="bg-pink-600 hover:bg-pink-700 text-white" asChild>
+                <a href="/resume.pdf" download>
+                  <Download className="h-4 w-4 mr-2" />
+                  Baixar Currículo
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Right Column - Profile Image */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative">
+              <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-orange-400 shadow-2xl">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
+                  alt="Pedro Morato"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 h-20 md:h-24">
-          {nameText}
-          {!nameComplete && <span className="animate-pulse">|</span>}
-        </h1>
-
-        <div className="text-xl md:text-2xl text-muted-foreground mb-6 h-8">
-          {nameComplete && (
-            <>
-              {jobText}
-              {!jobComplete && <span className="animate-pulse">|</span>}
-            </>
-          )}
-        </div>
-
-        <div className="text-xl md:text-2xl font-medium text-foreground mb-8 flex items-center justify-center gap-3">
-          <span>Seja bem-vindo ao meu portfólio!</span>
-          {jobComplete && <span className="animate-wave inline-block">👋</span>}
-        </div>
-
-        <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Sou apaixonado por criar aplicações bonitas e funcionais
-          que fazem a diferença. Vamos construir algo incrível juntos! 🇧🇷 Brasília, Brasil
-        </p>
-        
-        <div className="flex items-center justify-center space-x-6 mb-8">
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://github.com/PedroM2626" target="_blank" rel="noopener noreferrer">
-              <Github className="h-6 w-6" />
-            </a>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/" target="_blank" rel="noopener noreferrer">
-              <Linkedin className="h-6 w-6" />
-            </a>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="mailto:pedromoratolahoz@gmail.com">
-              <Mail className="h-6 w-6" />
-            </a>
-          </Button>
-        </div>
-        
-        <Button className="mb-12" asChild>
-          <a href="/resume.pdf" download>
-            <Download className="h-4 w-4 mr-2" />
-            Baixar Currículo
-          </a>
-        </Button>
-        
-        <div className="animate-bounce">
-          <ChevronDown 
-            className="h-8 w-8 mx-auto cursor-pointer text-muted-foreground"
-            onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-          />
+        {/* Scroll Down Indicator */}
+        <div className="text-center mt-12">
+          <p className="text-slate-400 text-sm mb-2">Role para baixo</p>
+          <div className="animate-bounce">
+            <ChevronDown
+              className="h-6 w-6 mx-auto cursor-pointer text-slate-400"
+              onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+            />
+          </div>
         </div>
       </div>
     </section>
