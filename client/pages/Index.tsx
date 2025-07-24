@@ -566,26 +566,27 @@ const ProjectsSection = () => {
 
         {/* Project Modal */}
         <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-          <DialogContent className="max-w-4xl">
-            <DialogHeader>
-              <DialogTitle>{selectedProject?.name}</DialogTitle>
-              <DialogDescription>{selectedProject?.date}</DialogDescription>
+          <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader className="pb-4">
+              <DialogTitle className="text-2xl">{selectedProject?.name}</DialogTitle>
+              <DialogDescription className="text-base">{selectedProject?.date}</DialogDescription>
             </DialogHeader>
-            
+
             {selectedProject && (
-              <div className="space-y-6">
-                <div className="space-y-4">
+              <div className="space-y-6 pb-4">
+                {/* Media Section */}
+                <div className="grid md:grid-cols-2 gap-4">
                   <img
                     src={selectedProject.image}
                     alt={selectedProject.name}
-                    className="w-full h-64 object-cover rounded-lg"
+                    className="w-full h-48 object-cover rounded-lg"
                   />
 
                   {/* Video Player */}
                   <div className="relative">
                     <video
                       controls
-                      className="w-full rounded-lg bg-muted"
+                      className="w-full h-48 rounded-lg bg-muted object-cover"
                       poster={selectedProject.image}
                     >
                       <source src={selectedProject.demoVideo} type="video/mp4" />
@@ -594,42 +595,54 @@ const ProjectsSection = () => {
                   </div>
                 </div>
 
-                <p className="text-muted-foreground">{selectedProject.description}</p>
-                
-                <div className="flex flex-wrap gap-2">
-                  {selectedProject.tech.map((tech: string) => {
-                    const techInfo = getTechInfo(tech);
-                    return (
-                      <div
-                        key={tech}
-                        className={`${techInfo.color} text-white px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2`}
-                      >
-                        <span>{techInfo.icon}</span>
-                        <span>{tech}</span>
-                      </div>
-                    );
-                  })}
+                {/* Description */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">Descrição</h4>
+                  <p className="text-muted-foreground leading-relaxed">{selectedProject.description}</p>
                 </div>
-                
-                <div className="flex space-x-4">
-                  <Button asChild>
-                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-4 w-4 mr-2" />
-                      GitHub
-                    </a>
-                  </Button>
-                  <Button variant="outline" asChild>
-                    <a href={selectedProject.live} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Live Demo
-                    </a>
-                  </Button>
-                  <Button variant="outline" asChild>
-                    <a href={selectedProject.demoVideo} target="_blank" rel="noopener noreferrer">
-                      <Play className="h-4 w-4 mr-2" />
-                      Demo Video
-                    </a>
-                  </Button>
+
+                {/* Technologies */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-3">Tecnologias Utilizadas</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tech.map((tech: string) => {
+                      const techInfo = getTechInfo(tech);
+                      return (
+                        <div
+                          key={tech}
+                          className={`${techInfo.color} text-white px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2`}
+                        >
+                          <span>{techInfo.icon}</span>
+                          <span>{tech}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-3">Links do Projeto</h4>
+                  <div className="flex flex-wrap gap-3">
+                    <Button asChild className="flex-1 min-w-[140px]">
+                      <a href={selectedProject.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="h-4 w-4 mr-2" />
+                        Repositório
+                      </a>
+                    </Button>
+                    <Button variant="outline" asChild className="flex-1 min-w-[140px]">
+                      <a href={selectedProject.live} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        Demo Ao Vivo
+                      </a>
+                    </Button>
+                    <Button variant="outline" asChild className="flex-1 min-w-[140px]">
+                      <a href={selectedProject.demoVideo} target="_blank" rel="noopener noreferrer">
+                        <Play className="h-4 w-4 mr-2" />
+                        Vídeo Demo
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </div>
             )}
