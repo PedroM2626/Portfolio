@@ -362,7 +362,7 @@ const ProjectsSection = () => {
       image: "/placeholder.svg",
       date: "2024",
       tech: ["React", "Node.js", "PostgreSQL", "TypeScript"],
-      description: "Um sistema completo para gerenciamento escolar com autenticação de usuários, cadastro de alunos, notas, frequência e dashboard administrativo. Desenvolvido com tecnologias modernas para performance otimizada.",
+      description: "Um sistema completo para gerenciamento escolar com autenticaç��o de usuários, cadastro de alunos, notas, frequência e dashboard administrativo. Desenvolvido com tecnologias modernas para performance otimizada.",
       demoVideo: "https://example.com/demo1.mp4",
       github: "https://github.com/PedroM2626/school-management",
       live: "https://school-management-demo.com"
@@ -435,7 +435,7 @@ const ProjectsSection = () => {
                 <SelectValue placeholder="Filtrar por tecnologia" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Todas as tecnologias</SelectItem>
+                <SelectItem value="all">Todas as tecnologias</SelectItem>
                 {allTechs.map((tech) => (
                   <SelectItem key={tech} value={tech}>{tech}</SelectItem>
                 ))}
