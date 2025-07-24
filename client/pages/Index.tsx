@@ -351,42 +351,67 @@ const AboutSection = () => {
 
 const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [filterTech, setFilterTech] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const projects = [
     {
       id: 1,
-      name: "E-Commerce Platform",
+      name: "Sistema de Gerenciamento Escolar",
       image: "/placeholder.svg",
       date: "2024",
-      tech: ["React", "Node.js", "MongoDB"],
-      description: "A full-featured e-commerce platform with user authentication, shopping cart, payment processing, and admin dashboard. Built with modern technologies for optimal performance.",
+      tech: ["React", "Node.js", "PostgreSQL", "TypeScript"],
+      description: "Um sistema completo para gerenciamento escolar com autenticação de usuários, cadastro de alunos, notas, frequência e dashboard administrativo. Desenvolvido com tecnologias modernas para performance otimizada.",
       demoVideo: "https://example.com/demo1.mp4",
-      github: "https://github.com/johndoe/ecommerce",
-      live: "https://ecommerce-demo.com"
+      github: "https://github.com/PedroM2626/school-management",
+      live: "https://school-management-demo.com"
     },
     {
       id: 2,
-      name: "Task Management App",
+      name: "Jogo de Puzzle 3D",
       image: "/placeholder.svg",
       date: "2023",
-      tech: ["React", "TypeScript", "Supabase"],
-      description: "A collaborative task management application with real-time updates, team collaboration features, and intuitive drag-and-drop interface.",
+      tech: ["Unity", "C#"],
+      description: "Um jogo de puzzle em 3D com mecânicas inovadoras, sistema de níveis progressivos e interface intuitiva. Desenvolvido na Unity com scripts otimizados.",
       demoVideo: "https://example.com/demo2.mp4",
-      github: "https://github.com/johndoe/taskapp",
-      live: "https://taskapp-demo.com"
+      github: "https://github.com/PedroM2626/puzzle-game",
+      live: "https://puzzle-game-demo.com"
     },
     {
       id: 3,
-      name: "Weather Dashboard",
+      name: "App de Controle Financeiro",
       image: "/placeholder.svg",
       date: "2023",
-      tech: ["Vue.js", "Python", "FastAPI"],
-      description: "A comprehensive weather dashboard with location-based forecasts, historical data visualization, and weather alerts.",
+      tech: ["Flutter", "Firebase", "Dart"],
+      description: "Aplicativo móvel para controle financeiro pessoal com categorização automática de gastos, relatórios detalhados e sincronização em nuvem.",
       demoVideo: "https://example.com/demo3.mp4",
-      github: "https://github.com/johndoe/weather",
-      live: "https://weather-demo.com"
+      github: "https://github.com/PedroM2626/finance-app",
+      live: "https://finance-app-demo.com"
+    },
+    {
+      id: 4,
+      name: "Website Portfolio Responsivo",
+      image: "/placeholder.svg",
+      date: "2024",
+      tech: ["HTML5", "CSS3", "JavaScript"],
+      description: "Website portfolio totalmente responsivo com animações suaves, design moderno e otimizado para SEO.",
+      demoVideo: "https://example.com/demo4.mp4",
+      github: "https://github.com/PedroM2626/portfolio-website",
+      live: "https://portfolio-demo.com"
     }
   ];
+
+  // Get all unique technologies for filter options
+  const allTechs = Array.from(new Set(projects.flatMap(project => project.tech))).sort();
+
+  // Filter projects based on selected technology and search term
+  const filteredProjects = projects.filter(project => {
+    const matchesFilter = !filterTech || project.tech.includes(filterTech);
+    const matchesSearch = !searchTerm ||
+      project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.tech.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
+    return matchesFilter && matchesSearch;
+  });
 
   return (
     <section id="projects" className="py-20" data-reveal>
