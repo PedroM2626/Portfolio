@@ -232,19 +232,19 @@ const HomeSection = () => {
 
             {/* Social Buttons */}
             <div className="flex items-center gap-4">
-              <Button variant="outline" size="sm" className="border-muted hover:bg-muted" asChild>
+              <Button variant="outline" size="sm" className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden" asChild>
                 <a href="https://github.com/PedroM2626" target="_blank" rel="noopener noreferrer">
                   <Github className="h-4 w-4 mr-2" />
                   GitHub
                 </a>
               </Button>
-              <Button variant="outline" size="sm" className="border-muted hover:bg-muted" asChild>
+              <Button variant="outline" size="sm" className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden" asChild>
                 <a href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-4 w-4 mr-2" />
                   LinkedIn
                 </a>
               </Button>
-              <Button variant="outline" size="sm" className="border-muted hover:bg-muted" asChild>
+              <Button variant="outline" size="sm" className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden" asChild>
                 <a href="mailto:pedromoratolahoz@gmail.com">
                   <Mail className="h-4 w-4 mr-2" />
                   Email
@@ -254,7 +254,7 @@ const HomeSection = () => {
 
             {/* Download Resume Button */}
             <div>
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full overflow-hidden" asChild>
                 <a href="/resume.pdf" download>
                   <Download className="h-4 w-4 mr-2" />
                   Baixar Currículo
@@ -435,7 +435,7 @@ const ProjectsSection = () => {
       image: "/placeholder.svg",
       date: "2023",
       tech: ["Flutter", "Firebase", "Dart"],
-      description: "Aplicativo móvel para controle financeiro pessoal com categoriza��ão automática de gastos, relatórios detalhados e sincronização em nuvem.",
+      description: "Aplicativo móvel para controle financeiro pessoal com categorização automática de gastos, relatórios detalhados e sincronização em nuvem.",
       demoVideo: "https://example.com/demo3.mp4",
       github: "https://github.com/PedroM2626/finance-app",
       live: "https://finance-app-demo.com"
@@ -534,7 +534,7 @@ const ProjectsSection = () => {
               <div
                 className={`px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer transition-all ${
                   selectedTechs.length === 0
-                    ? "bg-green-500 text-white"
+                    ? "bg-white text-black"
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
                 onClick={clearAllFilters}
@@ -635,7 +635,7 @@ const ProjectsSection = () => {
 
                 {/* Description */}
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">Descrição</h4>
+                  <h4 className="font-semibold text-lg mb-2">Descriç��o</h4>
                   <p className="text-muted-foreground leading-relaxed">{selectedProject.description}</p>
                 </div>
 
