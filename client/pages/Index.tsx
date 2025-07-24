@@ -352,7 +352,7 @@ const AboutSection = () => {
 
 const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
-  const [filterTech, setFilterTech] = useState<string>("");
+  const [filterTech, setFilterTech] = useState<string>("all");
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const projects = [
