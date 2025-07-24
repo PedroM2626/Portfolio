@@ -204,14 +204,18 @@ const HomeSection = () => {
           Pedro Morato
           <span className="ml-4 animate-wave inline-block">👋</span>
         </h1>
-        
-        <div className="text-xl md:text-2xl text-muted-foreground mb-4 h-8">
+
+        <div className="text-xl md:text-2xl text-muted-foreground mb-6 h-8">
           {displayedText}
           {!isComplete && <span className="animate-pulse">|</span>}
         </div>
-        
+
+        <div className="text-xl md:text-2xl font-medium text-foreground mb-8">
+          Bem-vindo ao meu portfólio!
+        </div>
+
         <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Bem-vindo ao meu portfólio! Sou apaixonado por criar aplicações bonitas e funcionais
+          Sou apaixonado por criar aplicações bonitas e funcionais
           que fazem a diferença. Vamos construir algo incrível juntos! 🇧🇷 Brasília, Brasil
         </p>
         
