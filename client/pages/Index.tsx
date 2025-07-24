@@ -249,19 +249,47 @@ const HomeSection = () => {
   );
 };
 
+// Enhanced tech stack data with more technologies
+const getTechInfo = (name: string) => {
+  const techMap: { [key: string]: { color: string; icon: string } } = {
+    "Git": { color: "bg-red-500", icon: "🔴" },
+    "VS Code": { color: "bg-blue-600", icon: "💙" },
+    "Docker": { color: "bg-blue-500", icon: "🐳" },
+    "Firebase": { color: "bg-yellow-600", icon: "🔥" },
+    "C": { color: "bg-blue-700", icon: "💻" },
+    "C++": { color: "bg-blue-800", icon: "➕" },
+    "C#": { color: "bg-purple-600", icon: "🔷" },
+    "Python": { color: "bg-yellow-500", icon: "🐍" },
+    "JavaScript": { color: "bg-yellow-400", icon: "🟨" },
+    "HTML5": { color: "bg-orange-500", icon: "🔶" },
+    "CSS3": { color: "bg-blue-500", icon: "🎨" },
+    "React": { color: "bg-cyan-500", icon: "⚛️" },
+    "Flask": { color: "bg-gray-700", icon: "🌶️" },
+    "SQLite": { color: "bg-blue-400", icon: "💾" },
+    "Unity": { color: "bg-gray-800", icon: "🎮" },
+    "Unreal Engine": { color: "bg-gray-900", icon: "🎯" },
+    "Godot": { color: "bg-blue-600", icon: "🎪" },
+    "FlutterFlow": { color: "bg-purple-500", icon: "💜" },
+    "Flutter": { color: "bg-blue-400", icon: "🦋" },
+    "Node.js": { color: "bg-green-600", icon: "🟢" },
+    "TypeScript": { color: "bg-blue-600", icon: "📘" },
+    "PostgreSQL": { color: "bg-blue-700", icon: "🐘" },
+    "AWS": { color: "bg-orange-500", icon: "☁️" },
+  };
+
+  return techMap[name] || { color: "bg-gray-500", icon: "🔧" };
+};
+
 const AboutSection = () => {
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("about");
 
   const techStack = [
-    { name: "React", color: "bg-blue-500", icon: "⚛️" },
-    { name: "TypeScript", color: "bg-blue-600", icon: "📘" },
-    { name: "Node.js", color: "bg-green-600", icon: "🟢" },
-    { name: "Python", color: "bg-yellow-500", icon: "🐍" },
-    { name: "PostgreSQL", color: "bg-blue-700", icon: "🐘" },
-    { name: "AWS", color: "bg-orange-500", icon: "☁️" },
-    { name: "Docker", color: "bg-blue-500", icon: "🐳" },
-    { name: "Git", color: "bg-red-500", icon: "📚" },
+    "Git", "VS Code", "Docker", "Firebase",
+    "C", "C++", "C#", "Python",
+    "JavaScript", "HTML5", "CSS3", "React",
+    "Flask", "SQLite", "Unity", "Unreal Engine",
+    "Godot", "FlutterFlow", "Flutter"
   ];
 
   return (
