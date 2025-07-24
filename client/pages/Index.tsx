@@ -403,6 +403,8 @@ const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const visibleSections = useScrollReveal();
+  const isVisible = visibleSections.has("projects");
 
   const projects = [
     {
@@ -433,7 +435,7 @@ const ProjectsSection = () => {
       image: "/placeholder.svg",
       date: "2023",
       tech: ["Flutter", "Firebase", "Dart"],
-      description: "Aplicativo móvel para controle financeiro pessoal com categorização automática de gastos, relatórios detalhados e sincronização em nuvem.",
+      description: "Aplicativo móvel para controle financeiro pessoal com categoriza��ão automática de gastos, relatórios detalhados e sincronização em nuvem.",
       demoVideo: "https://example.com/demo3.mp4",
       github: "https://github.com/PedroM2626/finance-app",
       live: "https://finance-app-demo.com"
