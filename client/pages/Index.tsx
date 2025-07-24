@@ -298,40 +298,48 @@ const AboutSection = () => {
         <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">About Me</h2>
           
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
+              <h3 className="text-xl font-semibold mb-6">Minha Jornada</h3>
               <p className="text-lg text-muted-foreground mb-6">
-                I'm a passionate full-stack developer with over 5 years of experience creating 
-                web applications that solve real-world problems. I love working with modern 
-                technologies and am always eager to learn new tools and frameworks.
+                Tenho 17 anos e estou iniciando a graduação em Ciência da Computação na UniCEUB.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                When I'm not coding, you can find me exploring new hiking trails, reading tech 
-                blogs, or contributing to open-source projects. I believe in writing clean, 
-                maintainable code and creating user experiences that delight.
+                Já tenho experiência prática com programação, com foco em desenvolvimento web e jogos.
+              </p>
+              <p className="text-lg text-muted-foreground mb-6">
+                Ao longo do último ano, desenvolvi 3 projetos web completos e alguns jogos como forma de
+                aprimorar meu conhecimento em lógica de programação, bibliotecas e ferramentas modernas.
+              </p>
+              <p className="text-lg text-muted-foreground mb-6">
+                Estou sempre buscando aprender mais, melhorar meus códigos e construir soluções reais.
               </p>
               <p className="text-lg text-muted-foreground">
-                I'm currently looking for exciting opportunities to work with innovative teams 
-                and build products that make a positive impact.
+                Atualmente estudo algoritmos e resolução de problemas com foco em entrevistas técnicas.
+                Meu objetivo é evoluir como desenvolvedor e, no futuro, conquistar uma vaga em uma grande
+                empresa de tecnologia.
               </p>
             </div>
-            
+
             <div>
-              <h3 className="text-xl font-semibold mb-6">Tech Stack</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {techStack.map((tech, index) => (
-                  <div
-                    key={tech.name}
-                    className={`${tech.color} text-white p-4 rounded-lg flex items-center space-x-3 transform transition-all duration-300 hover:scale-105`}
-                    style={{
-                      animationDelay: isVisible ? `${index * 100}ms` : "0ms",
-                      animation: isVisible ? "slideInRight 0.6s ease-out forwards" : "none",
-                    }}
-                  >
-                    <span className="text-2xl">{tech.icon}</span>
-                    <span className="font-medium">{tech.name}</span>
-                  </div>
-                ))}
+              <h3 className="text-xl font-semibold mb-6">Tecnologias</h3>
+              <div className="grid grid-cols-3 gap-3">
+                {techStack.map((tech, index) => {
+                  const techInfo = getTechInfo(tech);
+                  return (
+                    <div
+                      key={tech}
+                      className={`${techInfo.color} text-white p-3 rounded-lg flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 min-h-[80px]`}
+                      style={{
+                        animationDelay: isVisible ? `${index * 50}ms` : "0ms",
+                        animation: isVisible ? "slideInRight 0.6s ease-out forwards" : "none",
+                      }}
+                    >
+                      <span className="text-xl mb-1">{techInfo.icon}</span>
+                      <span className="font-medium text-xs">{tech}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
