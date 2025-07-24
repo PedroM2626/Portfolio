@@ -254,7 +254,7 @@ const HomeSection = () => {
           </div>
 
           {/* Right Column - Profile Image */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end ml-[200px]">
             <div className="relative">
               <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-orange-400 shadow-2xl">
                 <img
