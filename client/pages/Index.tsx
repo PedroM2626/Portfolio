@@ -553,6 +553,7 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -560,12 +561,31 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    console.log("Form submitted:", formData);
-    setFormData({ name: "", email: "", message: "" });
+
+    try {
+      // Send email using a service or API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert('Mensagem enviada com sucesso!');
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        throw new Error('Erro ao enviar mensagem');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      // Fallback: open email client
+      const subject = encodeURIComponent(formData.subject);
+      const body = encodeURIComponent(`Nome: ${formData.name}\nEmail: ${formData.email}\n\nMensagem:\n${formData.message}`);
+      window.open(`mailto:pedromoratolahoz@gmail.com?subject=${subject}&body=${body}`);
+    }
+
     setIsSubmitting(false);
   };
 
