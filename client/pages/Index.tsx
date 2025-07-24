@@ -7,19 +7,20 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useTheme } from "next-themes";
-import { 
-  Moon, 
-  Sun, 
-  Github, 
-  Linkedin, 
-  Mail, 
-  Download, 
-  ChevronDown, 
+import {
+  Moon,
+  Sun,
+  Github,
+  Linkedin,
+  Mail,
+  Download,
+  ChevronDown,
   ChevronUp,
   Menu,
   X,
   ExternalLink,
-  Play
+  Play,
+  Search
 } from "lucide-react";
 
 // Typing animation hook
