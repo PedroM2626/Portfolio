@@ -200,7 +200,7 @@ const HomeSection = () => {
         
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
           John Doe
-          <span className="ml-4 animate-bounce">👋</span>
+          <span className="ml-4 animate-wave inline-block">👋</span>
         </h1>
         
         <div className="text-xl md:text-2xl text-muted-foreground mb-4 h-8">
