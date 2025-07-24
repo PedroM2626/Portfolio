@@ -191,27 +191,37 @@ const BackToTop = () => {
 const HomeSection = () => {
   const { displayedText: nameText, isComplete: nameComplete } = useTypingEffect("Pedro Morato", 120);
   const { displayedText: jobText, isComplete: jobComplete } = useTypingEffect("Desenvolvedor Full-Stack", 150);
+  const visibleSections = useScrollReveal();
+  const isVisible = visibleSections.has("home");
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" data-reveal>
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center pt-20 transition-all duration-1000"
+      style={{
+        background: `hsl(var(--home-background))`,
+        color: `hsl(var(--home-foreground))`
+      }}
+      data-reveal
+    >
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-160px)]">
+        <div className={`grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-200px)] transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           {/* Left Column - Content */}
-          <div className="space-y-8 text-left">
+          <div className="space-y-8 text-left lg:pl-12">
             {/* Welcome Message */}
-            <div className="flex items-center gap-3 text-xl md:text-2xl font-medium text-white">
+            <div className="flex items-center gap-3 text-xl md:text-2xl font-medium">
               <span>Seja bem-vindo ao meu portfólio!</span>
               {jobComplete && <span className="animate-wave inline-block">👋</span>}
             </div>
 
             {/* Name */}
-            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               {nameText}
               {!nameComplete && <span className="animate-pulse">|</span>}
             </h1>
 
             {/* Job Title */}
-            <div className="text-xl md:text-2xl text-slate-300">
+            <div className="text-xl md:text-2xl opacity-80">
               {nameComplete && (
                 <>
                   {jobText}
@@ -222,19 +232,19 @@ const HomeSection = () => {
 
             {/* Social Buttons */}
             <div className="flex items-center gap-4">
-              <Button variant="outline" size="sm" className="bg-slate-800 border-slate-600 text-white hover:bg-slate-700" asChild>
+              <Button variant="outline" size="sm" className="border-muted hover:bg-muted" asChild>
                 <a href="https://github.com/PedroM2626" target="_blank" rel="noopener noreferrer">
                   <Github className="h-4 w-4 mr-2" />
                   GitHub
                 </a>
               </Button>
-              <Button variant="outline" size="sm" className="bg-slate-800 border-slate-600 text-white hover:bg-slate-700" asChild>
+              <Button variant="outline" size="sm" className="border-muted hover:bg-muted" asChild>
                 <a href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-4 w-4 mr-2" />
                   LinkedIn
                 </a>
               </Button>
-              <Button variant="outline" size="sm" className="bg-slate-800 border-slate-600 text-white hover:bg-slate-700" asChild>
+              <Button variant="outline" size="sm" className="border-muted hover:bg-muted" asChild>
                 <a href="mailto:pedromoratolahoz@gmail.com">
                   <Mail className="h-4 w-4 mr-2" />
                   Email
@@ -244,7 +254,7 @@ const HomeSection = () => {
 
             {/* Download Resume Button */}
             <div>
-              <Button className="bg-pink-600 hover:bg-pink-700 text-white" asChild>
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
                 <a href="/resume.pdf" download>
                   <Download className="h-4 w-4 mr-2" />
                   Baixar Currículo
@@ -254,9 +264,14 @@ const HomeSection = () => {
           </div>
 
           {/* Right Column - Profile Image */}
-          <div className="flex justify-center lg:justify-end ml-[200px]">
+          <div className="flex justify-center lg:justify-end lg:pr-12">
             <div className="relative">
-              <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-orange-400 shadow-2xl">
+              <div
+                className="w-80 h-80 rounded-full overflow-hidden border-4 shadow-2xl"
+                style={{
+                  borderColor: `hsl(var(--home-border))`
+                }}
+              >
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
                   alt="Pedro Morato"
@@ -267,14 +282,16 @@ const HomeSection = () => {
           </div>
         </div>
 
-        {/* Scroll Down Indicator */}
-        <div className="text-center mt-12">
-          <p className="text-slate-400 text-sm mb-2">Role para baixo</p>
-          <div className="animate-bounce">
-            <ChevronDown
-              className="h-6 w-6 mx-auto cursor-pointer text-slate-400"
-              onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-            />
+        {/* Scroll Down Indicator - Moved Up */}
+        <div className="text-center mt-4">
+          <div
+            className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
+            onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+          >
+            <p className="text-sm mb-2 animate-bounce">Role para baixo</p>
+            <div className="animate-bounce">
+              <ChevronDown className="h-6 w-6 mx-auto" />
+            </div>
           </div>
         </div>
       </div>
@@ -348,7 +365,7 @@ const AboutSection = () => {
                 Estou sempre buscando aprender mais, melhorar meus códigos e construir soluções reais.
               </p>
               <p className="text-lg text-muted-foreground">
-                Atualmente estudo algoritmos e resolução de problemas com foco em entrevistas técnicas.
+                Atualmente estudo algoritmos e resolução de problemas com foco em entrevistas t��cnicas.
                 Meu objetivo é evoluir como desenvolvedor e, no futuro, conquistar uma vaga em uma grande
                 empresa de tecnologia.
               </p>
