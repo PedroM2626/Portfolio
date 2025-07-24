@@ -434,30 +434,78 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-20" data-reveal>
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Projetos</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Meus Projetos</h2>
 
-        {/* Filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-8 max-w-2xl mx-auto">
-          <div className="flex-1">
+        {/* Search and Filters */}
+        <div className="max-w-4xl mx-auto mb-8">
+          {/* Search Bar */}
+          <div className="relative mb-6">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
             <Input
-              placeholder="Pesquisar projetos ou tecnologias..."
+              placeholder="Pesquisar tecnologia"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full"
+              className="pl-10 bg-muted/50 border-muted"
             />
           </div>
-          <div className="w-full md:w-48">
-            <Select value={filterTech} onValueChange={setFilterTech}>
-              <SelectTrigger>
-                <SelectValue placeholder="Filtrar por tecnologia" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Todas as tecnologias</SelectItem>
-                {allTechs.map((tech) => (
-                  <SelectItem key={tech} value={tech}>{tech}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+
+          {/* Technology Filter Chips */}
+          <div className="space-y-4">
+            {/* Selected Technologies */}
+            {selectedTechs.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {selectedTechs.map((tech) => {
+                  const techInfo = getTechInfo(tech);
+                  return (
+                    <div
+                      key={tech}
+                      className={`${techInfo.color} text-white px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity`}
+                      onClick={() => toggleTech(tech)}
+                    >
+                      <span>{techInfo.icon}</span>
+                      <span>{tech}</span>
+                      <X className="h-3 w-3 ml-1" />
+                    </div>
+                  );
+                })}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={clearAllFilters}
+                  className="h-7 px-2 text-xs"
+                >
+                  Limpar todos
+                </Button>
+              </div>
+            )}
+
+            {/* Available Technologies */}
+            <div className="flex flex-wrap gap-2">
+              <div
+                className={`px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer transition-all ${
+                  selectedTechs.length === 0
+                    ? "bg-green-500 text-white"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
+                }`}
+                onClick={clearAllFilters}
+              >
+                <span>✓</span>
+                <span>Todos</span>
+              </div>
+              {allTechs.filter(tech => !selectedTechs.includes(tech)).map((tech) => {
+                const techInfo = getTechInfo(tech);
+                return (
+                  <div
+                    key={tech}
+                    className="bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer hover:bg-muted/80 transition-all"
+                    onClick={() => toggleTech(tech)}
+                  >
+                    <span>{techInfo.icon}</span>
+                    <span>{tech}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 
