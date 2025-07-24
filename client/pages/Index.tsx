@@ -417,12 +417,38 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-20" data-reveal>
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Projects</h2>
-        
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Projetos</h2>
+
+        {/* Filters */}
+        <div className="flex flex-col md:flex-row gap-4 mb-8 max-w-2xl mx-auto">
+          <div className="flex-1">
+            <Input
+              placeholder="Pesquisar projetos ou tecnologias..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full"
+            />
+          </div>
+          <div className="w-full md:w-48">
+            <Select value={filterTech} onValueChange={setFilterTech}>
+              <SelectTrigger>
+                <SelectValue placeholder="Filtrar por tecnologia" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="">Todas as tecnologias</SelectItem>
+                {allTechs.map((tech) => (
+                  <SelectItem key={tech} value={tech}>{tech}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
+        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <Card 
-              key={project.id} 
+          {filteredProjects.map((project) => (
+            <Card
+              key={project.id}
               className="cursor-pointer hover:shadow-lg transition-shadow"
               onClick={() => setSelectedProject(project)}
             >
@@ -437,14 +463,29 @@ const ProjectsSection = () => {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <Badge key={tech} variant="secondary">{tech}</Badge>
-                  ))}
+                  {project.tech.map((tech) => {
+                    const techInfo = getTechInfo(tech);
+                    return (
+                      <div
+                        key={tech}
+                        className={`${techInfo.color} text-white px-3 py-1 rounded-full text-xs font-medium flex items-center space-x-1`}
+                      >
+                        <span>{techInfo.icon}</span>
+                        <span>{tech}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
+
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">Nenhum projeto encontrado com os filtros aplicados.</p>
+          </div>
+        )}
 
         {/* Project Modal */}
         <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
