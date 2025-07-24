@@ -353,7 +353,7 @@ const AboutSection = () => {
 
 const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
-  const [filterTech, setFilterTech] = useState<string>("all");
+  const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const projects = [
@@ -406,9 +406,25 @@ const ProjectsSection = () => {
   // Get all unique technologies for filter options
   const allTechs = Array.from(new Set(projects.flatMap(project => project.tech))).sort();
 
-  // Filter projects based on selected technology and search term
+  // Toggle technology selection
+  const toggleTech = (tech: string) => {
+    setSelectedTechs(prev =>
+      prev.includes(tech)
+        ? prev.filter(t => t !== tech)
+        : [...prev, tech]
+    );
+  };
+
+  // Clear all filters
+  const clearAllFilters = () => {
+    setSelectedTechs([]);
+    setSearchTerm("");
+  };
+
+  // Filter projects based on selected technologies and search term
   const filteredProjects = projects.filter(project => {
-    const matchesFilter = !filterTech || filterTech === "all" || project.tech.includes(filterTech);
+    const matchesFilter = selectedTechs.length === 0 ||
+      selectedTechs.some(tech => project.tech.includes(tech));
     const matchesSearch = !searchTerm ||
       project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       project.tech.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
