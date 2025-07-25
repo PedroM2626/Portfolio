@@ -268,9 +268,9 @@ const HomeSection = () => {
 
           {/* Right Column - Profile Image */}
           <div className="flex justify-center lg:justify-end lg:pr-12">
-            <div className="relative">
+            <div className="relative flex flex-col">
               <div
-                className="w-80 h-80 rounded-full overflow-hidden border-4 shadow-2xl"
+                className="w-80 h-80 rounded-full overflow-hidden border-4 shadow-2xl flex flex-col"
                 style={{
                   borderColor: `hsl(var(--home-border))`
                 }}
@@ -278,7 +278,7 @@ const HomeSection = () => {
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
                   alt="Pedro Morato"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover mx-auto"
                 />
               </div>
             </div>
