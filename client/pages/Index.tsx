@@ -621,7 +621,7 @@ const TimelineSection = () => {
             Minha Jornada
           </h2>
           <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-            Um ano e meio de dedicação, aprendizado constante e evolução como desenvolvedor
+            Seis meses de dedicação intensa, aprendizado constante e evolução acelerada como desenvolvedor
           </p>
 
           <div className="max-w-4xl mx-auto">
