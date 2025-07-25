@@ -580,28 +580,12 @@ const TimelineSection = () => {
 
   const timelineItems = [
     {
-      date: "2º Semestre 2023",
-      title: "Início da Jornada",
-      description: "Comecei a aprender programação por conta própria, focando em lógica de programação e fundamentos.",
-      icon: "🚀",
-      color: "from-blue-500 to-purple-500",
-      achievements: ["Primeiros conceitos de programação", "Lógica básica", "Sintaxe de linguagens"]
-    },
-    {
-      date: "1º Semestre 2024",
-      title: "Desenvolvimento Web",
-      description: "Mergulhei no desenvolvimento web, aprendendo HTML, CSS, JavaScript e criando meus primeiros projetos.",
-      icon: "🌐",
-      color: "from-green-500 to-blue-500",
-      achievements: ["HTML5 & CSS3", "JavaScript básico", "Primeiro projeto web", "Responsividade"]
-    },
-    {
-      date: "2º Semestre 2024",
-      title: "Frameworks Modernos",
-      description: "Expandi conhecimentos com React, Flask e banco de dados. Desenvolvi 3 projetos web completos.",
-      icon: "⚛️",
-      color: "from-cyan-500 to-green-500",
-      achievements: ["React & TypeScript", "Flask (Python)", "PostgreSQL & SQLite", "3 projetos completos"]
+      date: "Futuro Próximo",
+      title: "Objetivos & Metas",
+      description: "Conquistar posição em empresa de tecnologia e continuar evoluindo como desenvolvedor.",
+      icon: "🎯",
+      color: "from-orange-500 to-red-500",
+      achievements: ["Estágio em tech", "Contribuições open source", "Projetos pessoais", "Networking"]
     },
     {
       date: "2025 - Presente",
@@ -612,12 +596,20 @@ const TimelineSection = () => {
       achievements: ["Graduação em CC", "Algoritmos avançados", "Estruturas de dados", "Preparação para big techs"]
     },
     {
-      date: "Futuro Próximo",
-      title: "Objetivos & Metas",
-      description: "Conquistar posição em empresa de tecnologia e continuar evoluindo como desenvolvedor.",
-      icon: "🎯",
-      color: "from-orange-500 to-red-500",
-      achievements: ["Estágio em tech", "Contribuições open source", "Projetos pessoais", "Networking"]
+      date: "1º Semestre 2024",
+      title: "Frameworks Modernos & Projetos",
+      description: "Expandi conhecimentos com React, Flask e banco de dados. Desenvolvi 3 projetos web completos e 3 jogos em engines diferentes.",
+      icon: "⚛️",
+      color: "from-cyan-500 to-green-500",
+      achievements: ["React & TypeScript", "Flask (Python)", "PostgreSQL & SQLite", "3 projetos web", "3 jogos (Unity, Godot, Unreal)"]
+    },
+    {
+      date: "2º Semestre 2024",
+      title: "Início da Jornada",
+      description: "Comecei a aprender programação com Python como minha primeira linguagem, estudando lógica de programação e desenvolvimento web básico.",
+      icon: "🚀",
+      color: "from-blue-500 to-purple-500",
+      achievements: ["Python (primeira linguagem)", "Lógica de programação", "HTML, CSS e JavaScript básico", "Fundamentos de programação"]
     }
   ];
 
