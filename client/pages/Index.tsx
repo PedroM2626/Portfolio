@@ -93,7 +93,10 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="text-xl font-bold">Pedro Morato</div>
+        <div className="text-xl font-bold">
+          <span style={{color: 'rgb(248, 231, 28)'}}>P</span>edro{" "}
+          <span style={{color: 'rgb(144, 19, 254)'}}>M</span>orato
+        </div>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
@@ -635,7 +638,7 @@ const ProjectsSection = () => {
 
                 {/* Description */}
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">Descriç��o</h4>
+                  <h4 className="font-semibold text-lg mb-2">Descrição</h4>
                   <p className="text-muted-foreground leading-relaxed">{selectedProject.description}</p>
                 </div>
 
