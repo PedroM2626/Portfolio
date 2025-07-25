@@ -43,11 +43,17 @@ import {
 } from "lucide-react";
 
 // Typing animation hook
-const useTypingEffect = (text: string, speed: number = 100) => {
+const useTypingEffect = (text: string, speed: number = 100, shouldStart: boolean = true) => {
   const [displayedText, setDisplayedText] = useState("");
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
+    if (!shouldStart) {
+      setDisplayedText("");
+      setIsComplete(false);
+      return;
+    }
+
     if (displayedText.length < text.length) {
       const timeout = setTimeout(() => {
         setDisplayedText(text.slice(0, displayedText.length + 1));
@@ -56,7 +62,15 @@ const useTypingEffect = (text: string, speed: number = 100) => {
     } else {
       setIsComplete(true);
     }
-  }, [displayedText, text, speed]);
+  }, [displayedText, text, speed, shouldStart]);
+
+  // Reset when shouldStart changes from false to true
+  useEffect(() => {
+    if (shouldStart) {
+      setDisplayedText("");
+      setIsComplete(false);
+    }
+  }, [shouldStart]);
 
   return { displayedText, isComplete };
 };
