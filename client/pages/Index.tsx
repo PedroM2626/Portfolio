@@ -239,16 +239,19 @@ const BackToTop = () => {
 };
 
 const HomeSection = () => {
+  const visibleSections = useScrollReveal();
+  const isVisible = visibleSections.has("home");
+
   const { displayedText: nameText, isComplete: nameComplete } = useTypingEffect(
     "Pedro Morato",
     120,
+    isVisible,
   );
   const { displayedText: jobText, isComplete: jobComplete } = useTypingEffect(
     "Desenvolvedor Independente",
     150,
+    isVisible && nameComplete,
   );
-  const visibleSections = useScrollReveal();
-  const isVisible = visibleSections.has("home");
 
   return (
     <section
