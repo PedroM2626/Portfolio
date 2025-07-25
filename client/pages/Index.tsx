@@ -327,7 +327,7 @@ const getTechInfo = (name: string) => {
     "Node.js": { color: "bg-green-600", icon: "🟢" },
     "TypeScript": { color: "bg-blue-600", icon: "📘" },
     "PostgreSQL": { color: "bg-blue-700", icon: "🐘" },
-    "AWS": { color: "bg-orange-500", icon: "☁️" },
+    "AWS": { color: "bg-orange-500", icon: "☁��" },
   };
 
   return techMap[name] || { color: "bg-gray-500", icon: "🔧" };
@@ -374,18 +374,24 @@ const AboutSection = () => {
               </p>
             </div>
 
-            <div>
+            <div className="flex flex-col max-w-[500px]">
               <h3 className="text-xl font-semibold mb-6">Tecnologias</h3>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-[10px] justify-center items-center overflow-hidden">
                 {techStack.map((tech, index) => {
                   const techInfo = getTechInfo(tech);
+                  const isGit = tech === "Git";
                   return (
                     <div
                       key={tech}
-                      className={`${techInfo.color} text-white p-3 rounded-lg flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 min-h-[80px]`}
+                      className={`${
+                        isGit
+                          ? "bg-red-500/15 text-white border-2 border-red-500"
+                          : `${techInfo.color} text-white border`
+                      } p-3 rounded-full flex flex-row items-center justify-center text-center transform transition-all duration-300 hover:scale-105 gap-[10px] mt-4 max-w-[120px] w-[120px] overflow-hidden font-light`}
                       style={{
                         animationDelay: isVisible ? `${index * 50}ms` : "0ms",
                         animation: isVisible ? "slideInRight 0.6s ease-out forwards" : "none",
+                        minHeight: isGit ? "0px" : "25px"
                       }}
                     >
                       <span className="text-xl mb-1">{techInfo.icon}</span>
