@@ -73,6 +73,13 @@ const useScrollReveal = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setVisibleSections((prev) => new Set([...prev, entry.target.id]));
+          } else {
+            // Remove from visible sections when it leaves view
+            setVisibleSections((prev) => {
+              const newSet = new Set(prev);
+              newSet.delete(entry.target.id);
+              return newSet;
+            });
           }
         });
       },
