@@ -456,6 +456,14 @@ const getTechTransparentStyle = (name: string) => {
 const AboutSection = () => {
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("about");
+  const [animationKey, setAnimationKey] = useState(0);
+
+  // Reset animations when section becomes visible again
+  useEffect(() => {
+    if (isVisible) {
+      setAnimationKey(prev => prev + 1);
+    }
+  }, [isVisible]);
 
   const techStack = [
     "Git",
