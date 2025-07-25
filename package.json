@@ -10,8 +10,10 @@
       "dist/server/**/*.js"
     ]
   },
+
   "scripts": {
     "dev": "vite",
+    "deploy": "gh-pages -d dist",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
     "build:server": "vite build --config vite.config.server.ts",
