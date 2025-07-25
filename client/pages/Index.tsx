@@ -925,6 +925,8 @@ const ContactSection = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const visibleSections = useScrollReveal();
+  const isVisible = visibleSections.has("contact");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
