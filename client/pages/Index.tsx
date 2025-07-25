@@ -971,7 +971,7 @@ const ContactSection = () => {
           <div className="w-16 h-1 bg-primary mx-auto mt-2"></div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto mt-16">
+        <div className={`grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto mt-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           {/* Left Column - Social Links */}
           <div>
             <h3 className="text-xl font-semibold mb-6 text-foreground">
