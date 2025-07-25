@@ -571,6 +571,14 @@ const ProjectsSection = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("projects");
+  const [animationKey, setAnimationKey] = useState(0);
+
+  // Reset animations when section becomes visible again
+  useEffect(() => {
+    if (isVisible) {
+      setAnimationKey(prev => prev + 1);
+    }
+  }, [isVisible]);
 
   const projects = [
     {
