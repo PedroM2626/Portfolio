@@ -666,9 +666,10 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-20" data-reveal>
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          Meus Projetos
-        </h2>
+        <div key={`projects-${animationKey}`}>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Meus Projetos
+          </h2>
 
         {/* Search and Filters */}
         <div className="max-w-4xl mx-auto mb-8">
@@ -910,6 +911,7 @@ const ProjectsSection = () => {
             )}
           </DialogContent>
         </Dialog>
+        </div>
       </div>
     </section>
   );
