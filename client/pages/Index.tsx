@@ -627,7 +627,7 @@ const TimelineSection = () => {
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Timeline Line */}
-              <div className="absolute left-8 md:left-1/2 transform md:-translate-x-0.5 h-full w-0.5 bg-gradient-to-b from-blue-500 via-green-500 via-cyan-500 via-purple-500 to-orange-500"></div>
+              <div className="absolute left-8 md:left-1/2 transform md:-translate-x-0.5 h-full w-0.5 bg-gradient-to-b from-orange-500 via-purple-500 via-cyan-500 to-blue-500"></div>
 
               {timelineItems.map((item, index) => (
                 <div
