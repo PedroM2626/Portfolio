@@ -417,7 +417,7 @@ const AboutSection = () => {
                         isGit
                           ? "bg-red-500/15 text-white border-2 border-red-500"
                           : getTechTransparentStyle(tech)
-                      } p-3 rounded-full flex flex-row items-center justify-center text-center transform transition-all duration-300 hover:scale-105 gap-[10px] mt-4 max-w-[120px] w-[120px] overflow-hidden font-light`}
+                      } p-3 rounded-full flex flex-row items-center justify-center text-center transform transition-all duration-300 hover:scale-110 gap-[10px] mt-4 max-w-[120px] w-[120px] overflow-hidden font-light cursor-pointer`}
                       style={{
                         animationDelay: isVisible ? `${index * 50}ms` : "0ms",
                         animation: isVisible ? "slideInRight 0.6s ease-out forwards" : "none",
