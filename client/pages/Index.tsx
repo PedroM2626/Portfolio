@@ -333,6 +333,36 @@ const getTechInfo = (name: string) => {
   return techMap[name] || { color: "bg-gray-500", icon: "🔧" };
 };
 
+// Function to get transparent background style for tech items
+const getTechTransparentStyle = (name: string) => {
+  const styleMap: { [key: string]: string } = {
+    "VS Code": "bg-blue-600/15 text-white border border-blue-600",
+    "Docker": "bg-blue-500/15 text-white border border-blue-500",
+    "Firebase": "bg-yellow-600/15 text-white border border-yellow-600",
+    "C": "bg-blue-700/15 text-white border border-blue-700",
+    "C++": "bg-blue-800/15 text-white border border-blue-800",
+    "C#": "bg-purple-600/15 text-white border border-purple-600",
+    "Python": "bg-yellow-500/15 text-white border border-yellow-500",
+    "JavaScript": "bg-yellow-400/15 text-white border border-yellow-400",
+    "HTML5": "bg-orange-500/15 text-white border border-orange-500",
+    "CSS3": "bg-blue-500/15 text-white border border-blue-500",
+    "React": "bg-cyan-500/15 text-white border border-cyan-500",
+    "Flask": "bg-gray-700/15 text-white border border-gray-700",
+    "SQLite": "bg-blue-400/15 text-white border border-blue-400",
+    "Unity": "bg-gray-800/15 text-white border border-gray-800",
+    "Unreal Engine": "bg-gray-900/15 text-white border border-gray-900",
+    "Godot": "bg-blue-600/15 text-white border border-blue-600",
+    "FlutterFlow": "bg-purple-500/15 text-white border border-purple-500",
+    "Flutter": "bg-blue-400/15 text-white border border-blue-400",
+    "Node.js": "bg-green-600/15 text-white border border-green-600",
+    "TypeScript": "bg-blue-600/15 text-white border border-blue-600",
+    "PostgreSQL": "bg-blue-700/15 text-white border border-blue-700",
+    "AWS": "bg-orange-500/15 text-white border border-orange-500",
+  };
+
+  return styleMap[name] || "bg-gray-500/15 text-white border border-gray-500";
+};
+
 const AboutSection = () => {
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("about");
