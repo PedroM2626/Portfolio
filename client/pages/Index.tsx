@@ -121,6 +121,7 @@ const Header = () => {
   const navItems = [
     { href: "#home", label: "Início" },
     { href: "#about", label: "Sobre" },
+    { href: "#timeline", label: "Jornada" },
     { href: "#projects", label: "Projetos" },
     { href: "#contact", label: "Contato" },
   ];
@@ -414,7 +415,7 @@ const getTechInfo = (name: string) => {
     Godot: { color: "bg-blue-600", icon: "🎪" },
     FlutterFlow: { color: "bg-purple-500", icon: "📱" },
     Flutter: { color: "bg-blue-400", icon: "🦋" },
-    "Node.js": { color: "bg-green-600", icon: "���" },
+    "Node.js": { color: "bg-green-600", icon: "🟢" },
     TypeScript: { color: "bg-blue-600", icon: "📘" },
     PostgreSQL: { color: "bg-blue-700", icon: "🐘" },
     AWS: { color: "bg-orange-500", icon: "☁��" },
@@ -1278,6 +1279,7 @@ export default function Index() {
       <Header />
       <HomeSection />
       <AboutSection />
+      <TimelineSection />
       <ProjectsSection />
       <ContactSection />
       <Footer />
