@@ -412,7 +412,7 @@ const getTechInfo = (name: string) => {
     Unity: { color: "bg-gray-800", icon: "🎮" },
     "Unreal Engine": { color: "bg-gray-900", icon: "🎯" },
     Godot: { color: "bg-blue-600", icon: "🎪" },
-    FlutterFlow: { color: "bg-purple-500", icon: "💜" },
+    FlutterFlow: { color: "bg-purple-500", icon: "����" },
     Flutter: { color: "bg-blue-400", icon: "🦋" },
     "Node.js": { color: "bg-green-600", icon: "🟢" },
     TypeScript: { color: "bg-blue-600", icon: "📘" },
@@ -853,10 +853,15 @@ const ProjectsSection = () => {
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.tech.map((tech: string) => {
                       const techInfo = getTechInfo(tech);
+                      const isGit = tech === "Git";
                       return (
                         <div
                           key={tech}
-                          className={`${techInfo.color} text-white px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2`}
+                          className={`${
+                            isGit
+                              ? "bg-red-500/15 text-white border border-red-500"
+                              : getTechTransparentStyle(tech)
+                          } px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2`}
                         >
                           <span>{techInfo.icon}</span>
                           <span>{tech}</span>
