@@ -1,11 +1,29 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { useTheme } from "next-themes";
 import {
@@ -21,7 +39,7 @@ import {
   X,
   ExternalLink,
   Play,
-  Search
+  Search,
 } from "lucide-react";
 
 // Typing animation hook
@@ -45,18 +63,20 @@ const useTypingEffect = (text: string, speed: number = 100) => {
 
 // Scroll reveal hook
 const useScrollReveal = () => {
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(
+    new Set(),
+  );
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setVisibleSections(prev => new Set([...prev, entry.target.id]));
+            setVisibleSections((prev) => new Set([...prev, entry.target.id]));
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     const sections = document.querySelectorAll("[data-reveal]");
@@ -94,10 +114,10 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="text-xl font-bold">
-          <span style={{color: 'rgb(248, 231, 28)'}}>P</span>edro{" "}
-          <span style={{color: 'rgb(144, 19, 254)'}}>M</span>orato
+          <span style={{ color: "rgb(248, 231, 28)" }}>P</span>edro{" "}
+          <span style={{ color: "rgb(144, 19, 254)" }}>M</span>orato
         </div>
-        
+
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
@@ -117,12 +137,14 @@ const Header = () => {
               <Sun className="h-4 w-4" />
               <Switch
                 checked={theme === "dark"}
-                onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+                onCheckedChange={(checked) =>
+                  setTheme(checked ? "dark" : "light")
+                }
               />
               <Moon className="h-4 w-4" />
             </div>
           )}
-          
+
           {/* Mobile Menu Button */}
           <Button
             variant="ghost"
@@ -130,7 +152,11 @@ const Header = () => {
             className="md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </Button>
         </div>
       </nav>
@@ -192,8 +218,14 @@ const BackToTop = () => {
 };
 
 const HomeSection = () => {
-  const { displayedText: nameText, isComplete: nameComplete } = useTypingEffect("Pedro Morato", 120);
-  const { displayedText: jobText, isComplete: jobComplete } = useTypingEffect("Desenvolvedor Independente", 150);
+  const { displayedText: nameText, isComplete: nameComplete } = useTypingEffect(
+    "Pedro Morato",
+    120,
+  );
+  const { displayedText: jobText, isComplete: jobComplete } = useTypingEffect(
+    "Desenvolvedor Independente",
+    150,
+  );
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("home");
 
@@ -203,18 +235,22 @@ const HomeSection = () => {
       className="min-h-screen flex items-center justify-center pt-20 transition-all duration-1000"
       style={{
         background: `hsl(var(--home-background))`,
-        color: `hsl(var(--home-foreground))`
+        color: `hsl(var(--home-foreground))`,
       }}
       data-reveal
     >
       <div className="container mx-auto px-4">
-        <div className={`grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-200px)] transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div
+          className={`grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-200px)] transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
           {/* Left Column - Content */}
           <div className="space-y-8 text-left lg:pl-12 flex flex-col">
             {/* Welcome Message */}
             <div className="flex items-center gap-3 text-xl md:text-2xl font-medium">
               <span>Seja bem-vindo ao meu portfólio!</span>
-              {jobComplete && <span className="animate-wave inline-block">👋</span>}
+              {jobComplete && (
+                <span className="animate-wave inline-block">👋</span>
+              )}
             </div>
 
             {/* Name */}
@@ -235,19 +271,42 @@ const HomeSection = () => {
 
             {/* Social Buttons */}
             <div className="flex items-center gap-4">
-              <Button variant="outline" size="sm" className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden" asChild>
-                <a href="https://github.com/PedroM2626" target="_blank" rel="noopener noreferrer">
+              <Button
+                variant="outline"
+                size="sm"
+                className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden"
+                asChild
+              >
+                <a
+                  href="https://github.com/PedroM2626"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Github className="h-4 w-4 mr-2" />
                   GitHub
                 </a>
               </Button>
-              <Button variant="outline" size="sm" className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden" asChild>
-                <a href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/" target="_blank" rel="noopener noreferrer">
+              <Button
+                variant="outline"
+                size="sm"
+                className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden"
+                asChild
+              >
+                <a
+                  href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Linkedin className="h-4 w-4 mr-2" />
                   LinkedIn
                 </a>
               </Button>
-              <Button variant="outline" size="sm" className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden" asChild>
+              <Button
+                variant="outline"
+                size="sm"
+                className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden"
+                asChild
+              >
                 <a href="mailto:pedromoratolahoz@gmail.com">
                   <Mail className="h-4 w-4 mr-2" />
                   Email
@@ -257,7 +316,10 @@ const HomeSection = () => {
 
             {/* Download Resume Button */}
             <div>
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full overflow-hidden" asChild>
+              <Button
+                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full overflow-hidden"
+                asChild
+              >
                 <a href="/resume.pdf" download>
                   <Download className="h-4 w-4 mr-2" />
                   Baixar Currículo
@@ -272,7 +334,7 @@ const HomeSection = () => {
               <div
                 className="w-80 h-80 rounded-full overflow-hidden border-4 shadow-2xl flex flex-col"
                 style={{
-                  borderColor: `hsl(var(--home-border))`
+                  borderColor: `hsl(var(--home-border))`,
                 }}
               >
                 <img
@@ -289,7 +351,11 @@ const HomeSection = () => {
         <div className="text-center mt-4">
           <div
             className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
-            onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() =>
+              document
+                .getElementById("about")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
           >
             <p className="text-sm mb-2 animate-bounce">Role para baixo</p>
             <div className="animate-bounce">
@@ -305,29 +371,29 @@ const HomeSection = () => {
 // Enhanced tech stack data with more technologies
 const getTechInfo = (name: string) => {
   const techMap: { [key: string]: { color: string; icon: string } } = {
-    "Git": { color: "bg-red-500", icon: "🔴" },
+    Git: { color: "bg-red-500", icon: "🔴" },
     "VS Code": { color: "bg-blue-600", icon: "💙" },
-    "Docker": { color: "bg-blue-500", icon: "🐳" },
-    "Firebase": { color: "bg-yellow-600", icon: "🔥" },
-    "C": { color: "bg-blue-700", icon: "💻" },
+    Docker: { color: "bg-blue-500", icon: "🐳" },
+    Firebase: { color: "bg-yellow-600", icon: "🔥" },
+    C: { color: "bg-blue-700", icon: "💻" },
     "C++": { color: "bg-blue-800", icon: "➕" },
     "C#": { color: "bg-purple-600", icon: "🔷" },
-    "Python": { color: "bg-yellow-500", icon: "🐍" },
-    "JavaScript": { color: "bg-yellow-400", icon: "🟨" },
-    "HTML5": { color: "bg-orange-500", icon: "🔶" },
-    "CSS3": { color: "bg-blue-500", icon: "🎨" },
-    "React": { color: "bg-cyan-500", icon: "⚛️" },
-    "Flask": { color: "bg-gray-700", icon: "🌶️" },
-    "SQLite": { color: "bg-blue-400", icon: "💾" },
-    "Unity": { color: "bg-gray-800", icon: "🎮" },
+    Python: { color: "bg-yellow-500", icon: "🐍" },
+    JavaScript: { color: "bg-yellow-400", icon: "🟨" },
+    HTML5: { color: "bg-orange-500", icon: "🔶" },
+    CSS3: { color: "bg-blue-500", icon: "🎨" },
+    React: { color: "bg-cyan-500", icon: "⚛️" },
+    Flask: { color: "bg-gray-700", icon: "🌶️" },
+    SQLite: { color: "bg-blue-400", icon: "💾" },
+    Unity: { color: "bg-gray-800", icon: "🎮" },
     "Unreal Engine": { color: "bg-gray-900", icon: "🎯" },
-    "Godot": { color: "bg-blue-600", icon: "🎪" },
-    "FlutterFlow": { color: "bg-purple-500", icon: "💜" },
-    "Flutter": { color: "bg-blue-400", icon: "🦋" },
+    Godot: { color: "bg-blue-600", icon: "🎪" },
+    FlutterFlow: { color: "bg-purple-500", icon: "💜" },
+    Flutter: { color: "bg-blue-400", icon: "🦋" },
     "Node.js": { color: "bg-green-600", icon: "🟢" },
-    "TypeScript": { color: "bg-blue-600", icon: "📘" },
-    "PostgreSQL": { color: "bg-blue-700", icon: "🐘" },
-    "AWS": { color: "bg-orange-500", icon: "☁��" },
+    TypeScript: { color: "bg-blue-600", icon: "📘" },
+    PostgreSQL: { color: "bg-blue-700", icon: "🐘" },
+    AWS: { color: "bg-orange-500", icon: "☁��" },
   };
 
   return techMap[name] || { color: "bg-gray-500", icon: "🔧" };
@@ -337,27 +403,27 @@ const getTechInfo = (name: string) => {
 const getTechTransparentStyle = (name: string) => {
   const styleMap: { [key: string]: string } = {
     "VS Code": "bg-blue-600/15 text-white border border-blue-600",
-    "Docker": "bg-blue-500/15 text-white border border-blue-500",
-    "Firebase": "bg-yellow-600/15 text-white border border-yellow-600",
-    "C": "bg-blue-700/15 text-white border border-blue-700",
+    Docker: "bg-blue-500/15 text-white border border-blue-500",
+    Firebase: "bg-yellow-600/15 text-white border border-yellow-600",
+    C: "bg-blue-700/15 text-white border border-blue-700",
     "C++": "bg-blue-800/15 text-white border border-blue-800",
     "C#": "bg-purple-600/15 text-white border border-purple-600",
-    "Python": "bg-yellow-500/15 text-white border border-yellow-500",
-    "JavaScript": "bg-yellow-400/15 text-white border border-yellow-400",
-    "HTML5": "bg-orange-500/15 text-white border border-orange-500",
-    "CSS3": "bg-blue-500/15 text-white border border-blue-500",
-    "React": "bg-cyan-500/15 text-white border border-cyan-500",
-    "Flask": "bg-gray-700/15 text-white border border-gray-700",
-    "SQLite": "bg-blue-400/15 text-white border border-blue-400",
-    "Unity": "bg-gray-800/15 text-white border border-gray-800",
+    Python: "bg-yellow-500/15 text-white border border-yellow-500",
+    JavaScript: "bg-yellow-400/15 text-white border border-yellow-400",
+    HTML5: "bg-orange-500/15 text-white border border-orange-500",
+    CSS3: "bg-blue-500/15 text-white border border-blue-500",
+    React: "bg-cyan-500/15 text-white border border-cyan-500",
+    Flask: "bg-gray-700/15 text-white border border-gray-700",
+    SQLite: "bg-blue-400/15 text-white border border-blue-400",
+    Unity: "bg-gray-800/15 text-white border border-gray-800",
     "Unreal Engine": "bg-gray-900/15 text-white border border-gray-900",
-    "Godot": "bg-blue-600/15 text-white border border-blue-600",
-    "FlutterFlow": "bg-purple-500/15 text-white border border-purple-500",
-    "Flutter": "bg-blue-400/15 text-white border border-blue-400",
+    Godot: "bg-blue-600/15 text-white border border-blue-600",
+    FlutterFlow: "bg-purple-500/15 text-white border border-purple-500",
+    Flutter: "bg-blue-400/15 text-white border border-blue-400",
     "Node.js": "bg-green-600/15 text-white border border-green-600",
-    "TypeScript": "bg-blue-600/15 text-white border border-blue-600",
-    "PostgreSQL": "bg-blue-700/15 text-white border border-blue-700",
-    "AWS": "bg-orange-500/15 text-white border border-orange-500",
+    TypeScript: "bg-blue-600/15 text-white border border-blue-600",
+    PostgreSQL: "bg-blue-700/15 text-white border border-blue-700",
+    AWS: "bg-orange-500/15 text-white border border-orange-500",
   };
 
   return styleMap[name] || "bg-gray-500/15 text-white border border-gray-500";
@@ -368,38 +434,65 @@ const AboutSection = () => {
   const isVisible = visibleSections.has("about");
 
   const techStack = [
-    "Git", "VS Code", "Docker", "Firebase",
-    "C", "C++", "C#", "Python",
-    "JavaScript", "HTML5", "CSS3", "React",
-    "Flask", "SQLite", "Unity", "Unreal Engine",
-    "Godot", "FlutterFlow", "Flutter"
+    "Git",
+    "VS Code",
+    "Docker",
+    "Firebase",
+    "C",
+    "C++",
+    "C#",
+    "Python",
+    "JavaScript",
+    "HTML5",
+    "CSS3",
+    "React",
+    "Flask",
+    "SQLite",
+    "Unity",
+    "Unreal Engine",
+    "Godot",
+    "FlutterFlow",
+    "Flutter",
   ];
 
   return (
-    <section id="about" className="py-20 bg-muted/30 transition-all duration-1000" data-reveal>
+    <section
+      id="about"
+      className="py-20 bg-muted/30 transition-all duration-1000"
+      data-reveal
+    >
       <div className="container mx-auto px-4">
-        <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Sobre Mim</h2>
-          
+        <div
+          className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Sobre Mim
+          </h2>
+
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
               <h3 className="text-xl font-semibold mb-6">Minha Jornada</h3>
               <p className="text-lg text-muted-foreground mb-6">
-                Tenho 17 anos e estou iniciando a graduação em Ciência da Computação na UniCEUB.
+                Tenho 17 anos e estou iniciando a graduação em Ciência da
+                Computação na UniCEUB.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                Já tenho experiência prática com programação, com foco em desenvolvimento web e jogos.
+                Já tenho experiência prática com programação, com foco em
+                desenvolvimento web e jogos.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                Ao longo do último ano, desenvolvi 3 projetos web completos e alguns jogos como forma de
-                aprimorar meu conhecimento em lógica de programação, bibliotecas e ferramentas modernas.
+                Ao longo do último ano, desenvolvi 3 projetos web completos e
+                alguns jogos como forma de aprimorar meu conhecimento em lógica
+                de programação, bibliotecas e ferramentas modernas.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                Estou sempre buscando aprender mais, melhorar meus códigos e construir soluções reais.
+                Estou sempre buscando aprender mais, melhorar meus códigos e
+                construir soluções reais.
               </p>
               <p className="text-lg text-muted-foreground">
-                Atualmente estudo algoritmos e resolução de problemas com foco em entrevistas t��cnicas.
-                Meu objetivo é evoluir como desenvolvedor e, no futuro, conquistar uma vaga em uma grande
+                Atualmente estudo algoritmos e resolução de problemas com foco
+                em entrevistas t��cnicas. Meu objetivo é evoluir como
+                desenvolvedor e, no futuro, conquistar uma vaga em uma grande
                 empresa de tecnologia.
               </p>
             </div>
@@ -420,8 +513,10 @@ const AboutSection = () => {
                       } p-3 rounded-full flex flex-row items-center justify-center text-center transform transition-all duration-300 hover:scale-110 gap-[10px] mt-4 max-w-[120px] w-[120px] overflow-hidden font-light cursor-pointer`}
                       style={{
                         animationDelay: isVisible ? `${index * 50}ms` : "0ms",
-                        animation: isVisible ? "slideInRight 0.6s ease-out forwards" : "none",
-                        minHeight: isGit ? "0px" : "25px"
+                        animation: isVisible
+                          ? "slideInRight 0.6s ease-out forwards"
+                          : "none",
+                        minHeight: isGit ? "0px" : "25px",
                       }}
                     >
                       <span className="text-xl mb-1">{techInfo.icon}</span>
@@ -452,10 +547,11 @@ const ProjectsSection = () => {
       image: "/placeholder.svg",
       date: "2024",
       tech: ["React", "Node.js", "PostgreSQL", "TypeScript"],
-      description: "Um sistema completo para gerenciamento escolar com autenticação de usuários, cadastro de alunos, notas, frequência e dashboard administrativo. Desenvolvido com tecnologias modernas para performance otimizada.",
+      description:
+        "Um sistema completo para gerenciamento escolar com autenticação de usuários, cadastro de alunos, notas, frequência e dashboard administrativo. Desenvolvido com tecnologias modernas para performance otimizada.",
       demoVideo: "https://example.com/demo1.mp4",
       github: "https://github.com/PedroM2626/school-management",
-      live: "https://school-management-demo.com"
+      live: "https://school-management-demo.com",
     },
     {
       id: 2,
@@ -463,10 +559,11 @@ const ProjectsSection = () => {
       image: "/placeholder.svg",
       date: "2023",
       tech: ["Unity", "C#"],
-      description: "Um jogo de puzzle em 3D com mecânicas inovadoras, sistema de níveis progressivos e interface intuitiva. Desenvolvido na Unity com scripts otimizados.",
+      description:
+        "Um jogo de puzzle em 3D com mecânicas inovadoras, sistema de níveis progressivos e interface intuitiva. Desenvolvido na Unity com scripts otimizados.",
       demoVideo: "https://example.com/demo2.mp4",
       github: "https://github.com/PedroM2626/puzzle-game",
-      live: "https://puzzle-game-demo.com"
+      live: "https://puzzle-game-demo.com",
     },
     {
       id: 3,
@@ -474,10 +571,11 @@ const ProjectsSection = () => {
       image: "/placeholder.svg",
       date: "2023",
       tech: ["Flutter", "Firebase", "Dart"],
-      description: "Aplicativo móvel para controle financeiro pessoal com categorização automática de gastos, relatórios detalhados e sincronização em nuvem.",
+      description:
+        "Aplicativo móvel para controle financeiro pessoal com categorização automática de gastos, relatórios detalhados e sincronização em nuvem.",
       demoVideo: "https://example.com/demo3.mp4",
       github: "https://github.com/PedroM2626/finance-app",
-      live: "https://finance-app-demo.com"
+      live: "https://finance-app-demo.com",
     },
     {
       id: 4,
@@ -485,22 +583,23 @@ const ProjectsSection = () => {
       image: "/placeholder.svg",
       date: "2024",
       tech: ["HTML5", "CSS3", "JavaScript"],
-      description: "Website portfolio totalmente responsivo com animações suaves, design moderno e otimizado para SEO.",
+      description:
+        "Website portfolio totalmente responsivo com animações suaves, design moderno e otimizado para SEO.",
       demoVideo: "https://example.com/demo4.mp4",
       github: "https://github.com/PedroM2626/portfolio-website",
-      live: "https://portfolio-demo.com"
-    }
+      live: "https://portfolio-demo.com",
+    },
   ];
 
   // Get all unique technologies for filter options
-  const allTechs = Array.from(new Set(projects.flatMap(project => project.tech))).sort();
+  const allTechs = Array.from(
+    new Set(projects.flatMap((project) => project.tech)),
+  ).sort();
 
   // Toggle technology selection
   const toggleTech = (tech: string) => {
-    setSelectedTechs(prev =>
-      prev.includes(tech)
-        ? prev.filter(t => t !== tech)
-        : [...prev, tech]
+    setSelectedTechs((prev) =>
+      prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech],
     );
   };
 
@@ -511,19 +610,25 @@ const ProjectsSection = () => {
   };
 
   // Filter projects based on selected technologies and search term
-  const filteredProjects = projects.filter(project => {
-    const matchesFilter = selectedTechs.length === 0 ||
-      selectedTechs.some(tech => project.tech.includes(tech));
-    const matchesSearch = !searchTerm ||
+  const filteredProjects = projects.filter((project) => {
+    const matchesFilter =
+      selectedTechs.length === 0 ||
+      selectedTechs.some((tech) => project.tech.includes(tech));
+    const matchesSearch =
+      !searchTerm ||
       project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.tech.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
+      project.tech.some((tech) =>
+        tech.toLowerCase().includes(searchTerm.toLowerCase()),
+      );
     return matchesFilter && matchesSearch;
   });
 
   return (
     <section id="projects" className="py-20" data-reveal>
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Meus Projetos</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          Meus Projetos
+        </h2>
 
         {/* Search and Filters */}
         <div className="max-w-4xl mx-auto mb-8">
@@ -581,19 +686,21 @@ const ProjectsSection = () => {
                 <span>✓</span>
                 <span>Todos</span>
               </div>
-              {allTechs.filter(tech => !selectedTechs.includes(tech)).map((tech) => {
-                const techInfo = getTechInfo(tech);
-                return (
-                  <div
-                    key={tech}
-                    className="bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer hover:bg-muted/80 transition-all"
-                    onClick={() => toggleTech(tech)}
-                  >
-                    <span>{techInfo.icon}</span>
-                    <span>{tech}</span>
-                  </div>
-                );
-              })}
+              {allTechs
+                .filter((tech) => !selectedTechs.includes(tech))
+                .map((tech) => {
+                  const techInfo = getTechInfo(tech);
+                  return (
+                    <div
+                      key={tech}
+                      className="bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer hover:bg-muted/80 transition-all"
+                      onClick={() => toggleTech(tech)}
+                    >
+                      <span>{techInfo.icon}</span>
+                      <span>{tech}</span>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -637,16 +744,25 @@ const ProjectsSection = () => {
 
         {filteredProjects.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-muted-foreground">Nenhum projeto encontrado com os filtros aplicados.</p>
+            <p className="text-muted-foreground">
+              Nenhum projeto encontrado com os filtros aplicados.
+            </p>
           </div>
         )}
 
         {/* Project Modal */}
-        <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+        <Dialog
+          open={!!selectedProject}
+          onOpenChange={() => setSelectedProject(null)}
+        >
           <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
             <DialogHeader className="pb-4">
-              <DialogTitle className="text-2xl">{selectedProject?.name}</DialogTitle>
-              <DialogDescription className="text-base">{selectedProject?.date}</DialogDescription>
+              <DialogTitle className="text-2xl">
+                {selectedProject?.name}
+              </DialogTitle>
+              <DialogDescription className="text-base">
+                {selectedProject?.date}
+              </DialogDescription>
             </DialogHeader>
 
             {selectedProject && (
@@ -666,7 +782,10 @@ const ProjectsSection = () => {
                       className="w-full h-48 rounded-lg bg-muted object-cover"
                       poster={selectedProject.image}
                     >
-                      <source src={selectedProject.demoVideo} type="video/mp4" />
+                      <source
+                        src={selectedProject.demoVideo}
+                        type="video/mp4"
+                      />
                       Seu navegador não suporta o elemento de vídeo.
                     </video>
                   </div>
@@ -675,12 +794,16 @@ const ProjectsSection = () => {
                 {/* Description */}
                 <div>
                   <h4 className="font-semibold text-lg mb-2">Descrição</h4>
-                  <p className="text-muted-foreground leading-relaxed">{selectedProject.description}</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {selectedProject.description}
+                  </p>
                 </div>
 
                 {/* Technologies */}
                 <div>
-                  <h4 className="font-semibold text-lg mb-3">Tecnologias Utilizadas</h4>
+                  <h4 className="font-semibold text-lg mb-3">
+                    Tecnologias Utilizadas
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.tech.map((tech: string) => {
                       const techInfo = getTechInfo(tech);
@@ -699,22 +822,44 @@ const ProjectsSection = () => {
 
                 {/* Action Buttons */}
                 <div>
-                  <h4 className="font-semibold text-lg mb-3">Links do Projeto</h4>
+                  <h4 className="font-semibold text-lg mb-3">
+                    Links do Projeto
+                  </h4>
                   <div className="flex flex-wrap gap-3">
                     <Button asChild className="flex-1 min-w-[140px]">
-                      <a href={selectedProject.github} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Github className="h-4 w-4 mr-2" />
                         Repositório
                       </a>
                     </Button>
-                    <Button variant="outline" asChild className="flex-1 min-w-[140px]">
-                      <a href={selectedProject.live} target="_blank" rel="noopener noreferrer">
+                    <Button
+                      variant="outline"
+                      asChild
+                      className="flex-1 min-w-[140px]"
+                    >
+                      <a
+                        href={selectedProject.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <ExternalLink className="h-4 w-4 mr-2" />
                         Demo Ao Vivo
                       </a>
                     </Button>
-                    <Button variant="outline" asChild className="flex-1 min-w-[140px]">
-                      <a href={selectedProject.demoVideo} target="_blank" rel="noopener noreferrer">
+                    <Button
+                      variant="outline"
+                      asChild
+                      className="flex-1 min-w-[140px]"
+                    >
+                      <a
+                        href={selectedProject.demoVideo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Play className="h-4 w-4 mr-2" />
                         Vídeo Demo
                       </a>
@@ -735,7 +880,7 @@ const ContactSection = () => {
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -745,26 +890,30 @@ const ContactSection = () => {
 
     try {
       // Send email using a service or API
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        alert('Mensagem enviada com sucesso!');
+        alert("Mensagem enviada com sucesso!");
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
-        throw new Error('Erro ao enviar mensagem');
+        throw new Error("Erro ao enviar mensagem");
       }
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error("Error sending message:", error);
       // Fallback: open email client
       const subject = encodeURIComponent(formData.subject);
-      const body = encodeURIComponent(`Nome: ${formData.name}\nEmail: ${formData.email}\n\nMensagem:\n${formData.message}`);
-      window.open(`mailto:pedromoratolahoz@gmail.com?subject=${subject}&body=${body}`);
+      const body = encodeURIComponent(
+        `Nome: ${formData.name}\nEmail: ${formData.email}\n\nMensagem:\n${formData.message}`,
+      );
+      window.open(
+        `mailto:pedromoratolahoz@gmail.com?subject=${subject}&body=${body}`,
+      );
     }
 
     setIsSubmitting(false);
@@ -781,7 +930,9 @@ const ContactSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto mt-16">
           {/* Left Column - Social Links */}
           <div>
-            <h3 className="text-xl font-semibold mb-6 text-foreground">Vamos Conversar!</h3>
+            <h3 className="text-xl font-semibold mb-6 text-foreground">
+              Vamos Conversar!
+            </h3>
             <p className="text-muted-foreground mb-8 leading-relaxed">
               Estou sempre interessado em novas oportunidades e projetos
               desafiadores. Entre em contato comigo!
@@ -790,14 +941,20 @@ const ContactSection = () => {
             <div className="space-y-4">
               {/* GitHub Card */}
               <div className="group">
-                <a href="https://github.com/PedroM2626" target="_blank" rel="noopener noreferrer"
-                   className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md">
+                <a
+                  href="https://github.com/PedroM2626"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md"
+                >
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
                     <Github className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                   </div>
                   <div className="flex-1">
                     <div className="font-medium text-foreground">GitHub</div>
-                    <div className="text-sm text-muted-foreground">@PedroM2626</div>
+                    <div className="text-sm text-muted-foreground">
+                      @PedroM2626
+                    </div>
                   </div>
                   <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
@@ -805,14 +962,20 @@ const ContactSection = () => {
 
               {/* LinkedIn Card */}
               <div className="group">
-                <a href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/" target="_blank" rel="noopener noreferrer"
-                   className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md">
+                <a
+                  href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md"
+                >
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
                     <Linkedin className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                   </div>
                   <div className="flex-1">
                     <div className="font-medium text-foreground">LinkedIn</div>
-                    <div className="text-sm text-muted-foreground">pedro-morato-lahoz-7996b1314</div>
+                    <div className="text-sm text-muted-foreground">
+                      pedro-morato-lahoz-7996b1314
+                    </div>
                   </div>
                   <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
@@ -820,14 +983,18 @@ const ContactSection = () => {
 
               {/* Email Card */}
               <div className="group">
-                <a href="mailto:pedromoratolahoz@gmail.com"
-                   className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md">
+                <a
+                  href="mailto:pedromoratolahoz@gmail.com"
+                  className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md"
+                >
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-pink-100 dark:bg-pink-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
                     <Mail className="h-5 w-5 text-pink-600 dark:text-pink-400" />
                   </div>
                   <div className="flex-1">
                     <div className="font-medium text-foreground">Email</div>
-                    <div className="text-sm text-muted-foreground">pedromoratolahoz@gmail.com</div>
+                    <div className="text-sm text-muted-foreground">
+                      pedromoratolahoz@gmail.com
+                    </div>
                   </div>
                   <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
@@ -837,14 +1004,18 @@ const ContactSection = () => {
 
           {/* Right Column - Contact Form */}
           <div>
-            <h3 className="text-xl font-semibold mb-6 text-foreground">Envie uma Mensagem</h3>
+            <h3 className="text-xl font-semibold mb-6 text-foreground">
+              Envie uma Mensagem
+            </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <Input
                   placeholder="Nome *"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   required
                   className="bg-muted/50 border-muted focus:border-primary"
                 />
@@ -854,7 +1025,9 @@ const ContactSection = () => {
                   type="email"
                   placeholder="Email *"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   required
                   className="bg-muted/50 border-muted focus:border-primary"
                 />
@@ -863,7 +1036,9 @@ const ContactSection = () => {
                 <Input
                   placeholder="Assunto *"
                   value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, subject: e.target.value })
+                  }
                   required
                   className="bg-muted/50 border-muted focus:border-primary"
                 />
@@ -873,7 +1048,9 @@ const ContactSection = () => {
                   placeholder="Mensagem *"
                   rows={6}
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
                   required
                   className="bg-muted/50 border-muted focus:border-primary resize-none"
                 />
@@ -902,7 +1079,7 @@ export default function Index() {
       <ProjectsSection />
       <ContactSection />
       <BackToTop />
-      
+
       <style jsx>{`
         @keyframes slideInRight {
           from {
