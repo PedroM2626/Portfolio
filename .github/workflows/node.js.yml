@@ -15,15 +15,28 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
 
-      # Só roda deploy na versão 20.x para evitar deploy múltiplo
-      - if: matrix.node-version == '20.x' && github.event_name == 'push'
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (if present)
+        run: npm run build --if-present
+
+      - name: Run tests
+        run: npm test
+
+      # Só roda install-gh-pages na versão 20.x em pushes
+      - name: Install gh-pages
+        if: matrix.node-version == '20.x' && github.event_name == 'push'
+        run: npm install gh-pages
+
+      # E então faz o deploy
+      - name: Deploy to GitHub Pages
+        if: matrix.node-version == '20.x' && github.event_name == 'push'
         run: npm run deploy
