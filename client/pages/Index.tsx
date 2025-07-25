@@ -193,7 +193,7 @@ const BackToTop = () => {
 
 const HomeSection = () => {
   const { displayedText: nameText, isComplete: nameComplete } = useTypingEffect("Pedro Morato", 120);
-  const { displayedText: jobText, isComplete: jobComplete } = useTypingEffect("Desenvolvedor Full-Stack", 150);
+  const { displayedText: jobText, isComplete: jobComplete } = useTypingEffect("Desenvolvedor Independente", 150);
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("home");
 
