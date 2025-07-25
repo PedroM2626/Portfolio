@@ -414,7 +414,7 @@ const getTechInfo = (name: string) => {
     Godot: { color: "bg-blue-600", icon: "🎪" },
     FlutterFlow: { color: "bg-purple-500", icon: "📱" },
     Flutter: { color: "bg-blue-400", icon: "🦋" },
-    "Node.js": { color: "bg-green-600", icon: "🟢" },
+    "Node.js": { color: "bg-green-600", icon: "���" },
     TypeScript: { color: "bg-blue-600", icon: "📘" },
     PostgreSQL: { color: "bg-blue-700", icon: "🐘" },
     AWS: { color: "bg-orange-500", icon: "☁��" },
@@ -557,6 +557,137 @@ const AboutSection = () => {
                   );
                 })}
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const TimelineSection = () => {
+  const visibleSections = useScrollReveal();
+  const isVisible = visibleSections.has("timeline");
+  const [animationKey, setAnimationKey] = useState(0);
+
+  // Reset animations when section becomes visible again
+  useEffect(() => {
+    if (isVisible) {
+      setAnimationKey(prev => prev + 1);
+    }
+  }, [isVisible]);
+
+  const timelineItems = [
+    {
+      date: "2º Semestre 2023",
+      title: "Início da Jornada",
+      description: "Comecei a aprender programação por conta própria, focando em lógica de programação e fundamentos.",
+      icon: "🚀",
+      color: "from-blue-500 to-purple-500",
+      achievements: ["Primeiros conceitos de programação", "Lógica básica", "Sintaxe de linguagens"]
+    },
+    {
+      date: "1º Semestre 2024",
+      title: "Desenvolvimento Web",
+      description: "Mergulhei no desenvolvimento web, aprendendo HTML, CSS, JavaScript e criando meus primeiros projetos.",
+      icon: "🌐",
+      color: "from-green-500 to-blue-500",
+      achievements: ["HTML5 & CSS3", "JavaScript básico", "Primeiro projeto web", "Responsividade"]
+    },
+    {
+      date: "2º Semestre 2024",
+      title: "Frameworks Modernos",
+      description: "Expandi conhecimentos com React, Flask e banco de dados. Desenvolvi 3 projetos web completos.",
+      icon: "⚛️",
+      color: "from-cyan-500 to-green-500",
+      achievements: ["React & TypeScript", "Flask (Python)", "PostgreSQL & SQLite", "3 projetos completos"]
+    },
+    {
+      date: "2025 - Presente",
+      title: "Universidade & Especialização",
+      description: "Iniciei Ciência da Computação na UniCEUB e estudo algoritmos para entrevistas técnicas.",
+      icon: "🎓",
+      color: "from-purple-500 to-pink-500",
+      achievements: ["Graduação em CC", "Algoritmos avançados", "Estruturas de dados", "Preparação para big techs"]
+    },
+    {
+      date: "Futuro Próximo",
+      title: "Objetivos & Metas",
+      description: "Conquistar posição em empresa de tecnologia e continuar evoluindo como desenvolvedor.",
+      icon: "🎯",
+      color: "from-orange-500 to-red-500",
+      achievements: ["Estágio em tech", "Contribuições open source", "Projetos pessoais", "Networking"]
+    }
+  ];
+
+  return (
+    <section id="timeline" className="py-20 bg-background" data-reveal>
+      <div className="container mx-auto px-4">
+        <div key={`timeline-${animationKey}`} className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Minha Jornada
+          </h2>
+          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+            Um ano e meio de dedicação, aprendizado constante e evolução como desenvolvedor
+          </p>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="relative">
+              {/* Timeline Line */}
+              <div className="absolute left-8 md:left-1/2 transform md:-translate-x-0.5 h-full w-0.5 bg-gradient-to-b from-blue-500 via-green-500 via-cyan-500 via-purple-500 to-orange-500"></div>
+
+              {timelineItems.map((item, index) => (
+                <div
+                  key={`${item.date}-${animationKey}`}
+                  className={`relative flex items-center mb-16 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                  style={{
+                    animationDelay: isVisible ? `${index * 200}ms` : "0ms",
+                    animation: isVisible
+                      ? "slideInTimeline 0.8s ease-out forwards"
+                      : "none",
+                  }}
+                >
+                  {/* Timeline Dot */}
+                  <div className={`absolute left-8 md:left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center text-2xl shadow-lg z-10`}>
+                    {item.icon}
+                  </div>
+
+                  {/* Content Card */}
+                  <div className={`ml-24 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-auto md:pr-16' : 'md:ml-auto md:pl-16'}`}>
+                    <div className="bg-card border border-border rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
+                          {item.date}
+                        </span>
+                      </div>
+
+                      <h3 className="text-xl font-bold mb-3 text-foreground">
+                        {item.title}
+                      </h3>
+
+                      <p className="text-muted-foreground mb-4 leading-relaxed">
+                        {item.description}
+                      </p>
+
+                      {/* Achievements */}
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-semibold text-foreground mb-2">Principais Conquistas:</h4>
+                        <div className="grid grid-cols-1 gap-2">
+                          {item.achievements.map((achievement, achievementIndex) => (
+                            <div
+                              key={achievementIndex}
+                              className="flex items-center text-sm text-muted-foreground"
+                            >
+                              <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0"></div>
+                              {achievement}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
