@@ -767,10 +767,15 @@ const ProjectsSection = () => {
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => {
                     const techInfo = getTechInfo(tech);
+                    const isGit = tech === "Git";
                     return (
                       <div
                         key={tech}
-                        className={`${techInfo.color} text-white px-3 py-1 rounded-full text-xs font-medium flex items-center space-x-1`}
+                        className={`${
+                          isGit
+                            ? "bg-red-500/15 text-white border border-red-500"
+                            : getTechTransparentStyle(tech)
+                        } px-3 py-1 rounded-full text-xs font-medium flex items-center space-x-1`}
                       >
                         <span>{techInfo.icon}</span>
                         <span>{tech}</span>
