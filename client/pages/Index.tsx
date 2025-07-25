@@ -529,7 +529,7 @@ const AboutSection = () => {
                   const isGit = tech === "Git";
                   return (
                     <div
-                      key={tech}
+                      key={`${tech}-${isVisible ? 'visible' : 'hidden'}-${Date.now()}`}
                       className={`${
                         isGit
                           ? "bg-red-500/15 text-white border-2 border-red-500"
