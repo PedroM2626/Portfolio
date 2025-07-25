@@ -210,7 +210,7 @@ const HomeSection = () => {
       <div className="container mx-auto px-4">
         <div className={`grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-200px)] transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           {/* Left Column - Content */}
-          <div className="space-y-8 text-left lg:pl-12">
+          <div className="space-y-8 text-left lg:pl-12 flex flex-col">
             {/* Welcome Message */}
             <div className="flex items-center gap-3 text-xl md:text-2xl font-medium">
               <span>Seja bem-vindo ao meu portfólio!</span>
