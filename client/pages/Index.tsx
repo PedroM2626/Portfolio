@@ -1124,6 +1124,23 @@ const ContactSection = () => {
   );
 };
 
+const Footer = () => {
+  return (
+    <footer className="bg-muted/30 py-8 mt-20">
+      <div className="container mx-auto px-4">
+        <div className="text-center">
+          <p className="text-muted-foreground text-sm">
+            © 2025 Pedro Morato. Todos os direitos reservados.
+          </p>
+          <p className="text-muted-foreground text-xs mt-2">
+            Desenvolvido com ❤️ usando React, TypeScript e Tailwind CSS
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
 export default function Index() {
   return (
     <div className="min-h-screen">
@@ -1132,6 +1149,7 @@ export default function Index() {
       <AboutSection />
       <ProjectsSection />
       <ContactSection />
+      <Footer />
       <BackToTop />
 
       <style jsx>{`
