@@ -40,3 +40,5 @@ jobs:
       - name: Deploy to GitHub Pages
         if: matrix.node-version == '20.x' && github.event_name == 'push'
         run: npm run deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
