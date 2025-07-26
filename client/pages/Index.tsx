@@ -588,7 +588,7 @@ const TimelineSection = () => {
       achievements: ["Estágio em tech", "Contribuições open source", "Projetos pessoais", "Networking"]
     },
     {
-      date: "2025 - Presente",
+      date: "2º Semestre 2025 - Presente",
       title: "Universidade & Especialização",
       description: "Iniciei Ciência da Computação na UniCEUB e estudo algoritmos para entrevistas técnicas.",
       icon: "🎓",
@@ -596,20 +596,20 @@ const TimelineSection = () => {
       achievements: ["Graduação em CC", "Algoritmos avançados", "Estruturas de dados", "Preparação para big techs"]
     },
     {
-      date: "1º Semestre 2024",
+      date: "1º Semestre 2025",
       title: "Frameworks Modernos & Projetos",
-      description: "Expandi conhecimentos com React, Flask e banco de dados. Desenvolvi 3 projetos web completos e 3 jogos em engines diferentes.",
+      description: "Expandi conhecimentos com React, Flask, banco de dados e desenvolvi 3 projetos web. Explorei plataformas low/no code como flutterflow.",
       icon: "⚛️",
       color: "from-cyan-500 to-green-500",
-      achievements: ["React & TypeScript", "Flask (Python)", "PostgreSQL & SQLite", "3 projetos web", "3 jogos (Unity, Godot, Unreal)"]
+      achievements: ["React", "Flask (Python)", "PostgreSQL & SQLite", "3 projetos web", "FlutterFlow"]
     },
     {
       date: "2º Semestre 2024",
       title: "Início da Jornada",
-      description: "Comecei a aprender programação com Python como minha primeira linguagem, estudando lógica de programação e desenvolvimento web básico.",
+      description: "Comecei a aprender programação com Python como minha primeira linguagem, estudando lógica de programação e desenvolvimento web básico. Também aprendi sobre desenvolvimento de jogos e desenvolvi projetos na unreal, unity, godot e roblox studio.",
       icon: "🚀",
       color: "from-blue-500 to-purple-500",
-      achievements: ["Python (primeira linguagem)", "Lógica de programação", "HTML, CSS e JavaScript básico", "Fundamentos de programação"]
+      achievements: ["Python (primeira linguagem)", "Lógica de programação", "HTML, CSS e JavaScript básico", "3 jogos (Unity, Godot, Unreal)", "Roblox Studio"]
     }
   ];
 
