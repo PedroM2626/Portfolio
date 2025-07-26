@@ -1113,11 +1113,40 @@ const ContactSection = () => {
             </h3>
             <p className="text-muted-foreground mb-8 leading-relaxed">
               Estou sempre interessado em novas oportunidades e projetos
-              desafiadores. Localizado em Brasília-DF, estou disponível para trabalhar
-              presencialmente ou remotamente. Entre em contato comigo!
+              desafiadores. Entre em contato comigo!
             </p>
 
             <div className="space-y-4">
+              {/* Location Card */}
+              <div className="group">
+                <div className="flex items-center p-4 rounded-lg border border-muted bg-card">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/20 mr-4">
+                    <span className="text-green-600 dark:text-green-400">📍</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-foreground">Localidade</div>
+                    <div className="text-sm text-muted-foreground">
+                      Brasília (Brasil)
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Birth Date Card */}
+              <div className="group">
+                <div className="flex items-center p-4 rounded-lg border border-muted bg-card">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-yellow-100 dark:bg-yellow-900/20 mr-4">
+                    <span className="text-yellow-600 dark:text-yellow-400">🎂</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-foreground">Data de Nascimento</div>
+                    <div className="text-sm text-muted-foreground">
+                      20/09/2007
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* GitHub Card */}
               <div className="group">
                 <a
