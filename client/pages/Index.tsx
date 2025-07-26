@@ -1113,7 +1113,8 @@ const ContactSection = () => {
             </h3>
             <p className="text-muted-foreground mb-8 leading-relaxed">
               Estou sempre interessado em novas oportunidades e projetos
-              desafiadores. Entre em contato comigo!
+              desafiadores. Localizado em Brasília-DF, estou disponível para trabalhar
+              presencialmente ou remotamente. Entre em contato comigo!
             </p>
 
             <div className="space-y-4">
