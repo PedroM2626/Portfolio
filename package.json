@@ -13,7 +13,7 @@
 
   "scripts": {
     "dev": "vite",
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d dist -u 'github-actions-bot <support+actions@github.com>' -r https://x-access-token:${GITHUB_TOKEN}@github.com/PedroM2626/Portfolio.git",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
     "build:server": "vite build --config vite.config.server.ts",
