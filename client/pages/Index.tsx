@@ -593,7 +593,7 @@ const TimelineSection = () => {
       description: "Iniciei Ciência da Computação na UniCEUB e estudo algoritmos para entrevistas técnicas.",
       icon: "🎓",
       color: "from-purple-500 to-pink-500",
-      achievements: ["Graduação em CC", "Algoritmos avançados", "Estruturas de dados", "Preparação para big techs"]
+      achievements: ["Início da graduação em Ciência da Computação", "Algoritmos avançados", "Estruturas de dados", "Preparação para big techs"]
     },
     {
       date: "1º Semestre 2025",
@@ -621,7 +621,7 @@ const TimelineSection = () => {
             Minha Jornada
           </h2>
           <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-            1 ano de experiência, aprendizado constante e evolução como desenvolvedor
+            1 ano de experiência, aprendizado e evolução como desenvolvedor
           </p>
 
           <div className="max-w-4xl mx-auto">
