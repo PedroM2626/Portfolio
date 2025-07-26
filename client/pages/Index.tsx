@@ -609,7 +609,7 @@ const TimelineSection = () => {
       description: "Comecei a aprender programação com Python como minha primeira linguagem, estudando lógica de programação e desenvolvimento web básico. Também aprendi sobre desenvolvimento de jogos e desenvolvi projetos na unreal, unity, godot e roblox studio.",
       icon: "🚀",
       color: "from-blue-500 to-purple-500",
-      achievements: ["Python (primeira linguagem)", "Lógica de programação", "HTML, CSS e JavaScript básico", "3 jogos (Unity, Godot, Unreal)", "Roblox Studio"]
+      achievements: ["Python (primeira linguagem)", "Lógica de programação", "HTML, CSS e JavaScript básico", "3 jogos (Unity, Godot, Unreal)"]
     }
   ];
 
@@ -621,7 +621,7 @@ const TimelineSection = () => {
             Minha Jornada
           </h2>
           <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-            Seis meses de dedicação intensa, aprendizado constante e evolução acelerada como desenvolvedor
+            1 ano de experiência, aprendizado constante e evolução como desenvolvedor
           </p>
 
           <div className="max-w-4xl mx-auto">
