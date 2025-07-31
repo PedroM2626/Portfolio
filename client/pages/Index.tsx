@@ -714,7 +714,7 @@ const ProjectsSection = () => {
       description:
         "Um sistema completo para gerenciamento escolar com autenticação de usuários, cadastro de alunos, notas, frequência e dashboard administrativo. Desenvolvido com tecnologias modernas para performance otimizada.",
       demoVideo: "https://example.com/demo1.mp4",
-      github: "https://github.com/PedroM2626/school-management",
+      github: "https://github.com/PedroM2626/Frecomu",
       live: "https://school-management-demo.com",
     },
     {
