@@ -743,7 +743,7 @@ const ProjectsSection = () => {
     },
     {
       id: 4,
-      name: "Website Portfolio Responsivo",
+      name: "Portfolio Responsivo",
       image: "/placeholder.svg",
       date: "2024",
       tech: ["HTML5", "CSS3", "JavaScript"],
