@@ -396,7 +396,7 @@ const HomeSection = () => {
 // Enhanced tech stack data with more technologies
 const getTechInfo = (name: string) => {
   const techMap: { [key: string]: { color: string; icon: string } } = {
-    Git: { color: "bg-red-500", icon: "🔴" },
+    Git: { color: "bg-red-500", icon: https://skillicons.dev/icons?i=git },
     "VS Code": { color: "bg-blue-600", icon: "💙" },
     Docker: { color: "bg-blue-500", icon: "🐳" },
     Firebase: { color: "bg-yellow-600", icon: "🔥" },
