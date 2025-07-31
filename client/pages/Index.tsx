@@ -741,18 +741,18 @@ const ProjectsSection = () => {
       github: "https://github.com/PedroM2626/task-manager",
       live: "https://finance-app-demo.com",
     },
-    {
-      id: 4,
-      name: "Portfolio Responsivo",
-      image: "/placeholder.svg",
-      date: "2024",
-      tech: ["HTML5", "CSS3", "JavaScript"],
-      description:
-        "Website portfolio totalmente responsivo com animações suaves, design moderno e otimizado para SEO.",
-      demoVideo: "https://example.com/demo4.mp4",
-      github: "https://github.com/PedroM2626/portfolio-website",
-      live: "https://portfolio-demo.com",
-    },
+    // {
+    //   id: 4,
+    //   name: "Portfolio Responsivo",
+    //   image: "/placeholder.svg",
+    //   date: "2024",
+    //   tech: ["HTML5", "CSS3", "JavaScript"],
+    //   description:
+    //     "Website portfolio totalmente responsivo com animações suaves, design moderno e otimizado para SEO.",
+    //   demoVideo: "https://example.com/demo4.mp4",
+    //   github: "https://github.com/PedroM2626/portfolio-website",
+    //   live: "https://portfolio-demo.com",
+    // },
   ];
 
   // Get all unique technologies for filter options
