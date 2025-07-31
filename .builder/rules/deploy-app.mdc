@@ -1,0 +1,14 @@
+---
+description: Deploy the app to production using Netlify to make the site live
+globs:
+alwaysApply: true
+---
+
+Deploying the app to production is powered by Netlify, however, it's only possible as long as there are several tools from netlify available:
+
+- If the tools are not available, tell the user to [connect the netlify MCP](#open-mcp-popover).
+  If the user asks to deploy the app, use the appropriate netlify MCP tools to deploy the app.
+
+Notice that, netlify builds the source code in their own servers, so while it's a good idea to check if `npm run build` works locally, it's not a requirement.
+
+You can also suggest share the [Preview link](#open-preview), but explain that won't be a production-ready link.
