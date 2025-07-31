@@ -709,7 +709,7 @@ const ProjectsSection = () => {
       id: 1,
       name: "Frecomu",
       image: "/placeholder.svg",
-      date: "2024",
+      date: "2025",
       tech: ["React", "Node.js", "PostgreSQL", "TypeScript"],
       description:
         "Um sistema completo para gerenciamento escolar com autenticação de usuários, cadastro de alunos, notas, frequência e dashboard administrativo. Desenvolvido com tecnologias modernas para performance otimizada.",
@@ -719,26 +719,26 @@ const ProjectsSection = () => {
     },
     {
       id: 2,
-      name: "Jogo de Puzzle 3D",
+      name: "Util Tools",
       image: "/placeholder.svg",
-      date: "2023",
+      date: "2025",
       tech: ["Unity", "C#"],
       description:
         "Um jogo de puzzle em 3D com mecânicas inovadoras, sistema de níveis progressivos e interface intuitiva. Desenvolvido na Unity com scripts otimizados.",
       demoVideo: "https://example.com/demo2.mp4",
-      github: "https://github.com/PedroM2626/puzzle-game",
+      github: "https://github.com/PedroM2626/util-tools",
       live: "https://puzzle-game-demo.com",
     },
     {
       id: 3,
-      name: "App de Controle Financeiro",
+      name: "Task Manager",
       image: "/placeholder.svg",
-      date: "2023",
+      date: "2025",
       tech: ["Flutter", "Firebase", "Dart"],
       description:
         "Aplicativo móvel para controle financeiro pessoal com categorização automática de gastos, relatórios detalhados e sincronização em nuvem.",
       demoVideo: "https://example.com/demo3.mp4",
-      github: "https://github.com/PedroM2626/finance-app",
+      github: "https://github.com/PedroM2626/task-manager",
       live: "https://finance-app-demo.com",
     },
     {
