@@ -524,7 +524,7 @@ const AboutSection = () => {
               </p>
               <p className="text-lg text-muted-foreground">
                 Atualmente estudo algoritmos e resolução de problemas com foco
-                em entrevistas t��cnicas. Meu objetivo é evoluir como
+                em entrevistas técnicas. Meu objetivo é evoluir como
                 desenvolvedor e, no futuro, conquistar uma vaga em uma grande
                 empresa de tecnologia.
               </p>
