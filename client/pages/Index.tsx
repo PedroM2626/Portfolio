@@ -580,7 +580,7 @@ const TimelineSection = () => {
 
   const timelineItems = [
     {
-      date: "Futuro Próximo",
+      date: "1º Semestre 2026 - Futuro Próximo",
       title: "Objetivos & Metas",
       description: "Conquistar posição em empresa de tecnologia e continuar evoluindo como desenvolvedor.",
       icon: "🎯",
