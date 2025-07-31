@@ -501,6 +501,7 @@ const AboutSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Sobre Mim
           </h2>
+          <div className="w-16 h-1 bg-primary mx-auto mt-2"></div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
