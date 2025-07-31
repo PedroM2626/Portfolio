@@ -707,7 +707,7 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      name: "Sistema de Gerenciamento Escolar",
+      name: "Frecomu",
       image: "/placeholder.svg",
       date: "2024",
       tech: ["React", "Node.js", "PostgreSQL", "TypeScript"],
