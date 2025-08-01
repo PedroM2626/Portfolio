@@ -530,9 +530,9 @@ const AboutSection = () => {
               </p>
             </div>
 
-            <div className="flex flex-col max-w-[500px]">
+            <div className="flex flex-col w-full">
               <h3 className="text-xl font-semibold mb-6">Tecnologias</h3>
-              <div className="grid grid-cols-3 justify-center overflow-hidden items-center">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 justify-items-center">
                 {techStack.map((tech, index) => {
                   const techInfo = getTechInfo(tech);
                   const isGit = tech === "Git";
@@ -543,17 +543,16 @@ const AboutSection = () => {
                         isGit
                           ? "bg-red-500/15 text-white border-2 border-red-500"
                           : getTechTransparentStyle(tech)
-                      } p-3 rounded-full flex flex-row items-center justify-center text-center transform transition-all duration-300 hover:scale-110 gap-[10px] mt-4 max-w-[120px] w-[120px] overflow-hidden font-light cursor-pointer`}
+                      } p-2 sm:p-3 rounded-full flex flex-row items-center justify-center text-center transform transition-all duration-300 hover:scale-110 gap-2 w-full max-w-[140px] min-h-[40px] font-light cursor-pointer`}
                       style={{
                         animationDelay: isVisible ? `${index * 50}ms` : "0ms",
                         animation: isVisible
                           ? "slideInRight 0.6s ease-out forwards"
                           : "none",
-                        minHeight: isGit ? "0px" : "25px",
                       }}
                     >
-                      <span className="text-xl mb-1">{techInfo.icon}</span>
-                      <span className="font-medium text-xs">{tech}</span>
+                      <span className="text-base sm:text-xl">{techInfo.icon}</span>
+                      <span className="font-medium text-xs sm:text-sm whitespace-nowrap overflow-hidden text-ellipsis">{tech}</span>
                     </div>
                   );
                 })}
