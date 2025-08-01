@@ -585,7 +585,18 @@ const AboutSection = () => {
                           : "none",
                       }}
                     >
-                      <span className="text-base sm:text-xl">{techInfo.icon}</span>
+                      {techInfo.icon.startsWith('https://') ? (
+                        <img
+                          src={techInfo.icon}
+                          alt={tech}
+                          className="w-4 h-4 sm:w-6 sm:h-6"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                      ) : (
+                        <span className="text-base sm:text-xl">{techInfo.icon}</span>
+                      )}
                       <span className="font-medium text-xs sm:text-sm whitespace-nowrap overflow-hidden text-ellipsis">{tech}</span>
                     </div>
                   );
