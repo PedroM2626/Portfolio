@@ -183,19 +183,50 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation - Improved Design */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-background border-b">
-          <div className="container mx-auto px-4 py-4 space-y-4">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {item.label}
-              </button>
-            ))}
+        <div className="md:hidden fixed inset-0 z-40 bg-background/95 backdrop-blur-sm">
+          <div className="flex flex-col h-full">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white p-6">
+              <h3 className="text-lg font-semibold">Menu</h3>
+              <p className="text-purple-200 text-sm">Navegação</p>
+            </div>
+
+            {/* Navigation Items */}
+            <div className="flex-1 bg-gray-900 text-white">
+              <div className="px-6 py-4 space-y-1">
+                {navItems.map((item, index) => {
+                  const icons = ["🏠", "👤", "💼", "✉️"];
+                  return (
+                    <button
+                      key={item.href}
+                      onClick={() => scrollToSection(item.href)}
+                      className="flex items-center w-full p-3 text-left hover:bg-gray-800 rounded-lg transition-colors group"
+                    >
+                      <span className="mr-3 text-xl">{icons[index]}</span>
+                      <span className="font-medium">{item.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-gray-700 mx-6"></div>
+
+              {/* Theme Toggle */}
+              <div className="px-6 py-4">
+                <div className="flex items-center p-3 hover:bg-gray-800 rounded-lg transition-colors cursor-pointer">
+                  <span className="mr-3 text-xl">☀️</span>
+                  <span className="font-medium">Modo Claro</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="bg-gray-900 text-gray-400 text-center py-4 border-t border-gray-700">
+              <p className="text-sm">Portfólio Profissional</p>
+            </div>
           </div>
         </div>
       )}
@@ -399,7 +430,7 @@ const getTechInfo = (name: string) => {
     Git: { color: "bg-red-500", icon: "🔴" },
     "VS Code": { color: "bg-blue-600", icon: "💙" },
     Docker: { color: "bg-blue-500", icon: "🐳" },
-    Firebase: { color: "bg-yellow-600", icon: "��" },
+    Firebase: { color: "bg-yellow-600", icon: "🔥" },
     C: { color: "bg-blue-700", icon: "💻" },
     "C++": { color: "bg-blue-800", icon: "➕" },
     "C#": { color: "bg-purple-600", icon: "🔷" },
