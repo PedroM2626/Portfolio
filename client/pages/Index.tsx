@@ -188,13 +188,20 @@ const Header = () => {
         <div className="md:hidden fixed inset-0 z-40 bg-background/95 backdrop-blur-sm">
           <div className="flex flex-col h-full">
             {/* Header */}
-            <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white p-6">
+            <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white p-6 relative">
               <h3 className="text-lg font-semibold">Menu</h3>
               <p className="text-purple-200 text-sm">Navegação</p>
+              {/* Close Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="absolute top-4 right-4 p-2 hover:bg-white/20 rounded-lg transition-colors"
+              >
+                <X className="h-5 w-5" />
+              </button>
             </div>
 
             {/* Navigation Items */}
-            <div className="flex-1 bg-gray-900 text-white">
+            <div className={`flex-1 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
               <div className="px-6 py-4 space-y-1">
                 {navItems.map((item, index) => {
                   const icons = ["🏠", "👤", "💼", "✉️"];
@@ -202,7 +209,9 @@ const Header = () => {
                     <button
                       key={item.href}
                       onClick={() => scrollToSection(item.href)}
-                      className="flex items-center w-full p-3 text-left hover:bg-gray-800 rounded-lg transition-colors group"
+                      className={`flex items-center w-full p-3 text-left rounded-lg transition-colors group ${
+                        theme === 'dark' ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+                      }`}
                     >
                       <span className="mr-3 text-xl">{icons[index]}</span>
                       <span className="font-medium">{item.label}</span>
@@ -212,19 +221,28 @@ const Header = () => {
               </div>
 
               {/* Divider */}
-              <div className="border-t border-gray-700 mx-6"></div>
+              <div className={`border-t mx-6 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}></div>
 
               {/* Theme Toggle */}
               <div className="px-6 py-4">
-                <div className="flex items-center p-3 hover:bg-gray-800 rounded-lg transition-colors cursor-pointer">
-                  <span className="mr-3 text-xl">☀️</span>
-                  <span className="font-medium">Modo Claro</span>
-                </div>
+                <button
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  className={`flex items-center w-full p-3 rounded-lg transition-colors cursor-pointer ${
+                    theme === 'dark' ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+                  }`}
+                >
+                  <span className="mr-3 text-xl">{theme === 'dark' ? '☀️' : '🌙'}</span>
+                  <span className="font-medium">{theme === 'dark' ? 'Modo Claro' : 'Modo Escuro'}</span>
+                </button>
               </div>
             </div>
 
             {/* Footer */}
-            <div className="bg-gray-900 text-gray-400 text-center py-4 border-t border-gray-700">
+            <div className={`text-center py-4 border-t ${
+              theme === 'dark'
+                ? 'bg-gray-900 text-gray-400 border-gray-700'
+                : 'bg-white text-gray-600 border-gray-200'
+            }`}>
               <p className="text-sm">Portfólio Profissional</p>
             </div>
           </div>
