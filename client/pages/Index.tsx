@@ -462,7 +462,7 @@ const getTechInfo = (name: string) => {
     Unity: { color: "bg-gray-800", icon: "https://skillicons.dev/icons?i=unity" },
     "Unreal Engine": { color: "bg-gray-900", icon: "https://skillicons.dev/icons?i=unreal" },
     Godot: { color: "bg-blue-800", icon: "https://skillicons.dev/icons?i=godot" },
-    Roblox Studio: { color: "bg-blue-600", icon: "https://skillicons.dev/icons?i=robloxstudio" },
+    "Roblox Studio": { color: "bg-blue-600", icon: "https://skillicons.dev/icons?i=robloxstudio" },
     FlutterFlow: { color: "bg-purple-500", icon: "https://skillicons.dev/icons?i=flutter" },
     Flutter: { color: "bg-blue-400", icon: "https://skillicons.dev/icons?i=flutter" },
     "Node.js": { color: "bg-green-600", icon: "https://skillicons.dev/icons?i=nodejs" },
