@@ -911,7 +911,18 @@ const ProjectsSection = () => {
                       className="bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer hover:bg-muted/80 transition-all"
                       onClick={() => toggleTech(tech)}
                     >
-                      <span>{techInfo.icon}</span>
+                      {techInfo.icon.startsWith('https://') ? (
+                        <img
+                          src={techInfo.icon}
+                          alt={tech}
+                          className="w-4 h-4"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                      ) : (
+                        <span>{techInfo.icon}</span>
+                      )}
                       <span>{tech}</span>
                     </div>
                   );
