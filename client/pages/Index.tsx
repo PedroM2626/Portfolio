@@ -746,7 +746,7 @@ const TimelineSection = () => {
     },
     {
       date: "2º Semestre 2025 - Presente",
-      title: "Universidade & Especializa��ão",
+      title: "Universidade & Especialização",
       description:
         "Iniciei Ciência da Computação na UniCEUB e estudo algoritmos para entrevistas técnicas.",
       icon: "🎓",
