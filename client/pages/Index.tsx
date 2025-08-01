@@ -43,7 +43,11 @@ import {
 } from "lucide-react";
 
 // Typing animation hook
-const useTypingEffect = (text: string, speed: number = 100, shouldStart: boolean = true) => {
+const useTypingEffect = (
+  text: string,
+  speed: number = 100,
+  shouldStart: boolean = true,
+) => {
   const [displayedText, setDisplayedText] = useState("");
   const [isComplete, setIsComplete] = useState(false);
 
@@ -201,7 +205,9 @@ const Header = () => {
             </div>
 
             {/* Navigation Items */}
-            <div className={`flex-1 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+            <div
+              className={`flex-1 ${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`}
+            >
               <div className="px-6 py-4 space-y-1">
                 {navItems.map((item, index) => {
                   const icons = ["🏠", "👤", "💼", "✉️"];
@@ -210,7 +216,9 @@ const Header = () => {
                       key={item.href}
                       onClick={() => scrollToSection(item.href)}
                       className={`flex items-center w-full p-3 text-left rounded-lg transition-colors group ${
-                        theme === 'dark' ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+                        theme === "dark"
+                          ? "hover:bg-gray-800"
+                          : "hover:bg-gray-100"
                       }`}
                     >
                       <span className="mr-3 text-xl">{icons[index]}</span>
@@ -221,28 +229,36 @@ const Header = () => {
               </div>
 
               {/* Divider */}
-              <div className={`border-t mx-6 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}></div>
+              <div
+                className={`border-t mx-6 ${theme === "dark" ? "border-gray-700" : "border-gray-200"}`}
+              ></div>
 
               {/* Theme Toggle */}
               <div className="px-6 py-4">
                 <button
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                   className={`flex items-center w-full p-3 rounded-lg transition-colors cursor-pointer ${
-                    theme === 'dark' ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+                    theme === "dark" ? "hover:bg-gray-800" : "hover:bg-gray-100"
                   }`}
                 >
-                  <span className="mr-3 text-xl">{theme === 'dark' ? '☀️' : '🌙'}</span>
-                  <span className="font-medium">{theme === 'dark' ? 'Modo Claro' : 'Modo Escuro'}</span>
+                  <span className="mr-3 text-xl">
+                    {theme === "dark" ? "☀️" : "🌙"}
+                  </span>
+                  <span className="font-medium">
+                    {theme === "dark" ? "Modo Claro" : "Modo Escuro"}
+                  </span>
                 </button>
               </div>
             </div>
 
             {/* Footer */}
-            <div className={`text-center py-4 border-t ${
-              theme === 'dark'
-                ? 'bg-gray-900 text-gray-400 border-gray-700'
-                : 'bg-white text-gray-600 border-gray-200'
-            }`}>
+            <div
+              className={`text-center py-4 border-t ${
+                theme === "dark"
+                  ? "bg-gray-900 text-gray-400 border-gray-700"
+                  : "bg-white text-gray-600 border-gray-200"
+              }`}
+            >
               <p className="text-sm">Portfólio Profissional</p>
             </div>
           </div>
@@ -446,34 +462,96 @@ const HomeSection = () => {
 const getTechInfo = (name: string) => {
   const techMap: { [key: string]: { color: string; icon: string } } = {
     Git: { color: "bg-red-500", icon: "https://skillicons.dev/icons?i=git" },
-    "VS Code": { color: "bg-blue-600", icon: "https://skillicons.dev/icons?i=vscode" },
-    Docker: { color: "bg-blue-500", icon: "https://skillicons.dev/icons?i=docker" },
-    Firebase: { color: "bg-yellow-600", icon: "https://skillicons.dev/icons?i=firebase" },
+    "VS Code": {
+      color: "bg-blue-600",
+      icon: "https://skillicons.dev/icons?i=vscode",
+    },
+    Docker: {
+      color: "bg-blue-500",
+      icon: "https://skillicons.dev/icons?i=docker",
+    },
+    Firebase: {
+      color: "bg-yellow-600",
+      icon: "https://skillicons.dev/icons?i=firebase",
+    },
     C: { color: "bg-blue-700", icon: "https://skillicons.dev/icons?i=c" },
     "C++": { color: "bg-blue-800", icon: "https://skillicons.dev/icons?i=cpp" },
     "C#": { color: "bg-purple-600", icon: "https://skillicons.dev/icons?i=cs" },
-    Python: { color: "bg-yellow-500", icon: "https://skillicons.dev/icons?i=python" },
-    JavaScript: { color: "bg-yellow-400", icon: "https://skillicons.dev/icons?i=js" },
-    HTML5: { color: "bg-orange-500", icon: "https://skillicons.dev/icons?i=html" },
+    Python: {
+      color: "bg-yellow-500",
+      icon: "https://skillicons.dev/icons?i=python",
+    },
+    JavaScript: {
+      color: "bg-yellow-400",
+      icon: "https://skillicons.dev/icons?i=js",
+    },
+    HTML5: {
+      color: "bg-orange-500",
+      icon: "https://skillicons.dev/icons?i=html",
+    },
     CSS3: { color: "bg-blue-500", icon: "https://skillicons.dev/icons?i=css" },
-    React: { color: "bg-cyan-500", icon: "https://skillicons.dev/icons?i=react" },
-    Flask: { color: "bg-gray-700", icon: "https://skillicons.dev/icons?i=flask" },
-    SQLite: { color: "bg-blue-400", icon: "https://skillicons.dev/icons?i=sqlite" },
-    Unity: { color: "bg-gray-800", icon: "https://skillicons.dev/icons?i=unity" },
-    "Unreal Engine": { color: "bg-gray-900", icon: "https://skillicons.dev/icons?i=unreal" },
-    Godot: { color: "bg-blue-800", icon: "https://skillicons.dev/icons?i=godot" },
-    "Roblox Studio": { color: "bg-blue-600", icon: "https://skillicons.dev/icons?i=robloxstudio" },
-    FlutterFlow: { color: "bg-purple-500", icon: "https://skillicons.dev/icons?i=flutter" },
-    Flutter: { color: "bg-blue-400", icon: "https://skillicons.dev/icons?i=flutter" },
-    "Node.js": { color: "bg-green-600", icon: "https://skillicons.dev/icons?i=nodejs" },
-    TypeScript: { color: "bg-blue-600", icon: "https://skillicons.dev/icons?i=typescript" },
-    PostgreSQL: { color: "bg-blue-700", icon: "https://skillicons.dev/icons?i=postgresql" },
+    React: {
+      color: "bg-cyan-500",
+      icon: "https://skillicons.dev/icons?i=react",
+    },
+    Flask: {
+      color: "bg-gray-700",
+      icon: "https://skillicons.dev/icons?i=flask",
+    },
+    SQLite: {
+      color: "bg-blue-400",
+      icon: "https://skillicons.dev/icons?i=sqlite",
+    },
+    Unity: {
+      color: "bg-gray-800",
+      icon: "https://skillicons.dev/icons?i=unity",
+    },
+    "Unreal Engine": {
+      color: "bg-gray-900",
+      icon: "https://skillicons.dev/icons?i=unreal",
+    },
+    Godot: {
+      color: "bg-blue-800",
+      icon: "https://skillicons.dev/icons?i=godot",
+    },
+    "Roblox Studio": {
+      color: "bg-blue-600",
+      icon: "https://skillicons.dev/icons?i=robloxstudio",
+    },
+    FlutterFlow: {
+      color: "bg-purple-500",
+      icon: "https://skillicons.dev/icons?i=flutter",
+    },
+    Flutter: {
+      color: "bg-blue-400",
+      icon: "https://skillicons.dev/icons?i=flutter",
+    },
+    "Node.js": {
+      color: "bg-green-600",
+      icon: "https://skillicons.dev/icons?i=nodejs",
+    },
+    TypeScript: {
+      color: "bg-blue-600",
+      icon: "https://skillicons.dev/icons?i=typescript",
+    },
+    PostgreSQL: {
+      color: "bg-blue-700",
+      icon: "https://skillicons.dev/icons?i=postgresql",
+    },
     AWS: { color: "bg-orange-500", icon: "https://skillicons.dev/icons?i=aws" },
-    Vite: { color: "bg-purple-600", icon: "https://skillicons.dev/icons?i=vite" },
+    Vite: {
+      color: "bg-purple-600",
+      icon: "https://skillicons.dev/icons?i=vite",
+    },
     Lua: { color: "bg-blue-500", icon: "https://skillicons.dev/icons?i=lua" },
   };
 
-  return techMap[name] || { color: "bg-gray-500", icon: "https://skillicons.dev/icons?i=github" };
+  return (
+    techMap[name] || {
+      color: "bg-gray-500",
+      icon: "https://skillicons.dev/icons?i=github",
+    }
+  );
 };
 
 // Function to get transparent background style for tech items
@@ -517,7 +595,7 @@ const AboutSection = () => {
   // Reset animations when section becomes visible again
   useEffect(() => {
     if (isVisible) {
-      setAnimationKey(prev => prev + 1);
+      setAnimationKey((prev) => prev + 1);
     }
   }, [isVisible]);
 
@@ -557,9 +635,7 @@ const AboutSection = () => {
           className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Sobre Mim
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Sobre Mim</h2>
             <div className="w-16 h-1 bg-primary mx-auto"></div>
           </div>
 
@@ -612,19 +688,23 @@ const AboutSection = () => {
                           : "none",
                       }}
                     >
-                      {techInfo.icon.startsWith('https://') ? (
+                      {techInfo.icon.startsWith("https://") ? (
                         <img
                           src={techInfo.icon}
                           alt={tech}
                           className="w-4 h-4 sm:w-6 sm:h-6"
                           onError={(e) => {
-                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.style.display = "none";
                           }}
                         />
                       ) : (
-                        <span className="text-base sm:text-xl">{techInfo.icon}</span>
+                        <span className="text-base sm:text-xl">
+                          {techInfo.icon}
+                        </span>
                       )}
-                      <span className="font-medium text-xs sm:text-sm whitespace-nowrap overflow-hidden text-ellipsis">{tech}</span>
+                      <span className="font-medium text-xs sm:text-sm whitespace-nowrap overflow-hidden text-ellipsis">
+                        {tech}
+                      </span>
                     </div>
                   );
                 })}
@@ -645,7 +725,7 @@ const TimelineSection = () => {
   // Reset animations when section becomes visible again
   useEffect(() => {
     if (isVisible) {
-      setAnimationKey(prev => prev + 1);
+      setAnimationKey((prev) => prev + 1);
     }
   }, [isVisible]);
 
@@ -653,41 +733,69 @@ const TimelineSection = () => {
     {
       date: "1º Semestre 2026 - Futuro Próximo",
       title: "Objetivos & Metas",
-      description: "Conquistar posição em empresa de tecnologia e continuar evoluindo como desenvolvedor.",
+      description:
+        "Conquistar posição em empresa de tecnologia e continuar evoluindo como desenvolvedor.",
       icon: "🎯",
       color: "from-orange-500 to-red-500",
-      achievements: ["Estágio em tech", "Contribuições open source", "Projetos pessoais", "Networking"]
+      achievements: [
+        "Estágio em tech",
+        "Contribuições open source",
+        "Projetos pessoais",
+        "Networking",
+      ],
     },
     {
       date: "2º Semestre 2025 - Presente",
       title: "Universidade & Especializa��ão",
-      description: "Iniciei Ciência da Computação na UniCEUB e estudo algoritmos para entrevistas técnicas.",
+      description:
+        "Iniciei Ciência da Computação na UniCEUB e estudo algoritmos para entrevistas técnicas.",
       icon: "🎓",
       color: "from-purple-500 to-pink-500",
-      achievements: ["Início da graduação em Ciência da Computação", "Algoritmos avançados", "Estruturas de dados", "Preparação para big techs"]
+      achievements: [
+        "Início da graduação em Ciência da Computação",
+        "Algoritmos avançados",
+        "Estruturas de dados",
+        "Preparação para big techs",
+      ],
     },
     {
       date: "1º Semestre 2025",
       title: "Frameworks Modernos & Projetos",
-      description: "Expandi conhecimentos com React, Flask, banco de dados e desenvolvi 3 projetos web. Explorei plataformas low/no code como flutterflow.",
+      description:
+        "Expandi conhecimentos com React, Flask, banco de dados e desenvolvi 3 projetos web. Explorei plataformas low/no code como flutterflow.",
       icon: "⚛️",
       color: "from-cyan-500 to-green-500",
-      achievements: ["React", "Flask (Python)", "PostgreSQL & SQLite", "3 projetos web", "FlutterFlow"]
+      achievements: [
+        "React",
+        "Flask (Python)",
+        "PostgreSQL & SQLite",
+        "3 projetos web",
+        "FlutterFlow",
+      ],
     },
     {
       date: "2º Semestre 2024",
       title: "Início da Jornada",
-      description: "Comecei a aprender programação com Python como minha primeira linguagem, estudando lógica de programação e desenvolvimento web básico. Também aprendi sobre desenvolvimento de jogos e desenvolvi projetos na unreal, unity, godot e roblox studio.",
+      description:
+        "Comecei a aprender programação com Python como minha primeira linguagem, estudando lógica de programação e desenvolvimento web básico. Também aprendi sobre desenvolvimento de jogos e desenvolvi projetos na unreal, unity, godot e roblox studio.",
       icon: "🚀",
       color: "from-blue-500 to-purple-500",
-      achievements: ["Python (primeira linguagem)", "Lógica de programação", "HTML, CSS e JavaScript básico", "3 jogos (Unity, Godot, Unreal)"]
-    }
+      achievements: [
+        "Python (primeira linguagem)",
+        "Lógica de programação",
+        "HTML, CSS e JavaScript básico",
+        "3 jogos (Unity, Godot, Unreal)",
+      ],
+    },
   ];
 
   return (
     <section id="timeline" className="py-20 bg-background" data-reveal>
       <div className="container mx-auto px-4">
-        <div key={`timeline-${animationKey}`} className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div
+          key={`timeline-${animationKey}`}
+          className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
           <div className="text-center mb-4">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Minha Jornada
@@ -706,7 +814,7 @@ const TimelineSection = () => {
               {timelineItems.map((item, index) => (
                 <div
                   key={`${item.date}-${animationKey}`}
-                  className={`relative flex items-center mb-16 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                  className={`relative flex items-center mb-16 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
                   style={{
                     animationDelay: isVisible ? `${index * 200}ms` : "0ms",
                     animation: isVisible
@@ -715,12 +823,16 @@ const TimelineSection = () => {
                   }}
                 >
                   {/* Timeline Dot */}
-                  <div className={`absolute left-8 md:left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center text-2xl shadow-lg z-10`}>
+                  <div
+                    className={`absolute left-8 md:left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center text-2xl shadow-lg z-10`}
+                  >
                     {item.icon}
                   </div>
 
                   {/* Content Card */}
-                  <div className={`ml-24 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-auto md:pr-16' : 'md:ml-auto md:pl-16'}`}>
+                  <div
+                    className={`ml-24 md:ml-0 md:w-5/12 ${index % 2 === 0 ? "md:mr-auto md:pr-16" : "md:ml-auto md:pl-16"}`}
+                  >
                     <div className="bg-card border border-border rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                       <div className="flex items-center justify-between mb-3">
                         <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
@@ -738,17 +850,21 @@ const TimelineSection = () => {
 
                       {/* Achievements */}
                       <div className="space-y-2">
-                        <h4 className="text-sm font-semibold text-foreground mb-2">Principais Conquistas:</h4>
+                        <h4 className="text-sm font-semibold text-foreground mb-2">
+                          Principais Conquistas:
+                        </h4>
                         <div className="grid grid-cols-1 gap-2">
-                          {item.achievements.map((achievement, achievementIndex) => (
-                            <div
-                              key={achievementIndex}
-                              className="flex items-center text-sm text-muted-foreground"
-                            >
-                              <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0"></div>
-                              {achievement}
-                            </div>
-                          ))}
+                          {item.achievements.map(
+                            (achievement, achievementIndex) => (
+                              <div
+                                key={achievementIndex}
+                                className="flex items-center text-sm text-muted-foreground"
+                              >
+                                <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0"></div>
+                                {achievement}
+                              </div>
+                            ),
+                          )}
                         </div>
                       </div>
                     </div>
@@ -774,7 +890,7 @@ const ProjectsSection = () => {
   // Reset animations when section becomes visible again
   useEffect(() => {
     if (isVisible) {
-      setAnimationKey(prev => prev + 1);
+      setAnimationKey((prev) => prev + 1);
     }
   }, [isVisible]);
 
@@ -864,7 +980,10 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-20" data-reveal>
       <div className="container mx-auto px-4">
-        <div key={`projects-${animationKey}`} className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div
+          key={`projects-${animationKey}`}
+          className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Meus Projetos
@@ -872,141 +991,90 @@ const ProjectsSection = () => {
             <div className="w-16 h-1 bg-primary mx-auto"></div>
           </div>
 
-        {/* Search and Filters */}
-        <div className="max-w-4xl mx-auto mb-8">
-          {/* Search Bar */}
-          <div className="relative mb-6">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
-            <Input
-              placeholder="Pesquisar tecnologia"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-muted/50 border-muted"
-            />
-          </div>
-
-          {/* Technology Filter Chips */}
-          <div className="space-y-4">
-            {/* Selected Technologies */}
-            {selectedTechs.length > 0 && (
-              <div className="flex flex-wrap gap-2">
-                {selectedTechs.map((tech) => {
-                  const techInfo = getTechInfo(tech);
-                  return (
-                    <div
-                      key={tech}
-                      className={`${techInfo.color} text-white px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity`}
-                      onClick={() => toggleTech(tech)}
-                    >
-                      {techInfo.icon.startsWith('https://') ? (
-                        <img
-                          src={techInfo.icon}
-                          alt={tech}
-                          className="w-4 h-4"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        />
-                      ) : (
-                        <span>{techInfo.icon}</span>
-                      )}
-                      <span>{tech}</span>
-                      <X className="h-3 w-3 ml-1" />
-                    </div>
-                  );
-                })}
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={clearAllFilters}
-                  className="h-7 px-2 text-xs"
-                >
-                  Limpar todos
-                </Button>
-              </div>
-            )}
-
-            {/* Available Technologies */}
-            <div className="flex flex-wrap gap-2">
-              <div
-                className={`px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer transition-all ${
-                  selectedTechs.length === 0
-                    ? "bg-white text-black"
-                    : "bg-muted text-muted-foreground hover:bg-muted/80"
-                }`}
-                onClick={clearAllFilters}
-              >
-                <span>✓</span>
-                <span>Todos</span>
-              </div>
-              {allTechs
-                .filter((tech) => !selectedTechs.includes(tech))
-                .map((tech) => {
-                  const techInfo = getTechInfo(tech);
-                  return (
-                    <div
-                      key={tech}
-                      className="bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer hover:bg-muted/80 transition-all"
-                      onClick={() => toggleTech(tech)}
-                    >
-                      {techInfo.icon.startsWith('https://') ? (
-                        <img
-                          src={techInfo.icon}
-                          alt={tech}
-                          className="w-4 h-4"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        />
-                      ) : (
-                        <span>{techInfo.icon}</span>
-                      )}
-                      <span>{tech}</span>
-                    </div>
-                  );
-                })}
+          {/* Search and Filters */}
+          <div className="max-w-4xl mx-auto mb-8">
+            {/* Search Bar */}
+            <div className="relative mb-6">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
+              <Input
+                placeholder="Pesquisar tecnologia"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 bg-muted/50 border-muted"
+              />
             </div>
-          </div>
-        </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <Card
-              key={project.id}
-              className="cursor-pointer hover:shadow-lg transition-shadow"
-              onClick={() => setSelectedProject(project)}
-            >
-              <CardHeader>
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                />
-                <CardTitle>{project.name}</CardTitle>
-                <CardDescription>{project.date}</CardDescription>
-              </CardHeader>
-              <CardContent>
+            {/* Technology Filter Chips */}
+            <div className="space-y-4">
+              {/* Selected Technologies */}
+              {selectedTechs.length > 0 && (
                 <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => {
+                  {selectedTechs.map((tech) => {
                     const techInfo = getTechInfo(tech);
-                    const isGit = tech === "Git";
                     return (
                       <div
                         key={tech}
-                        className={`${
-                          isGit
-                            ? "bg-red-500/15 text-white border border-red-500"
-                            : getTechTransparentStyle(tech)
-                        } px-3 py-1 rounded-full text-xs font-medium flex items-center space-x-1`}
+                        className={`${techInfo.color} text-white px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity`}
+                        onClick={() => toggleTech(tech)}
                       >
-                        {techInfo.icon.startsWith('https://') ? (
+                        {techInfo.icon.startsWith("https://") ? (
                           <img
                             src={techInfo.icon}
                             alt={tech}
                             className="w-4 h-4"
                             onError={(e) => {
-                              e.currentTarget.style.display = 'none';
+                              e.currentTarget.style.display = "none";
+                            }}
+                          />
+                        ) : (
+                          <span>{techInfo.icon}</span>
+                        )}
+                        <span>{tech}</span>
+                        <X className="h-3 w-3 ml-1" />
+                      </div>
+                    );
+                  })}
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={clearAllFilters}
+                    className="h-7 px-2 text-xs"
+                  >
+                    Limpar todos
+                  </Button>
+                </div>
+              )}
+
+              {/* Available Technologies */}
+              <div className="flex flex-wrap gap-2">
+                <div
+                  className={`px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer transition-all ${
+                    selectedTechs.length === 0
+                      ? "bg-white text-black"
+                      : "bg-muted text-muted-foreground hover:bg-muted/80"
+                  }`}
+                  onClick={clearAllFilters}
+                >
+                  <span>✓</span>
+                  <span>Todos</span>
+                </div>
+                {allTechs
+                  .filter((tech) => !selectedTechs.includes(tech))
+                  .map((tech) => {
+                    const techInfo = getTechInfo(tech);
+                    return (
+                      <div
+                        key={tech}
+                        className="bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer hover:bg-muted/80 transition-all"
+                        onClick={() => toggleTech(tech)}
+                      >
+                        {techInfo.icon.startsWith("https://") ? (
+                          <img
+                            src={techInfo.icon}
+                            alt={tech}
+                            className="w-4 h-4"
+                            onError={(e) => {
+                              e.currentTarget.style.display = "none";
                             }}
                           />
                         ) : (
@@ -1016,76 +1084,30 @@ const ProjectsSection = () => {
                       </div>
                     );
                   })}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground">
-              Nenhum projeto encontrado com os filtros aplicados.
-            </p>
+              </div>
+            </div>
           </div>
-        )}
 
-        {/* Project Modal */}
-        <Dialog
-          open={!!selectedProject}
-          onOpenChange={() => setSelectedProject(null)}
-        >
-          <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
-            <DialogHeader className="pb-4">
-              <DialogTitle className="text-2xl">
-                {selectedProject?.name}
-              </DialogTitle>
-              <DialogDescription className="text-base">
-                {selectedProject?.date}
-              </DialogDescription>
-            </DialogHeader>
-
-            {selectedProject && (
-              <div className="space-y-6 pb-4">
-                {/* Media Section */}
-                <div className="grid md:grid-cols-2 gap-4">
+          {/* Projects Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.map((project) => (
+              <Card
+                key={project.id}
+                className="cursor-pointer hover:shadow-lg transition-shadow"
+                onClick={() => setSelectedProject(project)}
+              >
+                <CardHeader>
                   <img
-                    src={selectedProject.image}
-                    alt={selectedProject.name}
-                    className="w-full h-48 object-cover rounded-lg"
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-48 object-cover rounded-lg mb-4"
                   />
-
-                  {/* Video Player */}
-                  <div className="relative">
-                    <video
-                      controls
-                      className="w-full h-48 rounded-lg bg-muted object-cover"
-                      poster={selectedProject.image}
-                    >
-                      <source
-                        src={selectedProject.demoVideo}
-                        type="video/mp4"
-                      />
-                      Seu navegador não suporta o elemento de vídeo.
-                    </video>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <div>
-                  <h4 className="font-semibold text-lg mb-2">Descrição</h4>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {selectedProject.description}
-                  </p>
-                </div>
-
-                {/* Technologies */}
-                <div>
-                  <h4 className="font-semibold text-lg mb-3">
-                    Tecnologias Utilizadas
-                  </h4>
+                  <CardTitle>{project.name}</CardTitle>
+                  <CardDescription>{project.date}</CardDescription>
+                </CardHeader>
+                <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    {selectedProject.tech.map((tech: string) => {
+                    {project.tech.map((tech) => {
                       const techInfo = getTechInfo(tech);
                       const isGit = tech === "Git";
                       return (
@@ -1095,15 +1117,15 @@ const ProjectsSection = () => {
                             isGit
                               ? "bg-red-500/15 text-white border border-red-500"
                               : getTechTransparentStyle(tech)
-                          } px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2`}
+                          } px-3 py-1 rounded-full text-xs font-medium flex items-center space-x-1`}
                         >
-                          {techInfo.icon.startsWith('https://') ? (
+                          {techInfo.icon.startsWith("https://") ? (
                             <img
                               src={techInfo.icon}
                               alt={tech}
-                              className="w-5 h-5"
+                              className="w-4 h-4"
                               onError={(e) => {
-                                e.currentTarget.style.display = 'none';
+                                e.currentTarget.style.display = "none";
                               }}
                             />
                           ) : (
@@ -1114,58 +1136,155 @@ const ProjectsSection = () => {
                       );
                     })}
                   </div>
-                </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
 
-                {/* Action Buttons */}
-                <div>
-                  <h4 className="font-semibold text-lg mb-3">
-                    Links do Projeto
-                  </h4>
-                  <div className="flex flex-wrap gap-3">
-                    <Button asChild className="flex-1 min-w-[140px]">
-                      <a
-                        href={selectedProject.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
+          {filteredProjects.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">
+                Nenhum projeto encontrado com os filtros aplicados.
+              </p>
+            </div>
+          )}
+
+          {/* Project Modal */}
+          <Dialog
+            open={!!selectedProject}
+            onOpenChange={() => setSelectedProject(null)}
+          >
+            <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+              <DialogHeader className="pb-4">
+                <DialogTitle className="text-2xl">
+                  {selectedProject?.name}
+                </DialogTitle>
+                <DialogDescription className="text-base">
+                  {selectedProject?.date}
+                </DialogDescription>
+              </DialogHeader>
+
+              {selectedProject && (
+                <div className="space-y-6 pb-4">
+                  {/* Media Section */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <img
+                      src={selectedProject.image}
+                      alt={selectedProject.name}
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
+
+                    {/* Video Player */}
+                    <div className="relative">
+                      <video
+                        controls
+                        className="w-full h-48 rounded-lg bg-muted object-cover"
+                        poster={selectedProject.image}
                       >
-                        <Github className="h-4 w-4 mr-2" />
-                        Repositório
-                      </a>
-                    </Button>
-                    <Button
-                      variant="outline"
-                      asChild
-                      className="flex-1 min-w-[140px]"
-                    >
-                      <a
-                        href={selectedProject.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        <source
+                          src={selectedProject.demoVideo}
+                          type="video/mp4"
+                        />
+                        Seu navegador não suporta o elemento de vídeo.
+                      </video>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2">Descrição</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {selectedProject.description}
+                    </p>
+                  </div>
+
+                  {/* Technologies */}
+                  <div>
+                    <h4 className="font-semibold text-lg mb-3">
+                      Tecnologias Utilizadas
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.tech.map((tech: string) => {
+                        const techInfo = getTechInfo(tech);
+                        const isGit = tech === "Git";
+                        return (
+                          <div
+                            key={tech}
+                            className={`${
+                              isGit
+                                ? "bg-red-500/15 text-white border border-red-500"
+                                : getTechTransparentStyle(tech)
+                            } px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2`}
+                          >
+                            {techInfo.icon.startsWith("https://") ? (
+                              <img
+                                src={techInfo.icon}
+                                alt={tech}
+                                className="w-5 h-5"
+                                onError={(e) => {
+                                  e.currentTarget.style.display = "none";
+                                }}
+                              />
+                            ) : (
+                              <span>{techInfo.icon}</span>
+                            )}
+                            <span>{tech}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div>
+                    <h4 className="font-semibold text-lg mb-3">
+                      Links do Projeto
+                    </h4>
+                    <div className="flex flex-wrap gap-3">
+                      <Button asChild className="flex-1 min-w-[140px]">
+                        <a
+                          href={selectedProject.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="h-4 w-4 mr-2" />
+                          Repositório
+                        </a>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        asChild
+                        className="flex-1 min-w-[140px]"
                       >
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        Demo Ao Vivo
-                      </a>
-                    </Button>
-                    <Button
-                      variant="outline"
-                      asChild
-                      className="flex-1 min-w-[140px]"
-                    >
-                      <a
-                        href={selectedProject.demoVideo}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        <a
+                          href={selectedProject.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="h-4 w-4 mr-2" />
+                          Demo Ao Vivo
+                        </a>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        asChild
+                        className="flex-1 min-w-[140px]"
                       >
-                        <Play className="h-4 w-4 mr-2" />
-                        Vídeo no youtube
-                      </a>
-                    </Button>
+                        <a
+                          href={selectedProject.demoVideo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Play className="h-4 w-4 mr-2" />
+                          Vídeo no youtube
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
+              )}
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </section>
@@ -1226,7 +1345,9 @@ const ContactSection = () => {
           <div className="w-16 h-1 bg-primary mx-auto mt-2"></div>
         </div>
 
-        <div className={`grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto mt-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div
+          className={`grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto mt-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
           {/* Left Column - Social Links */}
           <div>
             <h3 className="text-xl font-semibold mb-6 text-foreground">
@@ -1242,10 +1363,14 @@ const ContactSection = () => {
               <div className="group">
                 <div className="flex items-center p-4 rounded-lg border border-muted bg-card">
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/20 mr-4">
-                    <span className="text-green-600 dark:text-green-400">📍</span>
+                    <span className="text-green-600 dark:text-green-400">
+                      📍
+                    </span>
                   </div>
                   <div className="flex-1">
-                    <div className="font-medium text-foreground">Localidade</div>
+                    <div className="font-medium text-foreground">
+                      Localidade
+                    </div>
                     <div className="text-sm text-muted-foreground">
                       Brasília (Brasil)
                     </div>
@@ -1257,10 +1382,14 @@ const ContactSection = () => {
               <div className="group">
                 <div className="flex items-center p-4 rounded-lg border border-muted bg-card">
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-yellow-100 dark:bg-yellow-900/20 mr-4">
-                    <span className="text-yellow-600 dark:text-yellow-400">🎂</span>
+                    <span className="text-yellow-600 dark:text-yellow-400">
+                      🎂
+                    </span>
                   </div>
                   <div className="flex-1">
-                    <div className="font-medium text-foreground">Data de Nascimento</div>
+                    <div className="font-medium text-foreground">
+                      Data de Nascimento
+                    </div>
                     <div className="text-sm text-muted-foreground">
                       20/09/2007
                     </div>
