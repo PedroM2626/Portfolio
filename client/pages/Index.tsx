@@ -302,7 +302,7 @@ const HomeSection = () => {
           {/* Left Column - Content */}
           <div className="space-y-8 text-left lg:pl-12 flex flex-col">
             {/* Welcome Message */}
-            <div className="flex items-center gap-3 text-xl md:text-2xl font-medium">
+            <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium mx-auto">
               <span>Seja bem-vindo ao meu portfólio!</span>
               {jobComplete && (
                 <span className="animate-wave inline-block">👋</span>
