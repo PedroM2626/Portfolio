@@ -1036,7 +1036,7 @@ const ProjectsSection = () => {
                         rel="noopener noreferrer"
                       >
                         <Play className="h-4 w-4 mr-2" />
-                        Vídeo Demo
+                        Vídeo no youtube
                       </a>
                     </Button>
                   </div>
