@@ -295,52 +295,52 @@ const HomeSection = () => {
             </div>
 
             {/* Social Buttons */}
-            <div className="flex items-center gap-4">
-              <Button
-                variant="outline"
-                size="sm"
-                className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden"
-                asChild
-              >
-                <a
-                  href="https://github.com/PedroM2626"
-                  target="_blank"
-                  rel="noopener noreferrer"
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex items-center gap-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden"
+                  asChild
                 >
-                  <Github className="h-4 w-4 mr-2" />
-                  GitHub
-                </a>
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden"
-                asChild
-              >
-                <a
-                  href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  <a
+                    href="https://github.com/PedroM2626"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Github className="h-4 w-4 mr-2" />
+                    GitHub
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden"
+                  asChild
                 >
-                  <Linkedin className="h-4 w-4 mr-2" />
-                  LinkedIn
-                </a>
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden"
-                asChild
-              >
-                <a href="mailto:pedromoratolahoz@gmail.com">
-                  <Mail className="h-4 w-4 mr-2" />
-                  Email
-                </a>
-              </Button>
-            </div>
+                  <a
+                    href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Linkedin className="h-4 w-4 mr-2" />
+                    LinkedIn
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden"
+                  asChild
+                >
+                  <a href="mailto:pedromoratolahoz@gmail.com">
+                    <Mail className="h-4 w-4 mr-2" />
+                    Email
+                  </a>
+                </Button>
+              </div>
 
-            {/* Download Resume Button */}
-            <div>
+              {/* Download Resume Button - Centralizado */}
               <Button
                 className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full overflow-hidden"
                 asChild
@@ -399,13 +399,13 @@ const getTechInfo = (name: string) => {
     Git: { color: "bg-red-500", icon: "🔴" },
     "VS Code": { color: "bg-blue-600", icon: "💙" },
     Docker: { color: "bg-blue-500", icon: "🐳" },
-    Firebase: { color: "bg-yellow-600", icon: "🔥" },
+    Firebase: { color: "bg-yellow-600", icon: "��" },
     C: { color: "bg-blue-700", icon: "💻" },
     "C++": { color: "bg-blue-800", icon: "➕" },
     "C#": { color: "bg-purple-600", icon: "🔷" },
     Python: { color: "bg-yellow-500", icon: "🐍" },
     JavaScript: { color: "bg-yellow-400", icon: "🟨" },
-    HTML5: { color: "bg-orange-500", icon: "��" },
+    HTML5: { color: "bg-orange-500", icon: "🔶" },
     CSS3: { color: "bg-blue-500", icon: "🎨" },
     React: { color: "bg-cyan-500", icon: "⚛️" },
     Flask: { color: "bg-gray-700", icon: "🌶️" },
