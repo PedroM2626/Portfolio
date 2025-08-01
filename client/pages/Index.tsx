@@ -501,6 +501,9 @@ const getTechTransparentStyle = (name: string) => {
     TypeScript: "bg-blue-600/15 text-white border border-blue-600",
     PostgreSQL: "bg-blue-700/15 text-white border border-blue-700",
     AWS: "bg-orange-500/15 text-white border border-orange-500",
+    "Roblox Studio": "bg-blue-600/15 text-white border border-blue-600",
+    Vite: "bg-purple-600/15 text-white border border-purple-600",
+    Lua: "bg-blue-500/15 text-white border border-blue-500",
   };
 
   return styleMap[name] || "bg-gray-500/15 text-white border border-gray-500";
@@ -657,7 +660,7 @@ const TimelineSection = () => {
     },
     {
       date: "2º Semestre 2025 - Presente",
-      title: "Universidade & Especialização",
+      title: "Universidade & Especializa��ão",
       description: "Iniciei Ciência da Computação na UniCEUB e estudo algoritmos para entrevistas técnicas.",
       icon: "🎓",
       color: "from-purple-500 to-pink-500",
