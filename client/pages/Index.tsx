@@ -310,13 +310,13 @@ const HomeSection = () => {
             </div>
 
             {/* Name */}
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight mx-auto">
               {nameText}
               {!nameComplete && <span className="animate-pulse">|</span>}
             </h1>
 
             {/* Job Title */}
-            <div className="text-xl md:text-2xl opacity-80">
+            <div className="text-xl md:text-2xl opacity-80 mx-auto">
               {nameComplete && (
                 <>
                   {jobText}
