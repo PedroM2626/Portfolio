@@ -469,6 +469,8 @@ const getTechInfo = (name: string) => {
     TypeScript: { color: "bg-blue-600", icon: "https://skillicons.dev/icons?i=typescript" },
     PostgreSQL: { color: "bg-blue-700", icon: "https://skillicons.dev/icons?i=postgresql" },
     AWS: { color: "bg-orange-500", icon: "https://skillicons.dev/icons?i=aws" },
+    Vite: { color: "bg-purple-600", icon: "https://skillicons.dev/icons?i=vite" },
+    Lua: { color: "bg-blue-500", icon: "https://skillicons.dev/icons?i=lua" },
   };
 
   return techMap[name] || { color: "bg-gray-500", icon: "https://skillicons.dev/icons?i=github" };
