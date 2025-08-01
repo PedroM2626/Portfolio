@@ -424,35 +424,35 @@ const HomeSection = () => {
   );
 };
 
-// Enhanced tech stack data with more technologies
+// Enhanced tech stack data with skill-icons
 const getTechInfo = (name: string) => {
   const techMap: { [key: string]: { color: string; icon: string } } = {
-    Git: { color: "bg-red-500", icon: "🔴" },
-    "VS Code": { color: "bg-blue-600", icon: "💙" },
-    Docker: { color: "bg-blue-500", icon: "🐳" },
-    Firebase: { color: "bg-yellow-600", icon: "🔥" },
-    C: { color: "bg-blue-700", icon: "💻" },
-    "C++": { color: "bg-blue-800", icon: "➕" },
-    "C#": { color: "bg-purple-600", icon: "🔷" },
-    Python: { color: "bg-yellow-500", icon: "🐍" },
-    JavaScript: { color: "bg-yellow-400", icon: "🟨" },
-    HTML5: { color: "bg-orange-500", icon: "🔶" },
-    CSS3: { color: "bg-blue-500", icon: "🎨" },
-    React: { color: "bg-cyan-500", icon: "⚛️" },
-    Flask: { color: "bg-gray-700", icon: "🌶️" },
-    SQLite: { color: "bg-blue-400", icon: "💾" },
-    Unity: { color: "bg-gray-800", icon: "🎮" },
-    "Unreal Engine": { color: "bg-gray-900", icon: "🎯" },
-    Godot: { color: "bg-blue-600", icon: "🎪" },
-    FlutterFlow: { color: "bg-purple-500", icon: "📱" },
-    Flutter: { color: "bg-blue-400", icon: "🦋" },
-    "Node.js": { color: "bg-green-600", icon: "🟢" },
-    TypeScript: { color: "bg-blue-600", icon: "📘" },
-    PostgreSQL: { color: "bg-blue-700", icon: "🐘" },
-    AWS: { color: "bg-orange-500", icon: "☁��" },
+    Git: { color: "bg-red-500", icon: "https://skillicons.dev/icons?i=git" },
+    "VS Code": { color: "bg-blue-600", icon: "https://skillicons.dev/icons?i=vscode" },
+    Docker: { color: "bg-blue-500", icon: "https://skillicons.dev/icons?i=docker" },
+    Firebase: { color: "bg-yellow-600", icon: "https://skillicons.dev/icons?i=firebase" },
+    C: { color: "bg-blue-700", icon: "https://skillicons.dev/icons?i=c" },
+    "C++": { color: "bg-blue-800", icon: "https://skillicons.dev/icons?i=cpp" },
+    "C#": { color: "bg-purple-600", icon: "https://skillicons.dev/icons?i=cs" },
+    Python: { color: "bg-yellow-500", icon: "https://skillicons.dev/icons?i=python" },
+    JavaScript: { color: "bg-yellow-400", icon: "https://skillicons.dev/icons?i=js" },
+    HTML5: { color: "bg-orange-500", icon: "https://skillicons.dev/icons?i=html" },
+    CSS3: { color: "bg-blue-500", icon: "https://skillicons.dev/icons?i=css" },
+    React: { color: "bg-cyan-500", icon: "https://skillicons.dev/icons?i=react" },
+    Flask: { color: "bg-gray-700", icon: "https://skillicons.dev/icons?i=flask" },
+    SQLite: { color: "bg-blue-400", icon: "https://skillicons.dev/icons?i=sqlite" },
+    Unity: { color: "bg-gray-800", icon: "https://skillicons.dev/icons?i=unity" },
+    "Unreal Engine": { color: "bg-gray-900", icon: "https://skillicons.dev/icons?i=unreal" },
+    Godot: { color: "bg-blue-600", icon: "https://skillicons.dev/icons?i=godot" },
+    FlutterFlow: { color: "bg-purple-500", icon: "https://skillicons.dev/icons?i=flutter" },
+    Flutter: { color: "bg-blue-400", icon: "https://skillicons.dev/icons?i=flutter" },
+    "Node.js": { color: "bg-green-600", icon: "https://skillicons.dev/icons?i=nodejs" },
+    TypeScript: { color: "bg-blue-600", icon: "https://skillicons.dev/icons?i=typescript" },
+    PostgreSQL: { color: "bg-blue-700", icon: "https://skillicons.dev/icons?i=postgresql" },
+    AWS: { color: "bg-orange-500", icon: "https://skillicons.dev/icons?i=aws" },
   };
 
-  return techMap[name] || { color: "bg-gray-500", icon: "🔧" };
+  return techMap[name] || { color: "bg-gray-500", icon: "https://skillicons.dev/icons?i=github" };
 };
 
 // Function to get transparent background style for tech items
