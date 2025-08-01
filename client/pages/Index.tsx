@@ -534,8 +534,11 @@ const AboutSection = () => {
     "Unity",
     "Unreal Engine",
     "Godot",
+    "Roblox Studio",
     "FlutterFlow",
     "Flutter",
+    "Vite",
+    "Lua",
   ];
 
   return (
