@@ -405,7 +405,7 @@ const getTechInfo = (name: string) => {
     "C#": { color: "bg-purple-600", icon: "🔷" },
     Python: { color: "bg-yellow-500", icon: "🐍" },
     JavaScript: { color: "bg-yellow-400", icon: "🟨" },
-    HTML5: { color: "bg-orange-500", icon: "🔶" },
+    HTML5: { color: "bg-orange-500", icon: "��" },
     CSS3: { color: "bg-blue-500", icon: "🎨" },
     React: { color: "bg-cyan-500", icon: "⚛️" },
     Flask: { color: "bg-gray-700", icon: "🌶️" },
@@ -498,9 +498,12 @@ const AboutSection = () => {
         <div
           className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Sobre Mim
-          </h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Sobre Mim
+            </h2>
+            <div className="w-16 h-1 bg-primary mx-auto"></div>
+          </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
@@ -616,9 +619,12 @@ const TimelineSection = () => {
     <section id="timeline" className="py-20 bg-background" data-reveal>
       <div className="container mx-auto px-4">
         <div key={`timeline-${animationKey}`} className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Minha Jornada
-          </h2>
+          <div className="text-center mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Minha Jornada
+            </h2>
+            <div className="w-16 h-1 bg-primary mx-auto mb-4"></div>
+          </div>
           <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
             1 ano de experiência, aprendizado e evolução como desenvolvedor
           </p>
@@ -790,9 +796,12 @@ const ProjectsSection = () => {
     <section id="projects" className="py-20" data-reveal>
       <div className="container mx-auto px-4">
         <div key={`projects-${animationKey}`} className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Meus Projetos
-          </h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Meus Projetos
+            </h2>
+            <div className="w-16 h-1 bg-primary mx-auto"></div>
+          </div>
 
         {/* Search and Filters */}
         <div className="max-w-4xl mx-auto mb-8">
