@@ -1048,7 +1048,18 @@ const ProjectsSection = () => {
                               : getTechTransparentStyle(tech)
                           } px-3 py-2 rounded-lg text-sm font-medium flex items-center space-x-2`}
                         >
-                          <span>{techInfo.icon}</span>
+                          {techInfo.icon.startsWith('https://') ? (
+                            <img
+                              src={techInfo.icon}
+                              alt={tech}
+                              className="w-5 h-5"
+                              onError={(e) => {
+                                e.currentTarget.style.display = 'none';
+                              }}
+                            />
+                          ) : (
+                            <span>{techInfo.icon}</span>
+                          )}
                           <span>{tech}</span>
                         </div>
                       );
