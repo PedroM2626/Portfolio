@@ -668,7 +668,7 @@ const AboutSection = () => {
             </div>
 
             <div className="flex flex-col w-full">
-              <h3 className="text-xl font-semibold mb-6">Tecnologias</h3>
+              <h3 className="text-xl font-semibold mb-6">Tecnologias que eu já utilizei</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 justify-items-center">
                 {techStack.map((tech, index) => {
                   const techInfo = getTechInfo(tech);
