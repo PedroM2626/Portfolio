@@ -608,87 +608,91 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="py-20 bg-muted/30 transition-all duration-1000"
+      className="py-20 transition-all duration-1000 relative"
       data-reveal
     >
-      <div className="container mx-auto px-4">
-        <div
-          className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-        >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Sobre Mim</h2>
-            <div className="w-16 h-1 bg-primary mx-auto"></div>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Minha Jornada</h3>
-              <p className="text-lg text-muted-foreground mb-6">
-                Tenho 17 anos e estou iniciando a graduação em Ciência da
-                Computação na UniCEUB.
-              </p>
-              <p className="text-lg text-muted-foreground mb-6">
-                Já tenho experiência prática com programação, com foco em
-                desenvolvimento web e jogos.
-              </p>
-              <p className="text-lg text-muted-foreground mb-6">
-                Ao longo do último ano, desenvolvi 3 projetos web completos e
-                alguns jogos como forma de aprimorar meu conhecimento em lógica
-                de programação, bibliotecas e ferramentas modernas.
-              </p>
-              <p className="text-lg text-muted-foreground mb-6">
-                Estou sempre buscando aprender mais, melhorar meus códigos e
-                construir soluções reais.
-              </p>
-              <p className="text-lg text-muted-foreground">
-                Atualmente estudo algoritmos e resolução de problemas com foco
-                em entrevistas técnicas. Meu objetivo é evoluir como
-                desenvolvedor e, no futuro, conquistar uma vaga em uma grande
-                empresa de tecnologia.
-              </p>
+      {/* Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
+      <div className="relative z-10">
+        <div className="container mx-auto px-4">
+          <div
+            className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          >
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Sobre Mim</h2>
+              <div className="w-16 h-1 bg-primary mx-auto"></div>
             </div>
 
-            <div className="flex flex-col w-full">
-              <h3 className="text-xl font-semibold mb-6">Tecnologias que eu já utilizei</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 justify-items-center">
-                {techStack.map((tech, index) => {
-                  const techInfo = getTechInfo(tech);
-                  const isGit = tech === "Git";
-                  return (
-                    <div
-                      key={`${tech}-${animationKey}`}
-                      className={`${
-                        isGit
-                          ? "bg-red-500/15 text-white border-2 border-red-500"
-                          : getTechTransparentStyle(tech)
-                      } p-2 sm:p-3 rounded-full flex flex-row items-center justify-center text-center transform transition-all duration-300 hover:scale-110 gap-2 w-full max-w-[140px] min-h-[40px] font-light cursor-pointer`}
-                      style={{
-                        animationDelay: isVisible ? `${index * 50}ms` : "0ms",
-                        animation: isVisible
-                          ? "slideInRight 0.6s ease-out forwards"
-                          : "none",
-                      }}
-                    >
-                      {techInfo.icon.startsWith("https://") ? (
-                        <img
-                          src={techInfo.icon}
-                          alt={tech}
-                          className="w-4 h-4 sm:w-6 sm:h-6"
-                          onError={(e) => {
-                            e.currentTarget.style.display = "none";
-                          }}
-                        />
-                      ) : (
-                        <span className="text-base sm:text-xl">
-                          {techInfo.icon}
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <div>
+                <h3 className="text-xl font-semibold mb-6">Minha Jornada</h3>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Tenho 17 anos e estou iniciando a graduação em Ciência da
+                  Computação na UniCEUB.
+                </p>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Já tenho experiência prática com programação, com foco em
+                  desenvolvimento web e jogos.
+                </p>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Ao longo do último ano, desenvolvi 3 projetos web completos e
+                  alguns jogos como forma de aprimorar meu conhecimento em lógica
+                  de programação, bibliotecas e ferramentas modernas.
+                </p>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Estou sempre buscando aprender mais, melhorar meus códigos e
+                  construir soluções reais.
+                </p>
+                <p className="text-lg text-muted-foreground">
+                  Atualmente estudo algoritmos e resolução de problemas com foco
+                  em entrevistas técnicas. Meu objetivo é evoluir como
+                  desenvolvedor e, no futuro, conquistar uma vaga em uma grande
+                  empresa de tecnologia.
+                </p>
+              </div>
+
+              <div className="flex flex-col w-full">
+                <h3 className="text-xl font-semibold mb-6">Tecnologias que eu já utilizei</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 justify-items-center">
+                  {techStack.map((tech, index) => {
+                    const techInfo = getTechInfo(tech);
+                    const isGit = tech === "Git";
+                    return (
+                      <div
+                        key={`${tech}-${animationKey}`}
+                        className={`${
+                          isGit
+                            ? "bg-red-500/15 text-white border-2 border-red-500"
+                            : getTechTransparentStyle(tech)
+                        } p-2 sm:p-3 rounded-full flex flex-row items-center justify-center text-center transform transition-all duration-300 hover:scale-110 gap-2 w-full max-w-[140px] min-h-[40px] font-light cursor-pointer`}
+                        style={{
+                          animationDelay: isVisible ? `${index * 50}ms` : "0ms",
+                          animation: isVisible
+                            ? "slideInRight 0.6s ease-out forwards"
+                            : "none",
+                        }}
+                      >
+                        {techInfo.icon.startsWith("https://") ? (
+                          <img
+                            src={techInfo.icon}
+                            alt={tech}
+                            className="w-4 h-4 sm:w-6 sm:h-6"
+                            onError={(e) => {
+                              e.currentTarget.style.display = "none";
+                            }}
+                          />
+                        ) : (
+                          <span className="text-base sm:text-xl">
+                            {techInfo.icon}
+                          </span>
+                        )}
+                        <span className="font-medium text-xs sm:text-sm whitespace-nowrap overflow-hidden text-ellipsis">
+                          {tech}
                         </span>
-                      )}
-                      <span className="font-medium text-xs sm:text-sm whitespace-nowrap overflow-hidden text-ellipsis">
-                        {tech}
-                      </span>
-                    </div>
-                  );
-                })}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
