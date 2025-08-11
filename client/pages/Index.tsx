@@ -335,14 +335,6 @@ const HomeSection = () => {
         >
           {/* Left Column - Content */}
           <div className="space-y-8 text-left lg:pl-12 flex flex-col">
-            {/* Welcome Message */}
-            <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium mx-auto">
-              <span>Seja bem-vindo ao meu portfólio!</span>
-              {jobComplete && (
-                <span className="animate-wave inline-block">👋</span>
-              )}
-            </div>
-
             {/* Name */}
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mx-auto">
               {nameText}
@@ -356,6 +348,14 @@ const HomeSection = () => {
                   {jobText}
                   {!jobComplete && <span className="animate-pulse">|</span>}
                 </>
+              )}
+            </div>
+
+            {/* Welcome Message */}
+            <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium mx-auto">
+              <span>Seja bem-vindo ao meu portfólio!</span>
+              {jobComplete && (
+                <span className="animate-wave inline-block">👋</span>
               )}
             </div>
 
