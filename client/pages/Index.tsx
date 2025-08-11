@@ -1391,7 +1391,7 @@ const ContactSection = () => {
                   <div className="flex-1">
                     <div className="font-medium text-foreground">Telefone</div>
                     <div className="text-sm text-muted-foreground">
-                      +55 (61) 99999-9999
+                      +55 (61) 99309-6847
                     </div>
                   </div>
                 </div>
