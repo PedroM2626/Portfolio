@@ -717,7 +717,7 @@ const TimelineSection = () => {
       date: "1º Semestre 2026 - Futuro Próximo",
       title: "Objetivos & Metas",
       description:
-        "Conquistar posição em empresa de tecnologia e continuar evoluindo como desenvolvedor.",
+        "Conquistar posi��ão em empresa de tecnologia e continuar evoluindo como desenvolvedor.",
       icon: "🎯",
       color: "from-orange-500 to-red-500",
       achievements: [
@@ -1375,6 +1375,21 @@ const ContactSection = () => {
                     </div>
                     <div className="text-sm text-muted-foreground">
                       20/09/2007
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Phone Card */}
+              <div className="group">
+                <div className="flex items-center p-4 rounded-lg border border-muted bg-card">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-900/20 mr-4">
+                    <span className="text-cyan-600 dark:text-cyan-400">📞</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-foreground">Telefone</div>
+                    <div className="text-sm text-muted-foreground">
+                      +55 (61) 99999-9999
                     </div>
                   </div>
                 </div>
