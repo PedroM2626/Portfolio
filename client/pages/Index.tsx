@@ -362,59 +362,42 @@ const HomeSection = () => {
             {/* Social Buttons */}
             <div className="flex flex-col items-center gap-4">
               <div className="flex items-center gap-4">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden"
-                  asChild
+                <a
+                  href="https://github.com/PedroM2626"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
-                  <a
-                    href="https://github.com/PedroM2626"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Github className="h-4 w-4 mr-2" />
-                    GitHub
-                  </a>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden"
-                  asChild
+                  <Github className="h-4 w-4" />
+                  <span className="font-medium">GitHub</span>
+                </a>
+                <a
+                  href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
-                  <a
-                    href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Linkedin className="h-4 w-4 mr-2" />
-                    LinkedIn
-                  </a>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="rounded-full border-2 border-muted hover:bg-muted overflow-hidden"
-                  asChild
+                  <Linkedin className="h-4 w-4" />
+                  <span className="font-medium">LinkedIn</span>
+                </a>
+                <a
+                  href="mailto:pedromoratolahoz@gmail.com"
+                  className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
-                  <a href="mailto:pedromoratolahoz@gmail.com">
-                    <Mail className="h-4 w-4 mr-2" />
-                    Email
-                  </a>
-                </Button>
+                  <Mail className="h-4 w-4" />
+                  <span className="font-medium">Email</span>
+                </a>
               </div>
 
               {/* Download Resume Button - Centralizado */}
-              <Button
-                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full overflow-hidden"
-                asChild
+              <a
+                href="/resume.pdf"
+                download
+                className="px-8 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-medium"
               >
-                <a href="/resume.pdf" download>
-                  <Download className="h-4 w-4 mr-2" />
-                  Baixar Currículo
-                </a>
-              </Button>
+                <Download className="h-4 w-4" />
+                <span>Baixar Currículo</span>
+              </a>
             </div>
           </div>
 
