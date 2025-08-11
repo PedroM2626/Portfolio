@@ -322,117 +322,115 @@ const HomeSection = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center pt-20 transition-all duration-1000"
-      style={{
-        background: `hsl(var(--home-background))`,
-        color: `hsl(var(--home-foreground))`,
-      }}
+      className="min-h-screen flex items-center justify-center pt-20 transition-all duration-1000 relative"
       data-reveal
     >
-      <div className="container mx-auto px-4">
-        <div
-          className={`grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-200px)] transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-        >
-          {/* Left Column - Content */}
-          <div className="space-y-8 text-left lg:pl-12 flex flex-col">
-            {/* Name */}
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight mx-auto">
-              {nameText}
-              {!nameComplete && <span className="animate-pulse">|</span>}
-            </h1>
+      {/* Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 dark:from-purple-950 dark:via-blue-950 dark:to-indigo-950" />
+      <div className="absolute inset-0 bg-black/20 dark:bg-black/40" />
 
-            {/* Job Title */}
-            <div className="text-xl md:text-2xl opacity-80 mx-auto">
-              {nameComplete && (
-                <>
-                  {jobText}
-                  {!jobComplete && <span className="animate-pulse">|</span>}
-                </>
-              )}
-            </div>
-
-            {/* Welcome Message */}
-            <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium mx-auto">
-              <span>Seja bem-vindo ao meu portfólio!</span>
-              {jobComplete && (
-                <span className="animate-wave inline-block">👋</span>
-              )}
-            </div>
-
-            {/* Social Buttons */}
-            <div className="flex flex-col items-center gap-4">
-              <div className="flex items-center gap-4">
-                <a
-                  href="https://github.com/PedroM2626"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                >
-                  <Github className="h-4 w-4" />
-                  <span className="font-medium">GitHub</span>
-                </a>
-                <a
-                  href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                >
-                  <Linkedin className="h-4 w-4" />
-                  <span className="font-medium">LinkedIn</span>
-                </a>
-                <a
-                  href="mailto:pedromoratolahoz@gmail.com"
-                  className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                >
-                  <Mail className="h-4 w-4" />
-                  <span className="font-medium">Email</span>
-                </a>
-              </div>
-
-              {/* Download Resume Button - Centralizado */}
-              <a
-                href="/resume.pdf"
-                download
-                className="px-8 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-medium"
-              >
-                <Download className="h-4 w-4" />
-                <span>Baixar Currículo</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Right Column - Profile Image */}
-          <div className="flex justify-center lg:justify-end lg:pr-12">
-            <div className="relative flex flex-col">
-              <div
-                className="w-80 h-80 rounded-full overflow-hidden border-4 shadow-2xl flex flex-col"
-                style={{
-                  borderColor: `hsl(var(--home-border))`,
-                }}
-              >
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
-                  alt="Pedro Morato"
-                  className="w-full h-full object-cover mx-auto"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Down Indicator - Moved Up */}
-        <div className="text-center mt-4">
+      {/* Content */}
+      <div className="relative z-10 text-white">
+        <div className="container mx-auto px-4">
           <div
-            className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
-            onClick={() =>
-              document
-                .getElementById("about")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
+            className={`grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-200px)] transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
-            <p className="text-sm mb-2 animate-bounce">Role para baixo</p>
-            <div className="animate-bounce">
-              <ChevronDown className="h-6 w-6 mx-auto" />
+            {/* Left Column - Content */}
+            <div className="space-y-8 text-left lg:pl-12 flex flex-col">
+              {/* Name */}
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight mx-auto">
+                {nameText}
+                {!nameComplete && <span className="animate-pulse">|</span>}
+              </h1>
+
+              {/* Job Title */}
+              <div className="text-xl md:text-2xl opacity-80 mx-auto">
+                {nameComplete && (
+                  <>
+                    {jobText}
+                    {!jobComplete && <span className="animate-pulse">|</span>}
+                  </>
+                )}
+              </div>
+
+              {/* Welcome Message */}
+              <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium mx-auto">
+                <span>Seja bem-vindo ao meu portfólio!</span>
+                {jobComplete && (
+                  <span className="animate-wave inline-block">👋</span>
+                )}
+              </div>
+
+              {/* Social Buttons */}
+              <div className="flex flex-col items-center gap-4">
+                <div className="flex items-center gap-4">
+                  <a
+                    href="https://github.com/PedroM2626"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  >
+                    <Github className="h-4 w-4" />
+                    <span className="font-medium">GitHub</span>
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  >
+                    <Linkedin className="h-4 w-4" />
+                    <span className="font-medium">LinkedIn</span>
+                  </a>
+                  <a
+                    href="mailto:pedromoratolahoz@gmail.com"
+                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  >
+                    <Mail className="h-4 w-4" />
+                    <span className="font-medium">Email</span>
+                  </a>
+                </div>
+
+                {/* Download Resume Button - Centralizado */}
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="px-8 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-medium"
+                >
+                  <Download className="h-4 w-4" />
+                  <span>Baixar Currículo</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column - Profile Image */}
+            <div className="flex justify-center lg:justify-end lg:pr-12">
+              <div className="relative flex flex-col">
+                <div className="w-80 h-80 rounded-full overflow-hidden border-4 shadow-2xl flex flex-col border-white/30">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
+                    alt="Pedro Morato"
+                    className="w-full h-full object-cover mx-auto"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Scroll Down Indicator - Moved Up */}
+          <div className="text-center mt-4">
+            <div
+              className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
+              onClick={() =>
+                document
+                  .getElementById("about")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              <p className="text-sm mb-2 animate-bounce">Role para baixo</p>
+              <div className="animate-bounce">
+                <ChevronDown className="h-6 w-6 mx-auto" />
+              </div>
             </div>
           </div>
         </div>
