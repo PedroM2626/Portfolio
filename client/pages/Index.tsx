@@ -139,9 +139,8 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="text-xl font-bold">
-          <span style={{ color: "rgb(248, 231, 28)" }}>P</span>edro{" "}
-          <span style={{ color: "rgb(144, 19, 254)" }}>M</span>orato
+        <div className="text-xl font-bold text-purple-600 dark:text-purple-400">
+          Pedro Morato
         </div>
 
         {/* Desktop Navigation */}
@@ -1378,6 +1377,21 @@ const ContactSection = () => {
                     </div>
                     <div className="text-sm text-muted-foreground">
                       20/09/2007
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Phone Card */}
+              <div className="group">
+                <div className="flex items-center p-4 rounded-lg border border-muted bg-card">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-900/20 mr-4">
+                    <span className="text-cyan-600 dark:text-cyan-400">📞</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-foreground">Telefone</div>
+                    <div className="text-sm text-muted-foreground">
+                      +55 (61) 99309-6847
                     </div>
                   </div>
                 </div>
