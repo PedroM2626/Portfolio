@@ -19,15 +19,19 @@
     "build:server": "vite build --config vite.config.server.ts",
     "start": "node dist/server/node-build.mjs",
     "test": "vitest --run",
+    "test:ui": "vitest",
+    "test:e2e": "playwright test",
     "format.fix": "prettier --write .",
     "typecheck": "tsc"
   },
   "dependencies": {
     "dotenv": "^17.2.0",
     "express": "^4.18.2",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "nodemailer": "^6.9.15"
   },
   "devDependencies": {
+    "@types/supertest": "^6.0.2",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
@@ -99,6 +103,8 @@
     "typescript": "^5.5.3",
     "vaul": "^0.9.3",
     "vite": "^6.2.2",
-    "vitest": "^3.1.4"
+    "vitest": "^3.1.4",
+    "supertest": "^7.0.0",
+    "@playwright/test": "^1.50.0"
   }
 }
