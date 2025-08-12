@@ -322,8 +322,26 @@ const HomeSection = () => {
     <section
       id="home"
       className="min-h-screen flex items-center justify-center pt-20 transition-all duration-1000 relative"
+      className="min-h-screen flex items-center justify-center pt-20 transition-all duration-1000 relative"
       data-reveal
     >
+      {/* Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 dark:from-purple-950 dark:via-blue-950 dark:to-indigo-950" />
+      <div className="absolute inset-0 bg-black/20 dark:bg-black/40" />
+
+      {/* Content */}
+      <div className="relative z-10 text-white">
+        <div className="container mx-auto px-4">
+          <div
+            className={`grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-200px)] transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          >
+            {/* Left Column - Content */}
+            <div className="space-y-8 text-left lg:pl-12 flex flex-col">
+              {/* Name */}
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight mx-auto">
+                {nameText}
+                {!nameComplete && <span className="animate-pulse">|</span>}
+              </h1>
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 dark:from-purple-950 dark:via-blue-950 dark:to-indigo-950" />
       <div className="absolute inset-0 bg-black/20 dark:bg-black/40" />
@@ -363,10 +381,18 @@ const HomeSection = () => {
               {/* Social Buttons */}
               <div className="flex flex-col items-center gap-4">
                 <div className="flex items-center gap-4">
+              {/* Social Buttons */}
+              <div className="flex flex-col items-center gap-4">
+                <div className="flex items-center gap-4">
                   <a
                     href="https://github.com/PedroM2626"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  >
+                    <Github className="h-4 w-4" />
+                    <span className="font-medium">GitHub</span>
+                  </a>
                     className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
                     <Github className="h-4 w-4" />
@@ -389,7 +415,31 @@ const HomeSection = () => {
                     <span className="font-medium">Email</span>
                   </a>
                 </div>
+                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  >
+                    <Linkedin className="h-4 w-4" />
+                    <span className="font-medium">LinkedIn</span>
+                  </a>
+                  <a
+                    href="mailto:pedromoratolahoz@gmail.com"
+                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  >
+                    <Mail className="h-4 w-4" />
+                    <span className="font-medium">Email</span>
+                  </a>
+                </div>
 
+                {/* Download Resume Button - Centralizado */}
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="px-8 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-medium"
+                >
+                  <Download className="h-4 w-4" />
+                  <span>Baixar Currículo</span>
+                </a>
+              </div>
+            </div>
                 {/* Download Resume Button - Centralizado */}
                 <a
                   href="/resume.pdf"
@@ -416,6 +466,20 @@ const HomeSection = () => {
             </div>
           </div>
 
+          {/* Scroll Down Indicator - Moved Up */}
+          <div className="text-center mt-4">
+            <div
+              className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
+              onClick={() =>
+                document
+                  .getElementById("about")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              <p className="text-sm mb-2 animate-bounce">Role para baixo</p>
+              <div className="animate-bounce">
+                <ChevronDown className="h-6 w-6 mx-auto" />
+              </div>
           {/* Scroll Down Indicator - Moved Up */}
           <div className="text-center mt-4">
             <div
@@ -608,6 +672,7 @@ const AboutSection = () => {
     <section
       id="about"
       className="py-20 transition-all duration-1000 relative"
+      className="py-20 transition-all duration-1000 relative"
       data-reveal
     >
       {/* Gradient Background */}
@@ -621,7 +686,45 @@ const AboutSection = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Sobre Mim</h2>
               <div className="w-16 h-1 bg-primary mx-auto"></div>
             </div>
+      {/* Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
+      <div className="relative z-10">
+        <div className="container mx-auto px-4">
+          <div
+            className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          >
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Sobre Mim</h2>
+              <div className="w-16 h-1 bg-primary mx-auto"></div>
+            </div>
 
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <div>
+                <h3 className="text-xl font-semibold mb-6">Minha Jornada</h3>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Tenho 17 anos e estou iniciando a graduação em Ciência da
+                  Computação na UniCEUB.
+                </p>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Já tenho experiência prática com programação, com foco em
+                  desenvolvimento web e jogos.
+                </p>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Ao longo do último ano, desenvolvi 3 projetos web completos e
+                  alguns jogos como forma de aprimorar meu conhecimento em lógica
+                  de programação, bibliotecas e ferramentas modernas.
+                </p>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Estou sempre buscando aprender mais, melhorar meus códigos e
+                  construir soluções reais.
+                </p>
+                <p className="text-lg text-muted-foreground">
+                  Atualmente estudo algoritmos e resolução de problemas com foco
+                  em entrevistas técnicas. Meu objetivo é evoluir como
+                  desenvolvedor e, no futuro, conquistar uma vaga em uma grande
+                  empresa de tecnologia.
+                </p>
+              </div>
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
                 <h3 className="text-xl font-semibold mb-6">Minha Jornada</h3>
@@ -718,7 +821,7 @@ const TimelineSection = () => {
       date: "1º Semestre 2026 - Futuro Próximo",
       title: "Objetivos & Metas",
       description:
-        "Conquistar posição em empresa de tecnologia e continuar evoluindo como desenvolvedor.",
+        "Conquistar posi��ão em empresa de tecnologia e continuar evoluindo como desenvolvedor.",
       icon: "🎯",
       color: "from-orange-500 to-red-500",
       achievements: [
@@ -730,6 +833,7 @@ const TimelineSection = () => {
     },
     {
       date: "2º Semestre 2025 - Presente",
+      title: "Universidade & Especialização",
       title: "Universidade & Especialização",
       description:
         "Iniciei Ciência da Computação na UniCEUB e estudo algoritmos para entrevistas técnicas.",
@@ -1377,6 +1481,21 @@ const ContactSection = () => {
                     </div>
                     <div className="text-sm text-muted-foreground">
                       20/09/2007
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Phone Card */}
+              <div className="group">
+                <div className="flex items-center p-4 rounded-lg border border-muted bg-card">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-900/20 mr-4">
+                    <span className="text-cyan-600 dark:text-cyan-400">📞</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-foreground">Telefone</div>
+                    <div className="text-sm text-muted-foreground">
+                      +55 (61) 99309-6847
                     </div>
                   </div>
                 </div>
