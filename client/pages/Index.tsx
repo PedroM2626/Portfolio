@@ -356,7 +356,7 @@ const HomeSection = () => {
               <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium mx-auto">
                 <span>Seja bem-vindo ao meu portfólio!</span>
                 {jobComplete && (
-                  <span className="animate-wave inline-block">👋</span>
+                  <span className="animate-wave inline-block text-4xl md:text-5xl leading-none">👋</span>
                 )}
               </div>
 
@@ -405,7 +405,7 @@ const HomeSection = () => {
             {/* Right Column - Profile Image */}
             <div className="flex justify-center lg:justify-end lg:pr-12">
               <div className="relative flex flex-col">
-                <div className="w-80 h-80 rounded-full overflow-hidden border-4 shadow-2xl flex flex-col border-white/30">
+                <div className="w-80 h-80 rounded-full overflow-hidden border-4 shadow-2xl flex flex-col border-purple-600 dark:border-purple-400">
                   <img
                     src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
                     alt="Pedro Morato"
