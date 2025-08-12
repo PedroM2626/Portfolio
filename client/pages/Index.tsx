@@ -314,7 +314,7 @@ const HomeSection = () => {
     isVisible,
   );
   const { displayedText: jobText, isComplete: jobComplete } = useTypingEffect(
-    "Desenvolvedor de Software",
+    "Desenvolvedor Independente",
     150,
     isVisible && nameComplete,
   );
