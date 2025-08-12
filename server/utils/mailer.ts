@@ -86,21 +86,18 @@ export async function sendContactEmail(payload: ContactPayload) {
     <div style="font-family: Arial, sans-serif; line-height: 1.6;">
       <h2>Novo contato do portfólio</h2>
       <p><strong>Nome:</strong> ${escapeHtml(payload.name)}</p>
-      <p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
-      <p><strong>Assunto:</strong> ${escapeHtml(payload.subject)}</p>
       <p><strong>Mensagem:</strong></p>
       <pre style="white-space: pre-wrap">${escapeHtml(payload.message)}</pre>
-      <hr />
-      <p style="color:#777">Enviado em ${new Date().toLocaleString()}</p>
     </div>
   `;
 
   const info = await transporter.sendMail({
     from: cfg.from,
     to: cfg.to,
+    cc: payload.email,
     replyTo: `${payload.name} <${payload.email}>`,
     subject: `[Portfolio] ${payload.subject}`,
-    text: `Nome: ${payload.name}\nEmail: ${payload.email}\nAssunto: ${payload.subject}\n\n${payload.message}`,
+    text: `Nome: ${payload.name}\n\nMensagem:\n${payload.message}`,
     html,
   });
 
