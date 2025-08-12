@@ -1320,7 +1320,8 @@ const ContactSection = () => {
         alert("Mensagem enviada com sucesso!");
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
-        throw new Error("Erro ao enviar mensagem");
+        const errText = await response.text();
+        throw new Error(errText || "Erro ao enviar mensagem");
       }
     } catch (error) {
       console.error("Error sending message:", error);
