@@ -1516,7 +1516,7 @@ const ContactSection = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full h-12 text-base font-medium bg-primary hover:bg-primary/90 text-primary-foreground"
+                className="w-full h-12 text-base font-medium bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)] transform hover:-translate-y-0.5"
               >
                 {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
               </Button>
