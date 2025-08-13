@@ -356,7 +356,7 @@ const HomeSection = () => {
               <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium mx-auto">
                 <span>Seja bem-vindo ao meu portfólio!</span>
                 {jobComplete && (
-                  <span className="animate-wave inline-block text-4xl md:text-5xl leading-none">👋</span>
+                  <span className="animate-wave inline-block text-4xl md:text-5xl leading-none">���</span>
                 )}
               </div>
 
@@ -1225,45 +1225,45 @@ const ProjectsSection = () => {
                       Links do Projeto
                     </h4>
                     <div className="flex flex-wrap gap-3">
-                      <Button asChild className="flex-1 min-w-[140px]">
-                        <a
-                          href={selectedProject.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github className="h-4 w-4 mr-2" />
-                          Repositório
-                        </a>
-                      </Button>
-                      <Button
-                        variant="outline"
-                        asChild
-                        className="flex-1 min-w-[140px]"
+                    <Button asChild className="flex-1 min-w-[140px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)] transform hover:-translate-y-0.5">
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <a
-                          href={selectedProject.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          Demo Ao Vivo
-                        </a>
-                      </Button>
-                      <Button
-                        variant="outline"
-                        asChild
-                        className="flex-1 min-w-[140px]"
+                        <Github className="h-4 w-4 mr-2" />
+                        Repositório
+                      </a>
+                    </Button>
+                    <Button
+                      variant="outline"
+                      asChild
+                      className="flex-1 min-w-[140px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transform hover:-translate-y-0.5"
+                    >
+                      <a
+                        href={selectedProject.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <a
-                          href={selectedProject.demoVideo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Play className="h-4 w-4 mr-2" />
-                          Vídeo no youtube
-                        </a>
-                      </Button>
-                    </div>
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        Demo Ao Vivo
+                      </a>
+                    </Button>
+                    <Button
+                      variant="outline"
+                      asChild
+                      className="flex-1 min-w-[140px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] transform hover:-translate-y-0.5"
+                    >
+                      <a
+                        href={selectedProject.demoVideo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Play className="h-4 w-4 mr-2" />
+                        Vídeo no youtube
+                      </a>
+                    </Button>
+                  </div>
                   </div>
                 </div>
               )}
