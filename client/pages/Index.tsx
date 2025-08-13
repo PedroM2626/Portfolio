@@ -356,7 +356,7 @@ const HomeSection = () => {
               <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium mx-auto">
                 <span>Seja bem-vindo ao meu portfólio!</span>
                 {jobComplete && (
-                  <span className="animate-wave inline-block text-4xl md:text-5xl leading-none">���</span>
+                  <span className="animate-wave inline-block text-4xl md:text-5xl leading-none">👋</span>
                 )}
               </div>
 
@@ -1019,13 +1019,13 @@ const ProjectsSection = () => {
                     );
                   })}
                   <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={clearAllFilters}
-                    className="h-7 px-2 text-xs"
-                  >
-                    Limpar todos
-                  </Button>
+                  variant="outline"
+                  size="sm"
+                  onClick={clearAllFilters}
+                  className="h-7 px-2 text-xs transition-all duration-300 hover:shadow-[0_0_15px_rgba(156,163,175,0.4)] transform hover:-translate-y-0.5"
+                >
+                  Limpar todos
+                </Button>
                 </div>
               )}
 
