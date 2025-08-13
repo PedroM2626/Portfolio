@@ -356,7 +356,9 @@ const HomeSection = () => {
               <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium mx-auto">
                 <span>Seja bem-vindo ao meu portfólio!</span>
                 {jobComplete && (
-                  <span className="animate-wave inline-block text-4xl md:text-5xl leading-none">👋</span>
+                  <span className="animate-wave inline-block text-4xl md:text-5xl leading-none">
+                    👋
+                  </span>
                 )}
               </div>
 
@@ -364,41 +366,41 @@ const HomeSection = () => {
               <div className="flex flex-col items-center gap-4">
                 <div className="flex items-center gap-4">
                   <a
-                  href="https://github.com/PedroM2626"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transform hover:-translate-y-0.5"
-                >
-                  <Github className="h-4 w-4" />
-                  <span className="font-medium">GitHub</span>
-                </a>
-                <a
-                  href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transform hover:-translate-y-0.5"
-                >
-                  <Linkedin className="h-4 w-4" />
-                  <span className="font-medium">LinkedIn</span>
-                </a>
-                <a
-                  href="mailto:pedromoratolahoz@gmail.com"
-                  className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] transform hover:-translate-y-0.5"
-                >
-                  <Mail className="h-4 w-4" />
-                  <span className="font-medium">Email</span>
-                </a>
-              </div>
+                    href="https://github.com/PedroM2626"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transform hover:-translate-y-0.5"
+                  >
+                    <Github className="h-4 w-4" />
+                    <span className="font-medium">GitHub</span>
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transform hover:-translate-y-0.5"
+                  >
+                    <Linkedin className="h-4 w-4" />
+                    <span className="font-medium">LinkedIn</span>
+                  </a>
+                  <a
+                    href="mailto:pedromoratolahoz@gmail.com"
+                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] transform hover:-translate-y-0.5"
+                  >
+                    <Mail className="h-4 w-4" />
+                    <span className="font-medium">Email</span>
+                  </a>
+                </div>
 
-              {/* Download Resume Button - Centralizado */}
-              <a
-                href="/resume.pdf"
-                download
-                className="px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
-              >
-                <Download className="h-4 w-4" />
-                <span>Baixar Currículo</span>
-              </a>
+                {/* Download Resume Button - Centralizado */}
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
+                >
+                  <Download className="h-4 w-4" />
+                  <span>Baixar Currículo</span>
+                </a>
               </div>
             </div>
 
@@ -635,8 +637,8 @@ const AboutSection = () => {
                 </p>
                 <p className="text-lg text-muted-foreground mb-6">
                   Ao longo do último ano, desenvolvi 3 projetos web completos e
-                  alguns jogos como forma de aprimorar meu conhecimento em lógica
-                  de programação, bibliotecas e ferramentas modernas.
+                  alguns jogos como forma de aprimorar meu conhecimento em
+                  lógica de programação, bibliotecas e ferramentas modernas.
                 </p>
                 <p className="text-lg text-muted-foreground mb-6">
                   Estou sempre buscando aprender mais, melhorar meus códigos e
@@ -651,7 +653,9 @@ const AboutSection = () => {
               </div>
 
               <div className="flex flex-col w-full">
-                <h3 className="text-xl font-semibold mb-6">Tecnologias que eu já utilizei</h3>
+                <h3 className="text-xl font-semibold mb-6">
+                  Tecnologias que eu já utilizei
+                </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 justify-items-center">
                   {techStack.map((tech, index) => {
                     const techInfo = getTechInfo(tech);
@@ -677,7 +681,9 @@ const AboutSection = () => {
                             alt={tech}
                             className="w-4 h-4 sm:w-6 sm:h-6"
                             onError={(e) => {
-                              (e.currentTarget as HTMLImageElement).style.display = "none";
+                              (
+                                e.currentTarget as HTMLImageElement
+                              ).style.display = "none";
                             }}
                           />
                         ) : (
@@ -1019,13 +1025,13 @@ const ProjectsSection = () => {
                     );
                   })}
                   <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={clearAllFilters}
-                  className="h-7 px-2 text-xs transition-all duration-300 hover:shadow-[0_0_15px_rgba(156,163,175,0.4)] transform hover:-translate-y-0.5"
-                >
-                  Limpar todos
-                </Button>
+                    variant="outline"
+                    size="sm"
+                    onClick={clearAllFilters}
+                    className="h-7 px-2 text-xs transition-all duration-300 hover:shadow-[0_0_15px_rgba(156,163,175,0.4)] transform hover:-translate-y-0.5"
+                  >
+                    Limpar todos
+                  </Button>
                 </div>
               )}
 
@@ -1225,45 +1231,48 @@ const ProjectsSection = () => {
                       Links do Projeto
                     </h4>
                     <div className="flex flex-wrap gap-3">
-                    <Button asChild className="flex-1 min-w-[140px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)] transform hover:-translate-y-0.5">
-                      <a
-                        href={selectedProject.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Button
+                        asChild
+                        className="flex-1 min-w-[140px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)] transform hover:-translate-y-0.5"
                       >
-                        <Github className="h-4 w-4 mr-2" />
-                        Repositório
-                      </a>
-                    </Button>
-                    <Button
-                      variant="outline"
-                      asChild
-                      className="flex-1 min-w-[140px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transform hover:-translate-y-0.5"
-                    >
-                      <a
-                        href={selectedProject.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        <a
+                          href={selectedProject.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="h-4 w-4 mr-2" />
+                          Repositório
+                        </a>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        asChild
+                        className="flex-1 min-w-[140px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transform hover:-translate-y-0.5"
                       >
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        Demo Ao Vivo
-                      </a>
-                    </Button>
-                    <Button
-                      variant="outline"
-                      asChild
-                      className="flex-1 min-w-[140px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] transform hover:-translate-y-0.5"
-                    >
-                      <a
-                        href={selectedProject.demoVideo}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        <a
+                          href={selectedProject.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="h-4 w-4 mr-2" />
+                          Demo Ao Vivo
+                        </a>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        asChild
+                        className="flex-1 min-w-[140px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] transform hover:-translate-y-0.5"
                       >
-                        <Play className="h-4 w-4 mr-2" />
-                        Vídeo no youtube
-                      </a>
-                    </Button>
-                  </div>
+                        <a
+                          href={selectedProject.demoVideo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Play className="h-4 w-4 mr-2" />
+                          Vídeo no youtube
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               )}
