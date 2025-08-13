@@ -292,7 +292,7 @@ const BackToTop = () => {
 
   return (
     <Button
-      className={`fixed bottom-8 right-8 z-50 transition-opacity duration-300 ${
+      className={`fixed bottom-8 right-8 z-50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)] transform hover:-translate-y-0.5 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       onClick={scrollToTop}
