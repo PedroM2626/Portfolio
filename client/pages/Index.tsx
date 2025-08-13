@@ -364,41 +364,41 @@ const HomeSection = () => {
               <div className="flex flex-col items-center gap-4">
                 <div className="flex items-center gap-4">
                   <a
-                    href="https://github.com/PedroM2626"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                  >
-                    <Github className="h-4 w-4" />
-                    <span className="font-medium">GitHub</span>
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                  >
-                    <Linkedin className="h-4 w-4" />
-                    <span className="font-medium">LinkedIn</span>
-                  </a>
-                  <a
-                    href="mailto:pedromoratolahoz@gmail.com"
-                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                  >
-                    <Mail className="h-4 w-4" />
-                    <span className="font-medium">Email</span>
-                  </a>
-                </div>
-
-                {/* Download Resume Button - Centralizado */}
-                <a
-                  href="/resume.pdf"
-                  download
-                  className="px-8 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-medium"
+                  href="https://github.com/PedroM2626"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transform hover:-translate-y-0.5"
                 >
-                  <Download className="h-4 w-4" />
-                  <span>Baixar Currículo</span>
+                  <Github className="h-4 w-4" />
+                  <span className="font-medium">GitHub</span>
                 </a>
+                <a
+                  href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transform hover:-translate-y-0.5"
+                >
+                  <Linkedin className="h-4 w-4" />
+                  <span className="font-medium">LinkedIn</span>
+                </a>
+                <a
+                  href="mailto:pedromoratolahoz@gmail.com"
+                  className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] transform hover:-translate-y-0.5"
+                >
+                  <Mail className="h-4 w-4" />
+                  <span className="font-medium">Email</span>
+                </a>
+              </div>
+
+              {/* Download Resume Button - Centralizado */}
+              <a
+                href="/resume.pdf"
+                download
+                className="px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
+              >
+                <Download className="h-4 w-4" />
+                <span>Baixar Currículo</span>
+              </a>
               </div>
             </div>
 
