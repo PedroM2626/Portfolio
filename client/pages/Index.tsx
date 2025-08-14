@@ -279,8 +279,8 @@ const HomeSection = () => {
             </div>
           </div>
         </div>
-      {/* Scroll Down Indicator - Bottom */}
-      <div className="fixed left-0 right-0 bottom-8 flex justify-center pointer-events-none z-40">
+      {/* Scroll Down Indicator - Absolute in HomeSection */}
+      <div className="absolute left-0 right-0 bottom-8 flex justify-center pointer-events-none z-40">
         <div
           className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity pointer-events-auto"
           onClick={() =>
@@ -1138,7 +1138,7 @@ const ProjectsSection = () => {
                       <Button
                         variant="outline"
                         asChild
-                        className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
+                        className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(236,72,153,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
                       >
                         <a
                           href={selectedProject.live}
@@ -1152,7 +1152,7 @@ const ProjectsSection = () => {
                       <Button
                         variant="outline"
                         asChild
-                        className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
+                        className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
                       >
                         <a
                           href={selectedProject.demoVideo}
