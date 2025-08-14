@@ -1,3 +1,37 @@
+// Função utilitária para pegar cor do gradiente Tailwind
+function getTailwindColor(color) {
+  switch (color) {
+    case 'yellow-400': return '#facc15';
+    case 'orange-500': return '#f97316';
+    case 'purple-500': return '#a855f7';
+    case 'pink-500': return '#ec4899';
+    case 'green-400': return '#4ade80';
+    case 'cyan-500': return '#06b6d4';
+    case 'blue-500': return '#3b82f6';
+    case 'purple-600': return '#9333ea';
+    case 'blue-600': return '#2563eb';
+    case 'purple-400': return '#c084fc';
+    case 'pink-400': return '#f472b6';
+    case 'purple-900': return '#6d28d9';
+    case 'blue-900': return '#1e3a8a';
+    case 'indigo-900': return '#312e81';
+    default: return '#a855f7';
+  }
+}
+
+// Função utilitária para pegar cor da sombra
+function getBoxShadowColor(iconColor) {
+  if (iconColor.includes('from-yellow-400')) return '#facc15';
+  if (iconColor.includes('from-orange-500')) return '#f97316';
+  if (iconColor.includes('from-purple-500')) return '#a855f7';
+  if (iconColor.includes('from-pink-500')) return '#ec4899';
+  if (iconColor.includes('from-green-400')) return '#4ade80';
+  if (iconColor.includes('from-cyan-500')) return '#06b6d4';
+  if (iconColor.includes('from-blue-500')) return '#3b82f6';
+  if (iconColor.includes('from-purple-600')) return '#9333ea';
+  if (iconColor.includes('from-blue-600')) return '#2563eb';
+  return '#a855f7';
+}
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -312,14 +346,26 @@ const HomeSection = () => {
                 </div>
 
                 {/* Download Resume Button - Centralizado */}
-                <a
-                  href="/resume.pdf"
-                  download
-                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 font-medium border-0 mt-2"
-                >
-                  <Download className="h-4 w-4" />
-                  <span>Baixar Currículo</span>
-                </a>
+                    <a
+                      href="/resume.pdf"
+                      download
+                      className="px-8 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-blue-400 text-white transition-all duration-300 flex items-center gap-2 font-medium border-0 mt-2"
+                      style={{
+                        boxShadow: "0 0 24px 0px #ec4899, 0 0 24px 0px #3b82f6",
+                        transition: "box-shadow 0.3s, transform 0.3s"
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.boxShadow = "0 0 48px 0px #ec4899, 0 0 48px 0px #3b82f6";
+                        e.currentTarget.style.transform = "translateY(-4px)";
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.boxShadow = "0 0 24px 0px #ec4899, 0 0 24px 0px #3b82f6";
+                        e.currentTarget.style.transform = "translateY(0)";
+                      }}
+                    >
+                      <Download className="h-4 w-4" />
+                      <span style={{ color: "white" }}>Baixar Currículo</span>
+                    </a>
               </div>
             </div>
 
@@ -376,11 +422,15 @@ const BackToTop = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  const { theme } = useTheme();
+  const gradient = theme === 'dark'
+    ? 'bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900'
+    : 'bg-gradient-to-r from-purple-300 via-blue-300 to-indigo-300';
   return (
     <Button
       className={`fixed bottom-10 right-10 z-50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-      } h-16 w-16 text-3xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0`}
+      } h-16 w-16 text-3xl ${gradient} text-white border-0`}
       onClick={scrollToTop}
       style={{ fontSize: "2rem" }}
     >
@@ -612,16 +662,10 @@ const AboutSection = () => {
                     return (
                       <div
                         key={`${tech}-${animationKey}`}
-                        className={`${
-                          isGit
-                            ? "bg-red-500/15 text-white border-2 border-red-500"
-                            : getTechTransparentStyle(tech)
-                        } p-2 sm:p-3 rounded-full flex flex-row items-center justify-center text-center transform transition-all duration-300 hover:scale-110 gap-2 w-full max-w-[140px] min-h-[40px] font-light cursor-pointer`}
+                        className={`${isGit ? "bg-red-500/15 text-white border-2 border-red-500" : getTechTransparentStyle(tech)} p-2 sm:p-3 rounded-full flex flex-row items-center justify-center text-center transform transition-all duration-300 hover:scale-110 gap-2 w-full max-w-[140px] min-h-[40px] font-light cursor-pointer`}
                         style={{
                           animationDelay: isVisible ? `${index * 50}ms` : "0ms",
-                          animation: isVisible
-                            ? "slideInRight 0.6s ease-out forwards"
-                            : "none",
+                          animation: isVisible ? "slideInRight 0.6s ease-out forwards" : "none"
                         }}
                       >
                         {techInfo.icon.startsWith("https://") ? (
@@ -630,9 +674,7 @@ const AboutSection = () => {
                             alt={tech}
                             className="w-4 h-4 sm:w-6 sm:h-6"
                             onError={(e) => {
-                              (
-                                e.currentTarget as HTMLImageElement
-                              ).style.display = "none";
+                              e.currentTarget.style.display = "none";
                             }}
                           />
                         ) : (
@@ -668,6 +710,7 @@ const TimelineSection = () => {
     }
   }, [isVisible]);
 
+  // Definição dos períodos para cor do ícone
   const timelineItems = [
     {
       date: "1º Semestre 2026 - Futuro Próximo",
@@ -675,7 +718,8 @@ const TimelineSection = () => {
       description:
         "Conquistar posição em empresa de tecnologia e continuar evoluindo como desenvolvedor.",
       icon: "🎯",
-      color: "from-orange-500 to-red-500",
+      iconColor: "bg-gradient-to-r from-yellow-400 to-orange-500 text-transparent bg-clip-text", // Futuro
+      dotColor: "bg-gradient-to-r from-yellow-400 to-orange-500",
       achievements: [
         "Estágio em tech",
         "Contribuições open source",
@@ -689,7 +733,8 @@ const TimelineSection = () => {
       description:
         "Iniciei Ciência da Computação na UniCEUB e estudo algoritmos para entrevistas técnicas.",
       icon: "🎓",
-      color: "from-purple-500 to-pink-500",
+      iconColor: "bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text", // Presente
+      dotColor: "bg-gradient-to-r from-purple-500 to-pink-500",
       achievements: [
         "Início da graduação em Ciência da Computação",
         "Algoritmos avançados",
@@ -703,7 +748,8 @@ const TimelineSection = () => {
       description:
         "Expandi conhecimentos com React, Flask, banco de dados e desenvolvi 3 projetos web. Explorei plataformas low/no code como flutterflow.",
       icon: "⚛️",
-      color: "from-cyan-500 to-green-500",
+      iconColor: "bg-gradient-to-r from-green-400 to-cyan-500 text-transparent bg-clip-text", // Passado
+      dotColor: "bg-gradient-to-r from-green-400 to-cyan-500",
       achievements: [
         "React",
         "Flask (Python)",
@@ -718,7 +764,8 @@ const TimelineSection = () => {
       description:
         "Comecei a aprender programação com Python como minha primeira linguagem, estudando lógica de programação e desenvolvimento web básico. Também aprendi sobre desenvolvimento de jogos e desenvolvi projetos na unreal, unity, godot e roblox studio.",
       icon: "🚀",
-      color: "from-blue-500 to-purple-500",
+      iconColor: "bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text", // Passado
+      dotColor: "bg-gradient-to-r from-blue-500 to-purple-500",
       achievements: [
         "Python (primeira linguagem)",
         "Lógica de programação",
@@ -746,71 +793,158 @@ const TimelineSection = () => {
             1 ano de experiência, aprendizado e evolução como desenvolvedor
           </p>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-8 md:left-1/2 transform md:-translate-x-0.5 h-full w-0.5 bg-gradient-to-b from-orange-500 via-purple-500 via-cyan-500 to-blue-500"></div>
+          {/* Distribuição em duas colunas com linha gradiente central */}
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+            {/* Linha gradiente central vertical */}
+            <div className="hidden md:block absolute left-1/2 top-0 h-full w-1 -translate-x-1/2 bg-gradient-to-b from-orange-400 via-purple-500 via-cyan-500 to-blue-500 rounded-full z-0" />
 
-              {timelineItems.map((item, index) => (
-                <div
-                  key={`${item.date}-${animationKey}`}
-                  className={`relative flex items-center mb-16 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
-                  style={{
-                    animationDelay: isVisible ? `${index * 200}ms` : "0ms",
-                    animation: isVisible
-                      ? "slideInTimeline 0.8s ease-out forwards"
-                      : "none",
-                  }}
-                >
-                  {/* Timeline Dot */}
+            {/* Coluna esquerda */}
+            <div className="flex flex-col gap-8 z-10">
+              {timelineItems.filter((_, i) => i % 2 === 0).map((item, index) => (
+                <div key={`${item.date}-${animationKey}-left`} className="relative">
                   <div
-                    className={`absolute left-8 md:left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center text-2xl shadow-lg z-10`}
+                    className={`bg-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1 border-[2px]`}
+                    style={{
+                      borderImage: (() => {
+                        const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
+                        if (match) {
+                          const from = getTailwindColor(match[1]);
+                          const to = getTailwindColor(match[2]);
+                          return `linear-gradient(90deg, ${from}, ${to}) 1`;
+                        }
+                        return 'linear-gradient(90deg, #a855f7, #2563eb) 1';
+                      })(),
+                      borderImageSlice: 1,
+                      borderWidth: '2px',
+                      borderStyle: 'solid',
+                      boxShadow: `0 0 16px 0px ${getBoxShadowColor(item.iconColor)}`,
+                      transition: 'box-shadow 0.3s',
+                      borderRadius: '1rem', // rounded-2xl
+                    }}
+                    onMouseEnter={e => {
+                      const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
+                      let from = '#a855f7', to = '#2563eb';
+                      if (match) {
+                        from = getTailwindColor(match[1]);
+                        to = getTailwindColor(match[2]);
+                      }
+                      e.currentTarget.style.boxShadow = `0 0 32px 0px ${getBoxShadowColor(item.iconColor)}`;
+                      e.currentTarget.style.borderImage = `linear-gradient(90deg, ${from}, ${to}) 1`;
+                    }}
+                    onMouseLeave={e => {
+                      const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
+                      let from = '#a855f7', to = '#2563eb';
+                      if (match) {
+                        from = getTailwindColor(match[1]);
+                        to = getTailwindColor(match[2]);
+                      }
+                      e.currentTarget.style.boxShadow = `0 0 16px 0px ${getBoxShadowColor(item.iconColor)}`;
+                      e.currentTarget.style.borderImage = `linear-gradient(90deg, ${from}, ${to}) 1`;
+                    }}
                   >
-                    {item.icon}
+                    <h3 className={`text-xl font-bold mb-3 flex items-center gap-3`}>
+                      <span className={`w-7 h-7 rounded-full bg-background flex items-center justify-center text-lg shadow-lg border-4 border-background`}>
+                        <span className={`bg-clip-text text-transparent ${item.iconColor}`} style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{item.icon}</span>
+                      </span>
+                      <span className={`bg-clip-text text-transparent ${item.iconColor}`} style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{item.title}</span>
+                    </h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      {item.description}
+                    </p>
+                    {/* Achievements */}
+                    <div className="space-y-2">
+                      <h4 className="text-sm font-semibold text-foreground mb-2">
+                        Principais Conquistas:
+                      </h4>
+                      <div className="grid grid-cols-1 gap-2">
+                        {item.achievements.map((achievement, achievementIndex) => (
+                          <div key={achievementIndex} className="flex items-center text-sm text-muted-foreground">
+                            <span className={`w-1.5 h-1.5 rounded-full mr-3 flex-shrink-0 ${item.dotColor}`}></span>
+                            {achievement}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
+                </div>
+              ))}
+            </div>
 
-                  {/* Content Card */}
-                  <div
-                    className={`ml-24 md:ml-0 md:w-5/12 ${index % 2 === 0 ? "md:mr-auto md:pr-16" : "md:ml-auto md:pl-16"}`}
-                  >
-                    <div className="bg-card border border-border rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            {/* Coluna direita */}
+            <div className="flex flex-col gap-8 z-10">
+                {timelineItems.filter((_, i) => i % 2 === 1).map((item, index) => (
+                  <div key={`${item.date}-${animationKey}-right`} className="relative">
+                    <div
+                      className={`bg-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1 border-[2px]`}
+                      style={{
+                        borderImage: (() => {
+                          const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
+                          if (match) {
+                            const from = getTailwindColor(match[1]);
+                            const to = getTailwindColor(match[2]);
+                            return `linear-gradient(90deg, ${from}, ${to}) 1`;
+                          }
+                          return 'linear-gradient(90deg, #a855f7, #2563eb) 1';
+                        })(),
+                        borderImageSlice: 1,
+                        borderWidth: '2px',
+                        borderStyle: 'solid',
+                        boxShadow: `0 0 16px 0px ${getBoxShadowColor(item.iconColor)}`,
+                        transition: 'box-shadow 0.3s',
+                        borderRadius: '1rem', // rounded-2xl
+                      }}
+                      onMouseEnter={e => {
+                        const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
+                        let from = '#a855f7', to = '#2563eb';
+                        if (match) {
+                          from = getTailwindColor(match[1]);
+                          to = getTailwindColor(match[2]);
+                        }
+                        e.currentTarget.style.boxShadow = `0 0 32px 0px ${getBoxShadowColor(item.iconColor)}`;
+                        e.currentTarget.style.borderImage = `linear-gradient(90deg, ${from}, ${to}) 1`;
+                      }}
+                      onMouseLeave={e => {
+                        const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
+                        let from = '#a855f7', to = '#2563eb';
+                        if (match) {
+                          from = getTailwindColor(match[1]);
+                          to = getTailwindColor(match[2]);
+                        }
+                        e.currentTarget.style.boxShadow = `0 0 16px 0px ${getBoxShadowColor(item.iconColor)}`;
+                        e.currentTarget.style.borderImage = `linear-gradient(90deg, ${from}, ${to}) 1`;
+                      }}
+                    >
                       <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
+                        <span className={`text-sm font-medium px-3 py-1 rounded-full bg-clip-text text-transparent ${item.iconColor}`} style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                           {item.date}
                         </span>
                       </div>
-
-                      <h3 className="text-xl font-bold mb-3 text-foreground">
-                        {item.title}
+                      <h3 className={`text-xl font-bold mb-3 flex items-center gap-3`}>
+                        <span className={`w-7 h-7 rounded-full bg-background flex items-center justify-center text-lg shadow-lg border-4 border-background`}>
+                          <span className={`bg-clip-text text-transparent ${item.iconColor}`} style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{item.icon}</span>
+                        </span>
+                        <span className={`bg-clip-text text-transparent ${item.iconColor}`} style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{item.title}</span>
                       </h3>
-
                       <p className="text-muted-foreground mb-4 leading-relaxed">
                         {item.description}
                       </p>
-
                       {/* Achievements */}
                       <div className="space-y-2">
                         <h4 className="text-sm font-semibold text-foreground mb-2">
                           Principais Conquistas:
                         </h4>
                         <div className="grid grid-cols-1 gap-2">
-                          {item.achievements.map(
-                            (achievement, achievementIndex) => (
-                              <div
-                                key={achievementIndex}
-                                className="flex items-center text-sm text-muted-foreground"
-                              >
-                                <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0"></div>
-                                {achievement}
-                              </div>
-                            ),
-                          )}
+                          {item.achievements.map((achievement, achievementIndex) => (
+                            <div key={achievementIndex} className="flex items-center text-sm text-muted-foreground">
+                              <span className={`w-1.5 h-1.5 rounded-full mr-3 flex-shrink-0 ${item.dotColor}`}></span>
+                              {achievement}
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         </div>
@@ -919,7 +1053,7 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="py-20 relative" data-reveal>
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
+  <div className="absolute inset-0 bg-gradient-to-r from-purple-300 via-blue-300 to-indigo-300 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
       <div className="container mx-auto px-4 relative z-10">
         <div
           key={`projects-${animationKey}`}
@@ -1035,6 +1169,12 @@ const ProjectsSection = () => {
               <Card
                 key={project.id}
                 className="cursor-pointer hover:shadow-lg transition-shadow"
+                style={{
+                  background: "linear-gradient(135deg, #f3c6ff 0%, #aee2ff 100%)",
+                  borderRadius: "1rem",
+                  position: "relative",
+                  zIndex: 1
+                }}
                 onClick={() => setSelectedProject(project)}
               >
                 <CardHeader>
@@ -1054,11 +1194,7 @@ const ProjectsSection = () => {
                       return (
                         <div
                           key={tech}
-                          className={`${
-                            isGit
-                              ? "bg-red-500/15 text-white border border-red-500"
-                              : getTechTransparentStyle(tech)
-                          } px-3 py-1 rounded-full text-xs font-medium flex items-center space-x-1`}
+                          className={`${isGit ? "bg-red-500/15 text-white border border-red-500" : getTechTransparentStyle(tech)} px-3 py-1 rounded-full text-xs font-medium flex items-center space-x-1`}
                         >
                           {techInfo.icon.startsWith("https://") ? (
                             <img
@@ -1151,7 +1287,7 @@ const ProjectsSection = () => {
                         return (
                           <div
                             key={tech}
-                            className={`${
+                            className={`$${
                               isGit
                                 ? "bg-red-500/15 text-white border border-red-500"
                                 : getTechTransparentStyle(tech)
@@ -1182,47 +1318,36 @@ const ProjectsSection = () => {
                       Links do Projeto
                     </h4>
                     <div className="flex flex-wrap gap-3">
-                      <Button
-                        asChild
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(147,51,234,0.4)] hover:shadow-[0_0_32px_rgba(147,51,234,0.7)] hover:text-purple-600 transform hover:-translate-y-0.5 font-medium border-0"
+                        style={{ position: 'relative', zIndex: 2 }}
                       >
-                        <a
-                          href={selectedProject.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github className="h-4 w-4 mr-2" />
-                          Repositório
-                        </a>
-                      </Button>
-                      <Button
-                        variant="outline"
-                        asChild
+                        <Github className="h-4 w-4 mr-2" />
+                        Repositório
+                      </a>
+                      <a
+                        href={selectedProject.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-yellow-500 text-white transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_32px_rgba(236,72,153,0.7)] hover:text-purple-600 transform hover:-translate-y-0.5 font-medium border-0"
+                        style={{ position: 'relative', zIndex: 2 }}
                       >
-                        <a
-                          href={selectedProject.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          Demo Ao Vivo
-                        </a>
-                      </Button>
-                      <Button
-                        variant="outline"
-                        asChild
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        Demo Ao Vivo
+                      </a>
+                      <a
+                        href={selectedProject.demoVideo}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-green-500 text-white transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_32px_rgba(16,185,129,0.7)] hover:text-purple-600 transform hover:-translate-y-0.5 font-medium border-0"
+                        style={{ position: 'relative', zIndex: 2 }}
                       >
-                        <a
-                          href={selectedProject.demoVideo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Play className="h-4 w-4 mr-2" />
-                          Vídeo no youtube
-                        </a>
-                      </Button>
+                        <Play className="h-4 w-4 mr-2" />
+                        Vídeo no youtube
+                      </a>
                     </div>
                   </div>
                 </div>
