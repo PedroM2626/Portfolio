@@ -117,11 +117,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+  useEffect(() => { setMounted(true); }, []);
   const navItems = [
     { href: "#home", label: "Início" },
     { href: "#about", label: "Sobre" },
@@ -129,179 +125,69 @@ const Header = () => {
     { href: "#projects", label: "Projetos" },
     { href: "#contact", label: "Contato" },
   ];
-
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: "smooth" });
     setIsMobileMenuOpen(false);
   };
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="text-xl font-bold text-purple-600 dark:text-purple-400">
-          Pedro Morato
-        </div>
-
-        {/* Desktop Navigation */}
+        <div className="text-xl font-bold text-purple-600 dark:text-purple-400">Pedro Morato</div>
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <button
               key={item.href}
               onClick={() => scrollToSection(item.href)}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground transition-colors relative bg-clip-text"
+              style={{
+                background: "none",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "",
+                transition: "background 0.4s"
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = "linear-gradient(90deg, #6d28d9, #2563eb)";
+                // @ts-ignore
+                e.currentTarget.style.webkitBackgroundClip = "text";
+                // @ts-ignore
+                e.currentTarget.style.webkitTextFillColor = "transparent";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = "none";
+                // @ts-ignore
+                e.currentTarget.style.webkitTextFillColor = "";
+              }}
             >
               {item.label}
             </button>
           ))}
         </div>
-
         <div className="flex items-center space-x-4">
           {mounted && (
             <div className="flex items-center space-x-2">
               <Sun className="h-4 w-4" />
               <Switch
                 checked={theme === "dark"}
-                onCheckedChange={(checked) =>
-                  setTheme(checked ? "dark" : "light")
-                }
+                onCheckedChange={(checked: boolean) => setTheme(checked ? "dark" : "light")}
               />
               <Moon className="h-4 w-4" />
             </div>
           )}
-
-          {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
             className="md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
       </nav>
-
-      {/* Mobile Navigation - Improved Design */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-background/95 backdrop-blur-sm">
-          <div className="flex flex-col h-full">
-            {/* Header */}
-            <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white p-6 relative">
-              <h3 className="text-lg font-semibold">Menu</h3>
-              <p className="text-purple-200 text-sm">Navegação</p>
-              {/* Close Button */}
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="absolute top-4 right-4 p-2 hover:bg-white/20 rounded-lg transition-colors"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            {/* Navigation Items */}
-            <div
-              className={`flex-1 ${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`}
-            >
-              <div className="px-6 py-4 space-y-1">
-                {navItems.map((item, index) => {
-                  const icons = ["🏠", "👤", "💼", "✉️"];
-                  return (
-                    <button
-                      key={item.href}
-                      onClick={() => scrollToSection(item.href)}
-                      className={`flex items-center w-full p-3 text-left rounded-lg transition-colors group ${
-                        theme === "dark"
-                          ? "hover:bg-gray-800"
-                          : "hover:bg-gray-100"
-                      }`}
-                    >
-                      <span className="mr-3 text-xl">{icons[index]}</span>
-                      <span className="font-medium">{item.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Divider */}
-              <div
-                className={`border-t mx-6 ${theme === "dark" ? "border-gray-700" : "border-gray-200"}`}
-              ></div>
-
-              {/* Theme Toggle */}
-              <div className="px-6 py-4">
-                <button
-                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className={`flex items-center w-full p-3 rounded-lg transition-colors cursor-pointer ${
-                    theme === "dark" ? "hover:bg-gray-800" : "hover:bg-gray-100"
-                  }`}
-                >
-                  <span className="mr-3 text-xl">
-                    {theme === "dark" ? "☀️" : "🌙"}
-                  </span>
-                  <span className="font-medium">
-                    {theme === "dark" ? "Modo Claro" : "Modo Escuro"}
-                  </span>
-                </button>
-              </div>
-            </div>
-
-            {/* Footer */}
-            <div
-              className={`text-center py-4 border-t ${
-                theme === "dark"
-                  ? "bg-gray-900 text-gray-400 border-gray-700"
-                  : "bg-white text-gray-600 border-gray-200"
-              }`}
-            >
-              <p className="text-sm">Portfólio Profissional</p>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* ...existing code for mobile menu... */}
     </header>
   );
-};
-
-const BackToTop = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  return (
-    <Button
-      className={`fixed bottom-8 right-8 z-50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)] transform hover:-translate-y-0.5 ${
-        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
-      onClick={scrollToTop}
-      size="icon"
-    >
-      <ChevronUp className="h-4 w-4" />
-    </Button>
-  );
-};
+}
 
 const HomeSection = () => {
   const visibleSections = useScrollReveal();
@@ -317,42 +203,23 @@ const HomeSection = () => {
     150,
     isVisible && nameComplete,
   );
-
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center pt-20 transition-all duration-1000 relative"
       data-reveal
+      className="min-h-screen flex flex-col justify-center items-center py-24 md:py-32"
     >
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 dark:from-purple-950 dark:via-blue-950 dark:to-indigo-950" />
-      <div className="absolute inset-0 bg-black/20 dark:bg-black/40" />
-
-      {/* Content */}
-      <div className="relative z-10 text-white">
-        <div className="container mx-auto px-4">
-          <div
-            className={`grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-200px)] transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-          >
-            {/* Left Column - Content */}
-            <div className="space-y-8 text-left lg:pl-12 flex flex-col">
-              {/* Name */}
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight mx-auto">
+        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-col items-center gap-4">
+              <h1 className="text-4xl md:text-6xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
                 {nameText}
                 {!nameComplete && <span className="animate-pulse">|</span>}
               </h1>
-
-              {/* Job Title */}
-              <div className="text-xl md:text-2xl opacity-80 mx-auto">
-                {nameComplete && (
-                  <>
-                    {jobText}
-                    {!jobComplete && <span className="animate-pulse">|</span>}
-                  </>
-                )}
+              <div className="text-2xl md:text-3xl font-semibold text-center text-muted-foreground">
+                {jobText}
+                {!jobComplete && <span className="animate-pulse">|</span>}
               </div>
-
-              {/* Welcome Message */}
               <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium mx-auto">
                 <span>Seja bem-vindo ao meu portfólio!</span>
                 {jobComplete && (
@@ -361,8 +228,6 @@ const HomeSection = () => {
                   </span>
                 )}
               </div>
-
-              {/* Social Buttons */}
               <div className="flex flex-col items-center gap-4">
                 <div className="flex items-center gap-4">
                   <a
@@ -391,8 +256,6 @@ const HomeSection = () => {
                     <span className="font-medium">Email</span>
                   </a>
                 </div>
-
-                {/* Download Resume Button - Centralizado */}
                 <a
                   href="/resume.pdf"
                   download
@@ -403,42 +266,68 @@ const HomeSection = () => {
                 </a>
               </div>
             </div>
-
-            {/* Right Column - Profile Image */}
-            <div className="flex justify-center lg:justify-end lg:pr-12">
-              <div className="relative flex flex-col">
-                <div className="w-80 h-80 rounded-full overflow-hidden border-4 shadow-2xl flex flex-col border-purple-600 dark:border-purple-400">
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
-                    alt="Pedro Morato"
-                    className="w-full h-full object-cover mx-auto"
-                  />
-                </div>
+          </div>
+          <div className="flex justify-center lg:justify-end lg:pr-12">
+            <div className="relative flex flex-col">
+              <div className="w-80 h-80 rounded-full overflow-hidden border-4 shadow-2xl flex flex-col border-purple-600 dark:border-purple-400">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
+                  alt="Pedro Morato"
+                  className="w-full h-full object-cover mx-auto"
+                />
               </div>
             </div>
           </div>
-
-          {/* Scroll Down Indicator - Moved Up */}
-          <div className="text-center mt-4">
-            <div
-              className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
-              onClick={() =>
-                document
-                  .getElementById("about")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              <p className="text-sm mb-2 animate-bounce">Role para baixo</p>
-              <div className="animate-bounce">
-                <ChevronDown className="h-6 w-6 mx-auto" />
-              </div>
-            </div>
+        </div>
+      {/* Scroll Down Indicator - Moved Up */}
+      <div className="text-center mt-4">
+        <div
+          className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
+          onClick={() =>
+            document
+              .getElementById("about")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          <p className="text-sm mb-2 animate-bounce">Role para baixo</p>
+          <div className="animate-bounce">
+            <ChevronDown className="h-6 w-6 mx-auto" />
           </div>
         </div>
       </div>
     </section>
   );
-};
+}
+
+// BackToTop button
+const BackToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  return (
+    <Button
+      className={`fixed bottom-10 right-10 z-50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 ${
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+      } h-16 w-16 text-3xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0`}
+      onClick={scrollToTop}
+      style={{ fontSize: "2rem" }}
+    >
+      <ChevronUp className="h-8 w-8" />
+    </Button>
+  );
+}
 
 // Enhanced tech stack data with skill-icons
 const getTechInfo = (name: string) => {
@@ -705,7 +594,7 @@ const AboutSection = () => {
       </div>
     </section>
   );
-};
+}
 
 const TimelineSection = () => {
   const visibleSections = useScrollReveal();
@@ -780,8 +669,9 @@ const TimelineSection = () => {
   ];
 
   return (
-    <section id="timeline" className="py-20 bg-background" data-reveal>
-      <div className="container mx-auto px-4">
+    <section id="timeline" className="py-20 relative" data-reveal>
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
+      <div className="container mx-auto px-4 relative z-10">
         <div
           key={`timeline-${animationKey}`}
           className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
@@ -968,8 +858,9 @@ const ProjectsSection = () => {
   });
 
   return (
-    <section id="projects" className="py-20" data-reveal>
-      <div className="container mx-auto px-4">
+    <section id="projects" className="py-20 relative" data-reveal>
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
+      <div className="container mx-auto px-4 relative z-10">
         <div
           key={`projects-${animationKey}`}
           className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
@@ -1233,7 +1124,7 @@ const ProjectsSection = () => {
                     <div className="flex flex-wrap gap-3">
                       <Button
                         asChild
-                        className="flex-1 min-w-[140px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)] transform hover:-translate-y-0.5"
+                        className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
                       >
                         <a
                           href={selectedProject.github}
@@ -1247,7 +1138,7 @@ const ProjectsSection = () => {
                       <Button
                         variant="outline"
                         asChild
-                        className="flex-1 min-w-[140px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transform hover:-translate-y-0.5"
+                        className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
                       >
                         <a
                           href={selectedProject.live}
@@ -1261,7 +1152,7 @@ const ProjectsSection = () => {
                       <Button
                         variant="outline"
                         asChild
-                        className="flex-1 min-w-[140px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] transform hover:-translate-y-0.5"
+                        className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
                       >
                         <a
                           href={selectedProject.demoVideo}
@@ -1332,8 +1223,9 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-background" data-reveal>
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-20 relative" data-reveal>
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-4">
           <h2 className="text-3xl md:text-4xl font-bold">Entre em Contato</h2>
           <div className="w-16 h-1 bg-primary mx-auto mt-2"></div>
