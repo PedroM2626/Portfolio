@@ -234,7 +234,7 @@ const Header = () => {
       </nav>
       {/* Mobile menu - mais bonito e com ícones, agora responsivo ao tema */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 z-50 animate-fade-in flex flex-col items-center py-8 gap-2 shadow-2xl border-b backdrop-blur-lg bg-gradient-to-br from-purple-100 via-blue-200 to-indigo-200 dark:from-purple-900 dark:via-blue-900 dark:to-indigo-900">
+  <div className="md:hidden absolute top-full left-0 right-0 z-50 animate-fade-in flex flex-col items-center py-8 gap-2 shadow-2xl border-b backdrop-blur-lg bg-gradient-to-br from-purple-100 via-blue-200 to-indigo-200 dark:from-purple-950 dark:via-blue-900 dark:to-indigo-900">
           {navItems.map((item) => (
             <button
               key={item.href}
@@ -276,7 +276,7 @@ const HomeSection = () => {
       <div className="absolute inset-0 pointer-events-none">
         <div className="w-full h-full absolute inset-0 z-0">
           {/* Light theme: purple/blue/indigo, Dark theme: purple-950/blue-950/indigo-950 */}
-          <div className="w-full h-full bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-950 dark:via-blue-950 dark:to-indigo-950 absolute inset-0" />
+          <div className="w-full h-full bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-blue-900/60 dark:via-indigo-900/40 dark:to-purple-900/60 absolute inset-0" />
           <div className="w-full h-full bg-black/10 dark:bg-black/40 absolute inset-0" />
         </div>
       </div>
@@ -612,7 +612,7 @@ const AboutSection = () => {
       data-reveal
     >
       {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
+  <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-indigo-900/70 dark:via-purple-900/40 dark:to-blue-900/70" />
       <div className="relative z-10">
         <div className="container mx-auto px-4">
           <div
@@ -777,7 +777,7 @@ const TimelineSection = () => {
 
   return (
     <section id="timeline" className="py-20 relative" data-reveal>
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
+  <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-pink-900/40 dark:via-purple-900/60 dark:to-blue-900/40" />
       <div className="container mx-auto px-4 relative z-10">
         <div
           key={`timeline-${animationKey}`}
@@ -1175,7 +1175,7 @@ const ProjectsSection = () => {
                 key={project.id}
                 className={
                   `cursor-pointer hover:shadow-lg transition-shadow rounded-2xl ` +
-                  `bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900 dark:via-blue-900 dark:to-indigo-900`
+                  `bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-green-900/40 dark:via-blue-900/60 dark:to-purple-900/40`
                 }
                 style={{ position: "relative", zIndex: 1 }}
                 onClick={() => setSelectedProject(project)}
@@ -1412,7 +1412,7 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="py-20 relative" data-reveal>
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
+  <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-yellow-900/40 dark:via-pink-900/60 dark:to-indigo-900/40" />
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-4">
           <h2 className="text-3xl md:text-4xl font-bold">Entre em Contato</h2>
