@@ -626,7 +626,7 @@ const AboutSection = () => {
 
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
-                <h3 className="text-xl font-semibold mb-6">Minha Jornada</h3>
+                <h3 className="text-xl font-semibold mb-6">Quem sou eu?</h3>
                 <p className="text-lg text-muted-foreground mb-6">
                   Tenho 17 anos e estou iniciando a graduação em Ciência da
                   Computação na UniCEUB.
