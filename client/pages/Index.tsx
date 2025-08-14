@@ -842,6 +842,11 @@ const TimelineSection = () => {
                       e.currentTarget.style.borderImage = `linear-gradient(90deg, ${from}, ${to}) 1`;
                     }}
                   >
+                    <div className="flex items-center justify-between mb-3">
+                      <span className={`text-sm font-medium px-3 py-1 rounded-full bg-clip-text text-transparent ${item.iconColor}`} style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                        {item.date}
+                      </span>
+                    </div>
                     <h3 className={`text-xl font-bold mb-3 flex items-center gap-3`}>
                       <span className={`w-7 h-7 rounded-full bg-background flex items-center justify-center text-lg shadow-lg border-4 border-background`}>
                         <span className={`bg-clip-text text-transparent ${item.iconColor}`} style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{item.icon}</span>
@@ -1168,13 +1173,11 @@ const ProjectsSection = () => {
             {filteredProjects.map((project) => (
               <Card
                 key={project.id}
-                className="cursor-pointer hover:shadow-lg transition-shadow"
-                style={{
-                  background: "linear-gradient(135deg, #f3c6ff 0%, #aee2ff 100%)",
-                  borderRadius: "1rem",
-                  position: "relative",
-                  zIndex: 1
-                }}
+                className={
+                  `cursor-pointer hover:shadow-lg transition-shadow rounded-2xl ` +
+                  `bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900 dark:via-blue-900 dark:to-indigo-900`
+                }
+                style={{ position: "relative", zIndex: 1 }}
                 onClick={() => setSelectedProject(project)}
               >
                 <CardHeader>
