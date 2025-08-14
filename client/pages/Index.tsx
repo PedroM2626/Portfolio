@@ -279,10 +279,10 @@ const HomeSection = () => {
             </div>
           </div>
         </div>
-      {/* Scroll Down Indicator - Moved Up */}
-      <div className="text-center mt-4">
+      {/* Scroll Down Indicator - Bottom */}
+      <div className="fixed left-0 right-0 bottom-8 flex justify-center pointer-events-none z-40">
         <div
-          className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
+          className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity pointer-events-auto"
           onClick={() =>
             document
               .getElementById("about")
@@ -1284,19 +1284,23 @@ const ContactSection = () => {
               </div>
 
               {/* Phone Card */}
-              <div className="group">
-                <div className="flex items-center p-4 rounded-lg border border-muted bg-card">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-900/20 mr-4">
-                    <span className="text-cyan-600 dark:text-cyan-400">📞</span>
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-medium text-foreground">Telefone</div>
-                    <div className="text-sm text-muted-foreground">
-                      +55 (61) 99309-6847
-                    </div>
+              <a
+                href="https://wa.me/5561993096847"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center p-4 rounded-lg border border-muted bg-card hover:border-green-500 transition-all duration-300 hover:shadow-md"
+              >
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-cyan-600 dark:text-cyan-400">📞</span>
+                </div>
+                <div className="flex-1">
+                  <div className="font-medium text-foreground">Telefone</div>
+                  <div className="text-sm text-muted-foreground">
+                    +55 (61) 99309-6847
                   </div>
                 </div>
-              </div>
+                <ExternalLink className="h-4 w-4 text-green-500 group-hover:text-green-600 transition-colors" />
+              </a>
 
               {/* GitHub Card */}
               <div className="group">
