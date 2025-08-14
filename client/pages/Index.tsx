@@ -256,7 +256,7 @@ const HomeSection = () => {
             {/* Left Column - Content */}
             <div className="space-y-10 text-left lg:pl-16 flex flex-col justify-center">
               {/* Name */}
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight mx-auto text-purple-700 dark:text-purple-400">
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight mx-auto bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                 {nameText}
                 {!nameComplete && <span className="animate-pulse">|</span>}
               </h1>
@@ -288,7 +288,7 @@ const HomeSection = () => {
                     href="https://github.com/PedroM2626"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-purple-700 dark:text-purple-300 hover:bg-white/30 dark:hover:bg-black/40 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transform hover:-translate-y-0.5"
+                    className="px-6 py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-purple-700 dark:text-purple-300 transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_32px_rgba(168,85,247,0.7)] transform hover:-translate-y-0.5 hover:bg-white/30 dark:hover:bg-black/40"
                   >
                     <Github className="h-4 w-4" />
                     <span className="font-medium">GitHub</span>
@@ -297,14 +297,14 @@ const HomeSection = () => {
                     href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-blue-700 dark:text-blue-300 hover:bg-white/30 dark:hover:bg-black/40 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transform hover:-translate-y-0.5"
+                    className="px-6 py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-blue-700 dark:text-blue-300 transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_32px_rgba(59,130,246,0.7)] transform hover:-translate-y-0.5 hover:bg-white/30 dark:hover:bg-black/40"
                   >
                     <Linkedin className="h-4 w-4" />
                     <span className="font-medium">LinkedIn</span>
                   </a>
                   <a
                     href="mailto:pedromoratolahoz@gmail.com"
-                    className="px-6 py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-pink-700 dark:text-pink-300 hover:bg-white/30 dark:hover:bg-black/40 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] transform hover:-translate-y-0.5"
+                    className="px-6 py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-pink-700 dark:text-pink-300 transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_32px_rgba(236,72,153,0.7)] transform hover:-translate-y-0.5 hover:bg-white/30 dark:hover:bg-black/40"
                   >
                     <Mail className="h-4 w-4" />
                     <span className="font-medium">Email</span>
@@ -1184,7 +1184,7 @@ const ProjectsSection = () => {
                     <div className="flex flex-wrap gap-3">
                       <Button
                         asChild
-                        className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
+                        className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(147,51,234,0.4)] hover:shadow-[0_0_32px_rgba(147,51,234,0.7)] hover:text-purple-600 transform hover:-translate-y-0.5 font-medium border-0"
                       >
                         <a
                           href={selectedProject.github}
@@ -1198,7 +1198,7 @@ const ProjectsSection = () => {
                       <Button
                         variant="outline"
                         asChild
-                        className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(236,72,153,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
+                        className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-yellow-500 text-white transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_32px_rgba(236,72,153,0.7)] hover:text-purple-600 transform hover:-translate-y-0.5 font-medium border-0"
                       >
                         <a
                           href={selectedProject.live}
@@ -1212,7 +1212,7 @@ const ProjectsSection = () => {
                       <Button
                         variant="outline"
                         asChild
-                        className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
+                        className="flex-1 min-w-[140px] px-8 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-green-500 text-white transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_32px_rgba(16,185,129,0.7)] hover:text-purple-600 transform hover:-translate-y-0.5 font-medium border-0"
                       >
                         <a
                           href={selectedProject.demoVideo}
@@ -1348,7 +1348,7 @@ const ContactSection = () => {
                 href="https://wa.me/5561993096847"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center p-4 rounded-lg border border-muted bg-card hover:border-green-500 transition-all duration-300 hover:shadow-md"
+                className="group flex items-center p-4 rounded-lg border border-muted bg-card transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_32px_rgba(16,185,129,0.7)] hover:border-green-500 hover:shadow-md"
               >
                 <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
                   <span className="text-cyan-600 dark:text-cyan-400">📞</span>
@@ -1368,7 +1368,7 @@ const ContactSection = () => {
                   href="https://github.com/PedroM2626"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md"
+                  className="flex items-center p-4 rounded-lg border border-muted transition-all duration-300 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_32px_rgba(168,85,247,0.7)] hover:border-primary/50 bg-card hover:shadow-md"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
                     <Github className="h-5 w-5 text-purple-600 dark:text-purple-400 group-hover:text-purple-400 transition-colors" />
@@ -1389,7 +1389,7 @@ const ContactSection = () => {
                   href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md"
+                  className="flex items-center p-4 rounded-lg border border-muted transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_32px_rgba(59,130,246,0.7)] hover:border-primary/50 bg-card hover:shadow-md"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
                     <Linkedin className="h-5 w-5 text-blue-600 dark:text-blue-400 group-hover:text-purple-400 transition-colors" />
@@ -1408,7 +1408,7 @@ const ContactSection = () => {
               <div className="group">
                 <a
                   href="mailto:pedromoratolahoz@gmail.com"
-                  className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md"
+                  className="flex items-center p-4 rounded-lg border border-muted transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_32px_rgba(236,72,153,0.7)] hover:border-primary/50 bg-card hover:shadow-md"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-pink-100 dark:bg-pink-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
                     <Mail className="h-5 w-5 text-pink-600 dark:text-pink-400 group-hover:text-purple-400 transition-colors" />
