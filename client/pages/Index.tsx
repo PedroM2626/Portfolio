@@ -40,6 +40,8 @@ import {
   ExternalLink,
   Play,
   Search,
+  Home,
+  User,
 } from "lucide-react";
 
 // Typing animation hook
@@ -130,6 +132,15 @@ const Header = () => {
     element?.scrollIntoView({ behavior: "smooth" });
     setIsMobileMenuOpen(false);
   };
+  // Ícones para cada item do menu
+  const navIcons = {
+    "Início": <Home className="h-5 w-5 mr-2" />,
+    "Sobre": <User className="h-5 w-5 mr-2" />,
+    "Jornada": <Badge className="h-5 w-5 mr-2" />,
+    "Projetos": <Github className="h-5 w-5 mr-2" />,
+    "Contato": <Mail className="h-5 w-5 mr-2" />,
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -179,12 +190,29 @@ const Header = () => {
             size="icon"
             className="md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Abrir menu"
           >
-            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isMobileMenuOpen
+              ? <X className="h-6 w-6 text-purple-600 dark:text-white" />
+              : <Menu className="h-6 w-6 text-purple-600 dark:text-white" />}
           </Button>
         </div>
       </nav>
-      {/* ...existing code for mobile menu... */}
+      {/* Mobile menu - mais bonito e com ícones, agora responsivo ao tema */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 right-0 z-50 animate-fade-in flex flex-col items-center py-8 gap-2 shadow-2xl border-b backdrop-blur-lg bg-gradient-to-br from-purple-100 via-blue-200 to-indigo-200 dark:from-purple-900 dark:via-blue-900 dark:to-indigo-900">
+          {navItems.map((item) => (
+            <button
+              key={item.href}
+              onClick={() => scrollToSection(item.href)}
+              className="w-11/12 max-w-md flex items-center justify-start text-lg py-3 px-4 rounded-xl text-foreground dark:text-white font-semibold hover:bg-purple-700/80 dark:hover:bg-blue-900/80 hover:scale-[1.04] transition-all duration-200 shadow-lg gap-2 bg-white/70 dark:bg-black/40"
+            >
+              {navIcons[item.label]}
+              {item.label}
+            </button>
+          ))}
+        </div>
+      )}
     </header>
   );
 }
@@ -203,24 +231,48 @@ const HomeSection = () => {
     150,
     isVisible && nameComplete,
   );
+
   return (
     <section
       id="home"
+      className="min-h-screen flex items-center justify-center pt-20 transition-all duration-1000 relative"
       data-reveal
-      className="min-h-screen flex flex-col justify-center items-center py-24 md:py-32"
     >
-        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-col items-center gap-4">
-              <h1 className="text-4xl md:text-6xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
+      {/* Gradient Background - Theme aware */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="w-full h-full absolute inset-0 z-0">
+          {/* Light theme: purple/blue/indigo, Dark theme: purple-950/blue-950/indigo-950 */}
+          <div className="w-full h-full bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-950 dark:via-blue-950 dark:to-indigo-950 absolute inset-0" />
+          <div className="w-full h-full bg-black/10 dark:bg-black/40 absolute inset-0" />
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 text-foreground">
+        <div className="container mx-auto px-4">
+          <div
+            className={`grid lg:grid-cols-2 gap-16 items-center min-h-[calc(100vh-220px)] transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          >
+            {/* Left Column - Content */}
+            <div className="space-y-10 text-left lg:pl-16 flex flex-col justify-center">
+              {/* Name */}
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight mx-auto text-purple-700 dark:text-purple-400">
                 {nameText}
                 {!nameComplete && <span className="animate-pulse">|</span>}
               </h1>
-              <div className="text-2xl md:text-3xl font-semibold text-center text-muted-foreground">
-                {jobText}
-                {!jobComplete && <span className="animate-pulse">|</span>}
+
+              {/* Job Title */}
+              <div className="text-xl md:text-2xl opacity-80 mx-auto text-blue-700 dark:text-blue-300">
+                {nameComplete && (
+                  <>
+                    {jobText}
+                    {!jobComplete && <span className="animate-pulse">|</span>}
+                  </>
+                )}
               </div>
-              <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium mx-auto">
+
+              {/* Welcome Message */}
+              <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium mx-auto text-foreground">
                 <span>Seja bem-vindo ao meu portfólio!</span>
                 {jobComplete && (
                   <span className="animate-wave inline-block text-4xl md:text-5xl leading-none">
@@ -228,13 +280,15 @@ const HomeSection = () => {
                   </span>
                 )}
               </div>
-              <div className="flex flex-col items-center gap-4">
-                <div className="flex items-center gap-4">
+
+              {/* Social Buttons */}
+              <div className="flex flex-col items-center gap-5 mt-2">
+                <div className="flex items-center gap-5">
                   <a
                     href="https://github.com/PedroM2626"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transform hover:-translate-y-0.5"
+                    className="px-6 py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-purple-700 dark:text-purple-300 hover:bg-white/30 dark:hover:bg-black/40 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transform hover:-translate-y-0.5"
                   >
                     <Github className="h-4 w-4" />
                     <span className="font-medium">GitHub</span>
@@ -243,55 +297,61 @@ const HomeSection = () => {
                     href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transform hover:-translate-y-0.5"
+                    className="px-6 py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-blue-700 dark:text-blue-300 hover:bg-white/30 dark:hover:bg-black/40 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transform hover:-translate-y-0.5"
                   >
                     <Linkedin className="h-4 w-4" />
                     <span className="font-medium">LinkedIn</span>
                   </a>
                   <a
                     href="mailto:pedromoratolahoz@gmail.com"
-                    className="px-6 py-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-gray-600/30 text-white hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] transform hover:-translate-y-0.5"
+                    className="px-6 py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-pink-700 dark:text-pink-300 hover:bg-white/30 dark:hover:bg-black/40 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] transform hover:-translate-y-0.5"
                   >
                     <Mail className="h-4 w-4" />
                     <span className="font-medium">Email</span>
                   </a>
                 </div>
+
+                {/* Download Resume Button - Centralizado */}
                 <a
                   href="/resume.pdf"
                   download
-                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 font-medium border-0"
+                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 font-medium border-0 mt-2"
                 >
                   <Download className="h-4 w-4" />
                   <span>Baixar Currículo</span>
                 </a>
               </div>
             </div>
-          </div>
-          <div className="flex justify-center lg:justify-end lg:pr-12">
-            <div className="relative flex flex-col">
-              <div className="w-80 h-80 rounded-full overflow-hidden border-4 shadow-2xl flex flex-col border-purple-600 dark:border-purple-400">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
-                  alt="Pedro Morato"
-                  className="w-full h-full object-cover mx-auto"
-                />
+
+            {/* Right Column - Profile Image */}
+            <div className="flex justify-center lg:justify-end lg:pr-16">
+              <div className="relative flex flex-col">
+                <div className="w-80 h-80 rounded-full overflow-hidden border-4 shadow-2xl flex flex-col border-purple-600 dark:border-purple-400">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
+                    alt="Pedro Morato"
+                    className="w-full h-full object-cover mx-auto"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      {/* Scroll Down Indicator - Absolute in HomeSection */}
-      <div className="absolute left-0 right-0 bottom-8 flex justify-center pointer-events-none z-40">
-        <div
-          className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity pointer-events-auto"
-          onClick={() =>
-            document
-              .getElementById("about")
-              ?.scrollIntoView({ behavior: "smooth" })
-          }
-        >
-          <p className="text-sm mb-2 animate-bounce">Role para baixo</p>
-          <div className="animate-bounce">
-            <ChevronDown className="h-6 w-6 mx-auto" />
+
+          {/* Scroll Down Indicator - Moved Up, spacing adjusted */}
+          <div className="text-center mt-8">
+            <div
+              className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
+              onClick={() =>
+                document
+                  .getElementById("about")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              <p className="text-sm mb-2 animate-bounce text-foreground">Role para baixo</p>
+              <div className="animate-bounce">
+                <ChevronDown className="h-6 w-6 mx-auto text-foreground" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1294,12 +1354,12 @@ const ContactSection = () => {
                   <span className="text-cyan-600 dark:text-cyan-400">📞</span>
                 </div>
                 <div className="flex-1">
-                  <div className="font-medium text-foreground">Telefone</div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="font-medium text-foreground group-hover:text-purple-400 transition-colors duration-300">Telefone</div>
+                  <div className="text-sm text-muted-foreground group-hover:text-purple-400 transition-colors duration-300">
                     +55 (61) 99309-6847
                   </div>
                 </div>
-                <ExternalLink className="h-4 w-4 text-green-500 group-hover:text-green-600 transition-colors" />
+                <ExternalLink className="h-4 w-4 text-green-500 group-hover:text-purple-400 transition-colors" />
               </a>
 
               {/* GitHub Card */}
@@ -1311,15 +1371,15 @@ const ContactSection = () => {
                   className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
-                    <Github className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                    <Github className="h-5 w-5 text-purple-600 dark:text-purple-400 group-hover:text-purple-400 transition-colors" />
                   </div>
                   <div className="flex-1">
-                    <div className="font-medium text-foreground">GitHub</div>
-                    <div className="text-sm text-muted-foreground">
+                    <div className="font-medium text-foreground group-hover:text-purple-400 transition-colors duration-300">GitHub</div>
+                    <div className="text-sm text-muted-foreground group-hover:text-purple-400 transition-colors duration-300">
                       @PedroM2626
                     </div>
                   </div>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-purple-400 transition-colors" />
                 </a>
               </div>
 
@@ -1332,15 +1392,15 @@ const ContactSection = () => {
                   className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
-                    <Linkedin className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                    <Linkedin className="h-5 w-5 text-blue-600 dark:text-blue-400 group-hover:text-purple-400 transition-colors" />
                   </div>
                   <div className="flex-1">
-                    <div className="font-medium text-foreground">LinkedIn</div>
-                    <div className="text-sm text-muted-foreground">
+                    <div className="font-medium text-foreground group-hover:text-purple-400 transition-colors duration-300">LinkedIn</div>
+                    <div className="text-sm text-muted-foreground group-hover:text-purple-400 transition-colors duration-300">
                       pedro-morato-lahoz-7996b1314
                     </div>
                   </div>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-purple-400 transition-colors" />
                 </a>
               </div>
 
@@ -1351,15 +1411,15 @@ const ContactSection = () => {
                   className="flex items-center p-4 rounded-lg border border-muted hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-md"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-pink-100 dark:bg-pink-900/20 mr-4 group-hover:scale-110 transition-transform duration-300">
-                    <Mail className="h-5 w-5 text-pink-600 dark:text-pink-400" />
+                    <Mail className="h-5 w-5 text-pink-600 dark:text-pink-400 group-hover:text-purple-400 transition-colors" />
                   </div>
                   <div className="flex-1">
-                    <div className="font-medium text-foreground">Email</div>
-                    <div className="text-sm text-muted-foreground">
+                    <div className="font-medium text-foreground group-hover:text-purple-400 transition-colors duration-300">Email</div>
+                    <div className="text-sm text-muted-foreground group-hover:text-purple-400 transition-colors duration-300">
                       pedromoratolahoz@gmail.com
                     </div>
                   </div>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-purple-400 transition-colors" />
                 </a>
               </div>
             </div>
