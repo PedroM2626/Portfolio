@@ -803,44 +803,18 @@ const TimelineSection = () => {
               {timelineItems.filter((_, i) => i % 2 === 0).map((item, index) => (
                 <div key={`${item.date}-${animationKey}-left`} className="relative">
                   <div
-                    className={`bg-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1 border-[2px]`}
+                    className="bg-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1"
                     style={{
-                      borderImage: (() => {
-                        const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
-                        if (match) {
-                          const from = getTailwindColor(match[1]);
-                          const to = getTailwindColor(match[2]);
-                          return `linear-gradient(90deg, ${from}, ${to}) 1`;
-                        }
-                        return 'linear-gradient(90deg, #a855f7, #2563eb) 1';
-                      })(),
-                      borderImageSlice: 1,
-                      borderWidth: '2px',
-                      borderStyle: 'solid',
                       boxShadow: `0 0 16px 0px ${getBoxShadowColor(item.iconColor)}`,
                       transition: 'box-shadow 0.3s',
-                      borderRadius: '1rem', // rounded-2xl
+                      borderRadius: '1rem',
                       overflow: 'hidden',
                     }}
                     onMouseEnter={e => {
-                      const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
-                      let from = '#a855f7', to = '#2563eb';
-                      if (match) {
-                        from = getTailwindColor(match[1]);
-                        to = getTailwindColor(match[2]);
-                      }
                       e.currentTarget.style.boxShadow = `0 0 32px 0px ${getBoxShadowColor(item.iconColor)}`;
-                      e.currentTarget.style.borderImage = `linear-gradient(90deg, ${from}, ${to}) 1`;
                     }}
                     onMouseLeave={e => {
-                      const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
-                      let from = '#a855f7', to = '#2563eb';
-                      if (match) {
-                        from = getTailwindColor(match[1]);
-                        to = getTailwindColor(match[2]);
-                      }
                       e.currentTarget.style.boxShadow = `0 0 16px 0px ${getBoxShadowColor(item.iconColor)}`;
-                      e.currentTarget.style.borderImage = `linear-gradient(90deg, ${from}, ${to}) 1`;
                     }}
                   >
                     <div className="flex items-center justify-between mb-3">
@@ -881,44 +855,18 @@ const TimelineSection = () => {
                 {timelineItems.filter((_, i) => i % 2 === 1).map((item, index) => (
                   <div key={`${item.date}-${animationKey}-right`} className="relative">
                     <div
-                      className={`bg-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1 border-[2px]`}
+                      className="bg-card rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1"
                       style={{
-                        borderImage: (() => {
-                          const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
-                          if (match) {
-                            const from = getTailwindColor(match[1]);
-                            const to = getTailwindColor(match[2]);
-                            return `linear-gradient(90deg, ${from}, ${to}) 1`;
-                          }
-                          return 'linear-gradient(90deg, #a855f7, #2563eb) 1';
-                        })(),
-                        borderImageSlice: 1,
-                        borderWidth: '2px',
-                        borderStyle: 'solid',
                         boxShadow: `0 0 16px 0px ${getBoxShadowColor(item.iconColor)}`,
                         transition: 'box-shadow 0.3s',
-                        borderRadius: '1rem', // rounded-2xl
+                        borderRadius: '1rem',
                         overflow: 'hidden',
                       }}
                       onMouseEnter={e => {
-                        const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
-                        let from = '#a855f7', to = '#2563eb';
-                        if (match) {
-                          from = getTailwindColor(match[1]);
-                          to = getTailwindColor(match[2]);
-                        }
                         e.currentTarget.style.boxShadow = `0 0 32px 0px ${getBoxShadowColor(item.iconColor)}`;
-                        e.currentTarget.style.borderImage = `linear-gradient(90deg, ${from}, ${to}) 1`;
                       }}
                       onMouseLeave={e => {
-                        const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
-                        let from = '#a855f7', to = '#2563eb';
-                        if (match) {
-                          from = getTailwindColor(match[1]);
-                          to = getTailwindColor(match[2]);
-                        }
                         e.currentTarget.style.boxShadow = `0 0 16px 0px ${getBoxShadowColor(item.iconColor)}`;
-                        e.currentTarget.style.borderImage = `linear-gradient(90deg, ${from}, ${to}) 1`;
                       }}
                     >
                       <div className="flex items-center justify-between mb-3">
