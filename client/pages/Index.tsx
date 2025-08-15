@@ -820,6 +820,7 @@ const TimelineSection = () => {
                       boxShadow: `0 0 16px 0px ${getBoxShadowColor(item.iconColor)}`,
                       transition: 'box-shadow 0.3s',
                       borderRadius: '1rem', // rounded-2xl
+                      overflow: 'hidden',
                     }}
                     onMouseEnter={e => {
                       const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
@@ -897,6 +898,7 @@ const TimelineSection = () => {
                         boxShadow: `0 0 16px 0px ${getBoxShadowColor(item.iconColor)}`,
                         transition: 'box-shadow 0.3s',
                         borderRadius: '1rem', // rounded-2xl
+                        overflow: 'hidden',
                       }}
                       onMouseEnter={e => {
                         const match = item.iconColor.match(/from-([a-z0-9-]+).*to-([a-z0-9-]+)/);
@@ -1400,10 +1402,11 @@ const ContactSection = () => {
       // Fallback: open email client
       const subject = encodeURIComponent(formData.subject);
       const body = encodeURIComponent(
-        `Nome: ${formData.name}\nEmail: ${formData.email}\n\nMensagem:\n${formData.message}`,
+        `Nome: ${formData.name}\n\nMensagem:\n${formData.message}`,
       );
+      const cc = encodeURIComponent(formData.email);
       window.open(
-        `mailto:pedromoratolahoz@gmail.com?subject=${subject}&body=${body}`,
+        `mailto:pedromoratolahoz@gmail.com?subject=${subject}&body=${body}&cc=${cc}`,
       );
     }
 
@@ -1623,7 +1626,7 @@ const ContactSection = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-muted/30 py-8 mt-20">
+  <footer className="bg-muted/30 py-8">
       <div className="container mx-auto px-4">
         <div className="text-center">
           <p className="text-muted-foreground text-sm">
