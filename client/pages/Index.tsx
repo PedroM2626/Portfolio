@@ -305,24 +305,33 @@ const HomeSection = () => {
                 )}
               </div>
 
-              {/* Welcome Message */}
-              <div className="flex items-center justify-center gap-3 text-xl md:text-2xl font-medium mx-auto text-foreground">
-                <span>Seja bem-vindo ao meu portfólio!</span>
+              {/* Welcome Message + Emoji - só embaixo no mobile, ao lado no desktop */}
+              <div className="flex flex-col items-center justify-center gap-2 text-xl md:text-2xl font-medium mx-auto text-foreground w-full">
+                <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-2">
+                  <span className="w-full text-center">Seja bem-vindo ao meu portfólio!</span>
+                  {/* Emoji só aparece ao lado em sm+ */}
+                  {jobComplete && (
+                    <span className="hidden sm:inline-block animate-wave text-4xl md:text-5xl leading-none">
+                      👋
+                    </span>
+                  )}
+                </div>
+                {/* Emoji só aparece embaixo no mobile */}
                 {jobComplete && (
-                  <span className="animate-wave inline-block text-4xl md:text-5xl leading-none">
+                  <span className="sm:hidden animate-wave inline-block text-4xl leading-none mt-1">
                     👋
                   </span>
                 )}
               </div>
 
-              {/* Social Buttons */}
-              <div className="flex flex-col items-center gap-5 mt-2">
-                <div className="flex items-center gap-5">
+              {/* Social Buttons - Responsivo */}
+              <div className="flex flex-col items-center gap-4 mt-2 w-full">
+                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 w-full max-w-md">
                   <a
                     href="https://github.com/PedroM2626"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-purple-700 dark:text-purple-300 transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_32px_rgba(168,85,247,0.7)] transform hover:-translate-y-0.5 hover:bg-white/30 dark:hover:bg-black/40"
+                    className="px-4 py-2 sm:px-6 sm:py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-purple-700 dark:text-purple-300 transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_32px_rgba(168,85,247,0.7)] transform hover:-translate-y-0.5 hover:bg-white/30 dark:hover:bg-black/40 min-w-[120px] max-w-full"
                   >
                     <Github className="h-4 w-4" />
                     <span className="font-medium">GitHub</span>
@@ -331,41 +340,41 @@ const HomeSection = () => {
                     href="https://linkedin.com/in/pedro-morato-lahoz-7996b1314/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-blue-700 dark:text-blue-300 transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_32px_rgba(59,130,246,0.7)] transform hover:-translate-y-0.5 hover:bg-white/30 dark:hover:bg-black/40"
+                    className="px-4 py-2 sm:px-6 sm:py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-blue-700 dark:text-blue-300 transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_32px_rgba(59,130,246,0.7)] transform hover:-translate-y-0.5 hover:bg-white/30 dark:hover:bg-black/40 min-w-[120px] max-w-full"
                   >
                     <Linkedin className="h-4 w-4" />
                     <span className="font-medium">LinkedIn</span>
                   </a>
                   <a
                     href="mailto:pedromoratolahoz@gmail.com"
-                    className="px-6 py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-pink-700 dark:text-pink-300 transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_32px_rgba(236,72,153,0.7)] transform hover:-translate-y-0.5 hover:bg-white/30 dark:hover:bg-black/40"
+                    className="px-4 py-2 sm:px-6 sm:py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-pink-700 dark:text-pink-300 transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_32px_rgba(236,72,153,0.7)] transform hover:-translate-y-0.5 hover:bg-white/30 dark:hover:bg-black/40 min-w-[120px] max-w-full"
                   >
                     <Mail className="h-4 w-4" />
                     <span className="font-medium">Email</span>
                   </a>
                 </div>
 
-                {/* Download Resume Button - Centralizado */}
-                    <a
-                      href="/resume.pdf"
-                      download
-                      className="px-8 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-blue-400 text-white transition-all duration-300 flex items-center gap-2 font-medium border-0 mt-2"
-                      style={{
-                        boxShadow: "0 0 24px 0px #ec4899, 0 0 24px 0px #3b82f6",
-                        transition: "box-shadow 0.3s, transform 0.3s"
-                      }}
-                      onMouseEnter={e => {
-                        e.currentTarget.style.boxShadow = "0 0 48px 0px #ec4899, 0 0 48px 0px #3b82f6";
-                        e.currentTarget.style.transform = "translateY(-4px)";
-                      }}
-                      onMouseLeave={e => {
-                        e.currentTarget.style.boxShadow = "0 0 24px 0px #ec4899, 0 0 24px 0px #3b82f6";
-                        e.currentTarget.style.transform = "translateY(0)";
-                      }}
-                    >
-                      <Download className="h-4 w-4" />
-                      <span style={{ color: "white" }}>Baixar Currículo</span>
-                    </a>
+                {/* Download Resume Button - original centralizado */}
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-blue-400 text-white transition-all duration-300 flex items-center gap-2 font-medium border-0 mt-2"
+                  style={{
+                    boxShadow: "0 0 24px 0px #ec4899, 0 0 24px 0px #3b82f6",
+                    transition: "box-shadow 0.3s, transform 0.3s"
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.boxShadow = "0 0 48px 0px #ec4899, 0 0 48px 0px #3b82f6";
+                    e.currentTarget.style.transform = "translateY(-4px)";
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.boxShadow = "0 0 24px 0px #ec4899, 0 0 24px 0px #3b82f6";
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
+                >
+                  <Download className="h-4 w-4" />
+                  <span style={{ color: "white" }}>Baixar Currículo</span>
+                </a>
               </div>
             </div>
 
@@ -780,9 +789,12 @@ const TimelineSection = () => {
   <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-pink-900/40 dark:via-purple-900/60 dark:to-blue-900/40" />
       <div className="container mx-auto px-4 relative z-10">
         <div
-          key={`timeline-${animationKey}`}
-          className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-        >
+            key={`timeline-${animationKey}`}
+            className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            style={{
+              animation: isVisible ? "slideInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1)" : "none"
+            }}
+          >
           <div className="text-center mb-4">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Minha Jornada
@@ -1011,9 +1023,12 @@ const ProjectsSection = () => {
   <div className="absolute inset-0 bg-gradient-to-r from-purple-300 via-blue-300 to-indigo-300 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
       <div className="container mx-auto px-4 relative z-10">
         <div
-          key={`projects-${animationKey}`}
-          className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-        >
+            key={`projects-${animationKey}`}
+            className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            style={{
+              animation: isVisible ? "slideInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1)" : "none"
+            }}
+          >
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Meus Projetos

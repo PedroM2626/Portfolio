@@ -1,3 +1,32 @@
+@keyframes progress-shine {
+  0% {
+    filter: brightness(1.1);
+    background-position: 0% 50%;
+  }
+  50% {
+    filter: brightness(1.3);
+    background-position: 100% 50%;
+  }
+  100% {
+    filter: brightness(1.1);
+    background-position: 0% 50%;
+  }
+}
+
+.animate-progress-shine {
+  background-size: 200% 200%;
+  animation: progress-shine 2s linear infinite;
+}
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
