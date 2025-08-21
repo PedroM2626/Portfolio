@@ -184,39 +184,37 @@ const Header = () => {
             <button
               key={item.href}
               onClick={() => scrollToSection(item.href)}
-              className="text-muted-foreground transition-colors relative bg-clip-text"
+              className="relative group text-foreground/60 hover:text-foreground transition-colors duration-300"
               style={{
-                background: "none",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "",
-                transition: "background 0.4s"
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.background = "linear-gradient(90deg, #6d28d9, #2563eb)";
-                // @ts-ignore
-                e.currentTarget.style.webkitBackgroundClip = "text";
-                // @ts-ignore
-                e.currentTarget.style.webkitTextFillColor = "transparent";
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.background = "none";
-                // @ts-ignore
-                e.currentTarget.style.webkitTextFillColor = "";
+                background: 'none',
+                border: 'none',
+                padding: '0.5rem 0',
+                cursor: 'pointer',
+                fontSize: '0.9375rem',
+                lineHeight: '1.25rem',
               }}
             >
-              {item.label}
+              <span className="relative group">
+                <span className="relative z-10">{item.label}</span>
+                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 group-hover:w-full"></span>
+              </span>
             </button>
           ))}
         </div>
         <div className="flex items-center space-x-4">
           {mounted && (
-            <div className="flex items-center space-x-2">
-              <Sun className="h-4 w-4" />
-              <Switch
-                checked={theme === "dark"}
-                onCheckedChange={(checked: boolean) => setTheme(checked ? "dark" : "light")}
-              />
-              <Moon className="h-4 w-4" />
+            <div className="flex items-center space-x-2 bg-muted/50 dark:bg-muted/20 p-1.5 rounded-full">
+              <Sun className="h-4 w-4 text-yellow-500 dark:text-yellow-400 transition-colors" />
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className={`relative w-12 h-6 rounded-full p-1 transition-colors duration-300 focus:outline-none ${theme === "dark" ? 'bg-gradient-to-r from-purple-600 to-blue-600' : 'bg-slate-200'}`}
+                aria-label="Toggle theme"
+              >
+                <span 
+                  className={`block w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 ${theme === "dark" ? 'translate-x-6' : 'translate-x-0'}`}
+                />
+              </button>
+              <Moon className="h-4 w-4 text-blue-600 dark:text-blue-400 transition-colors" />
             </div>
           )}
           <Button
