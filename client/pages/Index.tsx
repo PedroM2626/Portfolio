@@ -178,7 +178,9 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="text-xl font-bold text-purple-600 dark:text-purple-400">Pedro Morato</div>
+        <div className="text-xl font-bold bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+          Pedro Morato
+        </div>
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <button
@@ -195,8 +197,10 @@ const Header = () => {
               }}
             >
               <span className="relative group">
-                <span className="relative z-10">{item.label}</span>
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className={`relative z-10 group-hover:bg-gradient-to-r ${theme === 'dark' ? 'group-hover:from-purple-500 group-hover:to-blue-500' : 'group-hover:from-yellow-500 group-hover:to-amber-500'} group-hover:bg-clip-text group-hover:text-transparent`}>
+                  {item.label}
+                </span>
+                <span className={`absolute left-0 -bottom-1 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${theme === 'dark' ? 'bg-gradient-to-r from-purple-500 to-blue-500' : 'bg-gradient-to-r from-yellow-500 to-amber-500'}`}></span>
               </span>
             </button>
           ))}
@@ -207,11 +211,11 @@ const Header = () => {
               <Sun className="h-4 w-4 text-yellow-500 dark:text-yellow-400 transition-colors" />
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className={`relative w-12 h-6 rounded-full p-1 transition-colors duration-300 focus:outline-none ${theme === "dark" ? 'bg-gradient-to-r from-purple-600 to-blue-600' : 'bg-slate-200'}`}
+                className={`relative w-12 h-6 rounded-full p-1 transition-colors duration-300 focus:outline-none ${theme === "dark" ? 'bg-gradient-to-r from-purple-600 to-blue-600' : 'bg-gradient-to-r from-yellow-300 to-amber-400'}`}
                 aria-label="Toggle theme"
               >
                 <span 
-                  className={`block w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 ${theme === "dark" ? 'translate-x-6' : 'translate-x-0'}`}
+                  className={`block w-4 h-4 rounded-full shadow-md transform transition-all duration-300 ${theme === "dark" ? 'translate-x-6 bg-gradient-to-r from-purple-400 to-blue-400' : 'translate-x-0 bg-yellow-500'}`}
                 />
               </button>
               <Moon className="h-4 w-4 text-blue-600 dark:text-blue-400 transition-colors" />
@@ -288,10 +292,12 @@ const HomeSection = () => {
             {/* Left Column - Content */}
             <div className="space-y-10 text-left lg:pl-16 flex flex-col justify-center">
               {/* Name */}
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight mx-auto bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                {nameText}
+              <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-center">
+                <span className={`bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent`}>
+                  {nameText}
+                </span>
                 {!nameComplete && <span className="animate-pulse">|</span>}
-              </h1>
+              </div>
 
               {/* Job Title */}
               <div className="text-xl md:text-2xl opacity-80 mx-auto text-blue-700 dark:text-blue-300">
@@ -379,16 +385,18 @@ const HomeSection = () => {
             {/* Right Column - Profile Image */}
             <div className="flex justify-center lg:justify-end lg:pr-16">
               <div className="relative flex flex-col">
-                <div className="w-80 h-80 rounded-full overflow-hidden border-4 shadow-2xl flex flex-col border-purple-600 dark:border-purple-400">
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
-                    alt="Pedro Morato"
-                    className="w-full h-full object-cover mx-auto"
-                  />
+                <div className="relative w-80 h-80 rounded-full p-0.5 bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 shadow-2xl">
+                  <div className="w-full h-full rounded-full overflow-hidden">
+                    <img
+                      src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
+                      alt="Pedro Morato"
+                      className="w-full h-full object-cover mx-auto"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </div> {/* Fechamento da div do grid */}
 
           {/* Scroll Down Indicator - Moved Up, spacing adjusted */}
           <div className="text-center mt-8">
@@ -400,9 +408,11 @@ const HomeSection = () => {
                   ?.scrollIntoView({ behavior: "smooth" })
               }
             >
-              <p className="text-sm mb-2 animate-bounce text-foreground">Role para baixo</p>
+              <p className="text-sm mb-2 animate-bounce bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent font-medium">
+                Role para baixo
+              </p>
               <div className="animate-bounce">
-                <ChevronDown className="h-6 w-6 mx-auto text-foreground" />
+                <ChevronDown className="h-6 w-6 mx-auto text-yellow-500 dark:text-purple-400" />
               </div>
             </div>
           </div>
@@ -431,11 +441,11 @@ const BackToTop = () => {
   };
   const { theme } = useTheme();
   const gradient = theme === 'dark'
-    ? 'bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900'
-    : 'bg-gradient-to-r from-purple-300 via-blue-300 to-indigo-300';
+    ? 'bg-gradient-to-r from-purple-600 to-blue-600 hover:shadow-[0_0_25px_rgba(139,92,246,0.5)]'
+    : 'bg-gradient-to-r from-yellow-500 to-amber-500 hover:shadow-[0_0_25px_rgba(234,179,8,0.5)]';
   return (
     <Button
-      className={`fixed bottom-10 right-10 z-50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(147,51,234,0.5)] transform hover:-translate-y-0.5 ${
+      className={`fixed bottom-10 right-10 z-50 transition-all duration-300 shadow-lg transform hover:-translate-y-0.5 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       } h-16 w-16 text-3xl ${gradient} text-white border-0`}
       onClick={scrollToTop}
@@ -626,8 +636,12 @@ const AboutSection = () => {
             className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Sobre Mim</h2>
-              <div className="w-16 h-1 bg-primary mx-auto"></div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+                  Sobre Mim
+                </span>
+              </h2>
+              <div className="w-16 h-1 bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 mx-auto"></div>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -795,9 +809,11 @@ const TimelineSection = () => {
           >
           <div className="text-center mb-4">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Minha Jornada
+              <span className="bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+                Minha Jornada
+              </span>
             </h2>
-            <div className="w-16 h-1 bg-primary mx-auto mb-4"></div>
+            <div className="w-16 h-1 bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 mx-auto mb-4"></div>
           </div>
           <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
             1 ano de experiência, aprendizado e evolução como desenvolvedor
@@ -1018,140 +1034,127 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="py-20 relative" data-reveal>
-  <div className="absolute inset-0 bg-gradient-to-r from-purple-300 via-blue-300 to-indigo-300 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-300 via-blue-300 to-indigo-300 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
       <div className="container mx-auto px-4 relative z-10">
-        <div
-            key={`projects-${animationKey}`}
-            className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-            style={{
-              animation: isVisible ? "slideInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1)" : "none"
-            }}
-          >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Meus Projetos
-            </h2>
-            <div className="w-16 h-1 bg-primary mx-auto"></div>
-          </div>
-
+        <div key={`projects-${animationKey}`}>
           {/* Search and Filters */}
           <div className="max-w-4xl mx-auto mb-8">
-            {/* Search Bar */}
-            <div className="relative mb-6">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
-              <Input
-                placeholder="Pesquisar tecnologia"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-muted/50 border-muted"
-              />
-            </div>
+        {/* Search Bar */}
+        <div className="relative mb-6">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
+          <Input
+            placeholder="Pesquisar tecnologia"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-10 bg-muted/50 border-muted"
+          />
+        </div>
 
-            {/* Technology Filter Chips */}
-            <div className="space-y-4">
-              {/* Selected Technologies */}
-              {selectedTechs.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {selectedTechs.map((tech) => {
-                    const techInfo = getTechInfo(tech);
-                    return (
-                      <div
-                        key={tech}
-                        className={`${techInfo.color} text-white px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity`}
-                        onClick={() => toggleTech(tech)}
-                      >
-                        {techInfo.icon.startsWith("https://") ? (
-                          <img
-                            src={techInfo.icon}
-                            alt={tech}
-                            className="w-4 h-4"
-                            onError={(e) => {
-                              e.currentTarget.style.display = "none";
-                            }}
-                          />
-                        ) : (
-                          <span>{techInfo.icon}</span>
-                        )}
-                        <span>{tech}</span>
-                        <X className="h-3 w-3 ml-1" />
-                      </div>
-                    );
-                  })}
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={clearAllFilters}
-                    className="h-7 px-2 text-xs transition-all duration-300 hover:shadow-[0_0_15px_rgba(156,163,175,0.4)] transform hover:-translate-y-0.5"
+        {/* Technology Filter Chips */}
+        <div className="space-y-4">
+          {/* Selected Technologies */}
+          {selectedTechs.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {selectedTechs.map((tech) => {
+                const techInfo = getTechInfo(tech);
+                return (
+                  <div
+                    key={tech}
+                    className={`${techInfo.color} text-white px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity`}
+                    onClick={() => toggleTech(tech)}
                   >
-                    Limpar todos
-                  </Button>
-                </div>
-              )}
-
-              {/* Available Technologies */}
-              <div className="flex flex-wrap gap-2">
-                <div
-                  className={`px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer transition-all ${
-                    selectedTechs.length === 0
-                      ? "bg-white text-black"
-                      : "bg-muted text-muted-foreground hover:bg-muted/80"
-                  }`}
-                  onClick={clearAllFilters}
-                >
-                  <span>✓</span>
-                  <span>Todos</span>
-                </div>
-                {allTechs
-                  .filter((tech) => !selectedTechs.includes(tech))
-                  .map((tech) => {
-                    const techInfo = getTechInfo(tech);
-                    return (
-                      <div
-                        key={tech}
-                        className="bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer hover:bg-muted/80 transition-all"
-                        onClick={() => toggleTech(tech)}
-                      >
-                        {techInfo.icon.startsWith("https://") ? (
-                          <img
-                            src={techInfo.icon}
-                            alt={tech}
-                            className="w-4 h-4"
-                            onError={(e) => {
-                              e.currentTarget.style.display = "none";
-                            }}
-                          />
-                        ) : (
-                          <span>{techInfo.icon}</span>
-                        )}
-                        <span>{tech}</span>
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
-          </div>
-
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
-              <Card
-                key={project.id}
-                className={
-                  `cursor-pointer hover:shadow-lg transition-shadow rounded-2xl ` +
-                  `bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-green-900/40 dark:via-blue-900/60 dark:to-purple-900/40`
-                }
-                style={{ position: "relative", zIndex: 1 }}
-                onClick={() => setSelectedProject(project)}
+                    {techInfo.icon.startsWith("https://") ? (
+                      <img
+                        src={techInfo.icon}
+                        alt={tech}
+                        className="w-4 h-4"
+                        onError={(e) => {
+                          e.currentTarget.style.display = "none";
+                        }}
+                      />
+                    ) : (
+                      <span>{techInfo.icon}</span>
+                    )}
+                    <span>{tech}</span>
+                    <X className="h-3 w-3 ml-1" />
+                  </div>
+                );
+              })}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={clearAllFilters}
+                className="h-7 px-2 text-xs transition-all duration-300 hover:shadow-[0_0_15px_rgba(156,163,175,0.4)] transform hover:-translate-y-0.5"
               >
-                <CardHeader>
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
-                  <CardTitle>{project.name}</CardTitle>
-                  <CardDescription>{project.date}</CardDescription>
-                </CardHeader>
+                Limpar todos
+              </Button>
+            </div>
+          )}
+
+          {/* Available Technologies */}
+          <div className="flex flex-wrap gap-2">
+            <div
+              className={`px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer transition-all ${
+                selectedTechs.length === 0
+                  ? "bg-white text-black"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80"
+              }`}
+              onClick={clearAllFilters}
+            >
+              <span>✓</span>
+              <span>Todos</span>
+            </div>
+            {allTechs
+              .filter((tech) => !selectedTechs.includes(tech))
+              .map((tech) => {
+                const techInfo = getTechInfo(tech);
+                return (
+                  <div
+                    key={tech}
+                    className="bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer hover:bg-muted/80 transition-all"
+                    onClick={() => toggleTech(tech)}
+                  >
+                    {techInfo.icon.startsWith("https://") ? (
+                      <img
+                        src={techInfo.icon}
+                        alt={tech}
+                        className="w-4 h-4"
+                        onError={(e) => {
+                          e.currentTarget.style.display = "none";
+                        }}
+                      />
+                    ) : (
+                      <span>{techInfo.icon}</span>
+                    )}
+                    <span>{tech}</span>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+      </div>
+
+      {/* Projects Grid */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredProjects.map((project) => (
+          <Card
+            key={project.id}
+            className={
+              `cursor-pointer hover:shadow-lg transition-shadow rounded-2xl ` +
+              `bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-green-900/40 dark:via-blue-900/60 dark:to-purple-900/40`
+            }
+            style={{ position: "relative", zIndex: 1 }}
+            onClick={() => setSelectedProject(project)}
+          >
+            <CardHeader>
+              <img
+                src={project.image}
+                alt={project.name}
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <CardTitle>{project.name}</CardTitle>
+              <CardDescription>{project.date}</CardDescription>
+            </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => {
@@ -1379,8 +1382,12 @@ const ContactSection = () => {
   <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-yellow-900/40 dark:via-pink-900/60 dark:to-indigo-900/40" />
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-4">
-          <h2 className="text-3xl md:text-4xl font-bold">Entre em Contato</h2>
-          <div className="w-16 h-1 bg-primary mx-auto mt-2"></div>
+          <h2 className="text-3xl md:text-4xl font-bold">
+            <span className="bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+              Entre em Contato
+            </span>
+          </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 mx-auto mt-2"></div>
         </div>
 
         <div
@@ -1573,7 +1580,7 @@ const ContactSection = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full h-12 text-base font-medium bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)] transform hover:-translate-y-0.5"
+                className="w-full h-12 text-base font-medium bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-500 dark:to-blue-500 text-black dark:text-white transition-colors duration-100 hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] dark:hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] transform hover:-translate-y-0.5 flex items-center justify-center"
               >
                 {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
               </Button>
