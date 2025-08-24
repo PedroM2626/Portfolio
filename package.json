@@ -10,7 +10,6 @@
       "dist/server/**/*.js"
     ]
   },
-
   "scripts": {
     "dev": "vite",
     "deploy": "gh-pages -d dist -u 'github-actions-bot <support+actions@github.com>' -r https://x-access-token:${GITHUB_TOKEN}@github.com/PedroM2626/Portfolio.git",
@@ -25,14 +24,16 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@types/react-helmet-async": "^1.0.1",
     "dotenv": "^17.2.0",
     "express": "^4.18.2",
-    "zod": "^3.23.8",
-    "nodemailer": "^6.9.15"
+    "nodemailer": "^6.9.15",
+    "react-helmet-async": "^2.0.5",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/supertest": "^6.0.2",
     "@hookform/resolvers": "^3.9.0",
+    "@playwright/test": "^1.50.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
@@ -70,6 +71,7 @@
     "@types/node": "^22.5.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@types/supertest": "^6.0.2",
     "@types/three": "^0.176.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.21",
@@ -95,6 +97,7 @@
     "recharts": "^2.12.7",
     "serverless-http": "^3.2.0",
     "sonner": "^1.5.0",
+    "supertest": "^7.0.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss": "^3.4.11",
     "tailwindcss-animate": "^1.0.7",
@@ -103,8 +106,6 @@
     "typescript": "^5.5.3",
     "vaul": "^0.9.3",
     "vite": "^6.2.2",
-    "vitest": "^3.1.4",
-    "supertest": "^7.0.0",
-    "@playwright/test": "^1.50.0"
+    "vitest": "^3.1.4"
   }
 }

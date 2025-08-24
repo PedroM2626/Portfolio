@@ -12,3 +12,12 @@ Allow: /
 
 User-agent: *
 Allow: /
+Sitemap: https://pedromorato.com/sitemap.xml
+
+# Desabilitar rastreamento de pastas específicas
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Taxa de rastreamento (opcional)
+Crawl-delay: 10
