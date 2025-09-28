@@ -1,5 +1,5 @@
 // Função utilitária para pegar cor do gradiente Tailwind
-function getTailwindColor(color) {
+function getTailwindColor(color: string): string {
   switch (color) {
     case 'yellow-400': return '#facc15';
     case 'orange-500': return '#f97316';
@@ -20,7 +20,7 @@ function getTailwindColor(color) {
 }
 
 // Função utilitária para pegar cor da sombra
-function getBoxShadowColor(iconColor) {
+function getBoxShadowColor(iconColor: string): string {
   if (iconColor.includes('from-yellow-400')) return '#facc15';
   if (iconColor.includes('from-orange-500')) return '#f97316';
   if (iconColor.includes('from-purple-500')) return '#a855f7';
@@ -60,6 +60,7 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { useTheme } from "next-themes";
+import { SkillsSection } from "@/components/SkillsSection";
 import {
   Moon,
   Sun,
@@ -76,16 +77,23 @@ import {
   Search,
   Home,
   User,
+  Cpu,
+  Calendar,
 } from "lucide-react";
 
 // Typing animation hook
+interface TypingEffectResult {
+  displayedText: string;
+  isComplete: boolean;
+}
+
 const useTypingEffect = (
   text: string,
   speed: number = 100,
   shouldStart: boolean = true,
-) => {
-  const [displayedText, setDisplayedText] = useState("");
-  const [isComplete, setIsComplete] = useState(false);
+): TypingEffectResult => {
+  const [displayedText, setDisplayedText] = useState<string>("");
+  const [isComplete, setIsComplete] = useState<boolean>(false);
 
   useEffect(() => {
     if (!shouldStart) {
@@ -116,10 +124,8 @@ const useTypingEffect = (
 };
 
 // Scroll reveal hook
-const useScrollReveal = () => {
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(
-    new Set(),
-  );
+const useScrollReveal = (): Set<string> => {
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -149,28 +155,41 @@ const useScrollReveal = () => {
   return visibleSections;
 };
 
-const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+const Header: React.FC = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
-  const navItems = [
+  const [mounted, setMounted] = useState<boolean>(false);
+  
+  useEffect(() => { 
+    setMounted(true); 
+  }, []);
+  
+  const navItems: NavItem[] = [
     { href: "#home", label: "Início" },
     { href: "#about", label: "Sobre" },
+    { href: "#skills", label: "Tecnologias" },
     { href: "#timeline", label: "Jornada" },
     { href: "#projects", label: "Projetos" },
     { href: "#contact", label: "Contato" },
   ];
-  const scrollToSection = (href: string) => {
+  
+  const scrollToSection = (href: string): void => {
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: "smooth" });
     setIsMobileMenuOpen(false);
   };
+  
   // Ícones para cada item do menu
-  const navIcons = {
+  const navIcons: Record<string, JSX.Element> = {
     "Início": <Home className="h-5 w-5 mr-2" />,
     "Sobre": <User className="h-5 w-5 mr-2" />,
-    "Jornada": <Badge className="h-5 w-5 mr-2" />,
+    "Tecnologias": <Cpu className="h-5 w-5 mr-2" />,
+    "Jornada": <Calendar className="h-5 w-5 mr-2" />,
     "Projetos": <Github className="h-5 w-5 mr-2" />,
     "Contato": <Mail className="h-5 w-5 mr-2" />,
   };
@@ -253,7 +272,7 @@ const Header = () => {
   );
 }
 
-const HomeSection = () => {
+const HomeSection: React.FC = () => {
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("home");
 
@@ -385,7 +404,12 @@ const HomeSection = () => {
             {/* Right Column - Profile Image */}
             <div className="flex justify-center lg:justify-end lg:pr-16">
               <div className="relative flex flex-col">
-                <div className="relative w-80 h-80 rounded-full p-0.5 bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 shadow-2xl">
+                <div 
+                  className="relative w-80 h-80 rounded-full p-0.5 bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 shadow-2xl"
+                  style={{
+                    boxShadow: '0 0 20px 5px rgba(245, 158, 11, 0.5)', // Yellow/amber shadow for light mode
+                  }}
+                >
                   <div className="w-full h-full rounded-full overflow-hidden">
                     <img
                       src="https://cdn.builder.io/api/v1/image/assets%2F0357267305144552820808f6068fd9e6%2F2e66a49a3d734d7aaf0ed006154187d8"
@@ -396,6 +420,56 @@ const HomeSection = () => {
                 </div>
               </div>
             </div>
+            
+            {/* Add theme-specific styles for the shadow */}
+            <style jsx={true} global={true}>
+              {`
+                .dark .relative.w-80.h-80.rounded-full::before {
+                  content: '';
+                  position: absolute;
+                  inset: 0;
+                  border-radius: 9999px;
+                  padding: 1px;
+                  background: linear-gradient(45deg, #a78bfa, #60a5fa);
+                  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                  -webkit-mask-composite: xor;
+                  mask-composite: exclude;
+                  pointer-events: none;
+                  box-shadow: 0 0 30px 8px rgba(139, 92, 246, 0.5);
+                  animation: pulse 3s infinite;
+                }
+                
+                .relative.w-80.h-80.rounded-full::before {
+                  content: '';
+                  position: absolute;
+                  inset: 0;
+                  border-radius: 9999px;
+                  padding: 1px;
+                  background: linear-gradient(45deg, #f59e0b, #fbbf24);
+                  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                  -webkit-mask-composite: xor;
+                  mask-composite: exclude;
+                  pointer-events: none;
+                  box-shadow: 0 0 30px 8px rgba(245, 158, 11, 0.5);
+                  animation: pulse 3s infinite;
+                }
+                
+                @keyframes pulse {
+                  0% {
+                    transform: scale(1);
+                    opacity: 0.8;
+                  }
+                  50% {
+                    transform: scale(1.02);
+                    opacity: 1;
+                  }
+                  100% {
+                    transform: scale(1);
+                    opacity: 0.8;
+                  }
+                }
+              `}
+            </style>
           </div> {/* Fechamento da div do grid */}
 
           {/* Scroll Down Indicator - Moved Up, spacing adjusted */}
@@ -423,16 +497,18 @@ const HomeSection = () => {
 }
 
 // BackToTop button
-const BackToTop = () => {
-  const [isVisible, setIsVisible] = useState(false);
+const BackToTop: React.FC = () => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  
   useEffect(() => {
-    const toggleVisibility = () => {
+    const toggleVisibility = (): void => {
       if (window.pageYOffset > 300) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
       }
     };
+    
     window.addEventListener("scroll", toggleVisibility);
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
@@ -456,9 +532,14 @@ const BackToTop = () => {
   );
 }
 
+interface TechInfo {
+  color: string;
+  icon: string;
+}
+
 // Enhanced tech stack data with skill-icons
-const getTechInfo = (name: string) => {
-  const techMap: { [key: string]: { color: string; icon: string } } = {
+const getTechInfo = (name: string): TechInfo => {
+  const techMap: Record<string, TechInfo> = {
     Git: { color: "bg-red-500", icon: "https://skillicons.dev/icons?i=git" },
     "VS Code": {
       color: "bg-blue-600",
@@ -553,8 +634,8 @@ const getTechInfo = (name: string) => {
 };
 
 // Function to get transparent background style for tech items
-const getTechTransparentStyle = (name: string) => {
-  const styleMap: { [key: string]: string } = {
+const getTechTransparentStyle = (name: string): string => {
+  const styleMap: Record<string, string> = {
     "VS Code": "bg-blue-600/15 text-white border border-blue-600",
     Docker: "bg-blue-500/15 text-white border border-blue-500",
     Firebase: "bg-yellow-600/15 text-white border border-yellow-600",
@@ -589,37 +670,31 @@ const AboutSection = () => {
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("about");
   const [animationKey, setAnimationKey] = useState(0);
+  const [projectCount, setProjectCount] = useState(0);
 
-  // Reset animations when section becomes visible again
+  // Get project count from projects data
   useEffect(() => {
-    if (isVisible) {
-      setAnimationKey((prev) => prev + 1);
-    }
-  }, [isVisible]);
+    // This will be populated when the ProjectsSection loads
+    const timer = setInterval(() => {
+      const projects = document.querySelectorAll('[data-project-card]');
+      if (projects.length > 0) {
+        setProjectCount(projects.length);
+        clearInterval(timer);
+      }
+    }, 500);
+    
+    return () => clearInterval(timer);
+  }, []);
 
-  const techStack = [
-    "Git",
-    "VS Code",
-    "Docker",
-    "Firebase",
-    "C",
-    "C++",
-    "C#",
-    "Python",
-    "JavaScript",
-    "HTML5",
-    "CSS3",
-    "React",
-    "Flask",
-    "SQLite",
-    "Unity",
-    "Unreal Engine",
-    "Godot",
-    "Roblox Studio",
-    "FlutterFlow",
-    "Flutter",
-    "Vite",
-    "Lua",
+  // Calculate years of experience
+  const startYear = 2021; // Adjust this to your actual start year
+  const currentYear = new Date().getFullYear();
+  const yearsOfExperience = currentYear - startYear;
+
+  // Stats data
+  const stats = [
+    { value: '1+', label: 'Anos de Experiência' },
+    { value: '6+', label: 'Projetos Concluídos' },
   ];
 
   return (
@@ -629,92 +704,87 @@ const AboutSection = () => {
       data-reveal
     >
       {/* Gradient Background */}
-  <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-indigo-900/70 dark:via-purple-900/40 dark:to-blue-900/70" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 dark:from-indigo-900/70 dark:via-purple-900/40 dark:to-blue-900/70" />
       <div className="relative z-10">
         <div className="container mx-auto px-4">
           <div
             className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                <span className="bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
                   Sobre Mim
                 </span>
               </h2>
-              <div className="w-16 h-1 bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 mx-auto"></div>
+              <div className="w-24 h-1 mx-auto bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-500 dark:to-blue-500 rounded-full mb-6" />
+              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                Desenvolvedor apaixonado por criar soluções práticas e funcionais
+              </p>
             </div>
-
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
                 <h3 className="text-xl font-semibold mb-6">Quem sou eu?</h3>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Tenho 17 anos e estou iniciando a graduação em Ciência da
-                  Computação na UniCEUB.
+                  Tenho 17 anos e estou iniciando a graduação em Ciência da Computação na UniCEUB.
                 </p>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Já tenho experiência prática com programação, com foco em
-                  desenvolvimento web e jogos.
+                  Com mais de {yearsOfExperience} anos de experiência em programação, me especializei em desenvolvimento web e jogos, criando soluções práticas e funcionais.
                 </p>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Ao longo do último ano, desenvolvi 3 projetos web completos e
-                  alguns jogos como forma de aprimorar meu conhecimento em
-                  lógica de programação, bibliotecas e ferramentas modernas.
+                  Já desenvolvi {projectCount} projetos completos, desde aplicações web modernas até jogos interativos, sempre buscando aplicar as melhores práticas e tecnologias do mercado.
                 </p>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Estou sempre buscando aprender mais, melhorar meus códigos e
-                  construir soluções reais.
+                  Meu objetivo é continuar evoluindo como desenvolvedor, enfrentando novos desafios e contribuindo para projetos inovadores em uma grande empresa de tecnologia.
                 </p>
-                <p className="text-lg text-muted-foreground">
-                  Atualmente estudo algoritmos e resolução de problemas com foco
-                  em entrevistas técnicas. Meu objetivo é evoluir como
-                  desenvolvedor e, no futuro, conquistar uma vaga em uma grande
-                  empresa de tecnologia.
-                </p>
-              </div>
-
-              <div className="flex flex-col w-full">
-                <h3 className="text-xl font-semibold mb-6">
-                  Tecnologias que eu já utilizei
-                </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 justify-items-center">
-                  {techStack.map((tech, index) => {
-                    const techInfo = getTechInfo(tech);
-                    const isGit = tech === "Git";
-                    return (
-                      <div
-                        key={`${tech}-${animationKey}`}
-                        className={`${isGit ? "bg-red-500/15 text-white border-2 border-red-500" : getTechTransparentStyle(tech)} p-2 sm:p-3 rounded-full flex flex-row items-center justify-center text-center transform transition-all duration-300 hover:scale-110 gap-2 w-full max-w-[140px] min-h-[40px] font-light cursor-pointer`}
-                        style={{
-                          animationDelay: isVisible ? `${index * 50}ms` : "0ms",
-                          animation: isVisible ? "slideInRight 0.6s ease-out forwards" : "none"
-                        }}
-                      >
-                        {techInfo.icon.startsWith("https://") ? (
-                          <img
-                            src={techInfo.icon}
-                            alt={tech}
-                            className="w-4 h-4 sm:w-6 sm:h-6"
-                            onError={(e) => {
-                              e.currentTarget.style.display = "none";
-                            }}
-                          />
-                        ) : (
-                          <span className="text-base sm:text-xl">
-                            {techInfo.icon}
-                          </span>
-                        )}
-                        <span className="font-medium text-xs sm:text-sm whitespace-nowrap overflow-hidden text-ellipsis">
-                          {tech}
-                        </span>
-                      </div>
-                    );
-                  })}
+                <div className="flex items-center space-x-2 text-muted-foreground">
+                  <Calendar className="h-5 w-5 text-yellow-500 dark:text-yellow-400" />
+                  <span>Nascimento: 20/09/2007</span>
                 </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[
+                  { value: '1+', label: 'Anos de Experiência' },
+                  { value: '6+', label: 'Projetos Concluídos' }
+                ].map((stat, index) => (
+                  <div
+                    key={stat.label}
+                    className={`bg-card/70 backdrop-blur-sm p-6 rounded-xl border border-border/30 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                      isVisible
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 translate-y-6'
+                    }`}
+                    style={{
+                      transitionDelay: isVisible ? `${index * 100}ms` : '0ms',
+                    }}
+                  >
+                    <div className="text-4xl font-bold bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-500 dark:to-blue-500 bg-clip-text text-transparent mb-3">
+                      {stat.value}
+                    </div>
+                    <div className="text-muted-foreground text-lg">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
+      
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `
+      }} />
     </section>
   );
 }
@@ -937,6 +1007,7 @@ const TimelineSection = () => {
 const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("projects");
@@ -954,37 +1025,40 @@ const ProjectsSection = () => {
       id: 1,
       name: "Frecomu",
       image: "/placeholder.svg",
-      date: "2025",
-      tech: ["React", "Node.js", "PostgreSQL", "TypeScript"],
+      date: "2024",
+      tech: ["Python", "Flask", "Socket.IO", "SQLAlchemy", "JavaScript", "HTML5", "CSS3"],
+      category: "web",
       description:
-        "Um sistema completo para gerenciamento escolar com autenticação de usuários, cadastro de alunos, notas, frequência e dashboard administrativo. Desenvolvido com tecnologias modernas para performance otimizada.",
-      demoVideo: "https://example.com/demo1.mp4",
+        "Aplicativo de chat em tempo real com sistema de contas, respostas e mensagens instantâneas. Desenvolvido com Flask e WebSockets para comunicação em tempo real.",
+      demoVideo: "",
       github: "https://github.com/PedroM2626/Frecomu",
-      live: "https://school-management-demo.com",
+      live: "",
     },
     {
       id: 2,
-      name: "Util Tools",
+      name: "Task Manager",
       image: "/placeholder.svg",
-      date: "2025",
-      tech: ["Unity", "C#"],
+      date: "2024",
+      tech: ["React", "Firebase", "Vite", "Tailwind CSS", "Framer Motion", "Vitest", "Playwright"],
+      category: "web",
       description:
-        "Um jogo de puzzle em 3D com mecânicas inovadoras, sistema de níveis progressivos e interface intuitiva. Desenvolvido na Unity com scripts otimizados.",
-      demoVideo: "https://example.com/demo2.mp4",
-      github: "https://github.com/PedroM2626/util-tools",
-      live: "https://puzzle-game-demo.com",
+        "Gerenciador de tarefas completo com autenticação do Google, CRUD de tarefas, subtarefas e tags personalizáveis. Inclui testes unitários e de aceitação.",
+      demoVideo: "",
+      github: "https://github.com/PedroM2626/Task-Manager",
+      live: "",
     },
     {
       id: 3,
-      name: "Task Manager",
+      name: "Util Tools",
       image: "/placeholder.svg",
-      date: "2025",
-      tech: ["Flutter", "Firebase", "Dart"],
+      date: "2024",
+      tech: ["Python", "Flask", "Tesseract OCR", "Docker"],
+      category: "web",
       description:
-        "Aplicativo móvel para controle financeiro pessoal com categorização automática de gastos, relatórios detalhados e sincronização em nuvem.",
-      demoVideo: "https://example.com/demo3.mp4",
-      github: "https://github.com/PedroM2626/task-manager",
-      live: "https://finance-app-demo.com",
+        "Coleção de ferramentas online úteis, incluindo funcionalidades como remoção de fundo de imagens e OCR (reconhecimento óptico de caracteres).",
+      demoVideo: "",
+      github: "https://github.com/PedroM2626/Util-Tools-Site",
+      live: "",
     },
     // {
     //   id: 4,
@@ -1005,6 +1079,14 @@ const ProjectsSection = () => {
     new Set(projects.flatMap((project) => project.tech)),
   ).sort();
 
+  // Categorias disponíveis
+  const categories = [
+    { id: 'web', name: 'Web' },
+    { id: 'automacao', name: 'Automação' },
+    { id: 'jogo', name: 'Jogos' },
+    { id: 'aplicativo', name: 'Aplicativos' },
+  ];
+
   // Toggle technology selection
   const toggleTech = (tech: string) => {
     setSelectedTechs((prev) =>
@@ -1012,24 +1094,40 @@ const ProjectsSection = () => {
     );
   };
 
+  // Toggle category selection
+  const toggleCategory = (category: string) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category) 
+        ? prev.filter((c) => c !== category) 
+        : [...prev, category]
+    );
+  };
+
   // Clear all filters
   const clearAllFilters = () => {
     setSelectedTechs([]);
+    setSelectedCategories([]);
     setSearchTerm("");
   };
 
-  // Filter projects based on selected technologies and search term
+  // Filter projects based on selected technologies, categories and search term
   const filteredProjects = projects.filter((project) => {
-    const matchesFilter =
+    const matchesTechs = 
       selectedTechs.length === 0 ||
       selectedTechs.some((tech) => project.tech.includes(tech));
+      
+    const matchesCategories = 
+      selectedCategories.length === 0 ||
+      (project.category && selectedCategories.includes(project.category));
+      
     const matchesSearch =
       !searchTerm ||
       project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       project.tech.some((tech) =>
         tech.toLowerCase().includes(searchTerm.toLowerCase()),
       );
-    return matchesFilter && matchesSearch;
+      
+    return matchesTechs && matchesCategories && matchesSearch;
   });
 
   return (
@@ -1039,16 +1137,16 @@ const ProjectsSection = () => {
         <div key={`projects-${animationKey}`}>
           {/* Search and Filters */}
           <div className="max-w-4xl mx-auto mb-8">
-        {/* Search Bar */}
-        <div className="relative mb-6">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
-          <Input
-            placeholder="Pesquisar tecnologia"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 bg-muted/50 border-muted"
-          />
-        </div>
+            {/* Search Bar */}
+            <div className="relative mb-6">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
+              <Input
+                placeholder="Pesquisar tecnologia"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 bg-muted/50 border-muted"
+              />
+            </div>
 
         {/* Technology Filter Chips */}
         <div className="space-y-4">
@@ -1091,19 +1189,42 @@ const ProjectsSection = () => {
             </div>
           )}
 
-          {/* Available Technologies */}
-          <div className="flex flex-wrap gap-2">
-            <div
-              className={`px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer transition-all ${
-                selectedTechs.length === 0
-                  ? "bg-white text-black"
-                  : "bg-muted text-muted-foreground hover:bg-muted/80"
-              }`}
-              onClick={clearAllFilters}
-            >
-              <span>✓</span>
-              <span>Todos</span>
+          {/* Category Filter */}
+          <div className="mb-4">
+            <h3 className="text-sm font-medium mb-2 text-muted-foreground">Categorias</h3>
+            <div className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <div
+                  key={category.id}
+                  className={`px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer transition-all ${
+                    selectedCategories.includes(category.id)
+                      ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white"
+                      : "bg-muted text-muted-foreground hover:bg-muted/80"
+                  }`}
+                  onClick={() => toggleCategory(category.id)}
+                >
+                  <span>{selectedCategories.includes(category.id) ? '✓' : '○'}</span>
+                  <span>{category.name}</span>
+                </div>
+              ))}
             </div>
+          </div>
+
+          {/* Available Technologies */}
+          <div>
+            <h3 className="text-sm font-medium mb-2 text-muted-foreground">Tecnologias</h3>
+            <div className="flex flex-wrap gap-2">
+              <div
+                className={`px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 cursor-pointer transition-all ${
+                  selectedTechs.length === 0 && selectedCategories.length === 0
+                    ? "bg-white text-black"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
+                }`}
+                onClick={clearAllFilters}
+              >
+                <span>✓</span>
+                <span>Todos</span>
+              </div>
             {allTechs
               .filter((tech) => !selectedTechs.includes(tech))
               .map((tech) => {
@@ -1132,10 +1253,13 @@ const ProjectsSection = () => {
               })}
           </div>
         </div>
+          </div>
+        </div>
       </div>
 
       {/* Projects Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4 relative z-10 mt-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProjects.map((project) => (
           <Card
             key={project.id}
@@ -1329,18 +1453,25 @@ const ProjectsSection = () => {
   );
 };
 
-const ContactSection = () => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+const ContactSection: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("contact");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -1423,24 +1554,7 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              {/* Birth Date Card */}
-              <div className="group">
-                <div className="flex items-center p-4 rounded-lg border border-muted bg-card">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-yellow-100 dark:bg-yellow-900/20 mr-4">
-                    <span className="text-yellow-600 dark:text-yellow-400">
-                      🎂
-                    </span>
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-medium text-foreground">
-                      Data de Nascimento
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      20/09/2007
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* Birth Date Card - Moved to About Section */}
 
               {/* Phone Card */}
               <a
@@ -1592,7 +1706,7 @@ const ContactSection = () => {
   );
 };
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
   <footer className="bg-muted/30 py-8">
       <div className="container mx-auto px-4">
@@ -1609,12 +1723,13 @@ const Footer = () => {
   );
 };
 
-export default function Index() {
+const Index: React.FC = () => {
   return (
     <div className="min-h-screen">
       <Header />
       <HomeSection />
       <AboutSection />
+      <SkillsSection />
       <TimelineSection />
       <ProjectsSection />
       <ContactSection />
