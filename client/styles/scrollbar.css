@@ -1,0 +1,31 @@
+/* Estilos personalizados para a barra de rolagem */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #9333ea;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #7e22ce;
+}
+
+/* Dark mode */
+.dark ::-webkit-scrollbar-thumb {
+  background: #f59e0b;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
