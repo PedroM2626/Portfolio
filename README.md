@@ -24,7 +24,7 @@ Bem-vindo ao meu portfólio pessoal! Este é um projeto desenvolvido para mostra
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/portfolio.git
+   git clone https://github.com/PedroM2626/Portfolio.git
    cd portfolio
    ```
 
