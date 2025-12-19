@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleContactForm } from "./routes/contact";
+import { handleChatbaseToken } from "./routes/chatbase";
 
 export function createServer() {
   const app = express();
@@ -20,6 +21,7 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
   app.post("/api/contact", handleContactForm);
+  app.get("/api/chatbase-token", handleChatbaseToken);
 
   return app;
 }

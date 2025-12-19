@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { HelmetProvider } from 'react-helmet-async';
 import { SEO } from "./components/SEO";
+import { Chatbot } from "./components/Chatbot";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -21,6 +22,7 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <SEO />
+          <Chatbot />
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />

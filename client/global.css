@@ -48,11 +48,11 @@
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #f59e0b;
+  background: #9333ea;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #d97706;
+  background: #7e22ce;
 }
 
 @tailwind base;
