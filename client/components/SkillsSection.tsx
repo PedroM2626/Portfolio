@@ -156,6 +156,20 @@ const getTechInfo = (name: string) => {
     'Next.js': { color: 'bg-black', icon: 'https://skillicons.dev/icons?i=nextjs' },
     'AWS': { color: 'bg-orange-500', icon: 'https://skillicons.dev/icons?i=aws' },
     'PostgreSQL': { color: 'bg-blue-700', icon: 'https://skillicons.dev/icons?i=postgresql' }
+    ,
+    'Scikit-Learn': { color: 'bg-orange-500', icon: 'https://cdn.simpleicons.org/scikitlearn' },
+    'Transformers': { color: 'bg-yellow-500', icon: 'https://cdn.simpleicons.org/huggingface' },
+    'Hugging Face': { color: 'bg-yellow-500', icon: 'https://cdn.simpleicons.org/huggingface' },
+    'Keras': { color: 'bg-red-500', icon: 'https://cdn.simpleicons.org/keras' },
+    'XGBoost': { color: 'bg-green-600', icon: 'https://cdn.simpleicons.org/xgboost' },
+    'LightGBM': { color: 'bg-green-500', icon: 'https://cdn.simpleicons.org/lightgbm' },
+    'OpenCV': { color: 'bg-blue-700', icon: 'https://skillicons.dev/icons?i=opencv' },
+    'Pandas': { color: 'bg-blue-500', icon: 'https://skillicons.dev/icons?i=pandas' },
+    'NumPy': { color: 'bg-blue-600', icon: 'https://skillicons.dev/icons?i=numpy' },
+    'spaCy': { color: 'bg-teal-500', icon: 'https://cdn.simpleicons.org/spacy' },
+    'NLTK': { color: 'bg-purple-500', icon: 'https://cdn.simpleicons.org/python' },
+    'Prophet': { color: 'bg-indigo-500', icon: 'https://cdn.simpleicons.org/python' },
+    'Statsmodels': { color: 'bg-indigo-600', icon: 'https://cdn.simpleicons.org/python' }
   };
 
   return (

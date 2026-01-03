@@ -20,7 +20,7 @@ export interface ProjectItem {
   live: string;
 }
 
-import { EXCLUDED_REPOS, NAME_OVERRIDES, DESCRIPTION_OVERRIDES } from "./projects.config";
+import { EXCLUDED_REPOS, NAME_OVERRIDES, DESCRIPTION_OVERRIDES, TECH_OVERRIDES } from "./projects.config";
 
 function normalize(name: string): string {
   return name.toLowerCase().replace(/[\s_]+/g, "-").replace(/[^a-z0-9-]/g, "");
@@ -119,13 +119,15 @@ export function mapRepoToProject(repo: GitHubRepo, index: number): ProjectItem {
     if (t.includes("prophet")) tech.push("Prophet");
     if (t.includes("statsmodels")) tech.push("Statsmodels");
   }
+  const manualTech = TECH_OVERRIDES[norm] ?? [];
+  const mergedTech = Array.from(new Set([...tech, ...manualTech]));
 
   return {
     id: 100000 + index,
     name: nameOverride ?? repo.name,
     image: "/placeholder.svg",
     date: new Date(repo.created_at).getFullYear().toString(),
-    tech: tech.length ? tech : ["Python"],
+    tech: mergedTech.length ? mergedTech : ["Python"],
     category: "ai-ml",
     description: descriptionOverride ?? repo.description ?? "Projeto de IA/ML",
     demoVideo: "",
