@@ -378,7 +378,7 @@ const HomeSection: React.FC = () => {
                     className="px-4 py-2 sm:px-6 sm:py-3 rounded-xl bg-white/20 dark:bg-black/30 backdrop-blur-md border border-white/30 dark:border-gray-600/40 text-pink-700 dark:text-pink-300 transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_32px_rgba(236,72,153,0.7)] transform hover:-translate-y-0.5 hover:bg-white/30 dark:hover:bg-black/40 min-w-[120px] max-w-full"
                   >
                     <Mail className="h-4 w-4" />
-                    <span className="font-medium">Email</span>
+                    <span className="font-medium">{t('common.email')}</span>
                   </a>
                 </div>
 
@@ -685,6 +685,7 @@ const getTechTransparentStyle = (name: string): string => {
 };
 
 const AboutSection = () => {
+  const { t } = useTranslation();
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("about");
   const [animationKey, setAnimationKey] = useState(0);
@@ -731,38 +732,38 @@ const AboutSection = () => {
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-                  Sobre Mim
+                  {t('about.title')}
                 </span>
               </h2>
               <div className="w-24 h-1 mx-auto bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-500 dark:to-blue-500 rounded-full mb-6" />
               <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                Desenvolvedor apaixonado por criar soluções práticas e funcionais
+                {t('about.subtitle')}
               </p>
             </div>
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
-                <h3 className="text-xl font-semibold mb-6">Quem sou eu?</h3>
+                <h3 className="text-xl font-semibold mb-6">{t('about.who')}</h3>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Tenho 17 anos e estou iniciando a graduação em Ciência da Computação na UniCEUB.
+                  {t('about.age')}
                 </p>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Com mais de {yearsOfExperience} anos de experiência em programação, me especializei em desenvolvimento web e jogos, criando soluções práticas e funcionais.
+                  {t('about.experience', { years: yearsOfExperience })}
                 </p>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Já desenvolvi {projectCount} projetos completos, desde aplicações web modernas até jogos interativos, sempre buscando aplicar as melhores práticas e tecnologias do mercado.
+                  {t('about.projects', { count: projectCount })}
                 </p>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Meu objetivo é continuar evoluindo como desenvolvedor, enfrentando novos desafios e contribuindo para projetos inovadores em uma grande empresa de tecnologia.
+                  {t('about.goal')}
                 </p>
                 <div className="flex items-center space-x-2 text-muted-foreground">
                   <Calendar className="h-5 w-5 text-yellow-500 dark:text-yellow-400" />
-                  <span>Nascimento: 20/09/2007</span>
+                  <span>{t('about.birth')}</span>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
-                  { value: '1+', label: 'Anos de Experiência' },
-                  { value: '6+', label: 'Projetos Concluídos' }
+                  { value: '1+', label: t('about.stats.expYears') },
+                  { value: '6+', label: t('about.stats.doneProjects') }
                 ].map((stat, index) => (
                   <div
                     key={stat.label}
@@ -1023,6 +1024,7 @@ const TimelineSection = () => {
 };
 
 const ProjectsSection = () => {
+  const { t } = useTranslation();
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -1147,11 +1149,11 @@ const ProjectsSection = () => {
 
   // Categorias disponíveis
   const categories = [
-    { id: 'web', name: 'Web' },
-    { id: 'automacao', name: 'Automação' },
-    { id: 'jogo', name: 'Jogos' },
-    { id: 'aplicativo', name: 'Aplicativos' },
-    { id: 'ai-ml', name: 'IA & ML' },
+    { id: 'web', name: t('projectsPage.categories.web') },
+    { id: 'automacao', name: t('projectsPage.categories.automacao') },
+    { id: 'jogo', name: t('projectsPage.categories.jogo') },
+    { id: 'aplicativo', name: t('projectsPage.categories.aplicativo') },
+    { id: 'ai-ml', name: t('projectsPage.categories.aiMl') },
   ];
 
   // Toggle technology selection
@@ -1203,7 +1205,7 @@ const ProjectsSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div key={`projects-${animationKey}`}>
           <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Projetos em destaque</h2>
+            <h2 className="text-2xl font-bold mb-4">{t('projectsPage.featuredTitle')}</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {featured.map((project: any) => (
                 <Card key={`featured-${project.id}`} className={`cursor-pointer hover:shadow-lg transition-shadow rounded-2xl bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-green-900/40 dark:via-blue-900/60 dark:to-purple-900/40`} style={{ position: "relative", zIndex: 1 }} onClick={() => setSelectedProject(project)}>
@@ -1454,14 +1456,14 @@ const ProjectsSection = () => {
                           src={selectedProject.demoVideo}
                           type="video/mp4"
                         />
-                        Seu navegador não suporta o elemento de vídeo.
+                        {t('projectsPage.videoFallback')}
                       </video>
                     </div>
                   </div>
 
                   {/* Description */}
                   <div>
-                    <h4 className="font-semibold text-lg mb-2">Descrição</h4>
+                    <h4 className="font-semibold text-lg mb-2">{t('projectsPage.descriptionTitle')}</h4>
                     <p className="text-muted-foreground leading-relaxed">
                       {selectedProject.description}
                     </p>
@@ -1470,7 +1472,7 @@ const ProjectsSection = () => {
                   {/* Technologies */}
                   <div>
                     <h4 className="font-semibold text-lg mb-3">
-                      Tecnologias Utilizadas
+                      {t('projectsPage.technologiesTitle')}
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.tech.map((tech: string) => {
@@ -1507,7 +1509,7 @@ const ProjectsSection = () => {
                   {/* Action Buttons */}
                   <div>
                     <h4 className="font-semibold text-lg mb-3">
-                      Links do Projeto
+                      {t('projectsPage.linksTitle')}
                     </h4>
                     <div className="flex flex-wrap gap-3">
                       <a
@@ -1560,6 +1562,7 @@ interface FormData {
 }
 
 const ContactSection: React.FC = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -1614,7 +1617,7 @@ const ContactSection: React.FC = () => {
         <div className="text-center mb-4">
           <h2 className="text-3xl md:text-4xl font-bold">
             <span className="bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
-              Entre em Contato
+              {t('contact.title')}
             </span>
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 mx-auto mt-2"></div>
@@ -1626,11 +1629,10 @@ const ContactSection: React.FC = () => {
           {/* Left Column - Social Links */}
           <div>
             <h3 className="text-xl font-semibold mb-6 text-foreground">
-              Vamos Conversar!
+              {t('contact.talk')}
             </h3>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              Estou sempre interessado em novas oportunidades e projetos
-              desafiadores. Entre em contato comigo!
+              {t('contact.intro')}
             </p>
 
             <div className="space-y-4">
@@ -1737,10 +1739,10 @@ const ContactSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column - Contact Form */}
+              {/* Right Column - Contact Form */}
           <div>
             <h3 className="text-xl font-semibold mb-6 text-foreground">
-              Envie uma Mensagem
+              {t('contact.sendMessage')}
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">

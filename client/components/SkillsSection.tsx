@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
+import { useTranslation } from 'react-i18next';
 
 // Custom hook for scroll reveal
 const useScrollReveal = () => {
@@ -101,17 +102,17 @@ const getSkillsByCategory = (category: SkillCategory): Skill[] => {
   return skills.filter(skill => skill.categories.includes(category));
 };
 
-const categoryTitles = {
-  'frontend': 'Frontend',
-  'backend': 'Backend',
-  'tools': 'Ferramentas & DevOps',
-  'languages': 'Linguagens de Programação',
-  'game-dev': 'Desenvolvimento de Jogos',
-  'mobile': 'Aplicativos Móveis',
-  'desktop': 'Aplicativos Desktop',
-  'automation': 'Automação & Bots',
-  'ai-ml': 'IA & Machine Learning'
-};
+const categoryTitles = (t: (key: string) => string) => ({
+  'frontend': t('skills.categories.frontend'),
+  'backend': t('skills.categories.backend'),
+  'tools': t('skills.categories.tools'),
+  'languages': t('skills.categories.languages'),
+  'game-dev': t('skills.categories.gameDev'),
+  'mobile': t('skills.categories.mobile'),
+  'desktop': t('skills.categories.desktop'),
+  'automation': t('skills.categories.automation'),
+  'ai-ml': t('skills.categories.aiMl'),
+});
 
 const getTechInfo = (name: string) => {
   const techMap: { [key: string]: { color: string; icon: string } } = {
@@ -299,6 +300,7 @@ const categoryColors = {
 } as const;
 
 export const SkillsSection = () => {
+  const { t } = useTranslation();
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("skills");
   const [animationKey, setAnimationKey] = useState(0);
@@ -331,12 +333,12 @@ export const SkillsSection = () => {
               <div className="mb-8">
                 <h2 className="text-3xl font-bold mb-2">
                   <span className="bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-500 dark:to-blue-500 bg-clip-text text-transparent">
-                    Tecnologias
+                    {t('skills.title')}
                   </span>
                 </h2>
                 <div className="w-24 h-1 mx-auto bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-500 dark:to-blue-500 rounded-full mb-4" />
                 <h3 className="text-2xl font-semibold text-foreground mb-8 max-w-3xl mx-auto">
-                  Todas as tecnologias que eu utilizo ou já utilizei em projetos
+                  {t('skills.subtitle')}
                 </h3>
               </div>
             </div>
@@ -360,7 +362,7 @@ export const SkillsSection = () => {
                   >
                     <h3 className={`text-xl font-semibold mb-4 flex items-center ${colors.text}`}>
                       <span className={`w-2 h-6 ${colors.bullet} rounded-full mr-2`}></span>
-                      {categoryTitles[category]}
+                      {categoryTitles(t)[category]}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {categorySkills.map((skill) => (
@@ -381,11 +383,9 @@ export const SkillsSection = () => {
                   <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                 </svg>
                 <div>
-                  <h4 className="text-yellow-800 dark:text-yellow-200 font-semibold text-lg mb-2">Sobre o uso de IA</h4>
+                  <h4 className="text-yellow-800 dark:text-yellow-200 font-semibold text-lg mb-2">{t('skills.noteTitle')}</h4>
                   <p className="text-yellow-700 dark:text-yellow-300">
-                    A maioria das ferramentas foram utilizadas de forma assistida (IA) em meus projetos. 
-                    Estou constantemente buscando aprofundar meus conhecimentos nessas tecnologias e 
-                    estou aberto a oportunidades de aprendizado e desenvolvimento profissional.
+                    {t('skills.noteText')}
                   </p>
                 </div>
               </div>
