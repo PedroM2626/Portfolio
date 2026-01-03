@@ -1012,6 +1012,7 @@ const ProjectsSection = () => {
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("projects");
   const [animationKey, setAnimationKey] = useState(0);
+  const [projects, setProjects] = useState<any[]>([]);
 
   // Reset animations when section becomes visible again
   useEffect(() => {
@@ -1020,7 +1021,7 @@ const ProjectsSection = () => {
     }
   }, [isVisible]);
 
-  const projects = [
+  const initialProjects = [
     {
       id: 1,
       name: "Frecomu",
@@ -1074,6 +1075,27 @@ const ProjectsSection = () => {
     // },
   ];
 
+  useEffect(() => {
+    setProjects(initialProjects);
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { loadMLProjectsFromGitHub } = await import("@/lib/github");
+        const mlProjects = await loadMLProjectsFromGitHub();
+        if (mlProjects.length) {
+          setProjects((prev) => {
+            const existingNames = new Set(prev.map((p) => p.name));
+            const deduped = mlProjects.filter((p) => !existingNames.has(p.name));
+            return [...prev, ...deduped];
+          });
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  }, []);
   // Get all unique technologies for filter options
   const allTechs = Array.from(
     new Set(projects.flatMap((project) => project.tech)),
@@ -1085,6 +1107,7 @@ const ProjectsSection = () => {
     { id: 'automacao', name: 'Automação' },
     { id: 'jogo', name: 'Jogos' },
     { id: 'aplicativo', name: 'Aplicativos' },
+    { id: 'ai-ml', name: 'IA & ML' },
   ];
 
   // Toggle technology selection
@@ -1111,10 +1134,10 @@ const ProjectsSection = () => {
   };
 
   // Filter projects based on selected technologies, categories and search term
-  const filteredProjects = projects.filter((project) => {
+  const filteredProjects = projects.filter((project: any) => {
     const matchesTechs = 
       selectedTechs.length === 0 ||
-      selectedTechs.some((tech) => project.tech.includes(tech));
+      selectedTechs.some((tech: string) => project.tech.includes(tech));
       
     const matchesCategories = 
       selectedCategories.length === 0 ||
@@ -1123,7 +1146,7 @@ const ProjectsSection = () => {
     const matchesSearch =
       !searchTerm ||
       project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.tech.some((tech) =>
+      project.tech.some((tech: string) =>
         tech.toLowerCase().includes(searchTerm.toLowerCase()),
       );
       
@@ -1260,7 +1283,7 @@ const ProjectsSection = () => {
       {/* Projects Grid */}
       <div className="container mx-auto px-4 relative z-10 mt-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredProjects.map((project) => (
+        {filteredProjects.map((project: any) => (
           <Card
             key={project.id}
             className={
@@ -1281,7 +1304,7 @@ const ProjectsSection = () => {
             </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => {
+                    {project.tech.map((tech: string) => {
                       const techInfo = getTechInfo(tech);
                       const isGit = tech === "Git";
                       return (
