@@ -1013,6 +1013,8 @@ const ProjectsSection = () => {
   const isVisible = visibleSections.has("projects");
   const [animationKey, setAnimationKey] = useState(0);
   const [projects, setProjects] = useState<any[]>([]);
+  const [featured, setFeatured] = useState<any[]>([]);
+  const [nonFeatured, setNonFeatured] = useState<any[]>([]);
 
   // Reset animations when section becomes visible again
   useEffect(() => {
@@ -1083,6 +1085,8 @@ const ProjectsSection = () => {
     (async () => {
       try {
         const { loadMLProjectsFromGitHub } = await import("@/lib/github");
+        const { FEATURED_REPOS, NAME_OVERRIDES, DESCRIPTION_OVERRIDES, EXCLUDED_REPOS } = await import("@/lib/projects.config");
+        const normalize = (name: string) => name.toLowerCase().replace(/[\s_]+/g, "-").replace(/[^a-z0-9-]/g, "");
         const mlProjects = await loadMLProjectsFromGitHub();
         if (mlProjects.length) {
           setProjects((prev) => {
@@ -1091,15 +1095,30 @@ const ProjectsSection = () => {
             return [...prev, ...deduped];
           });
         }
+        const applyOverrides = (p: any) => {
+          const norm = normalize(p.name);
+          const name = NAME_OVERRIDES[norm] ?? p.name;
+          const description = DESCRIPTION_OVERRIDES[norm] ?? p.description;
+          return { ...p, name, description };
+        };
+        const excluded = new Set(EXCLUDED_REPOS.map(normalize));
+        setProjects((prev) => prev.map(applyOverrides).filter((p) => !excluded.has(normalize(p.name))));
+        const feats = new Set(Object.keys(FEATURED_REPOS).map(normalize));
+        const featuredList = projects.filter((p) => feats.has(normalize(p.name))).map((p) => {
+          const norm = normalize(p.name);
+          const display = FEATURED_REPOS[norm];
+          return display ? { ...p, name: display } : p;
+        });
+        const nonFeaturedList = projects.filter((p) => !feats.has(normalize(p.name)));
+        setFeatured(featuredList);
+        setNonFeatured(nonFeaturedList);
       } catch (e) {
         console.error(e);
       }
     })();
   }, []);
   // Get all unique technologies for filter options
-  const allTechs = Array.from(
-    new Set(projects.flatMap((project) => project.tech)),
-  ).sort();
+  const allTechs = Array.from(new Set(projects.flatMap((project) => project.tech))).sort();
 
   // Categorias disponíveis
   const categories = [
@@ -1158,6 +1177,38 @@ const ProjectsSection = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-purple-300 via-blue-300 to-indigo-300 dark:from-purple-900/50 dark:via-blue-900/50 dark:to-indigo-900/50" />
       <div className="container mx-auto px-4 relative z-10">
         <div key={`projects-${animationKey}`}>
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">Projetos em destaque</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featured.map((project: any) => (
+                <Card key={`featured-${project.id}`} className={`cursor-pointer hover:shadow-lg transition-shadow rounded-2xl bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-green-900/40 dark:via-blue-900/60 dark:to-purple-900/40`} style={{ position: "relative", zIndex: 1 }} onClick={() => setSelectedProject(project)}>
+                  <CardHeader>
+                    <img src={project.image} alt={project.name} className="w-full h-48 object-cover rounded-lg mb-4" />
+                    <CardTitle>{project.name}</CardTitle>
+                    <CardDescription>{project.date}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech: string) => {
+                        const techInfo = getTechInfo(tech);
+                        const isGit = tech === "Git";
+                        return (
+                          <div key={tech} className={`${isGit ? "bg-red-500/15 text-white border border-red-500" : getTechTransparentStyle(tech)} px-3 py-1 rounded-full text-xs font-medium flex items-center space-x-1`}>
+                            {techInfo.icon.startsWith("https://") ? (
+                              <img src={techInfo.icon} alt={tech} className="w-4 h-4" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+                            ) : (
+                              <span>{techInfo.icon}</span>
+                            )}
+                            <span>{tech}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
           {/* Search and Filters */}
           <div className="max-w-4xl mx-auto mb-8">
             {/* Search Bar */}
