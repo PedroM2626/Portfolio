@@ -1085,7 +1085,7 @@ const ProjectsSection = () => {
     (async () => {
       try {
         const { loadMLProjectsFromGitHub } = await import("@/lib/github");
-        const { FEATURED_REPOS, NAME_OVERRIDES, DESCRIPTION_OVERRIDES, EXCLUDED_REPOS } = await import("@/lib/projects.config");
+        const { NAME_OVERRIDES, DESCRIPTION_OVERRIDES, EXCLUDED_REPOS } = await import("@/lib/projects.config");
         const normalize = (name: string) => name.toLowerCase().replace(/[\s_]+/g, "-").replace(/[^a-z0-9-]/g, "");
         const mlProjects = await loadMLProjectsFromGitHub();
         if (mlProjects.length) {
@@ -1103,20 +1103,27 @@ const ProjectsSection = () => {
         };
         const excluded = new Set(EXCLUDED_REPOS.map(normalize));
         setProjects((prev) => prev.map(applyOverrides).filter((p) => !excluded.has(normalize(p.name))));
-        const feats = new Set(Object.keys(FEATURED_REPOS).map(normalize));
-        const featuredList = projects.filter((p) => feats.has(normalize(p.name))).map((p) => {
-          const norm = normalize(p.name);
-          const display = FEATURED_REPOS[norm];
-          return display ? { ...p, name: display } : p;
-        });
-        const nonFeaturedList = projects.filter((p) => !feats.has(normalize(p.name)));
-        setFeatured(featuredList);
-        setNonFeatured(nonFeaturedList);
       } catch (e) {
         console.error(e);
       }
     })();
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      const { FEATURED_REPOS } = await import("@/lib/projects.config");
+      const normalize = (name: string) => name.toLowerCase().replace(/[\s_]+/g, "-").replace(/[^a-z0-9-]/g, "");
+      const feats = new Set(Object.keys(FEATURED_REPOS).map(normalize));
+      const featuredList = projects.filter((p) => feats.has(normalize(p.name))).map((p) => {
+        const norm = normalize(p.name);
+        const display = FEATURED_REPOS[norm];
+        return display ? { ...p, name: display } : p;
+      });
+      const nonFeaturedList = projects.filter((p) => !feats.has(normalize(p.name)));
+      setFeatured(featuredList);
+      setNonFeatured(nonFeaturedList);
+    })();
+  }, [projects]);
   // Get all unique technologies for filter options
   const allTechs = Array.from(new Set(projects.flatMap((project) => project.tech))).sort();
 
@@ -1153,7 +1160,7 @@ const ProjectsSection = () => {
   };
 
   // Filter projects based on selected technologies, categories and search term
-  const filteredProjects = projects.filter((project: any) => {
+  const filteredProjects = nonFeatured.filter((project: any) => {
     const matchesTechs = 
       selectedTechs.length === 0 ||
       selectedTechs.some((tech: string) => project.tech.includes(tech));

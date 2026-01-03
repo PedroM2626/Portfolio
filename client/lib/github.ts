@@ -87,8 +87,38 @@ export function mapRepoToProject(repo: GitHubRepo, index: number): ProjectItem {
   const d = (repo.description ?? "").toLowerCase();
   if (d.includes("pytorch")) tech.push("PyTorch");
   if (d.includes("tensorflow")) tech.push("TensorFlow");
-  if (d.includes("scikit")) tech.push("Scikit-Learn");
+  if (d.includes("scikit") || d.includes("scikit-learn")) tech.push("Scikit-Learn");
+  if (d.includes("transformer") || d.includes("transformers")) tech.push("Transformers");
+  if (d.includes("huggingface")) tech.push("Hugging Face");
+  if (d.includes("keras")) tech.push("Keras");
+  if (d.includes("xgboost")) tech.push("XGBoost");
+  if (d.includes("lightgbm")) tech.push("LightGBM");
   if (d.includes("opencv")) tech.push("OpenCV");
+  if (d.includes("pandas")) tech.push("Pandas");
+  if (d.includes("numpy")) tech.push("NumPy");
+  if (d.includes("spacy")) tech.push("spaCy");
+  if (d.includes("nltk")) tech.push("NLTK");
+  if (d.includes("prophet")) tech.push("Prophet");
+  if (d.includes("statsmodels")) tech.push("Statsmodels");
+  // topics inference
+  if (Array.isArray(repo.topics)) {
+    const t = repo.topics.map((x) => x.toLowerCase());
+    if (t.includes("pytorch")) tech.push("PyTorch");
+    if (t.includes("tensorflow")) tech.push("TensorFlow");
+    if (t.includes("scikit-learn")) tech.push("Scikit-Learn");
+    if (t.includes("transformers")) tech.push("Transformers");
+    if (t.includes("huggingface")) tech.push("Hugging Face");
+    if (t.includes("keras")) tech.push("Keras");
+    if (t.includes("xgboost")) tech.push("XGBoost");
+    if (t.includes("lightgbm")) tech.push("LightGBM");
+    if (t.includes("opencv")) tech.push("OpenCV");
+    if (t.includes("pandas")) tech.push("Pandas");
+    if (t.includes("numpy")) tech.push("NumPy");
+    if (t.includes("spacy")) tech.push("spaCy");
+    if (t.includes("nltk")) tech.push("NLTK");
+    if (t.includes("prophet")) tech.push("Prophet");
+    if (t.includes("statsmodels")) tech.push("Statsmodels");
+  }
 
   return {
     id: 100000 + index,

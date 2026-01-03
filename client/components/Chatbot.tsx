@@ -50,7 +50,7 @@ export function Chatbot() {
         
         if (data.token) {
           if (window.chatbase) {
-             window.chatbase('identify', { token: data.token });
+            window.chatbase('identify', { token: data.token });
           }
         }
       } catch (error) {
