@@ -61,6 +61,8 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { useTheme } from "next-themes";
 import { SkillsSection } from "@/components/SkillsSection";
+import { useTranslation } from "react-i18next";
+import { LanguageSwitch } from "@/components/LanguageSwitch";
 import {
   Moon,
   Sun,
@@ -164,18 +166,19 @@ const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState<boolean>(false);
+  const { t } = useTranslation();
   
   useEffect(() => { 
     setMounted(true); 
   }, []);
   
   const navItems: NavItem[] = [
-    { href: "#home", label: "Início" },
-    { href: "#about", label: "Sobre" },
-    { href: "#skills", label: "Tecnologias" },
-    { href: "#timeline", label: "Jornada" },
-    { href: "#projects", label: "Projetos" },
-    { href: "#contact", label: "Contato" },
+    { href: "#home", label: t("nav.home") },
+    { href: "#about", label: t("nav.about") },
+    { href: "#skills", label: t("nav.skills") },
+    { href: "#timeline", label: t("nav.timeline") },
+    { href: "#projects", label: t("nav.projects") },
+    { href: "#contact", label: t("nav.contact") },
   ];
   
   const scrollToSection = (href: string): void => {
@@ -186,12 +189,12 @@ const Header: React.FC = () => {
   
   // Ícones para cada item do menu
   const navIcons: Record<string, JSX.Element> = {
-    "Início": <Home className="h-5 w-5 mr-2" />,
-    "Sobre": <User className="h-5 w-5 mr-2" />,
-    "Tecnologias": <Cpu className="h-5 w-5 mr-2" />,
-    "Jornada": <Calendar className="h-5 w-5 mr-2" />,
-    "Projetos": <Github className="h-5 w-5 mr-2" />,
-    "Contato": <Mail className="h-5 w-5 mr-2" />,
+    "#home": <Home className="h-5 w-5 mr-2" />,
+    "#about": <User className="h-5 w-5 mr-2" />,
+    "#skills": <Cpu className="h-5 w-5 mr-2" />,
+    "#timeline": <Calendar className="h-5 w-5 mr-2" />,
+    "#projects": <Github className="h-5 w-5 mr-2" />,
+    "#contact": <Mail className="h-5 w-5 mr-2" />,
   };
 
   return (
@@ -240,12 +243,13 @@ const Header: React.FC = () => {
               <Moon className="h-4 w-4 text-blue-600 dark:text-blue-400 transition-colors" />
             </div>
           )}
+          <LanguageSwitch />
           <Button
             variant="ghost"
             size="icon"
             className="md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Abrir menu"
+            aria-label={t("aria.openMenu")}
           >
             {isMobileMenuOpen
               ? <X className="h-6 w-6 text-purple-600 dark:text-white" />
@@ -262,7 +266,7 @@ const Header: React.FC = () => {
               onClick={() => scrollToSection(item.href)}
               className="w-11/12 max-w-md flex items-center justify-start text-lg py-3 px-4 rounded-xl text-foreground dark:text-white font-semibold hover:bg-purple-700/80 dark:hover:bg-blue-900/80 hover:scale-[1.04] transition-all duration-200 shadow-lg gap-2 bg-white/70 dark:bg-black/40"
             >
-              {navIcons[item.label]}
+              {navIcons[item.href]}
               {item.label}
             </button>
           ))}
@@ -275,6 +279,7 @@ const Header: React.FC = () => {
 const HomeSection: React.FC = () => {
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("home");
+  const { t } = useTranslation();
 
   const { displayedText: nameText, isComplete: nameComplete } = useTypingEffect(
     "Pedro Morato",
@@ -282,7 +287,7 @@ const HomeSection: React.FC = () => {
     isVisible,
   );
   const { displayedText: jobText, isComplete: jobComplete } = useTypingEffect(
-    "Desenvolvedor Independente",
+    t("hero.title"),
     150,
     isVisible && nameComplete,
   );

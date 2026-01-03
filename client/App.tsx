@@ -1,5 +1,6 @@
 import "./global.css";
 import "./styles/scrollbar.css";
+import "@/lib/i18n";
 import { createRoot } from 'react-dom/client';
 
 import { Toaster } from "@/components/ui/sonner";
