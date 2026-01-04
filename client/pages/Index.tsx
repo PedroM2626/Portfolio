@@ -1064,6 +1064,24 @@ const ProjectsSection = () => {
   }, []);
 
   useEffect(() => {
+    const lang = (i18n.language || "pt").split("-")[0];
+    setProjects((prev) =>
+      prev.map((p) => {
+        if (p.name === "Frecomu") {
+          return { ...p, description: t(`projects.static.frecomu.description.${lang}`) };
+        }
+        if (p.name === "Task Manager") {
+          return { ...p, description: t(`projects.static.taskManager.description.${lang}`) };
+        }
+        if (p.name === "Util Tools") {
+          return { ...p, description: t(`projects.static.utilTools.description.${lang}`) };
+        }
+        return p;
+      }),
+    );
+  }, [i18n.language, t]);
+
+  useEffect(() => {
     (async () => {
       try {
         const { loadMLProjectsFromGitHub } = await import("@/lib/github");
@@ -1095,12 +1113,26 @@ const ProjectsSection = () => {
     (async () => {
       const { FEATURED_REPOS } = await import("@/lib/projects.config");
       const normalize = (name: string) => name.toLowerCase().replace(/[\s_]+/g, "-").replace(/[^a-z0-9-]/g, "");
-      const feats = new Set(Object.keys(FEATURED_REPOS).map(normalize));
-      const featuredList = projects.filter((p) => feats.has(normalize(p.name))).map((p) => {
-        const norm = normalize(p.name);
-        const display = FEATURED_REPOS[norm];
-        return display ? { ...p, name: display } : p;
-      });
+      const featKeys = Object.keys(FEATURED_REPOS);
+      const feats = new Set<string>([
+        ...featKeys.map(normalize),
+        ...featKeys
+          .map((k) => FEATURED_REPOS[k])
+          .filter((v): v is string => typeof v === "string" && v.length > 0)
+          .map(normalize),
+      ]);
+      const featuredList = projects
+        .filter((p) => feats.has(normalize(p.name)))
+        .map((p) => {
+          const norm = normalize(p.name);
+          const direct = FEATURED_REPOS[norm];
+          if (typeof direct === "string" && direct.length > 0) {
+            return { ...p, name: direct };
+          }
+          const byKey = featKeys.find((k) => normalize(k) === norm);
+          const display = byKey ? FEATURED_REPOS[byKey] : undefined;
+          return typeof display === "string" && display.length > 0 ? { ...p, name: display } : p;
+        });
       const nonFeaturedList = projects.filter((p) => !feats.has(normalize(p.name)));
       setFeatured(featuredList);
       setNonFeatured(nonFeaturedList);
