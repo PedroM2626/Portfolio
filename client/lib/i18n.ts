@@ -95,33 +95,73 @@ const resources = {
         },
         dynamic: {
           "senti-pred": {
-            description: {
-              pt: "Classificação de sentimentos em textos usando modelos de machine learning e bibliotecas de NLP.",
-              en: "Sentiment classification on text using machine learning models and NLP libraries.",
+            summary: {
+              pt: "Classificação de sentimentos em comentários/registro.",
+              en: "Sentiment classification on comments/entries.",
+            },
+            details: {
+              pt: "Projeto completo de previsão de sentimentos em textos, aplicando conceitos de Machine Learning, MLOps, IA Engineering e Data Science. Inclui preparação de dados, treinamento, avaliação e inferência com bibliotecas de NLP.",
+              en: "Complete sentiment prediction project for text, applying Machine Learning, MLOps, AI Engineering and Data Science. Includes data prep, training, evaluation and inference with NLP libraries.",
             },
           },
           "chatbot-previsao-ia": {
-            description: {
-              pt: "Chatbot que realiza previsões com IA, combinando modelos Transformers e pipelines de inferência.",
-              en: "Chatbot that performs AI-based forecasts, combining Transformers models and inference pipelines.",
+            summary: {
+              pt: "Chatbot que faz previsões com IA.",
+              en: "Chatbot that performs AI-based forecasts.",
+            },
+            details: {
+              pt: "Chatbot que realiza previsões usando modelos Transformers, com pipelines de inferência e integração com bibliotecas de NLP. Foco em respostas consistentes e previsões baseadas em dados.",
+              en: "Chatbot that performs forecasts using Transformers models, with inference pipelines and NLP libraries integration. Focused on consistent responses and data-driven predictions.",
             },
           },
           "assistente-virtual": {
-            description: {
-              pt: "Assistente virtual com NLP para responder perguntas e auxiliar em tarefas com modelos pré-treinados.",
-              en: "Virtual assistant with NLP to answer questions and assist tasks using pre-trained models.",
+            summary: {
+              pt: "Assistente virtual com NLP.",
+              en: "Virtual assistant with NLP.",
+            },
+            details: {
+              pt: "Assistente virtual que responde perguntas e auxilia em tarefas usando modelos pré-treinados de NLP. Inclui fluxo de conversação, classificação e extração de informação.",
+              en: "Virtual assistant that answers questions and assists tasks using pre-trained NLP models. Includes conversation flow, classification and information extraction.",
             },
           },
           "big-data-hackathon-forecast-2025": {
-            description: {
-              pt: "Projeto de previsão em cenário de big data, explorando séries temporais e avaliação de modelos.",
-              en: "Forecasting project in a big data setting, exploring time series and model evaluation.",
+            summary: {
+              pt: "Previsão em cenário de big data.",
+              en: "Forecasting in a big data scenario.",
+            },
+            details: {
+              pt: "Projeto de previsão com foco em séries temporais, avaliação de modelos e comparação de abordagens (Prophet, Statsmodels). Envolve tratamento de dados, tuning e validação.",
+              en: "Forecasting project focused on time series, model evaluation and approach comparison (Prophet, Statsmodels). Involves data processing, tuning and validation.",
             },
           },
           "azure-ml-previsao-vendas-regressao-linear": {
-            description: {
-              pt: "Previsão de vendas com Azure ML utilizando regressão linear e experimentos no serviço.",
-              en: "Sales forecasting with Azure ML using linear regression and service experiments.",
+            summary: {
+              pt: "Previsão de vendas com Azure ML.",
+              en: "Sales forecasting with Azure ML.",
+            },
+            details: {
+              pt: "Modelo de regressão linear para previsão de vendas, utilizando Azure Machine Learning para experimentos, rastreio e execução. Inclui pipeline e análise de resultados.",
+              en: "Linear regression model for sales forecasting, using Azure Machine Learning for experiments, tracking and execution. Includes pipeline and results analysis.",
+            },
+          },
+          "aws-sagemaker-canvas-previsao-de-estoque": {
+            summary: {
+              pt: "Previsão de estoque com SageMaker Canvas.",
+              en: "Stock forecasting with SageMaker Canvas.",
+            },
+            details: {
+              pt: "Exploração de previsão de dados usando a interface Canvas do AWS SageMaker, com preparação de datasets e avaliação de modelos. Foco em praticidade e visualização.",
+              en: "Exploration of data forecasting using AWS SageMaker Canvas UI, with dataset preparation and model evaluation. Focused on practicality and visualization.",
+            },
+          },
+          "azure-ml-chatbot-de-busca-em-pdf-busca-vetorial": {
+            summary: {
+              pt: "Chatbot de busca em PDFs (Azure ML).",
+              en: "PDF search chatbot (Azure ML).",
+            },
+            details: {
+              pt: "Chatbot que responde com base no conteúdo de PDFs por busca vetorial, integrando Azure ML e modelos Transformers. Inclui indexação e pipeline de consulta.",
+              en: "Chatbot that answers based on PDF content via vector search, integrating Azure ML and Transformers models. Includes indexing and query pipeline.",
             },
           },
         },
@@ -268,33 +308,73 @@ const resources = {
         },
         dynamic: {
           "senti-pred": {
-            description: {
-              pt: "Classificação de sentimentos em textos usando modelos de machine learning e bibliotecas de NLP.",
-              en: "Sentiment classification on text using machine learning models and NLP libraries.",
+            summary: {
+              pt: "Classificação de sentimentos em comentários/registro.",
+              en: "Sentiment classification on comments/entries.",
+            },
+            details: {
+              pt: "Projeto completo de previsão de sentimentos em textos, aplicando conceitos de Machine Learning, MLOps, IA Engineering e Data Science. Inclui preparação de dados, treinamento, avaliação e inferência com bibliotecas de NLP.",
+              en: "Complete sentiment prediction project for text, applying Machine Learning, MLOps, AI Engineering and Data Science. Includes data prep, training, evaluation and inference with NLP libraries.",
             },
           },
           "chatbot-previsao-ia": {
-            description: {
-              pt: "Chatbot que realiza previsões com IA, combinando modelos Transformers e pipelines de inferência.",
-              en: "Chatbot that performs AI-based forecasts, combining Transformers models and inference pipelines.",
+            summary: {
+              pt: "Chatbot que faz previsões com IA.",
+              en: "Chatbot that performs AI-based forecasts.",
+            },
+            details: {
+              pt: "Chatbot que realiza previsões usando modelos Transformers, com pipelines de inferência e integração com bibliotecas de NLP. Foco em respostas consistentes e previsões baseadas em dados.",
+              en: "Chatbot that performs forecasts using Transformers models, with inference pipelines and NLP libraries integration. Focused on consistent responses and data-driven predictions.",
             },
           },
           "assistente-virtual": {
-            description: {
-              pt: "Assistente virtual com NLP para responder perguntas e auxiliar em tarefas com modelos pré-treinados.",
-              en: "Virtual assistant with NLP to answer questions and assist tasks using pre-trained models.",
+            summary: {
+              pt: "Assistente virtual com NLP.",
+              en: "Virtual assistant with NLP.",
+            },
+            details: {
+              pt: "Assistente virtual que responde perguntas e auxilia em tarefas usando modelos pré-treinados de NLP. Inclui fluxo de conversação, classificação e extração de informação.",
+              en: "Virtual assistant that answers questions and assists tasks using pre-trained NLP models. Includes conversation flow, classification and information extraction.",
             },
           },
           "big-data-hackathon-forecast-2025": {
-            description: {
-              pt: "Projeto de previsão em cenário de big data, explorando séries temporais e avaliação de modelos.",
-              en: "Forecasting project in a big data setting, exploring time series and model evaluation.",
+            summary: {
+              pt: "Previsão em cenário de big data.",
+              en: "Forecasting in a big data scenario.",
+            },
+            details: {
+              pt: "Projeto de previsão com foco em séries temporais, avaliação de modelos e comparação de abordagens (Prophet, Statsmodels). Envolve tratamento de dados, tuning e validação.",
+              en: "Forecasting project focused on time series, model evaluation and approach comparison (Prophet, Statsmodels). Involves data processing, tuning and validation.",
             },
           },
           "azure-ml-previsao-vendas-regressao-linear": {
-            description: {
-              pt: "Previsão de vendas com Azure ML utilizando regressão linear e experimentos no serviço.",
-              en: "Sales forecasting with Azure ML using linear regression and service experiments.",
+            summary: {
+              pt: "Previsão de vendas com Azure ML.",
+              en: "Sales forecasting with Azure ML.",
+            },
+            details: {
+              pt: "Modelo de regressão linear para previsão de vendas, utilizando Azure Machine Learning para experimentos, rastreio e execução. Inclui pipeline e análise de resultados.",
+              en: "Linear regression model for sales forecasting, using Azure Machine Learning for experiments, tracking and execution. Includes pipeline and results analysis.",
+            },
+          },
+          "aws-sagemaker-canvas-previsao-de-estoque": {
+            summary: {
+              pt: "Previsão de estoque com SageMaker Canvas.",
+              en: "Stock forecasting with SageMaker Canvas.",
+            },
+            details: {
+              pt: "Exploração de previsão de dados usando a interface Canvas do AWS SageMaker, com preparação de datasets e avaliação de modelos. Foco em praticidade e visualização.",
+              en: "Exploration of data forecasting using AWS SageMaker Canvas UI, with dataset preparation and model evaluation. Focused on practicality and visualization.",
+            },
+          },
+          "azure-ml-chatbot-de-busca-em-pdf-busca-vetorial": {
+            summary: {
+              pt: "Chatbot de busca em PDFs (Azure ML).",
+              en: "PDF search chatbot (Azure ML).",
+            },
+            details: {
+              pt: "Chatbot que responde com base no conteúdo de PDFs por busca vetorial, integrando Azure ML e modelos Transformers. Inclui indexação e pipeline de consulta.",
+              en: "Chatbot that answers based on PDF content via vector search, integrating Azure ML and Transformers models. Includes indexing and query pipeline.",
             },
           },
         },

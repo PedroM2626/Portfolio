@@ -1053,7 +1053,8 @@ const ProjectsSection = () => {
       date: "2025",
       tech: [],
       category: "ai-ml",
-      description: t(`projects.dynamic.senti-pred.description.${(i18n.language || "pt").split("-")[0]}`),
+      summary: t(`projects.dynamic.senti-pred.summary.${(i18n.language || "pt").split("-")[0]}`),
+      description: t(`projects.dynamic.senti-pred.details.${(i18n.language || "pt").split("-")[0]}`),
       demoVideo: "",
       github: "https://github.com/PedroM2626/senti-pred",
       live: "",
@@ -1065,7 +1066,8 @@ const ProjectsSection = () => {
       date: "2025",
       tech: [],
       category: "ai-ml",
-      description: t(`projects.dynamic.chatbot-previsao-ia.description.${(i18n.language || "pt").split("-")[0]}`),
+      summary: t(`projects.dynamic.chatbot-previsao-ia.summary.${(i18n.language || "pt").split("-")[0]}`),
+      description: t(`projects.dynamic.chatbot-previsao-ia.details.${(i18n.language || "pt").split("-")[0]}`),
       demoVideo: "",
       github: "https://github.com/PedroM2626/chatbot-previsao-ia",
       live: "",
@@ -1077,7 +1079,8 @@ const ProjectsSection = () => {
       date: "2025",
       tech: [],
       category: "ai-ml",
-      description: t(`projects.dynamic.assistente-virtual.description.${(i18n.language || "pt").split("-")[0]}`),
+      summary: t(`projects.dynamic.assistente-virtual.summary.${(i18n.language || "pt").split("-")[0]}`),
+      description: t(`projects.dynamic.assistente-virtual.details.${(i18n.language || "pt").split("-")[0]}`),
       demoVideo: "",
       github: "https://github.com/PedroM2626/assistente-virtual",
       live: "",
@@ -1089,7 +1092,8 @@ const ProjectsSection = () => {
       date: "2025",
       tech: [],
       category: "ai-ml",
-      description: t(`projects.dynamic.big-data-hackathon-forecast-2025.description.${(i18n.language || "pt").split("-")[0]}`),
+      summary: t(`projects.dynamic.big-data-hackathon-forecast-2025.summary.${(i18n.language || "pt").split("-")[0]}`),
+      description: t(`projects.dynamic.big-data-hackathon-forecast-2025.details.${(i18n.language || "pt").split("-")[0]}`),
       demoVideo: "",
       github: "https://github.com/PedroM2626/big-data-hackathon-forecast-2025",
       live: "",
@@ -1101,9 +1105,36 @@ const ProjectsSection = () => {
       date: "2024",
       tech: [],
       category: "ai-ml",
-      description: t(`projects.dynamic.azure-ml-previsao-vendas-regressao-linear.description.${(i18n.language || "pt").split("-")[0]}`),
+      summary: t(`projects.dynamic.azure-ml-previsao-vendas-regressao-linear.summary.${(i18n.language || "pt").split("-")[0]}`),
+      description: t(`projects.dynamic.azure-ml-previsao-vendas-regressao-linear.details.${(i18n.language || "pt").split("-")[0]}`),
       demoVideo: "",
       github: "https://github.com/PedroM2626/azure-ml-previsao-vendas-regressao-linear",
+      live: "",
+    },
+    {
+      id: 100006,
+      name: "Previsão de estoque (SageMaker Canvas)",
+      image: "/placeholder.svg",
+      date: "2025",
+      tech: [],
+      category: "ai-ml",
+      summary: t(`projects.dynamic.aws-sagemaker-canvas-previsao-de-estoque.summary.${(i18n.language || "pt").split("-")[0]}`),
+      description: t(`projects.dynamic.aws-sagemaker-canvas-previsao-de-estoque.details.${(i18n.language || "pt").split("-")[0]}`),
+      demoVideo: "",
+      github: "https://github.com/PedroM2626/AWS-SageMaker_Canvas-Previsao_de_Estoque",
+      live: "",
+    },
+    {
+      id: 100007,
+      name: "Chatbot de busca em PDF (Azure ML)",
+      image: "/placeholder.svg",
+      date: "2025",
+      tech: [],
+      category: "ai-ml",
+      summary: t(`projects.dynamic.azure-ml-chatbot-de-busca-em-pdf-busca-vetorial.summary.${(i18n.language || "pt").split("-")[0]}`),
+      description: t(`projects.dynamic.azure-ml-chatbot-de-busca-em-pdf-busca-vetorial.details.${(i18n.language || "pt").split("-")[0]}`),
+      demoVideo: "",
+      github: "https://github.com/PedroM2626/Azure-ML-Chatbot_de_busca_em_PDF-Busca_Vetorial",
       live: "",
     },
     // {
@@ -1134,18 +1165,23 @@ const ProjectsSection = () => {
             typeof p.github === "string" && p.github.includes("github.com")
               ? p.github.split("/").filter(Boolean).slice(-1)[0]
               : normalize(p.name);
-          const dynKey = `projects.dynamic.${slug}.description.${lang}`;
-          if (i18n.exists(dynKey)) {
-            return { ...p, description: t(dynKey) };
+          const dynSummaryKey = `projects.dynamic.${slug}.summary.${lang}`;
+          const dynDetailsKey = `projects.dynamic.${slug}.details.${lang}`;
+          if (i18n.exists(dynSummaryKey) || i18n.exists(dynDetailsKey)) {
+            return {
+              ...p,
+              summary: i18n.exists(dynSummaryKey) ? t(dynSummaryKey) : p.summary,
+              description: i18n.exists(dynDetailsKey) ? t(dynDetailsKey) : p.description,
+            };
           }
           if (p.name === "Frecomu") {
-            return { ...p, description: t(`projects.static.frecomu.description.${lang}`) };
+            return { ...p, summary: undefined, description: t(`projects.static.frecomu.description.${lang}`) };
           }
           if (p.name === "Task Manager") {
-            return { ...p, description: t(`projects.static.taskManager.description.${lang}`) };
+            return { ...p, summary: undefined, description: t(`projects.static.taskManager.description.${lang}`) };
           }
           if (p.name === "Util Tools") {
-            return { ...p, description: t(`projects.static.utilTools.description.${lang}`) };
+            return { ...p, summary: undefined, description: t(`projects.static.utilTools.description.${lang}`) };
           }
           if (!p.description || String(p.description).trim().length === 0) {
             return { ...p, description: t("projectsPage.defaultDescription") };
@@ -1280,6 +1316,11 @@ const ProjectsSection = () => {
                     <img src={project.image} alt={project.name} className="w-full h-48 object-cover rounded-lg mb-4" />
                     <CardTitle>{project.name}</CardTitle>
                     <CardDescription>{project.date}</CardDescription>
+                    {project.summary && (
+                      <div className="text-sm text-muted-foreground mt-1">
+                        {project.summary}
+                      </div>
+                    )}
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
@@ -1446,6 +1487,11 @@ const ProjectsSection = () => {
               />
               <CardTitle>{project.name}</CardTitle>
               <CardDescription>{project.date}</CardDescription>
+              {project.summary && (
+                <div className="text-sm text-muted-foreground mt-1">
+                  {project.summary}
+                </div>
+              )}
             </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">

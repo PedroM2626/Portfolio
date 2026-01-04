@@ -19,6 +19,8 @@ export const NAME_OVERRIDES: Record<string, string> = {
   "azure-ml-previsao-vendas-regressao-linear":"Previsão de vendas com regressão linear e Azure ML",
   "chatbot-previsao-ia": "Chatbot de previsão",
   "assistente-virtual": "Assistente virtual",
+  "aws-sagemaker-canvas-previsao-de-estoque": "Previsão de estoque (SageMaker Canvas)",
+  "azure-ml-chatbot-de-busca-em-pdf-busca-vetorial": "Chatbot de busca em PDF (Azure ML)",
 };
 
 export const DESCRIPTION_OVERRIDES: Record<string, string> = {};
@@ -34,5 +36,7 @@ export const TECH_OVERRIDES: Record<string, string[]> = {
   "chatbot-previsao-ia": ["Python", "Transformers", "Hugging Face", "Flask", "Scikit-Learn"],
   "assistente-virtual": ["Python", "Transformers", "Hugging Face", "Keras", "Pandas", "NumPy"],
   "previsao-forecast": ["Python", "Prophet", "Statsmodels", "Pandas", "NumPy"],
-  "big-data-hackathon-forecast-2025": ["Python", "Prophet", "Statsmodels", "Pandas", "NumPy"]
+  "big-data-hackathon-forecast-2025": ["Python", "Prophet", "Statsmodels", "Pandas", "NumPy"],
+  "aws-sagemaker-canvas-previsao-de-estoque": ["AWS SageMaker", "Canvas", "Python", "Pandas"],
+  "azure-ml-chatbot-de-busca-em-pdf-busca-vetorial": ["Azure ML", "Transformers", "Hugging Face", "Python"]
 }
