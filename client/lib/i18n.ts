@@ -62,6 +62,7 @@ const resources = {
         descriptionTitle: "Descrição",
         technologiesTitle: "Tecnologias Utilizadas",
         linksTitle: "Links do Projeto",
+        defaultDescription: "Projeto de IA/ML",
         videoFallback: "Seu navegador não suporta o elemento de vídeo.",
         categories: {
           web: "Web",
@@ -69,6 +70,28 @@ const resources = {
           jogo: "Jogos",
           aplicativo: "Aplicativos",
           aiMl: "IA & ML",
+        },
+      },
+      projects: {
+        static: {
+          frecomu: {
+            description: {
+              pt: "Aplicativo de chat em tempo real com sistema de contas, respostas e mensagens instantâneas. Desenvolvido com Flask e WebSockets para comunicação em tempo real.",
+              en: "Real-time chat app with accounts, replies and instant messages. Built with Flask and WebSockets for real-time communication.",
+            },
+          },
+          taskManager: {
+            description: {
+              pt: "Gerenciador de tarefas completo com autenticação do Google, CRUD de tarefas, subtarefas e tags personalizáveis. Inclui testes unitários e de aceitação.",
+              en: "Full task manager with Google auth, task CRUD, subtasks and custom tags. Includes unit and acceptance tests.",
+            },
+          },
+          utilTools: {
+            description: {
+              pt: "Coleção de ferramentas online úteis, incluindo funcionalidades como remoção de fundo de imagens e OCR (reconhecimento óptico de caracteres).",
+              en: "Collection of useful online tools, including background removal and OCR (optical character recognition).",
+            },
+          },
         },
       },
       contact: {
@@ -84,6 +107,7 @@ const resources = {
       timeline: {
         title: "Minha Jornada",
         subtitle: "1 ano de experiência, aprendizado e evolução como desenvolvedor",
+        achievementsTitle: "Principais Conquistas:",
         items: [
           {
             date: "1º Semestre 2026 - Futuro Próximo",
@@ -179,6 +203,7 @@ const resources = {
         descriptionTitle: "Description",
         technologiesTitle: "Technologies Used",
         linksTitle: "Project Links",
+        defaultDescription: "AI/ML Project",
         videoFallback: "Your browser does not support the video element.",
         categories: {
           web: "Web",
@@ -186,6 +211,28 @@ const resources = {
           jogo: "Games",
           aplicativo: "Applications",
           aiMl: "AI & ML",
+        },
+      },
+      projects: {
+        static: {
+          frecomu: {
+            description: {
+              pt: "Aplicativo de chat em tempo real com sistema de contas, respostas e mensagens instantâneas. Desenvolvido com Flask e WebSockets para comunicação em tempo real.",
+              en: "Real-time chat app with accounts, replies and instant messages. Built with Flask and WebSockets for real-time communication.",
+            },
+          },
+          taskManager: {
+            description: {
+              pt: "Gerenciador de tarefas completo com autenticação do Google, CRUD de tarefas, subtarefas e tags personalizáveis. Inclui testes unitários e de aceitação.",
+              en: "Full task manager with Google auth, task CRUD, subtasks and custom tags. Includes unit and acceptance tests.",
+            },
+          },
+          utilTools: {
+            description: {
+              pt: "Coleção de ferramentas online úteis, incluindo funcionalidades como remoção de fundo de imagens e OCR (reconhecimento óptico de caracteres).",
+              en: "Collection of useful online tools, including background removal and OCR (optical character recognition).",
+            },
+          },
         },
       },
       contact: {
@@ -201,6 +248,7 @@ const resources = {
       timeline: {
         title: "My Journey",
         subtitle: "1 year of experience, learning and growth as a developer",
+        achievementsTitle: "Key Achievements:",
         items: [
           {
             date: "1st Semester 2026 - Near Future",

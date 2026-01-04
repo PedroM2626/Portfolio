@@ -21,6 +21,7 @@ export interface ProjectItem {
 }
 
 import { EXCLUDED_REPOS, NAME_OVERRIDES, DESCRIPTION_OVERRIDES, TECH_OVERRIDES } from "./projects.config";
+import i18next from "i18next";
 
 function normalize(name: string): string {
   return name.toLowerCase().replace(/[\s_]+/g, "-").replace(/[^a-z0-9-]/g, "");
@@ -97,6 +98,7 @@ export function mapRepoToProject(repo: GitHubRepo, index: number): ProjectItem {
   if (lang) tech.push(lang);
   // naive tech inference from description
   const d = (repo.description ?? "").toLowerCase();
+  const n = repo.name.toLowerCase();
   if (d.includes("pytorch")) tech.push("PyTorch");
   if (d.includes("tensorflow")) tech.push("TensorFlow");
   if (d.includes("scikit") || d.includes("scikit-learn")) tech.push("Scikit-Learn");
@@ -112,6 +114,18 @@ export function mapRepoToProject(repo: GitHubRepo, index: number): ProjectItem {
   if (d.includes("nltk")) tech.push("NLTK");
   if (d.includes("prophet")) tech.push("Prophet");
   if (d.includes("statsmodels")) tech.push("Statsmodels");
+  // also infer from repo name
+  if (n.includes("pytorch")) tech.push("PyTorch");
+  if (n.includes("tensorflow")) tech.push("TensorFlow");
+  if (n.includes("scikit")) tech.push("Scikit-Learn");
+  if (n.includes("transformer")) tech.push("Transformers");
+  if (n.includes("huggingface") || n.includes("hugging-face")) tech.push("Hugging Face");
+  if (n.includes("keras")) tech.push("Keras");
+  if (n.includes("xgboost")) tech.push("XGBoost");
+  if (n.includes("lightgbm")) tech.push("LightGBM");
+  if (n.includes("opencv")) tech.push("OpenCV");
+  if (n.includes("pandas")) tech.push("Pandas");
+  if (n.includes("numpy")) tech.push("NumPy");
   // topics inference
   if (Array.isArray(repo.topics)) {
     const t = repo.topics.map((x) => x.toLowerCase());
@@ -131,7 +145,10 @@ export function mapRepoToProject(repo: GitHubRepo, index: number): ProjectItem {
     if (t.includes("prophet")) tech.push("Prophet");
     if (t.includes("statsmodels")) tech.push("Statsmodels");
   }
-  const manualTech = TECH_OVERRIDES[norm] ?? [];
+  const manualTech =
+    TECH_OVERRIDES[norm] ??
+    TECH_OVERRIDES[normalize(nameOverride ?? "")] ??
+    [];
   const mergedTech = Array.from(new Set([...tech, ...manualTech]));
 
   return {
@@ -141,7 +158,7 @@ export function mapRepoToProject(repo: GitHubRepo, index: number): ProjectItem {
     date: new Date(repo.created_at).getFullYear().toString(),
     tech: mergedTech.length ? mergedTech : ["Python"],
     category: "ai-ml",
-    description: descriptionOverride ?? repo.description ?? "Projeto de IA/ML",
+    description: descriptionOverride ?? repo.description ?? i18next.t("projectsPage.defaultDescription"),
     demoVideo: "",
     github: repo.html_url,
     live: "",

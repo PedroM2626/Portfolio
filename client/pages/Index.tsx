@@ -914,7 +914,7 @@ const TimelineSection = () => {
                     {/* Achievements */}
                     <div className="space-y-2">
                       <h4 className="text-sm font-semibold text-foreground mb-2">
-                        Principais Conquistas:
+                        {t('timeline.achievementsTitle')}
                       </h4>
                       <div className="grid grid-cols-1 gap-2">
                         {item.achievements.map((achievement, achievementIndex) => (
@@ -966,7 +966,7 @@ const TimelineSection = () => {
                       {/* Achievements */}
                       <div className="space-y-2">
                         <h4 className="text-sm font-semibold text-foreground mb-2">
-                          Principais Conquistas:
+                          {t('timeline.achievementsTitle')}
                         </h4>
                         <div className="grid grid-cols-1 gap-2">
                           {item.achievements.map((achievement, achievementIndex) => (
@@ -989,7 +989,7 @@ const TimelineSection = () => {
 };
 
 const ProjectsSection = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -1016,8 +1016,7 @@ const ProjectsSection = () => {
       date: "2024",
       tech: ["Python", "Flask", "Socket.IO", "SQLAlchemy", "JavaScript", "HTML5", "CSS3"],
       category: "web",
-      description:
-        "Aplicativo de chat em tempo real com sistema de contas, respostas e mensagens instantâneas. Desenvolvido com Flask e WebSockets para comunicação em tempo real.",
+      description: t(`projects.static.frecomu.description.${(i18n.language || "pt").split("-")[0]}`),
       demoVideo: "",
       github: "https://github.com/PedroM2626/Frecomu",
       live: "",
@@ -1029,8 +1028,7 @@ const ProjectsSection = () => {
       date: "2024",
       tech: ["React", "Firebase", "Vite", "Tailwind CSS", "Framer Motion", "Vitest", "Playwright"],
       category: "web",
-      description:
-        "Gerenciador de tarefas completo com autenticação do Google, CRUD de tarefas, subtarefas e tags personalizáveis. Inclui testes unitários e de aceitação.",
+      description: t(`projects.static.taskManager.description.${(i18n.language || "pt").split("-")[0]}`),
       demoVideo: "",
       github: "https://github.com/PedroM2626/Task-Manager",
       live: "",
@@ -1042,8 +1040,7 @@ const ProjectsSection = () => {
       date: "2024",
       tech: ["Python", "Flask", "Tesseract OCR", "Docker"],
       category: "web",
-      description:
-        "Coleção de ferramentas online úteis, incluindo funcionalidades como remoção de fundo de imagens e OCR (reconhecimento óptico de caracteres).",
+      description: t(`projects.static.utilTools.description.${(i18n.language || "pt").split("-")[0]}`),
       demoVideo: "",
       github: "https://github.com/PedroM2626/Util-Tools-Site",
       live: "",
@@ -1291,7 +1288,7 @@ const ProjectsSection = () => {
                 <span>✓</span>
                 <span>Todos</span>
               </div>
-            {allTechs
+            {Array.from(new Set(filteredProjects.flatMap((p: any) => p.tech))).sort()
               .filter((tech) => !selectedTechs.includes(tech))
               .map((tech) => {
                 const techInfo = getTechInfo(tech);

@@ -33,5 +33,6 @@ export const TECH_OVERRIDES: Record<string, string[]> = {
   "senti-pred": ["Python", "Scikit-Learn", "Pandas", "NumPy", "Transformers", "Hugging Face"],
   "chatbot-previsao-ia": ["Python", "Transformers", "Hugging Face", "Flask", "Scikit-Learn"],
   "assistente-virtual": ["Python", "Transformers", "Hugging Face", "Keras", "Pandas", "NumPy"],
-  "previsao-forecast": ["Python", "Prophet", "Statsmodels", "Pandas", "NumPy"]
+  "previsao-forecast": ["Python", "Prophet", "Statsmodels", "Pandas", "NumPy"],
+  "big-data-hackathon-forecast-2025": ["Python", "Prophet", "Statsmodels", "Pandas", "NumPy"]
 }
