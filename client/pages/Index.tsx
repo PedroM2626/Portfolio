@@ -1066,15 +1066,9 @@ const ProjectsSection = () => {
   useEffect(() => {
     (async () => {
       const lang = (i18n.language || "pt").split("-")[0];
-      const { DESCRIPTION_OVERRIDES } = await import("@/lib/projects.config");
       const normalize = (name: string) => name.toLowerCase().replace(/[\s_]+/g, "-").replace(/[^a-z0-9-]/g, "");
       setProjects((prev) => {
         const next = prev.map((p) => {
-          const norm = normalize(p.name);
-          const override = DESCRIPTION_OVERRIDES[norm];
-          if (typeof override === "string" && override.length > 0) {
-            return { ...p, description: override };
-          }
           if (p.name === "Frecomu") {
             return { ...p, description: t(`projects.static.frecomu.description.${lang}`) };
           }
@@ -1084,7 +1078,7 @@ const ProjectsSection = () => {
           if (p.name === "Util Tools") {
             return { ...p, description: t(`projects.static.utilTools.description.${lang}`) };
           }
-          if (p.category === "ai-ml") {
+          if (!p.description || String(p.description).trim().length === 0) {
             return { ...p, description: t("projectsPage.defaultDescription") };
           }
           return p;
