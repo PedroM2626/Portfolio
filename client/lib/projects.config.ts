@@ -9,6 +9,9 @@ export const EXCLUDED_REPOS = [
   "collegefunctions",
   "util-tools",
   "task manager",
+  "dio-lab-open-source",
+  "dio-lab-open-source",
+  "Util-Tools-Disord-Bot",
 ];
 
 export const NAME_OVERRIDES: Record<string, string> = {
