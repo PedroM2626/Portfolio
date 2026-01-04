@@ -488,7 +488,7 @@ const HomeSection: React.FC = () => {
               }
             >
               <p className="text-sm mb-2 animate-bounce bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent font-medium">
-                Role para baixo
+                {t('home.scrollDown')}
               </p>
               <div className="animate-bounce">
                 <ChevronDown className="h-6 w-6 mx-auto text-yellow-500 dark:text-purple-400" />
@@ -809,6 +809,7 @@ const AboutSection = () => {
 }
 
 const TimelineSection = () => {
+  const { t } = useTranslation();
   const visibleSections = useScrollReveal();
   const isVisible = visibleSections.has("timeline");
   const [animationKey, setAnimationKey] = useState(0);
@@ -820,68 +821,32 @@ const TimelineSection = () => {
     }
   }, [isVisible]);
 
-  // Definição dos períodos para cor do ícone
+  // Definição dos períodos e textos via i18n
+  const tItems = t('timeline.items', { returnObjects: true }) as Array<{ date: string; title: string; description: string; achievements: string[] }>;
   const timelineItems = [
     {
-      date: "1º Semestre 2026 - Futuro Próximo",
-      title: "Objetivos & Metas",
-      description:
-        "Conquistar posição em empresa de tecnologia e continuar evoluindo como desenvolvedor.",
+      ...tItems[0],
       icon: "🎯",
-      iconColor: "bg-gradient-to-r from-yellow-400 to-orange-500 text-transparent bg-clip-text", // Futuro
+      iconColor: "bg-gradient-to-r from-yellow-400 to-orange-500 text-transparent bg-clip-text",
       dotColor: "bg-gradient-to-r from-yellow-400 to-orange-500",
-      achievements: [
-        "Estágio em tech",
-        "Contribuições open source",
-        "Projetos pessoais",
-        "Networking",
-      ],
     },
     {
-      date: "2º Semestre 2025 - Presente",
-      title: "Universidade & Especialização",
-      description:
-        "Iniciei Ciência da Computação na UniCEUB e estudo algoritmos para entrevistas técnicas.",
+      ...tItems[1],
       icon: "🎓",
-      iconColor: "bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text", // Presente
+      iconColor: "bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text",
       dotColor: "bg-gradient-to-r from-purple-500 to-pink-500",
-      achievements: [
-        "Início da graduação em Ciência da Computação",
-        "Algoritmos avançados",
-        "Estruturas de dados",
-        "Preparação para big techs",
-      ],
     },
     {
-      date: "1º Semestre 2025",
-      title: "Frameworks Modernos & Projetos",
-      description:
-        "Expandi conhecimentos com React, Flask, banco de dados e desenvolvi 3 projetos web. Explorei plataformas low/no code como flutterflow.",
+      ...tItems[2],
       icon: "⚛️",
-      iconColor: "bg-gradient-to-r from-green-400 to-cyan-500 text-transparent bg-clip-text", // Passado
+      iconColor: "bg-gradient-to-r from-green-400 to-cyan-500 text-transparent bg-clip-text",
       dotColor: "bg-gradient-to-r from-green-400 to-cyan-500",
-      achievements: [
-        "React",
-        "Flask (Python)",
-        "PostgreSQL & SQLite",
-        "3 projetos web",
-        "FlutterFlow",
-      ],
     },
     {
-      date: "2º Semestre 2024",
-      title: "Início da Jornada",
-      description:
-        "Comecei a aprender programação com Python como minha primeira linguagem, estudando lógica de programação e desenvolvimento web básico. Também aprendi sobre desenvolvimento de jogos e desenvolvi projetos na unreal, unity, godot e roblox studio.",
+      ...tItems[3],
       icon: "🚀",
-      iconColor: "bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text", // Passado
+      iconColor: "bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text",
       dotColor: "bg-gradient-to-r from-blue-500 to-purple-500",
-      achievements: [
-        "Python (primeira linguagem)",
-        "Lógica de programação",
-        "HTML, CSS e JavaScript básico",
-        "3 jogos (Unity, Godot, Unreal)",
-      ],
     },
   ];
 
@@ -899,13 +864,13 @@ const TimelineSection = () => {
           <div className="text-center mb-4">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               <span className="bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
-                Minha Jornada
+                {t('timeline.title')}
               </span>
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-purple-400 dark:to-blue-400 mx-auto mb-4"></div>
           </div>
           <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-            1 ano de experiência, aprendizado e evolução como desenvolvedor
+            {t('timeline.subtitle')}
           </p>
 
           {/* Distribuição em duas colunas com linha gradiente central */}
@@ -1646,10 +1611,10 @@ const ContactSection: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <div className="font-medium text-foreground">
-                      Localidade
+                      {t('contact.locationLabel')}
                     </div>
                     <div className="text-sm text-muted-foreground">
-                      Brasília (Brasil)
+                      {t('contact.locationValue')}
                     </div>
                   </div>
                 </div>
@@ -1668,7 +1633,7 @@ const ContactSection: React.FC = () => {
                   <span className="text-cyan-600 dark:text-cyan-400">📞</span>
                 </div>
                 <div className="flex-1">
-                  <div className="font-medium text-foreground group-hover:text-purple-400 transition-colors duration-300">Telefone</div>
+                  <div className="font-medium text-foreground group-hover:text-purple-400 transition-colors duration-300">{t('contact.phoneLabel')}</div>
                   <div className="text-sm text-muted-foreground group-hover:text-purple-400 transition-colors duration-300">
                     +55 (61) 99309-6847
                   </div>

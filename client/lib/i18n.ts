@@ -16,6 +16,9 @@ const resources = {
       hero: {
         title: "Desenvolvedor Independente",
       },
+      home: {
+        scrollDown: "Role para baixo",
+      },
       aria: {
         openMenu: "Abrir menu",
       },
@@ -74,6 +77,43 @@ const resources = {
         intro:
           "Estou sempre interessado em novas oportunidades e projetos desafiadores. Entre em contato comigo!",
         sendMessage: "Envie uma Mensagem",
+        locationLabel: "Localidade",
+        locationValue: "Brasília (Brasil)",
+        phoneLabel: "Telefone",
+      },
+      timeline: {
+        title: "Minha Jornada",
+        subtitle: "1 ano de experiência, aprendizado e evolução como desenvolvedor",
+        items: [
+          {
+            date: "1º Semestre 2026 - Futuro Próximo",
+            title: "Objetivos & Metas",
+            description:
+              "Conquistar posição em empresa de tecnologia e continuar evoluindo como desenvolvedor.",
+            achievements: ["Estágio em tech", "Contribuições open source", "Projetos pessoais", "Networking"],
+          },
+          {
+            date: "2º Semestre 2025 - Presente",
+            title: "Universidade & Especialização",
+            description:
+              "Iniciei Ciência da Computação na UniCEUB e estudo algoritmos para entrevistas técnicas.",
+            achievements: ["Início da graduação em Ciência da Computação", "Algoritmos avançados", "Estruturas de dados", "Preparação para big techs"],
+          },
+          {
+            date: "1º Semestre 2025",
+            title: "Frameworks Modernos & Projetos",
+            description:
+              "Expandi conhecimentos com React, Flask, banco de dados e desenvolvi 3 projetos web. Explorei plataformas low/no code como flutterflow.",
+            achievements: ["React", "Flask (Python)", "PostgreSQL & SQLite", "3 projetos web", "FlutterFlow"],
+          },
+          {
+            date: "2º Semestre 2024",
+            title: "Início da Jornada",
+            description:
+              "Comecei a aprender programação com Python como minha primeira linguagem, estudando lógica de programação e desenvolvimento web básico. Também aprendi sobre desenvolvimento de jogos e desenvolvi projetos na unreal, unity, godot e roblox studio.",
+            achievements: ["Python (primeira linguagem)", "Lógica de programação", "HTML, CSS e JavaScript básico", "3 jogos (Unity, Godot, Unreal)"],
+          },
+        ],
       },
     },
   },
@@ -89,6 +129,9 @@ const resources = {
       },
       hero: {
         title: "Independent Developer",
+      },
+      home: {
+        scrollDown: "Scroll down",
       },
       aria: {
         openMenu: "Open menu",
@@ -151,6 +194,43 @@ const resources = {
         intro:
           "I'm always interested in new opportunities and challenging projects. Get in touch with me!",
         sendMessage: "Send a Message",
+        locationLabel: "Location",
+        locationValue: "Brasília (Brazil)",
+        phoneLabel: "Phone",
+      },
+      timeline: {
+        title: "My Journey",
+        subtitle: "1 year of experience, learning and growth as a developer",
+        items: [
+          {
+            date: "1st Semester 2026 - Near Future",
+            title: "Goals & Objectives",
+            description:
+              "Earn a position in a tech company and keep growing as a developer.",
+            achievements: ["Tech internship", "Open-source contributions", "Personal projects", "Networking"],
+          },
+          {
+            date: "2nd Semester 2025 - Present",
+            title: "University & Specialization",
+            description:
+              "Started Computer Science at UniCEUB and study algorithms for technical interviews.",
+            achievements: ["Computer Science degree started", "Advanced algorithms", "Data structures", "Preparation for big techs"],
+          },
+          {
+            date: "1st Semester 2025",
+            title: "Modern Frameworks & Projects",
+            description:
+              "Expanded knowledge with React, Flask, databases and built 3 web projects. Explored low/no-code platforms like FlutterFlow.",
+            achievements: ["React", "Flask (Python)", "PostgreSQL & SQLite", "3 web projects", "FlutterFlow"],
+          },
+          {
+            date: "2nd Semester 2024",
+            title: "Beginning of the Journey",
+            description:
+              "Started programming with Python as the first language, studying logic and basic web development. Also learned game development and built projects in Unreal, Unity, Godot and Roblox Studio.",
+            achievements: ["Python (first language)", "Programming logic", "Basic HTML, CSS and JavaScript", "3 games (Unity, Godot, Unreal)"],
+          },
+        ],
       },
     },
   },

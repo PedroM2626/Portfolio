@@ -21,8 +21,8 @@ export const DESCRIPTION_OVERRIDES: Record<string, string> = {};
 
 export const FEATURED_REPOS: Record<string, string | undefined> = {
   "senti-pred": undefined,
-  "chatbot-previsao-ia": "Chatbot de previsão",
-  "assistente-virtual": "Assistente virtual",
+  "Chatbot de previsão": undefined,
+  "assistente-virtual": undefined,
 };
 
 export const TECH_OVERRIDES: Record<string, string[]> = {
