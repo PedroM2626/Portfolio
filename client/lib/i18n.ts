@@ -124,6 +124,16 @@ const resources = {
               en: "Virtual assistant that answers questions and assists tasks using pre-trained NLP models. Includes conversation flow, classification and information extraction.",
             },
           },
+          "previsao-forecast": {
+            summary: {
+              pt: "Previsão de séries temporais (Prophet/Statsmodels).",
+              en: "Time series forecasting (Prophet/Statsmodels).",
+            },
+            details: {
+              pt: "Projeto de previsão com técnicas de séries temporais usando Prophet e Statsmodels, cobrindo preparação de dados, ajuste de modelos, validação e análise de resultados.",
+              en: "Forecasting project with time series techniques using Prophet and Statsmodels, covering data prep, model fitting, validation and results analysis.",
+            },
+          },
           "big-data-hackathon-forecast-2025": {
             summary: {
               pt: "Previsão em cenário de big data.",
@@ -335,6 +345,16 @@ const resources = {
             details: {
               pt: "Assistente virtual que responde perguntas e auxilia em tarefas usando modelos pré-treinados de NLP. Inclui fluxo de conversação, classificação e extração de informação.",
               en: "Virtual assistant that answers questions and assists tasks using pre-trained NLP models. Includes conversation flow, classification and information extraction.",
+            },
+          },
+          "previsao-forecast": {
+            summary: {
+              pt: "Previsão de séries temporais (Prophet/Statsmodels).",
+              en: "Time series forecasting (Prophet/Statsmodels).",
+            },
+            details: {
+              pt: "Projeto de previsão com técnicas de séries temporais usando Prophet e Statsmodels, cobrindo preparação de dados, ajuste de modelos, validação e análise de resultados.",
+              en: "Forecasting project with time series techniques using Prophet and Statsmodels, covering data prep, model fitting, validation and results analysis.",
             },
           },
           "big-data-hackathon-forecast-2025": {

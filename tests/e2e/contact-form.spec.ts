@@ -7,7 +7,8 @@ import { test, expect } from '@playwright/test';
 // 2) npm run test:e2e (em outro terminal)
 // 3) Caso necessário, instale os browsers: npx playwright install
 
-test.skip('envia o formulário de contato com sucesso', async ({ page }) => {
+ test('envia o formulário de contato com sucesso', async ({ page }) => {
+  test.skip(true, 'Teste E2E desabilitado por padrão');
   await page.goto('http://localhost:8080/');
 
   await page.getByPlaceholder('Nome *').fill('Tester');
