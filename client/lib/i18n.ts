@@ -93,6 +93,38 @@ const resources = {
             },
           },
         },
+        dynamic: {
+          "senti-pred": {
+            description: {
+              pt: "Classificação de sentimentos em textos usando modelos de machine learning e bibliotecas de NLP.",
+              en: "Sentiment classification on text using machine learning models and NLP libraries.",
+            },
+          },
+          "chatbot-previsao-ia": {
+            description: {
+              pt: "Chatbot que realiza previsões com IA, combinando modelos Transformers e pipelines de inferência.",
+              en: "Chatbot that performs AI-based forecasts, combining Transformers models and inference pipelines.",
+            },
+          },
+          "assistente-virtual": {
+            description: {
+              pt: "Assistente virtual com NLP para responder perguntas e auxiliar em tarefas com modelos pré-treinados.",
+              en: "Virtual assistant with NLP to answer questions and assist tasks using pre-trained models.",
+            },
+          },
+          "big-data-hackathon-forecast-2025": {
+            description: {
+              pt: "Projeto de previsão em cenário de big data, explorando séries temporais e avaliação de modelos.",
+              en: "Forecasting project in a big data setting, exploring time series and model evaluation.",
+            },
+          },
+          "azure-ml-previsao-vendas-regressao-linear": {
+            description: {
+              pt: "Previsão de vendas com Azure ML utilizando regressão linear e experimentos no serviço.",
+              en: "Sales forecasting with Azure ML using linear regression and service experiments.",
+            },
+          },
+        },
       },
       contact: {
         title: "Entre em Contato",
@@ -231,6 +263,38 @@ const resources = {
             description: {
               pt: "Coleção de ferramentas online úteis, incluindo funcionalidades como remoção de fundo de imagens e OCR (reconhecimento óptico de caracteres).",
               en: "Collection of useful online tools, including background removal and OCR (optical character recognition).",
+            },
+          },
+        },
+        dynamic: {
+          "senti-pred": {
+            description: {
+              pt: "Classificação de sentimentos em textos usando modelos de machine learning e bibliotecas de NLP.",
+              en: "Sentiment classification on text using machine learning models and NLP libraries.",
+            },
+          },
+          "chatbot-previsao-ia": {
+            description: {
+              pt: "Chatbot que realiza previsões com IA, combinando modelos Transformers e pipelines de inferência.",
+              en: "Chatbot that performs AI-based forecasts, combining Transformers models and inference pipelines.",
+            },
+          },
+          "assistente-virtual": {
+            description: {
+              pt: "Assistente virtual com NLP para responder perguntas e auxiliar em tarefas com modelos pré-treinados.",
+              en: "Virtual assistant with NLP to answer questions and assist tasks using pre-trained models.",
+            },
+          },
+          "big-data-hackathon-forecast-2025": {
+            description: {
+              pt: "Projeto de previsão em cenário de big data, explorando séries temporais e avaliação de modelos.",
+              en: "Forecasting project in a big data setting, exploring time series and model evaluation.",
+            },
+          },
+          "azure-ml-previsao-vendas-regressao-linear": {
+            description: {
+              pt: "Previsão de vendas com Azure ML utilizando regressão linear e experimentos no serviço.",
+              en: "Sales forecasting with Azure ML using linear regression and service experiments.",
             },
           },
         },

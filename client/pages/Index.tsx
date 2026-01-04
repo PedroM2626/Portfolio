@@ -1045,6 +1045,67 @@ const ProjectsSection = () => {
       github: "https://github.com/PedroM2626/Util-Tools-Site",
       live: "",
     },
+    // AI/ML projects (manual, com i18n)
+    {
+      id: 100001,
+      name: "Senti Pred",
+      image: "/placeholder.svg",
+      date: "2025",
+      tech: [],
+      category: "ai-ml",
+      description: t(`projects.dynamic.senti-pred.description.${(i18n.language || "pt").split("-")[0]}`),
+      demoVideo: "",
+      github: "https://github.com/PedroM2626/senti-pred",
+      live: "",
+    },
+    {
+      id: 100002,
+      name: "Chatbot de previsão",
+      image: "/placeholder.svg",
+      date: "2025",
+      tech: [],
+      category: "ai-ml",
+      description: t(`projects.dynamic.chatbot-previsao-ia.description.${(i18n.language || "pt").split("-")[0]}`),
+      demoVideo: "",
+      github: "https://github.com/PedroM2626/chatbot-previsao-ia",
+      live: "",
+    },
+    {
+      id: 100003,
+      name: "Assistente virtual",
+      image: "/placeholder.svg",
+      date: "2025",
+      tech: [],
+      category: "ai-ml",
+      description: t(`projects.dynamic.assistente-virtual.description.${(i18n.language || "pt").split("-")[0]}`),
+      demoVideo: "",
+      github: "https://github.com/PedroM2626/assistente-virtual",
+      live: "",
+    },
+    {
+      id: 100004,
+      name: "Previsão forecast",
+      image: "/placeholder.svg",
+      date: "2025",
+      tech: [],
+      category: "ai-ml",
+      description: t(`projects.dynamic.big-data-hackathon-forecast-2025.description.${(i18n.language || "pt").split("-")[0]}`),
+      demoVideo: "",
+      github: "https://github.com/PedroM2626/big-data-hackathon-forecast-2025",
+      live: "",
+    },
+    {
+      id: 100005,
+      name: "Previsão de vendas com regressão linear e Azure ML",
+      image: "/placeholder.svg",
+      date: "2024",
+      tech: [],
+      category: "ai-ml",
+      description: t(`projects.dynamic.azure-ml-previsao-vendas-regressao-linear.description.${(i18n.language || "pt").split("-")[0]}`),
+      demoVideo: "",
+      github: "https://github.com/PedroM2626/azure-ml-previsao-vendas-regressao-linear",
+      live: "",
+    },
     // {
     //   id: 4,
     //   name: "Portfolio Responsivo",
@@ -1069,6 +1130,14 @@ const ProjectsSection = () => {
       const normalize = (name: string) => name.toLowerCase().replace(/[\s_]+/g, "-").replace(/[^a-z0-9-]/g, "");
       setProjects((prev) => {
         const next = prev.map((p) => {
+          const slug =
+            typeof p.github === "string" && p.github.includes("github.com")
+              ? p.github.split("/").filter(Boolean).slice(-1)[0]
+              : normalize(p.name);
+          const dynKey = `projects.dynamic.${slug}.description.${lang}`;
+          if (i18n.exists(dynKey)) {
+            return { ...p, description: t(dynKey) };
+          }
           if (p.name === "Frecomu") {
             return { ...p, description: t(`projects.static.frecomu.description.${lang}`) };
           }
@@ -1095,29 +1164,21 @@ const ProjectsSection = () => {
 
   useEffect(() => {
     (async () => {
-      try {
-        const { loadMLProjectsFromGitHub } = await import("@/lib/github");
-        const { NAME_OVERRIDES, DESCRIPTION_OVERRIDES, EXCLUDED_REPOS } = await import("@/lib/projects.config");
-        const normalize = (name: string) => name.toLowerCase().replace(/[\s_]+/g, "-").replace(/[^a-z0-9-]/g, "");
-        const mlProjects = await loadMLProjectsFromGitHub();
-        if (mlProjects.length) {
-          setProjects((prev) => {
-            const existingNames = new Set(prev.map((p) => p.name));
-            const deduped = mlProjects.filter((p) => !existingNames.has(p.name));
-            return [...prev, ...deduped];
-          });
-        }
-        const applyOverrides = (p: any) => {
-          const norm = normalize(p.name);
-          const name = NAME_OVERRIDES[norm] ?? p.name;
-          const description = DESCRIPTION_OVERRIDES[norm] ?? p.description;
-          return { ...p, name, description };
-        };
-        const excluded = new Set(EXCLUDED_REPOS.map(normalize));
-        setProjects((prev) => prev.map(applyOverrides).filter((p) => !excluded.has(normalize(p.name))));
-      } catch (e) {
-        console.error(e);
-      }
+      const { NAME_OVERRIDES, DESCRIPTION_OVERRIDES, EXCLUDED_REPOS, TECH_OVERRIDES } = await import("@/lib/projects.config");
+      const normalize = (name: string) => name.toLowerCase().replace(/[\s_]+/g, "-").replace(/[^a-z0-9-]/g, "");
+      const excluded = new Set(EXCLUDED_REPOS.map(normalize));
+      const applyOverrides = (p: any) => {
+        const slug =
+          typeof p.github === "string" && p.github.includes("github.com")
+            ? p.github.split("/").filter(Boolean).slice(-1)[0]
+            : normalize(p.name);
+        const name = NAME_OVERRIDES[slug] ?? p.name;
+        const description = DESCRIPTION_OVERRIDES[slug] ?? p.description;
+        const manualTech = TECH_OVERRIDES[slug] ?? [];
+        const tech = Array.from(new Set([...(p.tech ?? []), ...manualTech]));
+        return { ...p, name, description, tech };
+      };
+      setProjects((prev) => prev.map(applyOverrides).filter((p) => !excluded.has(normalize(p.name))));
     })();
   }, []);
 
