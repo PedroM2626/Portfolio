@@ -1064,21 +1064,39 @@ const ProjectsSection = () => {
   }, []);
 
   useEffect(() => {
-    const lang = (i18n.language || "pt").split("-")[0];
-    setProjects((prev) =>
-      prev.map((p) => {
-        if (p.name === "Frecomu") {
-          return { ...p, description: t(`projects.static.frecomu.description.${lang}`) };
-        }
-        if (p.name === "Task Manager") {
-          return { ...p, description: t(`projects.static.taskManager.description.${lang}`) };
-        }
-        if (p.name === "Util Tools") {
-          return { ...p, description: t(`projects.static.utilTools.description.${lang}`) };
-        }
-        return p;
-      }),
-    );
+    (async () => {
+      const lang = (i18n.language || "pt").split("-")[0];
+      const { DESCRIPTION_OVERRIDES } = await import("@/lib/projects.config");
+      const normalize = (name: string) => name.toLowerCase().replace(/[\s_]+/g, "-").replace(/[^a-z0-9-]/g, "");
+      setProjects((prev) => {
+        const next = prev.map((p) => {
+          const norm = normalize(p.name);
+          const override = DESCRIPTION_OVERRIDES[norm];
+          if (typeof override === "string" && override.length > 0) {
+            return { ...p, description: override };
+          }
+          if (p.name === "Frecomu") {
+            return { ...p, description: t(`projects.static.frecomu.description.${lang}`) };
+          }
+          if (p.name === "Task Manager") {
+            return { ...p, description: t(`projects.static.taskManager.description.${lang}`) };
+          }
+          if (p.name === "Util Tools") {
+            return { ...p, description: t(`projects.static.utilTools.description.${lang}`) };
+          }
+          if (p.category === "ai-ml") {
+            return { ...p, description: t("projectsPage.defaultDescription") };
+          }
+          return p;
+        });
+        setSelectedProject((sp: any) => {
+          if (!sp) return sp;
+          const updated = next.find((pr) => pr.id === sp.id);
+          return updated ?? sp;
+        });
+        return next;
+      });
+    })();
   }, [i18n.language, t]);
 
   useEffect(() => {
