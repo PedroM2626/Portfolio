@@ -15,7 +15,8 @@ export const EXCLUDED_REPOS = [
 ];
 
 export const NAME_OVERRIDES: Record<string, string> = {
-  "hackathon": "Previsão forecast",
+  "big-data-hackathon-forecast-2025": "Previsão forecast",
+  "azure-ml-previsao-vendas-regressao-linear":"Previsão de vendas com regressão linear e Azure ML",
   "chatbot-previsao-ia": "Chatbot de previsão",
   "assistente-virtual": "Assistente virtual",
 };

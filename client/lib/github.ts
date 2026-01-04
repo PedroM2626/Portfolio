@@ -80,6 +80,18 @@ export function mapRepoToProject(repo: GitHubRepo, index: number): ProjectItem {
   const norm = normalize(repo.name);
   const nameOverride = NAME_OVERRIDES[norm];
   const descriptionOverride = DESCRIPTION_OVERRIDES[norm];
+  const prettifyName = (raw: string): string => {
+    const replaced = raw.replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim();
+    const words = replaced.split(" ").map((w) => {
+      const lw = w.toLowerCase();
+      if (lw === "ai") return "IA";
+      if (lw === "ml") return "ML";
+      if (lw === "nlp") return "NLP";
+      if (lw === "cv") return "CV";
+      return w.charAt(0).toUpperCase() + w.slice(1);
+    });
+    return words.join(" ");
+  };
   const tech: string[] = [];
   const lang = repo.language;
   if (lang) tech.push(lang);
@@ -124,7 +136,7 @@ export function mapRepoToProject(repo: GitHubRepo, index: number): ProjectItem {
 
   return {
     id: 100000 + index,
-    name: nameOverride ?? repo.name,
+    name: nameOverride ?? prettifyName(repo.name),
     image: "/placeholder.svg",
     date: new Date(repo.created_at).getFullYear().toString(),
     tech: mergedTech.length ? mergedTech : ["Python"],
