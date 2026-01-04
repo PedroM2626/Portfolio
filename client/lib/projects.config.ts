@@ -21,7 +21,7 @@ export const NAME_OVERRIDES: Record<string, string> = {
   "assistente-virtual": "Assistente virtual",
   "aws-sagemaker-canvas-previsao-de-estoque": "Previsão de estoque (SageMaker Canvas)",
   "azure-ml-chatbot-de-busca-em-pdf-busca-vetorial": "Chatbot de busca em PDF (Azure ML)",
-  "previsao-forecast": "Previsão forecast",
+
 };
 
 export const DESCRIPTION_OVERRIDES: Record<string, string> = {};
@@ -34,9 +34,9 @@ export const FEATURED_REPOS: Record<string, string | undefined> = {
 
 export const TECH_OVERRIDES: Record<string, string[]> = {
   "senti-pred": ["Python", "Scikit-Learn", "Pandas", "NumPy", "Transformers", "Hugging Face", "Django API", "Streamlit", "R Shiny"],
-  "chatbot-previsao-ia": ["Python", "Transformers", "Hugging Face", "Flask", "Scikit-Learn", "React 18", "Vertex AI", "Gemini 2.5 Flash"],
+  "chatbot-previsao-ia": ["Python", "Transformers", "Hugging Face", "Flask", "Scikit-Learn", "React", "Vertex AI"],
   "assistente-virtual": ["Python", "Transformers", "Hugging Face", "Keras", "Pandas", "NumPy"],
-  "previsao-forecast": ["Python", "Prophet", "Statsmodels", "Pandas", "NumPy"],
+
   "big-data-hackathon-forecast-2025": ["Python", "Prophet", "Statsmodels", "Pandas", "NumPy"],
   "aws-sagemaker-canvas-previsao-de-estoque": ["AWS SageMaker", "Canvas", "Python", "Pandas"],
   "azure-ml-chatbot-de-busca-em-pdf-busca-vetorial": ["Azure ML", "Transformers", "Hugging Face", "Python"]
